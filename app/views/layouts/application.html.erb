@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>SpinnRepo</title>
+    <title>Spinn</title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script type="text/javascript">
+      <% if logged_in? %>
+        window.currentUser =
+          <%= render("api/users/show.json.jbuilder", user: current_user).html_safe %>
+      <% end %>
+    </script>
   </head>
 
   <body>
