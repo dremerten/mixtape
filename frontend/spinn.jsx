@@ -15,11 +15,11 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // TEST FUNCTIONS
-  // window.login = login;
-  // window.signup = signup;
-  // window.logout = logout;
-  // window.getState = store.getState;
-  // window.dispatch = store.dispatch;
+  window.login = login;
+  window.signup = signup;
+  window.logout = logout;
+  window.getState = store.getState;
+  window.dispatch = store.dispatch;
   // TEST FUNCTIONS
 
   const rootEl = document.getElementById('root');
