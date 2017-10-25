@@ -1,14 +1,14 @@
 // TODO: Apply Link to only be the exact with of the buttom
 // TODO: Add "Already have an account?" copy below sign up link
 .homepage-wrap {
-  background:
+  background-image:
     linear-gradient(
       rgba(0, 0, 0, .75),
       rgba(0, 0, 0, .75)
     ),
-    url('/assets/background-1.jpg');
+    image_url('/assets/background-1.jpg');
   background-size: cover;
-  height: inherit;
+  background-position: 0px -70px;
 }
 
 .content-container {
@@ -91,6 +91,8 @@ strong.static-content-main-copy {
 }
 
 .logo-white {
+  background-image: image_url("/assets/Spinn_logo_white.png");
+  background-size: cover;
   height: 50px;
   width: 50px;
 }

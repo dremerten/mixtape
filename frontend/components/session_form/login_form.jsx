@@ -5,7 +5,7 @@ class LoginForm extends React.Component {
     super(props);
     this.formType = this.props.formType;
     this.state = {
-      username: '',
+      email: '',
       password: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,7 +33,7 @@ class LoginForm extends React.Component {
       <div className="login-div">
         <div className="login-header">
           <div className="login-header-div">
-            <img src="/assets/Logo-black.png" className="login-page-logo"/>
+            <div className="login-page-logo"/>
             <h1>Spinn</h1>
           </div>
         </div>
@@ -46,9 +46,9 @@ class LoginForm extends React.Component {
           <input
             type="text"
             className="login-input"
-            value={this.state.username}
-            placeholder="USERNAME"
-            onChange={this.update('username')}
+            value={this.state.email}
+            placeholder="EMAIL"
+            onChange={this.update('email')}
             >
           </input>
           <input

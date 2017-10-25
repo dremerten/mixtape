@@ -15,7 +15,7 @@ class NewSession extends React.Component {
         <div className="content-container">
           <div className="session-actions">
             <div className="spinn-logo-homepage">
-              <img src="/assets/Spinn_logo_white.png" className="logo-white"/><strong>Spinn</strong>
+              <div className="logo-white"></div><strong>Spinn</strong>
             </div>
             <div className="button-container">
               <Link to="/signup" className="signup-link">
@@ -39,11 +39,11 @@ class NewSession extends React.Component {
             </div>
             <div className="static-content-span-div">
               <div>
-                <i class="fa fa-check-circle"></i>
+                <i className="fa fa-check-circle"></i>
                 Search &amp; discover music you'll love
               </div>
               <div>
-                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                <i className="fa fa-check-circle" aria-hidden="true"></i>
                 Create playlists of your favorite music
               </div>
             </div>

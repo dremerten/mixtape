@@ -1,12 +1,13 @@
 class User < ApplicationRecord
-  validates :username, presence: true, uniqueness: true
-  validates :name, :session_token, presence: true
+  validates :email, presence: true, uniqueness: true
+  validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
+  validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
   after_initialize :ensure_session_token
 
 
-  def self.find_by_credentials(username, pw)
-    user = User.find_by(username: username)
+  def self.find_by_credentials(email, pw)
+    user = User.find_by(username: email)
 
     user && user.is_password?(pw) ? user : nil
   end

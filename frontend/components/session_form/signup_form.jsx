@@ -6,8 +6,10 @@ class SignupForm extends React.Component {
     this.formType = this.props.formType;
     this.state = {
       name: '',
-      username: '',
+      email: '',
       password: '',
+      password_confirmation: '',
+      birthday: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -28,35 +30,61 @@ class SignupForm extends React.Component {
     const errors = this.props.errors.map((err, i) => <li key={i}>{err}</li>);
     return (
       <div className="signup-div">
-        <h1>Spinn</h1>
-        <hr/>
-        <h2>SIGN UP</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Name:
+        <div className="login-div">
+          <div className="login-header">
+            <div className="login-header-div">
+              <img src="/assets/Logo-black.png" className="login-page-logo"/>
+              <h1>Spinn</h1>
+            </div>
+          </div>
+        </div>
+        <div className="login-text-div">
+          <div className="login-horiz"></div>
+          <div className="login-text">SIGN UP</div>
+          <div className="login-horiz"></div>
+        </div>
+        <form onSubmit={this.handleSubmit} className="login-form signup" >
             <input
               type="text"
-              value={this.state.name}
-              onChange={this.update('name')}
+              placeholder="EMAIL"
+              value={this.state.email}
+              onChange={this.update('email')}
               >
             </input>
-          </label>
-          <label>Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              >
-            </input>
-          </label>
-          <label>Password:
             <input
               type="password"
+              className="login-input"
+              placeholder="PASSWORD"
               value={this.state.password}
               onChange={this.update('password')}
               >
             </input>
-          </label>
-          <input type="submit" value="SIGN UP"></input>
+            <input
+              type="password"
+              className="login-input"
+              placeholder="CONFIRM PASSWORD"
+              value={this.state.password_confirmation}
+              onChange={this.update('password_confirmation')}
+              >
+            </input>
+            <input
+              type="text"
+              className="login-input"
+              value={this.state.name}
+              placeholder="WHAT SHOULD WE CALL YOU?"
+              onChange={this.update('name')}
+              >
+            </input>
+            <label htmlFor="birth-date" className="form-label">DATE OF BIRTH:</label>
+            <input
+              type="date"
+              id="birth-date"
+              className="login-input"
+              value={this.state.birthday}
+              onChange={this.update('birthday')}
+              >
+            </input>
+          <input type="submit" value="SIGN UP" className="signup-button"></input>
         </form>
         <ul className="login-errors">
           {errors}
