@@ -27,9 +27,22 @@ class NewSession extends React.Component {
             </div>
           </div>
           <div className="static-content">
-            <h1>Get the right music, right now</h1>
-            <h2>Listen to millions of songs for free</h2>
-            <h2>Search and discover music you'll love</h2>
+            <div className="static-content-header-div">
+              <strong className="static-content-main-copy">Get the right music, right now</strong>
+            </div>
+            <div className="static-content-sub-header">
+              <span>Listen to millions of songs for free</span>
+            </div>
+            <div className="static-content-span-div">
+              <div>
+                <i class="fa fa-check-circle"></i>
+                Search &amp; discover music you'll love
+              </div>
+              <div>
+                <i class="fa fa-check-circle" aria-hidden="true"></i>
+                Create playlists of your favorite music
+              </div>
+            </div>
           </div>
         </div>
       </div>

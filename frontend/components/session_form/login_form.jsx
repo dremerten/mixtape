@@ -17,6 +17,10 @@ class LoginForm extends React.Component {
     this.props.processForm(this.state).then(() => this.props.history.push('/browse'));
   }
 
+  componentWillUnmount() {
+    this.props.removeSessionErrors();
+  }
+
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value})
@@ -24,6 +28,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    debugger
+    const errors = this.props.errors.map((err, i) => <li key={i}>{err}</li>);
     return (
       <div className="login-div">
         <h1>Spinn</h1>
@@ -49,6 +55,9 @@ class LoginForm extends React.Component {
 
           <input type="submit" value="LOGIN"></input>
         </form>
+        <ul className="login-errors">
+          {errors}
+        </ul>
       </div>
     )
   }

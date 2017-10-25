@@ -29,7 +29,7 @@ class SignupForm extends React.Component {
       <div className="signup-div">
         <h1>Spinn</h1>
         <hr/>
-        <h2>LOGIN</h2>
+        <h2>SIGN UP</h2>
         <form onSubmit={this.handleSubmit}>
           <label>Name:
             <input
@@ -56,7 +56,7 @@ class SignupForm extends React.Component {
             </input>
           </label>
 
-          <input type="submit" value="LOGIN"></input>
+          <input type="submit" value="SIGN UP"></input>
         </form>
       </div>
     )

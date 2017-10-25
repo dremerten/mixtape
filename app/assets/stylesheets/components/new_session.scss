@@ -13,9 +13,10 @@
   padding-top: 200px;
   display: flex;
   flex-direction: row;
-  height: 200px;
+  height: 500px;
   width: 75%;
   margin: 0 auto;
+
 }
 
 .session-actions {
@@ -26,6 +27,7 @@
   width: 49%;
   height: 350px;
   border-right: 1px solid rgba(255, 255, 255, .8);
+  padding-right: 35px;
 }
 
 .spinn-logo-homepage {
@@ -67,4 +69,47 @@
   text-align: center;
   margin: 20px;
   line-height: 50px;
+}
+
+.static-content {
+  margin-left: 60px;
+}
+
+strong.static-content-main-copy {
+  color: $spotify-green;
+  font-family: $sans-serif;
+  font-size: 60px;
+  font-weight: 500px;
+  word-wrap: normal;
+}
+
+.static-content-header-div {
+  margin-top: 30px;
+}
+
+.static-content-sub-header {
+  font-family: $sans-serif;
+  font-weight: lighter;
+  color: white;
+  font-size: 25px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.static-content-span-div {
+  font-family: $sans-serif;
+  font-weight: normal;
+  color: white;
+  font-size: 20px;
+  padding-right: 10px;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+i {
+  color: $spotify-green;
+  font-size: 20px;
+  padding-right: 10px;
 }
