@@ -15,15 +15,19 @@ class NewSession extends React.Component {
         <div className="content-container">
           <div className="session-actions">
             <div className="spinn-logo-homepage">
-              <strong>Spinn</strong>
+              <img src="/assets/Spinn_logo_white.png" className="logo-white"/><strong>Spinn</strong>
             </div>
-            <div>
+            <div className="button-container">
+              <Link to="/signup" className="signup-link">
+                <div className="signup-button">SIGN UP</div>
+              </Link>
             </div>
-            <div className="signup-button">
-              <Link to="/signup" className="signup-link">SIGN UP</Link>
-            </div>
-            <div className="login-button">
-              <Link to="/login" className="login-link">LOGIN</Link>
+            <div className="button-container">
+              <Link to="/login" className="login-link">
+                <div className="login-button">
+                  LOGIN
+                </div>
+              </Link>
             </div>
           </div>
           <div className="static-content">

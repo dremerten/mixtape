@@ -28,31 +28,37 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    debugger
     const errors = this.props.errors.map((err, i) => <li key={i}>{err}</li>);
     return (
       <div className="login-div">
-        <h1>Spinn</h1>
-        <hr/>
-        <h2>LOGIN</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-              >
-            </input>
-          </label>
-          <label>Password:
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-              >
-            </input>
-          </label>
-
+        <div className="login-header">
+          <div className="login-header-div">
+            <img src="/assets/Logo-black.png" className="login-page-logo"/>
+            <h1>Spinn</h1>
+          </div>
+        </div>
+        <div className="login-text-div">
+          <div className="login-horiz"></div>
+          <div className="login-text">LOGIN</div>
+          <div className="login-horiz"></div>
+        </div>
+        <form onSubmit={this.handleSubmit} className="login-form">
+          <input
+            type="text"
+            className="login-input"
+            value={this.state.username}
+            placeholder="USERNAME"
+            onChange={this.update('username')}
+            >
+          </input>
+          <input
+            type="password"
+            value={this.state.password}
+            className="login-input"
+            placeholder="PASSWORD"
+            onChange={this.update('password')}
+            >
+          </input>
           <input type="submit" value="LOGIN"></input>
         </form>
         <ul className="login-errors">

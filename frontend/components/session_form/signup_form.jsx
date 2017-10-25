@@ -25,6 +25,7 @@ class SignupForm extends React.Component {
   }
 
   render() {
+    const errors = this.props.errors.map((err, i) => <li key={i}>{err}</li>);
     return (
       <div className="signup-div">
         <h1>Spinn</h1>
@@ -55,9 +56,11 @@ class SignupForm extends React.Component {
               >
             </input>
           </label>
-
           <input type="submit" value="SIGN UP"></input>
         </form>
+        <ul className="login-errors">
+          {errors}
+        </ul>
       </div>
     )
   }
