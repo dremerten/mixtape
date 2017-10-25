@@ -9,11 +9,16 @@ import {
 } from 'react-router-dom';
 
 import { ProtectedRoute, AuthRoute } from '../util/route_util';
-import SessionFormContainer from './session_form/session_form_container';
+import { LoginFormContainer, SignupFormContainer } from './session_form/session_form_container';
+import NewSession from './session_form/new_session';
 
 const App = () => (
   <div>
-    <AuthRoute path="/login" component={SessionFormContainer} />
-    <AuthRoute path="/signup" component={SessionFormContainer} />
+    <Switch>
+      <AuthRoute path="/login" component={LoginFormContainer}/>
+      <AuthRoute path="/" component={NewSession} />
+    </Switch>
   </div>
 )
+
+export default App;
