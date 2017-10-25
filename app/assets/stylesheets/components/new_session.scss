@@ -1,0 +1,70 @@
+.homepage-wrap {
+  background:
+    linear-gradient(
+      rgba(0, 0, 0, .75),
+      rgba(0, 0, 0, .75)
+    ),
+    url('/assets/background-1.jpg');
+  background-size: cover;
+  height: inherit;
+}
+
+.content-container {
+  padding-top: 200px;
+  display: flex;
+  flex-direction: row;
+  height: 200px;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.session-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  vertical-align: middle;
+  width: 49%;
+  height: 350px;
+  border-right: 1px solid rgba(255, 255, 255, .8);
+}
+
+.spinn-logo-homepage {
+  color: white;
+  font-family: 'Bree Serif', serif;
+  font-style: bold;
+  font-size: 50px;
+  padding-bottom: 10px;
+}
+
+.spinn-logo-homepage > strong {
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+.login-button {
+  border-radius: 30px;
+  background: white;
+  font-size: 17px;
+  // font-weight: bolder;
+  font-family: $sans-serif;
+  color: $black;
+  width: 315px;
+  height: 50px;
+  text-align: center;
+  margin: 20px;
+  line-height: 50px;
+}
+
+.signup-button {
+  border-radius: 30px;
+  background: $spotify-green;
+  font-size: 17px;
+  // font-weight: bolder;
+  font-family: $sans-serif;
+  color: white;
+  width: 315px;
+  height: 50px;
+  text-align: center;
+  margin: 20px;
+  line-height: 50px;
+}

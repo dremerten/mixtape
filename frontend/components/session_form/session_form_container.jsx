@@ -1,6 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-// import SessionForm from './session_form';
 import LoginForm from './login_form';
 import SignupForm from './signup_form';
 import { withRouter } from 'react-router-dom';
@@ -24,7 +23,7 @@ export const LoginFormContainer = withRouter(connect(
   mapDispatchToProps
 )(LoginForm));
 
-// export const SignupFormContainer = withRouter(connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(SignupForm));
+export const SignupFormContainer = withRouter(connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SignupForm));
