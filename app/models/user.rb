@@ -3,11 +3,15 @@ class User < ApplicationRecord
   validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
+
+  has_attached_file :image
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+
   after_initialize :ensure_session_token
 
 
   def self.find_by_credentials(email, pw)
-    user = User.find_by(username: email)
+    user = User.find_by(email: email)
 
     user && user.is_password?(pw) ? user : nil
   end
@@ -35,6 +39,7 @@ class User < ApplicationRecord
     self.password_digest = BCrypt::Password.create(pw)
   end
 
+  private
   attr_reader :password
 
 end
