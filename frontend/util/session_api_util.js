@@ -7,7 +7,6 @@ export const login = user => (
 );
 
 export const signup = formData => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/users',

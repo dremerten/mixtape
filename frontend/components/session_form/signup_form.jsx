@@ -50,10 +50,8 @@ class SignupForm extends React.Component {
     }
 
     if (file) {
-      // debugger
       fileReader.readAsDataURL(file);
     }
-    // debugger
   }
 
   render() {
