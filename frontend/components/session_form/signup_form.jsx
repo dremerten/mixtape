@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -10,8 +11,11 @@ class SignupForm extends React.Component {
       password: '',
       password_confirmation: '',
       birthday: '',
+      avatar: null,
+      imageUrl: '',
     }
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateFile = this.updateFile.bind(this);
   }
 
   componentWillUnmount() {
@@ -20,14 +24,36 @@ class SignupForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    delete this.state.imageUrl;
+    //
+    const formData = new FormData();
+    for (let i in this.state) {
+      formData.append(`user[${i}]`, this.state[i])
+    }
 
-    this.props.processForm(this.state).then(() => this.props.history.push('/browse'));
+    this.props.processForm(formData));
   }
 
   update(field) {
     return (e) => {
       this.setState({[field]: e.target.value})
     }
+  }
+
+  updateFile(e) {
+    const fileReader = new FileReader();
+    const file = e.currentTarget.files[0];
+
+    fileReader.onloadend = () => {
+      this.setState({ avatar: file, imageUrl: fileReader.result });
+      document.getElementById('preview').className = "preview-container-loaded";
+    }
+
+    if (file) {
+      // debugger
+      fileReader.readAsDataURL(file);
+    }
+    // debugger
   }
 
   render() {
@@ -57,7 +83,6 @@ class SignupForm extends React.Component {
             </input>
             <input
               type="password"
-              className="login-input"
               placeholder="PASSWORD"
               value={this.state.password}
               onChange={this.update('password')}
@@ -65,7 +90,6 @@ class SignupForm extends React.Component {
             </input>
             <input
               type="password"
-              className="login-input"
               placeholder="CONFIRM PASSWORD"
               value={this.state.password_confirmation}
               onChange={this.update('password_confirmation')}
@@ -73,7 +97,6 @@ class SignupForm extends React.Component {
             </input>
             <input
               type="text"
-              className="login-input"
               value={this.state.name}
               placeholder="WHAT SHOULD WE CALL YOU?"
               onChange={this.update('name')}
@@ -83,11 +106,20 @@ class SignupForm extends React.Component {
             <input
               type="date"
               id="birth-date"
-              className="login-input"
               value={this.state.birthday}
               onChange={this.update('birthday')}
               >
             </input>
+            <label htmlFor="file-upload" className="form-label avatar">Upload an Avatar!</label>
+            <input
+              type="file"
+              id="file-upload"
+              onChange={this.updateFile}
+              >
+            </input>
+            <div className="preview-container" id='preview'>
+              <img src={this.state.imageUrl} className="avatar-image-preview" />
+            </div>
           <input type="submit" value="SIGN UP" className="signup-button"></input>
         </form>
         <ul className="login-errors">

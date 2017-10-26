@@ -104,4 +104,34 @@
   font-size: 12px;
   letter-spacing: 3px;
   line-height: 10px;
+  margin-top: 20px;
+  margin-bottom: 100px;
+}
+
+.preview-container {
+  width: 200px;
+  height: 200px;
+  border: 3px dashed #d8d7d6;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.preview-container-loaded {
+  width: 200px;
+  height: 200px;
+  border: 3px dashed $spotify-green;
+  border-radius: 5px;
+  margin: 0 auto;
+}
+
+.avatar-image-preview {
+  width: 50%;
+  height: 50%;
+  border-radius: 50%;
+  margin: 0 auto;
+  margin-top: 40px;
+}
+
+.avatar {
+  color: $spotify-green;
 }

@@ -24,3 +24,7 @@ bundle.js
 bundle.js.map
 .DS_Store
 npm-debug.log
+aws_keys.yml
+
+# Ignore application configuration
+/config/application.yml

@@ -30,9 +30,10 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-gem 'paperclip', "~> 5.0.0.beta1"
+gem 'paperclip', git: "git://github.com/thoughtbot/paperclip.git"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'aws-sdk', '< 3.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -54,6 +55,7 @@ group :development do
   gem 'binding_of_caller'
 end
 
+gem 'figaro'
 # group :production do
 #   gem 'rails_12factor'
 # end

@@ -1,11 +1,24 @@
 import React from 'react';
+import SideBar from '../sidebar/sidebar';
+import NowPlayingBar from '../nowplaying/nowplaying';
+import GenresIndex from '../genres/genres_index';
+import NewReleasesIndex from '../new_releases/new_releases_index';
+import FeaturedPlaylistsIndex from '../featured_playlists/featured_playlists_index';
+import {
+  Route,
+  Switch,
+} from 'react-router-dom';
 
 const MainPage = (props) => {
   return(
-    <div>
-      <h1>MUSIC</h1>
-      <h2>Hello, {props.currentUser.name}!</h2>
-      <button onClick={props.logout}>LOGOUT</button>
+    <div className='main-page'>
+      <SideBar />
+      <Switch>
+        <Route path='browse/featured' component={FeaturedPlaylistsIndex} />
+        <Route path='browse/genres' component={GenresIndex} />
+        <Route path='browse/newreleases' component={NewReleasesIndex} />
+      </Switch>
+      <NowPlayingBar />
     </div>
   );
 }
