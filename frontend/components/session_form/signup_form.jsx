@@ -31,7 +31,7 @@ class SignupForm extends React.Component {
       formData.append(`user[${i}]`, this.state[i])
     }
 
-    this.props.processForm(formData);
+    this.props.processForm(formData).then(() => this.props.history.push('/browse/featured'));
   }
 
   update(field) {
