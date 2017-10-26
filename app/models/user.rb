@@ -4,8 +4,8 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
 
-  # has_attached_file :user
-  # validates_attachment_content_type :user, content_type: /\Aimage\/.*\Z/
+  has_attached_file :avatar
+  validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   after_initialize :ensure_session_token
 
