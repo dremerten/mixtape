@@ -16,6 +16,6 @@ development:
 production:
   s3_bucket: "spinnmusicfiles-pro"
 
-s3_region: "us-east-1"
+s3_region: "us-east-2"
 s3_access_key_id: "AKIAJTDUHNLNXF3K6U4Q"
 s3_secret_access_key: "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"

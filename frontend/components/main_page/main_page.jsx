@@ -11,10 +11,11 @@ import {
 
 
 
-const MainPage = (props) => {
+const MainPage = ( { currentUser }) => {
+  // debugger
   return(
     <div className={`main-page`}>
-      <SideBar />
+      <SideBar currentUser={currentUser}/>
       <Switch>
         <Route exact path="/browse/featured" component={FeaturedPlaylistsIndex} />
         <Route exact path="/browse/genres" component={GenresIndex} />

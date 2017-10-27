@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-const SideBar = () => {
+const SideBar = ({ currentUser }) => {
   return(
     <div className="sidebar">
       <nav className="nav-links">
