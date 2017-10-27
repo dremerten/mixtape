@@ -1,24 +1,21 @@
 import React from 'react';
 import SideBar from '../sidebar/sidebar';
+import Search from '../search/search';
 import NowPlayingBar from '../nowplaying/nowplaying';
-import GenresIndex from '../genres/genres_index';
-import NewReleasesIndex from '../new_releases/new_releases_index';
-import FeaturedPlaylistsIndex from '../featured_playlists/featured_playlists_index';
+import MusicPortal from '../music_portal';
+
 import {
   Route,
   Switch,
 } from 'react-router-dom';
 
-
-
 const MainPage = ( { currentUser }) => {
   return(
-    <div className={`main-page`}>
+    <div className="main-page">
       <SideBar currentUser={currentUser}/>
       <Switch>
-        <Route exact path="/browse/featured" component={FeaturedPlaylistsIndex} />
-        <Route exact path="/browse/genres" component={GenresIndex} />
-        <Route exact path="/browse/newreleases" component={NewReleasesIndex} />
+        <Route path="/browse/search" component={Search}/>
+        <Route path="/browse/:musicPage" component={MusicPortal}/>
       </Switch>
       <NowPlayingBar />
     </div>

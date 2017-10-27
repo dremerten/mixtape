@@ -45,13 +45,27 @@
   padding-top: 10px;
 }
 
+.with-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-weight: lighter;
+}
+
 .sidebar-item {
   font-size: 16px;
   font-weight: bolder;
   font-family: $sans-serif;
-  color: #e2e2e2;
+  color: #8c8c8c;
   padding: 8px 0;
   margin-bottom: 4px;
+  transition: 0.25s ease-in-out;
+}
+
+.sidebar-item:hover {
+  color: #d1d1d1;
+  transition: ease-in-out;
+  transition-duration: 0.15s;
 }
 
 .session-info {
