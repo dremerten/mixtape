@@ -1,0 +1,9 @@
+class CreateAlbums < ActiveRecord::Migration[5.1]
+  def change
+    create_table :albums do |t|
+      t.string :title, null: false
+      t.integer :artist_id, null: false
+      t.integer :year
+    end
+  end
+end

@@ -19,12 +19,17 @@
   height: 100%;
 }
 
+.nav-expand {
+  flex: 1;
+}
+
 .sidebar-logo {
   background-image: image_url('Spinn_logo_white.png');
   background-size: contain;
   background-repeat: no-repeat;
-  height: 32px;
-  width: 32px;
+  height: 34px;
+  width: 34px;
+  padding-bottom: 4px;
 }
 
 .sidebar-header {
@@ -44,8 +49,9 @@
   font-size: 16px;
   font-weight: bolder;
   font-family: $sans-serif;
-  color: #e8e8e8;
-  padding: 3px 0;
+  color: #e2e2e2;
+  padding: 8px 0;
+  margin-bottom: 4px;
 }
 
 .session-info {
@@ -73,7 +79,7 @@
 .user-link {
   font-size: 16px;
   font-weight: bolder;
-  color: #e8e8e8;
+  color: #e2e2e2;
   margin-left: 10px;
   font-family: $sans-serif;
 }

@@ -10,13 +10,14 @@
     image_url('background-5.jpg');
   background-size: cover;
   background-position: 0px -70px;
+  height: 100%
 }
 
 .content-container {
-  padding-top: 200px;
+  padding-top: 180px;
   display: flex;
   flex-direction: row;
-  height: 500px;
+  height: 380px;
   width: 75%;
   margin: 0 auto;
 
@@ -131,4 +132,38 @@ i {
   color: $spotify-green;
   font-size: 20px;
   padding-right: 10px;
+}
+
+.demo-login {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  color: #e2e2e2;
+  font-family: $sans-serif;
+  align-items: center;
+  margin-right: 100px;
+}
+
+span.demo-text {
+  font-size: 17px;
+  font-weight: 400;
+  margin-top: 3px;
+}
+
+.demo-login button {
+  margin-left: 8px;
+  font-size: 12px;
+  letter-spacing: 2px;
+  padding: 4px 12px;
+  border: 1px solid #9b9b9b;
+  color:#9b9b9b;
+  border-radius: 5px;
+  transition: 0.25s ease-in-out;
+}
+
+.demo-login button:hover {
+  border: 1px solid white;
+  color: white;
+  transition: ease-in-out;
+  transition-duration: 0.75s;
 }

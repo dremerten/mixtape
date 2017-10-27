@@ -10,19 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027151746) do
+ActiveRecord::Schema.define(version: 20171027194001) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "albums", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "artist_id", null: false
+    t.integer "year"
+    t.string "artwork_file_name"
+    t.string "artwork_content_type"
+    t.integer "artwork_file_size"
+    t.datetime "artwork_updated_at"
+  end
+
+  create_table "artists", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "genre_id"
+    t.text "about"
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string "name", null: false
+  end
+
   create_table "tracks", force: :cascade do |t|
     t.string "title", null: false
     t.integer "artist_id", null: false
-    t.integer "genre_id", null: false
     t.integer "album_id"
     t.integer "year"
     t.integer "ord"
     t.float "popularity", default: 0.0
+    t.string "audio_file_name"
+    t.string "audio_content_type"
+    t.integer "audio_file_size"
+    t.datetime "audio_updated_at"
     t.index ["album_id"], name: "index_tracks_on_album_id"
     t.index ["artist_id"], name: "index_tracks_on_artist_id"
   end

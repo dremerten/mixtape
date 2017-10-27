@@ -5412,3 +5412,640 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 534ms (Views: 531.1ms | ActiveRecord: 0.8ms)
 
 
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (11.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Removegenrecolumnfromtracks (20171027183719)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to Removegenrecolumnfromtracks (20171027183719)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to RemoveGenreFromTracks (20171027183903)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mALTER TABLE "tracks" DROP "genre_id"[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027183903"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 26]]
+  [1m[35m (12.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-u1sit7.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-u1sit7.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-1ov12aj.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-1ov12aj.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-u1sit7.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-6o929k.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49006-6o929k.png'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 25]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-oawf5i.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-oawf5i.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-pbrd6s.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-pbrd6s.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-oawf5i.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-d9j9cy.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-49044-d9j9cy.png'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49083-3maunf.mp3
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49128-10icwgv.mp3
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentAudioToTracks (20171027185541)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentAudioToTracks (20171027185541)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (19.7ms)[0m  [1m[35mALTER TABLE "tracks" ADD "audio_file_name" character varying[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "tracks" ADD "audio_content_type" character varying[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "tracks" ADD "audio_file_size" integer[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "tracks" ADD "audio_updated_at" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027185541"]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49334-1ipm2be.mp3
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49379-a8erpt.mp3
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49379-a8erpt.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49379-e88iqe.mp3
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49379-e88iqe.mp3'
+[paperclip] Content Type Spoof: Filename 1-01_street_fighter.mp3 (audio/mpeg from Headers, ["audio/mpeg"] from Extension), content type discovered from file command: application/octet-stream. See documentation to allow this combination.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49379-a8erpt.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49379-r3hd5d.mp3
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49379-r3hd5d.mp3'
+[paperclip] Content Type Spoof: Filename 1-01_street_fighter.mp3 (audio/mpeg from Headers, ["audio/mpeg"] from Extension), content type discovered from file command: application/octet-stream. See documentation to allow this combination.
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (7.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49468-1nlp3ze.mp3
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49468-1nlp3ze.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49468-1me96ay.mp3
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49468-1me96ay.mp3'
+[paperclip] Content Type Spoof: Filename 1-01_street_fighter.mp3 (audio/mpeg from Headers, ["audio/mpeg"] from Extension), content type discovered from file command: application/octet-stream. See documentation to allow this combination.
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49468-1nlp3ze.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49468-1ufwxnf.mp3
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ff88cacce4503d8dc78a42c459fcbe9d20171027-49468-1ufwxnf.mp3'
+[paperclip] Content Type Spoof: Filename 1-01_street_fighter.mp3 (audio/mpeg from Headers, ["audio/mpeg"] from Extension), content type discovered from file command: application/octet-stream. See documentation to allow this combination.
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-49513-hs95wr.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (24.8ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "street fighter"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-01_street_fighter.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 932729], ["audio_updated_at", "2017-10-27 19:01:09.506024"]]
+[paperclip] saving /tracks/audios/000/000/001/original/1-01_street_fighter.mp3
+  [1m[35m (12.6ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-02 strawberry swing.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/30add5876674ebf90f8d8373fc10181420171027-49513-17kdspe.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "strawberry swing"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-02_strawberry_swing.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6047925], ["audio_updated_at", "2017-10-27 19:01:10.682594"]]
+[paperclip] saving /tracks/audios/000/000/002/original/1-02_strawberry_swing.mp3
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-04 we all try.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/aeef3710babc5f69278d977e2f4af5fb20171027-49513-4c9ct1.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "we all try"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-04_we_all_try.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4523204], ["audio_updated_at", "2017-10-27 19:01:10.983708"]]
+[paperclip] saving /tracks/audios/000/000/003/original/1-04_we_all_try.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-05 bitches talkin'.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/481147df04f720f8502c1273131f462e20171027-49513-14wrbzd.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "bitches talkin'"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-05_bitches_talkin'.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 930223], ["audio_updated_at", "2017-10-27 19:01:11.241198"]]
+[paperclip] saving /tracks/audios/000/000/004/original/1-05_bitches_talkin'.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-06 songs for women.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/cb6c405be474f0375cf7d09843af63e820171027-49513-qtlt66.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "songs for women"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-06_songs_for_women.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6476123], ["audio_updated_at", "2017-10-27 19:01:11.341577"]]
+[paperclip] saving /tracks/audios/000/000/005/original/1-06_songs_for_women.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-07 lovecrimes.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/87f1516a87db872e782e52e8717e5fca20171027-49513-1f2a7mp.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "lovecrimes"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-07_lovecrimes.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6163276], ["audio_updated_at", "2017-10-27 19:01:11.651631"]]
+[paperclip] saving /tracks/audios/000/000/006/original/1-07_lovecrimes.mp3
+  [1m[35m (2.9ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-08 goldeneye.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/c31e7901286dba7a4ce3c3ecf5d23fa420171027-49513-1ggn464.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "goldeneye"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-08_goldeneye.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 837430], ["audio_updated_at", "2017-10-27 19:01:11.961380"]]
+[paperclip] saving /tracks/audios/000/000/007/original/1-08_goldeneye.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-09 there will be tears.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/eec126fc747cc672c684581dc1e9525c20171027-49513-nn97if.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "there will be tears"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-09_there_will_be_tears.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5068649], ["audio_updated_at", "2017-10-27 19:01:12.302955"]]
+[paperclip] saving /tracks/audios/000/000/008/original/1-09_there_will_be_tears.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-11 dust.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/19401cb179eb78d4bf5e91fc5c33a2b620171027-49513-pkgml7.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "dust"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-11_dust.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4083088], ["audio_updated_at", "2017-10-27 19:01:12.616950"]]
+[paperclip] saving /tracks/audios/000/000/009/original/1-11_dust.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-12 american wedding.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ed364c05ab8f37292adf452add20f1cc20171027-49513-47k4iq.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "american wedding"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-12_american_wedding.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 10499191], ["audio_updated_at", "2017-10-27 19:01:12.856388"]]
+[paperclip] saving /tracks/audios/000/000/010/original/1-12_american_wedding.mp3
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-13 soul calibur.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/13d356ad2700c557a3094b6ee0b7e61320171027-49513-w6ddhb.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "soul calibur"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-13_soul_calibur.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 840568], ["audio_updated_at", "2017-10-27 19:01:13.424251"]]
+[paperclip] saving /tracks/audios/000/000/011/original/1-13_soul_calibur.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-14 nature feels.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/69d6278350d60b3841cc7e2707716f0020171027-49513-xhlnv2.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "nature feels"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-14_nature_feels.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5773950], ["audio_updated_at", "2017-10-27 19:01:13.528695"]]
+[paperclip] saving /tracks/audios/000/000/012/original/1-14_nature_feels.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateGenres (20171027193525)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (33.9ms)[0m  [1m[35mCREATE TABLE "genres" ("id" bigserial primary key, "name" character varying NOT NULL)[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027193525"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateArtists (20171027193610)
+  [1m[35m (11.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (14.7ms)[0m  [1m[35mCREATE TABLE "artists" ("id" bigserial primary key, "name" character varying NOT NULL, "genre_id" integer, "about" text)[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027193610"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAlbums (20171027193720)
+  [1m[35m (5.8ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (15.6ms)[0m  [1m[35mCREATE TABLE "albums" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer NOT NULL, "year" integer)[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027193720"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentImageToArtists (20171027193948)
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to AddAttachmentImageToArtists (20171027193948)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.8ms)[0m  [1m[35mALTER TABLE "artists" ADD "image_file_name" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "artists" ADD "image_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "artists" ADD "image_file_size" integer[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "artists" ADD "image_updated_at" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027193948"]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddAttachmentArtworkToAlbums (20171027194001)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "albums" ADD "artwork_file_name" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "albums" ADD "artwork_content_type" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "albums" ADD "artwork_file_size" integer[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "albums" ADD "artwork_updated_at" timestamp[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027194001"]]
+  [1m[35m (6.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (2.2ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (6.9ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Hip-Hop"]]
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "R&B"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Rock"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Indie"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Soul"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Pop"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Country"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Jazz"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Classical"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Acoustic"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Sountrack"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mArtist Load (2.2ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Hip-Hop"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "genre_id") VALUES ($1, $2) RETURNING "id"[0m  [["name", "Frank Ocean"], ["genre_id", 1]]
+  [1m[35m (6.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (6.9ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/Album Covers/*nostalgia, ULTRA.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51053-z91cof.jpg
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51053-z91cof.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51053-9s8jzj.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51053-9s8jzj.jpg'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51053-z91cof.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51053-bw88dp.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51053-bw88dp.jpg'
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "year", "artwork_file_name", "artwork_content_type", "artwork_file_size", "artwork_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "nostalgia, ULTRA"], ["artist_id", 1], ["year", 2007], ["artwork_file_name", "*nostalgia__ULTRA.jpg"], ["artwork_content_type", "image/jpeg"], ["artwork_file_size", 191948], ["artwork_updated_at", "2017-10-27 20:01:05.437081"]]
+[paperclip] saving /albums/artworks/000/000/001/original/*nostalgia__ULTRA.jpg
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTrack Load (1.1ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/001/original/1-01_street_fighter.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 2]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/002/original/1-02_strawberry_swing.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 3]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/003/original/1-04_we_all_try.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/004/original/1-05_bitches_talkin'.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 5]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/005/original/1-06_songs_for_women.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 6]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/006/original/1-07_lovecrimes.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 7]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/007/original/1-08_goldeneye.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/008/original/1-09_there_will_be_tears.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 9]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/009/original/1-11_dust.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 10]]
+  [1m[35m (6.0ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/010/original/1-12_american_wedding.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 11]]
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/011/original/1-13_soul_calibur.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 12]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/012/original/1-14_nature_feels.mp3
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-51053-17rwx2w.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "street fighter"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-01_street_fighter.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 932729], ["audio_updated_at", "2017-10-27 20:01:08.722640"]]
+[paperclip] saving /tracks/audios/000/000/013/original/1-01_street_fighter.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-02 strawberry swing.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/30add5876674ebf90f8d8373fc10181420171027-51053-3y1uc.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "strawberry swing"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-02_strawberry_swing.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6047925], ["audio_updated_at", "2017-10-27 20:01:08.925328"]]
+[paperclip] saving /tracks/audios/000/000/014/original/1-02_strawberry_swing.mp3
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-04 we all try.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/aeef3710babc5f69278d977e2f4af5fb20171027-51053-1kejtpj.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "we all try"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-04_we_all_try.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4523204], ["audio_updated_at", "2017-10-27 20:01:09.439154"]]
+[paperclip] saving /tracks/audios/000/000/015/original/1-04_we_all_try.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-05 bitches talkin'.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/481147df04f720f8502c1273131f462e20171027-51053-8oymkj.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "bitches talkin'"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-05_bitches_talkin'.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 930223], ["audio_updated_at", "2017-10-27 20:01:09.783477"]]
+[paperclip] saving /tracks/audios/000/000/016/original/1-05_bitches_talkin'.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-06 songs for women.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/cb6c405be474f0375cf7d09843af63e820171027-51053-qoamx.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "songs for women"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-06_songs_for_women.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6476123], ["audio_updated_at", "2017-10-27 20:01:09.930381"]]
+[paperclip] saving /tracks/audios/000/000/017/original/1-06_songs_for_women.mp3
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-07 lovecrimes.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/87f1516a87db872e782e52e8717e5fca20171027-51053-16wu6yq.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "lovecrimes"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-07_lovecrimes.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6163276], ["audio_updated_at", "2017-10-27 20:01:10.381086"]]
+[paperclip] saving /tracks/audios/000/000/018/original/1-07_lovecrimes.mp3
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.1ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-08 goldeneye.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/c31e7901286dba7a4ce3c3ecf5d23fa420171027-51053-1p5kwoq.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "goldeneye"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-08_goldeneye.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 837430], ["audio_updated_at", "2017-10-27 20:01:10.795674"]]
+[paperclip] saving /tracks/audios/000/000/019/original/1-08_goldeneye.mp3
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-09 there will be tears.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/eec126fc747cc672c684581dc1e9525c20171027-51053-1qh3bg8.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "there will be tears"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-09_there_will_be_tears.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5068649], ["audio_updated_at", "2017-10-27 20:01:10.927853"]]
+[paperclip] saving /tracks/audios/000/000/020/original/1-09_there_will_be_tears.mp3
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-11 dust.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/19401cb179eb78d4bf5e91fc5c33a2b620171027-51053-1t96pzd.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "dust"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-11_dust.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4083088], ["audio_updated_at", "2017-10-27 20:01:11.305992"]]
+[paperclip] saving /tracks/audios/000/000/021/original/1-11_dust.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-12 american wedding.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ed364c05ab8f37292adf452add20f1cc20171027-51053-1q41v4i.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "american wedding"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-12_american_wedding.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 10499191], ["audio_updated_at", "2017-10-27 20:01:11.601356"]]
+[paperclip] saving /tracks/audios/000/000/022/original/1-12_american_wedding.mp3
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-13 soul calibur.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/13d356ad2700c557a3094b6ee0b7e61320171027-51053-160v3yz.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "soul calibur"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-13_soul_calibur.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 840568], ["audio_updated_at", "2017-10-27 20:01:12.284254"]]
+[paperclip] saving /tracks/audios/000/000/023/original/1-13_soul_calibur.mp3
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-14 nature feels.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/69d6278350d60b3841cc7e2707716f0020171027-51053-1e0b8nf.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "nature feels"], ["artist_id", 1], ["album_id", 1], ["year", 2007], ["audio_file_name", "1-14_nature_feels.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5773950], ["audio_updated_at", "2017-10-27 20:01:12.453351"]]
+[paperclip] saving /tracks/audios/000/000/024/original/1-14_nature_feels.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mGenre Load (0.5ms)[0m  [1m[34mSELECT "genres".* FROM "genres"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 1]]
+  [1m[35m (12.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 2]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 7]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 8]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 9]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 10]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "genres" WHERE "genres"."id" = $1[0m  [["id", 11]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Hip-Hop"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "R&B"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Rock"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Indie"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Soul"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Pop"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Country"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Jazz"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Classical"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Acoustic"]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[32mINSERT INTO "genres" ("name") VALUES ($1) RETURNING "id"[0m  [["name", "Sountrack"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mArtist Load (0.5ms)[0m  [1m[34mSELECT "artists".* FROM "artists"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "artists" WHERE "artists"."id" = $1[0m  [["id", 1]]
+  [1m[35m (6.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mGenre Load (0.2ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."name" = $1 LIMIT $2[0m  [["name", "Hip-Hop"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/FrankOcean.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1g57iae.jpg
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1g57iae.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1c1brz4.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1c1brz4.jpg'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1g57iae.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1gw11do.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/5d7c4a186ee53f69a19edf29777c0bbd20171027-51300-1gw11do.jpg'
+  [1m[36mGenre Load (0.3ms)[0m  [1m[34mSELECT  "genres".* FROM "genres" WHERE "genres"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "artists" ("name", "genre_id", "image_file_name", "image_content_type", "image_file_size", "image_updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Frank Ocean"], ["genre_id", 12], ["image_file_name", "FrankOcean.jpg"], ["image_content_type", "image/jpeg"], ["image_file_size", 66989], ["image_updated_at", "2017-10-27 20:08:23.985109"]]
+[paperclip] saving /artists/images/000/000/002/original/FrankOcean.jpg
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.7ms)[0m  [1m[34mSELECT "albums".* FROM "albums"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "albums" WHERE "albums"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /albums/artworks/000/000/001/original/*nostalgia__ULTRA.jpg
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/Album Covers/*nostalgia, ULTRA.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51300-yvsr38.jpg
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51300-yvsr38.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51300-1nu202m.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51300-1nu202m.jpg'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/e74611892599efad9fdc8314f87ac59120171027-51300-yvsr38.jpg to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51300-144z2l6.jpg
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/7e61e0f85c0a4eb5d3980692bedc305920171027-51300-144z2l6.jpg'
+  [1m[36mArtist Load (6.6ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "albums" ("title", "artist_id", "year", "artwork_file_name", "artwork_content_type", "artwork_file_size", "artwork_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "nostalgia, ULTRA"], ["artist_id", 2], ["year", 2007], ["artwork_file_name", "*nostalgia__ULTRA.jpg"], ["artwork_content_type", "image/jpeg"], ["artwork_file_size", 191948], ["artwork_updated_at", "2017-10-27 20:08:25.586551"]]
+[paperclip] saving /albums/artworks/000/000/002/original/*nostalgia__ULTRA.jpg
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTrack Load (0.8ms)[0m  [1m[34mSELECT "tracks".* FROM "tracks"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 13]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/013/original/1-01_street_fighter.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 14]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/014/original/1-02_strawberry_swing.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 15]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/015/original/1-04_we_all_try.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 16]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/016/original/1-05_bitches_talkin'.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 17]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/017/original/1-06_songs_for_women.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 18]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/018/original/1-07_lovecrimes.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 19]]
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/019/original/1-08_goldeneye.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 20]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/020/original/1-09_there_will_be_tears.mp3
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 21]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/021/original/1-11_dust.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 22]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/022/original/1-12_american_wedding.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 23]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/023/original/1-13_soul_calibur.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "tracks" WHERE "tracks"."id" = $1[0m  [["id", 24]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /tracks/audios/000/000/024/original/1-14_nature_feels.mp3
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.4ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-01 street fighter.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/9b2c4dc34762c5d6a115f56ac4291af620171027-51300-1nqftns.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "street fighter"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-01_street_fighter.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 932729], ["audio_updated_at", "2017-10-27 20:08:26.733795"]]
+[paperclip] saving /tracks/audios/000/000/025/original/1-01_street_fighter.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.4ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-02 strawberry swing.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/30add5876674ebf90f8d8373fc10181420171027-51300-1k5im15.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "strawberry swing"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-02_strawberry_swing.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6047925], ["audio_updated_at", "2017-10-27 20:08:26.902252"]]
+[paperclip] saving /tracks/audios/000/000/026/original/1-02_strawberry_swing.mp3
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-04 we all try.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/aeef3710babc5f69278d977e2f4af5fb20171027-51300-c839oa.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "we all try"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-04_we_all_try.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4523204], ["audio_updated_at", "2017-10-27 20:08:27.231028"]]
+[paperclip] saving /tracks/audios/000/000/027/original/1-04_we_all_try.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-05 bitches talkin'.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/481147df04f720f8502c1273131f462e20171027-51300-4yri5x.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "bitches talkin'"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-05_bitches_talkin'.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 930223], ["audio_updated_at", "2017-10-27 20:08:27.521796"]]
+[paperclip] saving /tracks/audios/000/000/028/original/1-05_bitches_talkin'.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-06 songs for women.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/cb6c405be474f0375cf7d09843af63e820171027-51300-1039tuo.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "songs for women"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-06_songs_for_women.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6476123], ["audio_updated_at", "2017-10-27 20:08:27.643647"]]
+[paperclip] saving /tracks/audios/000/000/029/original/1-06_songs_for_women.mp3
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.5ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-07 lovecrimes.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/87f1516a87db872e782e52e8717e5fca20171027-51300-8lt9v8.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "lovecrimes"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-07_lovecrimes.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 6163276], ["audio_updated_at", "2017-10-27 20:08:28.212368"]]
+[paperclip] saving /tracks/audios/000/000/030/original/1-07_lovecrimes.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-08 goldeneye.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/c31e7901286dba7a4ce3c3ecf5d23fa420171027-51300-1abnjkj.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "goldeneye"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-08_goldeneye.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 837430], ["audio_updated_at", "2017-10-27 20:08:28.579198"]]
+[paperclip] saving /tracks/audios/000/000/031/original/1-08_goldeneye.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-09 there will be tears.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/eec126fc747cc672c684581dc1e9525c20171027-51300-11evbut.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "there will be tears"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-09_there_will_be_tears.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5068649], ["audio_updated_at", "2017-10-27 20:08:28.677109"]]
+[paperclip] saving /tracks/audios/000/000/032/original/1-09_there_will_be_tears.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-11 dust.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/19401cb179eb78d4bf5e91fc5c33a2b620171027-51300-1vr6fr0.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "dust"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-11_dust.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 4083088], ["audio_updated_at", "2017-10-27 20:08:28.945945"]]
+[paperclip] saving /tracks/audios/000/000/033/original/1-11_dust.mp3
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (1.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-12 american wedding.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/ed364c05ab8f37292adf452add20f1cc20171027-51300-16wrk6m.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "american wedding"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-12_american_wedding.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 10499191], ["audio_updated_at", "2017-10-27 20:08:29.224710"]]
+[paperclip] saving /tracks/audios/000/000/034/original/1-12_american_wedding.mp3
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.3ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-13 soul calibur.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/13d356ad2700c557a3094b6ee0b7e61320171027-51300-38l7n.mp3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "soul calibur"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-13_soul_calibur.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 840568], ["audio_updated_at", "2017-10-27 20:08:29.747854"]]
+[paperclip] saving /tracks/audios/000/000/035/original/1-13_soul_calibur.mp3
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mAlbum Load (0.3ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."title" = $1 LIMIT $2[0m  [["title", "nostalgia, ULTRA"], ["LIMIT", 1]]
+  [1m[36mArtist Load (0.2ms)[0m  [1m[34mSELECT  "artists".* FROM "artists" WHERE "artists"."name" = $1 LIMIT $2[0m  [["name", "Frank Ocean"], ["LIMIT", 1]]
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/Albums/Nostalgia_Ultra/1-14 nature feels.mp3 to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/69d6278350d60b3841cc7e2707716f0020171027-51300-1ki5zid.mp3
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAlbum Load (0.2ms)[0m  [1m[34mSELECT  "albums".* FROM "albums" WHERE "albums"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "tracks" ("title", "artist_id", "album_id", "year", "audio_file_name", "audio_content_type", "audio_file_size", "audio_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "nature feels"], ["artist_id", 2], ["album_id", 2], ["year", 2007], ["audio_file_name", "1-14_nature_feels.mp3"], ["audio_content_type", "audio/mpeg"], ["audio_file_size", 5773950], ["audio_updated_at", "2017-10-27 20:08:29.844049"]]
+[paperclip] saving /tracks/audios/000/000/036/original/1-14_nature_feels.mp3
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m

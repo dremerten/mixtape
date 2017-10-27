@@ -1,12 +1,21 @@
 import React from 'react';
 import SessionFormContainer from './session_form_container';
 import { Route, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 
 class NewSession extends React.Component {
+  constructor(props) {
+    super(props)
 
-  demoUser() {
-    return { email: 'Sennacy_17', password: 'starwars' };
+    this.demoLogin = this.demoLogin.bind(this);
+  }
+
+  demoLogin() {
+    this.props.login({
+      email: 'Sennacy_17',
+      password: 'starwars'
+    })
   }
 
   render() {
@@ -51,7 +60,7 @@ class NewSession extends React.Component {
         </div>
         <div className="demo-login">
           <span className="demo-text">Just looking around? Login with a</span>
-          <button onClick={this.props.login(this.demoUser())} className='demo-login-button'>DEMO</button>
+          <button onClick={this.demoLogin} className='demo-login-button'>DEMO</button>
         </div>
       </div>
     )
