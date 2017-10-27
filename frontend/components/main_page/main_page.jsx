@@ -12,7 +12,6 @@ import {
 
 
 const MainPage = ( { currentUser }) => {
-  // debugger
   return(
     <div className={`main-page`}>
       <SideBar currentUser={currentUser}/>

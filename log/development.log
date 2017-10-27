@@ -4926,3 +4926,427 @@ Processing by StaticPagesController#root as HTML
 Completed 200 OK in 33ms (Views: 30.7ms | ActiveRecord: 0.7ms)
 
 
+  [1m[36mUser Load (1.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "blah"], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "blah"], ["email", "blah"], ["password_digest", "$2a$10$0T9FqczFoO1ahLkxJpTInebVNL/BKjCePF4pNpYOT4HgO6GLjg6ga"], ["session_token", "xXOyoDT8IK-9WiUpGlKkyw"], ["created_at", "2017-10-27 14:36:05.118210"], ["updated_at", "2017-10-27 14:36:05.118210"], ["birthday", "1992-11-16"]]
+  [1m[35m (15.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$M6LHH3kFVLvNxUlhDKLjX.SCxUwVaFPE4LwffV25FdfBC0GvO997K"], ["session_token", "6woWMz2HZK3rSSgY6vC80g"], ["created_at", "2017-10-27 14:46:24.754975"], ["updated_at", "2017-10-27 14:46:24.754975"], ["birthday", "11111"]]
+  [1m[35m (12.1ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43086-13yqqg1.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43086-13yqqg1.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43086-1g6v3p2.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43086-1g6v3p2.png'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+Started POST "/api/session" for 127.0.0.1 at 2017-10-27 10:46:47 -0400
+Processing by Api::SessionsController#create as JSON
+  Parameters: {"user"=>{"email"=>"new_user", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "new_user"], ["id", 18], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["updated_at", "2017-10-27 14:46:47.623602"], ["id", 18]]
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.9ms)
+  Rendered api/users/show.json.jbuilder (4.4ms)
+Completed 200 OK in 92ms (Views: 11.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/avatars/original/missing.png" for 127.0.0.1 at 2017-10-27 10:46:49 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/avatars/original/missing.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-hyqm93.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-hyqm93.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-v6uhe1.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-v6uhe1.png'
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-extmrg.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-extmrg.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-rgns8m.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43132-rgns8m.png'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (2.8ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "new_user"], ["id", 18], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (5.8ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 18]]
+  [1m[35m (5.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (7.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-xopb7y.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-xopb7y.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-1skr9jz.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-1skr9jz.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (1.1ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-xopb7y.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-1xubca7.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43263-1xubca7.png'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$IH7LVumL25mAEZazdsnhUuk62P.gs.FUynWByU3m0FLwQdy9VWW5m"], ["session_token", "-eEry5b1O01WvZEgb7e_hQ"], ["created_at", "2017-10-27 14:51:56.037280"], ["updated_at", "2017-10-27 14:51:56.037280"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 14:51:55.990622"]]
+[paperclip] saving /users/avatars/000/000/019/original/Logo-green.png
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 19]]
+  [1m[35m (6.5ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /users/avatars/000/000/019/original/Logo-green.png
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-20wq5u.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-20wq5u.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-s0qmnl.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-s0qmnl.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-20wq5u.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-1nwdnfr.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43333-1nwdnfr.png'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$TTuMpV9.PfpUn2O1T1bXe.hjqSA6jOHShJI/CZX5yuzOlQNDTdZpq"], ["session_token", "5izxQl7SJ9V0u8xLntB8zQ"], ["created_at", "2017-10-27 14:53:23.522393"], ["updated_at", "2017-10-27 14:53:23.522393"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 14:53:23.479121"]]
+[paperclip] saving /users/avatars/000/000/020/original/Logo-green.png
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 20]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /users/avatars/000/000/020/original/Logo-green.png
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-cczobn.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-cczobn.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-jdzl8.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-jdzl8.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-cczobn.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-1iflqzm.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43379-1iflqzm.png'
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$jO0r8g3znWoSVEvFkCB4IujKAwpe3GrKOOtrcr23DJB/hpZyJu6bm"], ["session_token", "X5tcNy0RNduIvl6T_s8ugw"], ["created_at", "2017-10-27 14:54:04.461004"], ["updated_at", "2017-10-27 14:54:04.461004"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 14:54:04.431195"]]
+[paperclip] saving /users/avatars/000/000/021/original/Logo-green.png
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 21]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /users/avatars/000/000/021/original/Logo-green.png
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-1whqps5.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-1whqps5.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-kw9mfg.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-kw9mfg.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-1whqps5.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-1bw6igm.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43430-1bw6igm.png'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$YqEEW7rrlOFbK0DTSCPVweQ9MHCXIU36gBnOQe1uVqwH/BrmAM1CW"], ["session_token", "pRcrCow2UImA49nqE-GYgA"], ["created_at", "2017-10-27 14:54:49.344552"], ["updated_at", "2017-10-27 14:54:49.344552"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 14:54:49.320956"]]
+[paperclip] saving /users/avatars/000/000/022/original/Logo-green.png
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 22]]
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /users/avatars/000/000/022/original/Logo-green.png
+[paperclip] Trying to link app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-nsj99x.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-nsj99x.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-1cbc9h1.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-1cbc9h1.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-nsj99x.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-bca2ct.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43467-bca2ct.png'
+  [1m[35mSQL (0.6ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$YZ0Hw.lBc1tFTgZpRHi/7.jhPS2Mgydqc7kRokBCSrEUEjlArxslC"], ["session_token", "aox0pkzahHQO_TXQPfNvLA"], ["created_at", "2017-10-27 14:55:05.832082"], ["updated_at", "2017-10-27 14:55:05.832082"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 14:55:05.807319"]]
+[paperclip] saving /users/avatars/000/000/023/original/Logo-green.png
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (6.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "users" WHERE "users"."id" = $1[0m  [["id", 23]]
+  [1m[35m (6.2ms)[0m  [1m[35mCOMMIT[0m
+[paperclip] deleting /users/avatars/000/000/023/original/Logo-green.png
+[paperclip] Trying to link /Users/davidwebster/AppAcademyProjects/Spinn/app/assets/images/Logo-green.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-wvt818.png
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-wvt818.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-jhpaq8.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-jhpaq8.png'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "new_user"], ["LIMIT", 1]]
+[paperclip] Trying to link /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-wvt818.png to /var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-1jdaqul.png
+Command :: file -b --mime '/var/folders/tk/njfqlvp13676m00mdtn53pqw0000gn/T/a41cf7d49a9f8dbc4b32e898039bf0e420171027-43585-1jdaqul.png'
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday", "avatar_file_name", "avatar_content_type", "avatar_file_size", "avatar_updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11) RETURNING "id"[0m  [["name", "Seed"], ["email", "new_user"], ["password_digest", "$2a$10$KrjkhDNRIrHgpdHCAaSsKe.7n5qeSE1COVecnjc6Ql/cpbPFp.5fm"], ["session_token", "ddDI7dWDla-rYa9_P0l8kQ"], ["created_at", "2017-10-27 15:00:16.226925"], ["updated_at", "2017-10-27 15:00:16.226925"], ["birthday", "11111"], ["avatar_file_name", "Logo-green.png"], ["avatar_content_type", "image/png"], ["avatar_file_size", 12081], ["avatar_updated_at", "2017-10-27 15:00:16.149107"]]
+[paperclip] saving /users/avatars/000/000/024/original/Logo-green.png
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1486766549582825595)[0m
+  [1m[35m (7.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateTracks (20171027151746)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (61.3ms)[0m  [1m[35mCREATE TABLE "tracks" ("id" bigserial primary key, "title" character varying NOT NULL, "artist_id" integer NOT NULL, "genre_id" integer NOT NULL, "album_id" integer, "year" integer, "ord" integer, "popularity" float DEFAULT 0.0)[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_artist_id" ON "tracks"  ("artist_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_tracks_on_album_id" ON "tracks"  ("album_id")[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20171027151746"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.8ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1486766549582825595)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started DELETE "/api/session" for 127.0.0.1 at 2017-10-27 11:46:54 -0400
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by Api::SessionsController#destroy as JSON
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 4.2ms)
+
+
+
+NoMethodError - undefined method `image_url' for #<Class:0x007ffcca4d7a00>:
+  app/models/user.rb:7:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:12:in `current_user'
+  app/controllers/api/sessions_controller.rb:18:in `destroy'
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 11:47:28 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (1.5ms)
+Completed 500 Internal Server Error in 1760ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `asset_path' for #<Class:0x007ffcccb51938>:
+  app/models/user.rb:7:in `<class:User>'
+  app/models/user.rb:1:in `<top (required)>'
+  app/controllers/application_controller.rb:12:in `current_user'
+  app/controllers/application_controller.rb:21:in `logged_in?'
+  app/views/layouts/application.html.erb:12:in `_app_views_layouts_application_html_erb__4326402601556736660_70361852142040'
+
+Started POST "/__better_errors/e259e598a55af09a/variables" for 127.0.0.1 at 2017-10-27 11:47:32 -0400
+Started GET "/" for 127.0.0.1 at 2017-10-27 11:48:53 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["LIMIT", 1]]
+Completed 200 OK in 46ms (Views: 40.7ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 11:49:15 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"Callme", "email"=>"hi", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"1992-11-16", "avatar"=>"null"}}
+Completed 500 Internal Server Error in 119ms (ActiveRecord: 3.6ms)
+
+
+
+Paperclip::AdapterRegistry::NoHandlerError - No handler found for "null":
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 11:53:32 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.5ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["LIMIT", 1]]
+Completed 200 OK in 49ms (Views: 43.4ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 11:53:56 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"David", "email"=>"user", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"1992-11-06", "avatar"=>"null"}}
+Completed 500 Internal Server Error in 79ms (ActiveRecord: 0.0ms)
+
+
+
+Paperclip::AdapterRegistry::NoHandlerError - No handler found for "null":
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 12:00:53 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.3ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 28.7ms | ActiveRecord: 3.5ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 12:01:16 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"Avatar", "email"=>"avatar", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"1992-11-16", "avatar"=>"null"}}
+Completed 500 Internal Server Error in 94ms (ActiveRecord: 0.0ms)
+
+
+
+Paperclip::AdapterRegistry::NoHandlerError - No handler found for "null":
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 12:04:11 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.7ms)
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["LIMIT", 1]]
+Completed 200 OK in 391ms (Views: 389.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 12:04:25 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"A", "email"=>"avatar", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"1992-11-16"}}
+Completed 500 Internal Server Error in 88ms (ActiveRecord: 0.0ms)
+
+
+
+NoMethodError - undefined method `ensure_avatar_presence' for #<User:0x007ffcca231ee0>:
+  app/controllers/api/users_controller.rb:3:in `create'
+
+Started GET "/" for 127.0.0.1 at 2017-10-27 12:04:50 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "Fnpl5WSa9IOm-x3fI1OZ4g"], ["LIMIT", 1]]
+Completed 200 OK in 34ms (Views: 30.8ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 12:05:04 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"a", "email"=>"a", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"0001-11-11"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+Completed 422 Unprocessable Entity in 110ms (Views: 0.2ms | ActiveRecord: 3.7ms)
+
+
+Started POST "/api/users" for 127.0.0.1 at 2017-10-27 12:05:54 -0400
+Processing by Api::UsersController#create as JSON
+  Parameters: {"user"=>{"name"=>"a", "email"=>"a", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday"=>"0001-11-11"}}
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "a"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("name", "email", "password_digest", "session_token", "created_at", "updated_at", "birthday") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "a"], ["email", "a"], ["password_digest", "$2a$10$qKITHNQ4EHRIA4D0KGMTKuxTyljFCoyTzuK0VSdnb9cxSxnBC4mmi"], ["session_token", "SGdqqgCnUqhRt3FuaaKV1w"], ["created_at", "2017-10-27 16:05:54.129470"], ["updated_at", "2017-10-27 16:05:54.129470"], ["birthday", "0001-11-11"]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."email" = $1 AND ("users"."id" != $2) LIMIT $3[0m  [["email", "a"], ["id", 25], ["LIMIT", 1]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "U2daPhZTBtz4DljbhM2jQA"], ["updated_at", "2017-10-27 16:05:54.136982"], ["id", 25]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  Rendering api/users/show.json.jbuilder
+  Rendered api/users/_user.json.jbuilder (0.7ms)
+  Rendered api/users/show.json.jbuilder (2.2ms)
+Completed 200 OK in 120ms (Views: 8.0ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/avatar.png" for 127.0.0.1 at 2017-10-27 12:05:54 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/avatar.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/app/assets/avatar.png" for 127.0.0.1 at 2017-10-27 12:06:43 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/avatar.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/app/assets/images/avatar.png" for 127.0.0.1 at 2017-10-27 12:06:52 -0400
+  
+ActionController::RoutingError (No route matches [GET] "/app/assets/images/avatar.png"):
+  
+actionpack (5.1.4) lib/action_dispatch/middleware/debug_exceptions.rb:63:in `call'
+web-console (3.5.1) lib/web_console/middleware.rb:135:in `call_app'
+web-console (3.5.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.5.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.1.4) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `block in tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.1.4) lib/active_support/tagged_logging.rb:69:in `tagged'
+railties (5.1.4) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.2.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/request_id.rb:25:in `call'
+rack (2.0.3) lib/rack/method_override.rb:22:in `call'
+rack (2.0.3) lib/rack/runtime.rb:22:in `call'
+activesupport (5.1.4) lib/active_support/cache/strategy/local_cache_middleware.rb:27:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.1.4) lib/action_dispatch/middleware/static.rb:125:in `call'
+rack (2.0.3) lib/rack/sendfile.rb:111:in `call'
+railties (5.1.4) lib/rails/engine.rb:522:in `call'
+puma (3.10.0) lib/puma/configuration.rb:225:in `call'
+puma (3.10.0) lib/puma/server.rb:605:in `handle_request'
+puma (3.10.0) lib/puma/server.rb:437:in `process_client'
+puma (3.10.0) lib/puma/server.rb:301:in `block in run'
+puma (3.10.0) lib/puma/thread_pool.rb:120:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2017-10-27 12:07:33 -0400
+Processing by StaticPagesController#root as HTML
+  Rendering static_pages/root.html.erb within layouts/application
+  Rendered static_pages/root.html.erb within layouts/application (0.4ms)
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "U2daPhZTBtz4DljbhM2jQA"], ["LIMIT", 1]]
+  Rendered api/users/_user.json.jbuilder (1310.1ms)
+Completed 200 OK in 1362ms (Views: 1359.3ms | ActiveRecord: 0.6ms)
+
+

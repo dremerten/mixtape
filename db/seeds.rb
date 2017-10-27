@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'byebug'
+
+User.last.destroy
+
+user = User.create!({
+  name: 'Seed',
+  email: 'new_user',
+  password: 'password',
+  password_confirmation: 'password',
+  birthday: '11111',
+  avatar: File.open("#{Rails.root}/app/assets/images/Logo-green.png")
+  }
+)
