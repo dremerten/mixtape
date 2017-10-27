@@ -9,14 +9,16 @@ import {
   Switch,
 } from 'react-router-dom';
 
+
+
 const MainPage = (props) => {
   return(
-    <div className='main-page'>
+    <div className={`main-page`}>
       <SideBar />
       <Switch>
-        <Route path='browse/featured' component={FeaturedPlaylistsIndex} />
-        <Route path='browse/genres' component={GenresIndex} />
-        <Route path='browse/newreleases' component={NewReleasesIndex} />
+        <Route exact path="/browse/featured" component={FeaturedPlaylistsIndex} />
+        <Route exact path="/browse/genres" component={GenresIndex} />
+        <Route exact path="/browse/newreleases" component={NewReleasesIndex} />
       </Switch>
       <NowPlayingBar />
     </div>

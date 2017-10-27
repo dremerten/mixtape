@@ -1,0 +1,75 @@
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  width: 200px;
+  z-index: 100;
+  overflow: auto;
+  background: rgba(0,0,0,.5);
+  min-height: 0;
+  will-change: transform;
+}
+
+.nav-links {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebar-logo {
+  background-image: image_url('Spinn_logo_white.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 32px;
+  width: 32px;
+}
+
+.sidebar-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 10px;
+}
+
+.sidebar-group {
+  border-top: 1px solid hsla(0,0%,100%,.25);
+  padding-bottom: 5px;
+  padding-top: 10px;
+}
+
+.sidebar-item {
+  font-size: 16px;
+  font-weight: bolder;
+  font-family: $sans-serif;
+  color: #e8e8e8;
+  padding: 3px 0;
+}
+
+.session-info {
+  display: none;
+  padding-top: 8px;
+  border-top: 1px solid #404040;
+  vertical-align: baseline;
+}
+
+.user-widget {
+  margin: 7px 0;
+}
+
+.user-avatar {
+  width: 28px;
+  height: 28px;
+  vertical-align: middle;
+  border-radius: 50%;
+  background-color: rgba(0,9,9,.15);
+  background-size: cover;
+  overflow: hidden;
+  position: relative;
+}
+
+.user-link {
+  font-size: 16px;
+  font-weight: bolder;
+  margin-left: 10px;
+  font-family: $sans-serif;
+}
