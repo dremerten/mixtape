@@ -1,13 +1,13 @@
 import React from 'react';
 import SessionFormContainer from './session_form_container';
 import { Route, Link } from 'react-router-dom';
+import { login } from '../../actions/session_actions';
 
 class NewSession extends React.Component {
 
-
-  // componentWillReceiveProps(newProps) {
-  //
-  // }
+  demoUser() {
+    return { email: 'Sennacy_17', password: 'starwars' };
+  }
 
   render() {
     return(
@@ -49,9 +49,20 @@ class NewSession extends React.Component {
             </div>
           </div>
         </div>
+        <div className="demo-login">
+          <span className="demo-text">Just looking around? Login with a</span>
+          <button onClick={this.props.login(this.demoUser())} className='demo-login-button'>DEMO</button>
+        </div>
       </div>
     )
   }
 }
 
-export default NewSession;
+const mapDispatchToProps = (dispatch) => ({
+  login: user => dispatch(login(user))
+})
+
+export default connect(
+  null,
+  mapDispatchToProps
+)(NewSession);

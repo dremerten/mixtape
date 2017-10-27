@@ -1,0 +1,5 @@
+class Track < ApplicationRecord
+  validates :title, presence: true, length: { maximum: 10 }
+
+  
+end
