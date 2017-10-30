@@ -6,7 +6,5 @@ class Album < ApplicationRecord
 
   belongs_to :artist
   has_many :tracks
-  has_one :genre,
-    through: :artist,
-    source: :genre
+  has_many :genres, through: :artist, source: :genres
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171027194001) do
+ActiveRecord::Schema.define(version: 20171030041617) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,8 +35,33 @@ ActiveRecord::Schema.define(version: 20171027194001) do
     t.datetime "image_updated_at"
   end
 
+  create_table "genre_taggings", force: :cascade do |t|
+    t.integer "artist_id"
+    t.integer "genre_id"
+    t.index ["artist_id"], name: "index_genre_taggings_on_artist_id"
+    t.index ["genre_id"], name: "index_genre_taggings_on_genre_id"
+  end
+
   create_table "genres", force: :cascade do |t|
     t.string "name", null: false
+  end
+
+  create_table "playlist_tracks", force: :cascade do |t|
+    t.integer "track_id"
+    t.integer "playlist_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["playlist_id"], name: "index_playlist_tracks_on_playlist_id"
+    t.index ["track_id", "playlist_id"], name: "index_playlist_tracks_on_track_id_and_playlist_id", unique: true
+    t.index ["track_id"], name: "index_playlist_tracks_on_track_id"
+  end
+
+  create_table "playlists", force: :cascade do |t|
+    t.string "name", default: "New Playlist"
+    t.integer "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_playlists_on_author_id"
   end
 
   create_table "tracks", force: :cascade do |t|
