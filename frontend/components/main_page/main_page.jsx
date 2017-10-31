@@ -12,12 +12,14 @@ import {
 const MainPage = ( { currentUser }) => {
   return(
     <div className="main-page">
-      <SideBar currentUser={currentUser}/>
-      <Switch>
-        <Route path="/browse/search" component={Search}/>
-        <Route path="/browse/:musicPage" component={MusicPortal}/>
-      </Switch>
-      <NowPlayingBar />
+      <div>
+        <SideBar currentUser={currentUser}/>
+        <Switch>
+          <Route path="/browse/search" component={Search}/>
+          <Route path="/browse/:musicPage" component={MusicPortal}/>
+        </Switch>
+      </div>
+      
     </div>
   );
 }

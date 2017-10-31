@@ -7,16 +7,14 @@
   z-index: 100;
   background: rgba(0,0,0,.5);
   overflow: auto;
-  min-height: 0;
-  will-change: transform;
 }
 
 .nav-links {
   padding: 24px;
-  padding-bottom: 95px;
+  padding-bottom: 120px;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100% - 120px);
 }
 
 .nav-expand {
@@ -77,6 +75,14 @@
 
 .user-widget {
   margin: 7px 0;
+
+}
+
+.user-widget a {
+  display: flex;
+  flex-direction: row;
+  overflow-x: hidden;
+  vertical-align: baseline;
 }
 
 .user-avatar {
@@ -96,4 +102,5 @@
   color: #e2e2e2;
   margin-left: 10px;
   font-family: $sans-serif;
+  height: auto;
 }

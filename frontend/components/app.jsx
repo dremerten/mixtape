@@ -4,6 +4,8 @@ import { ProtectedRoute, AuthRoute } from '../util/route_util';
 import { LoginFormContainer, SignupFormContainer } from './session_form/session_form_container';
 import NewSessionContainer from './session_form/new_session';
 import MainPageContainer from './main_page/main_page_container';
+import NowPlayingBar from './nowplaying/nowplaying';
+
 import {
   Route,
   Redirect,
@@ -21,6 +23,7 @@ const App = () => (
       <ProtectedRoute path="/browse/featured" component={MainPageContainer} />
       <AuthRoute path="/" component={NewSessionContainer} />
     </Switch>
+    <ProtectedRoute path="/" component={NowPlayingBar} />
   </div>
 )
 

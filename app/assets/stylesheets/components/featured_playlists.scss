@@ -32,17 +32,46 @@
 }
 
 .playlist-image {
-  background-size: 100%;
+  background-size: cover;
+  // background-position: : cover;
   width: 150.33px;
   height: 150.33px;
   margin-top: 50px;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
 
+.playlist-image:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .25s ease;
+  background-image:
+    image_url('play-icon.png'),
+    linear-gradient(
+      rgba(0, 0, 0, .75),
+      rgba(0, 0, 0, .75)
+    );
+  background-size: cover;
+  overflow: hidden;
+}
+
+
 .shadow-light {
   width: 100%;
   height: 1px;
   background-color: rgba(255, 255, 255, .2);
+}
+
+div.shadow-light:hover {
+  background-color: rgba(0, 0, 0, .75);
 }
 
 .playlist-name {

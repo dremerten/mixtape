@@ -21,6 +21,7 @@ class FeaturedPlaylistsIndex extends React.Component {
               className="playlist-image"
               >
               <div className="shadow-light"></div>
+              <div className="overlay"></div>
             </div>
             <div className="playlist-name">
               {playlist.name}
