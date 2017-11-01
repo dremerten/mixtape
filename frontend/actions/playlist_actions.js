@@ -2,7 +2,8 @@ import * as PlaylistApiUtil from '../util/playlist_api_util';
 
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST';
-export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
+export const REMOVE_PLAYLISTS = 'REMOVE_PLAYLIST';
+export const DELETE_PLAYLIST = 'DELETE_PLAYLIST';
 
 export const receivePlaylists = playlists => ({
   type: RECEIVE_PLAYLISTS, playlists
@@ -12,8 +13,14 @@ export const receivePlaylist = data => ({
   type: RECEIVE_PLAYLIST, data
 });
 
-export const removePlaylist = playlistId => ({
-  type: REMOVE_PLAYLIST, playlistId
+// TODO: Make into thunk action
+
+export const deletePlaylist = playlistId => ({
+  type: DELETE_PLAYLIST, playlistId
+});
+
+export const removePlaylists = () => ({
+  type: REMOVE_PLAYLISTS
 });
 
 export const fetchPlaylists = filters => dispatch => (

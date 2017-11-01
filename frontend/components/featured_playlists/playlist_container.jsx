@@ -8,7 +8,7 @@ import {
   clearQueue,
   setNextTrack
 } from '../../actions/audio_actions';
-import { fetchTracks } from '../../actions/track_actions';
+import { fetchTracks, removeTracks } from '../../actions/track_actions';
 import { fetchPlaylist } from '../../actions/playlist_actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchTracks: filter => dispatch(fetchTracks(filter)),
+  removeTracks: () => dispatch(removeTracks()),
   playAudio: track => dispatch(playAudio(track)),
   pauseAudio: () => dispatch(pauseAudio()),
   receiveQueue: queue => dispatch(receiveQueue(queue)),

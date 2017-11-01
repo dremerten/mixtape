@@ -18,6 +18,10 @@ class Playlist extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    this.props.removeTracks();
+  }
+
   componentWillReceiveProps(newProps) {
     let id = this.props.match.params.playlistId;
     let newId = newProps.match.params.playlistId;
@@ -37,6 +41,9 @@ class Playlist extends React.Component {
         <Track props={this.props} track={track} key={track.id}/>
         )
       )
+      if (!tracks.length) {
+        tracks = [<span className="track-row-wrapper no-hover">There aren't any tracks on this playlist yet.</span>]
+      }
       title = this.props.playlist.title
       imageUrl = { backgroundImage: 'url(' + this.props.playlist.image_url + ')' }
     }

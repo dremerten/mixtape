@@ -9,12 +9,16 @@ class FeaturedPlaylistsIndex extends React.Component {
     this.props.fetchPlaylists({ featured: true });
   }
 
+  componentWillUnmount() {
+    this.props.removePlaylists();
+  }
+
   render() {
     let playlists;
 
     if (!_.isEmpty(this.props.playlists)) {
       playlists = this.props.playlists.map(playlist => (
-        <PlaylistsIndexItem playlist={playlist} history={this.props.history}/>
+        <PlaylistsIndexItem playlist={playlist} history={this.props.history} key={playlist.id}/>
         )
       )
     }

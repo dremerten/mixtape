@@ -3,9 +3,8 @@ class Api::PlaylistsController < ApplicationController
   def index
     playlists = featured ? Playlist.featured : Playlist.all
 
-    if params[:genre]
-      genres = Genre.where(name: params[:genre]).map(:name)
-      playlists = playlists.where('? IN ?', params[:genre], genres)
+    if params[:genreId]
+      playlists = Genre.find(params[:genreId]).playlists
     end
 
     @playlists = playlists.includes(:tracks)

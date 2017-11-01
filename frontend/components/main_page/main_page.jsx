@@ -13,7 +13,7 @@ import {
 const MainPage = ( { currentUser }) => {
   return(
     <div className="main-page">
-      <div>
+      <div className="main-page-container">
         <SideBar currentUser={currentUser}/>
         <Switch>
           <Route path="/browse/search" component={Search}/>
