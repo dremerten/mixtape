@@ -18,13 +18,13 @@ bundle*
 /yarn-error.log
 
 .byebug_history
-
+app/assets/artists/*
 node_modules/
 bundle.js
 bundle.js.map
 .DS_Store
 npm-debug.log
 aws_keys.yml
-
+artists/*
 # Ignore application configuration
 /config/application.yml

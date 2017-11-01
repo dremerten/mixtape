@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import { isEmpty } from 'lodash';
+import PlaylistsIndexItem from './playlists_index_item';
 
 class FeaturedPlaylistsIndex extends React.Component {
 
@@ -12,25 +13,12 @@ class FeaturedPlaylistsIndex extends React.Component {
     let playlists;
 
     if (!_.isEmpty(this.props.playlists)) {
-      playlists = this.props.playlists.map(playlist => {
-        let style = { backgroundImage: 'url(' + playlist.image_url + ')' };
-        return (
-          <li key={playlist.id} className="playlist-item">
-            <div
-              style={style}
-              className="playlist-image"
-              >
-              <div className="shadow-light"></div>
-              <div className="overlay"></div>
-            </div>
-            <div className="playlist-name">
-              {playlist.name}
-            </div>
-          </li>
+      playlists = this.props.playlists.map(playlist => (
+        <PlaylistsIndexItem playlist={playlist} history={this.props.history}/>
         )
-        }
       )
     }
+
     return(
       <div className="featured-playlists-container">
         <div className="list">

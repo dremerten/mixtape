@@ -1,0 +1,45 @@
+.playlist-show-wrapper {
+  background: linear-gradient(rgb(115, 39, 38), rgb(11, 3, 3) 85%) fixed;
+  height: 100%;
+}
+
+.playlist-show-container {
+  margin-left: 220px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.playlist-info {
+  width: 25%;
+  margin: 0 auto;
+  padding-left: 40px;
+  padding-right: 40px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 40px;
+  position: fixed;
+}
+
+.show {
+  width: 230px;
+  height: 230px;
+  margin: 40px 8px 10px 40px;
+  padding: 0;
+  border-radius: 2px;
+}
+
+.show-light {
+  height: 1.5px;
+}
+
+.tracklist-container {
+  width: 75%;
+  height: auto;
+  padding-right: 8px;
+  margin: 0 auto;
+  padding-top: 80px;
+  margin-left: 330px;
+  list-style: decimal inside;
+}

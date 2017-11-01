@@ -2,6 +2,7 @@ import React from 'react';
 import GenresIndex from './genres/genres_index';
 import NewReleasesIndex from './new_releases/new_releases_index';
 import FeaturedPlaylistsIndexContainer from './featured_playlists/featured_playlists_index_container';
+import PlaylistContainer from './featured_playlists/playlist_container';
 import NavBar from './NavBar';
 
 import { Route, Switch } from 'react-router-dom';

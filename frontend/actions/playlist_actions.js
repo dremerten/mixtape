@@ -8,8 +8,8 @@ export const receivePlaylists = playlists => ({
   type: RECEIVE_PLAYLISTS, playlists
 });
 
-export const receivePlaylist = playlist => ({
-  type: RECEIVE_PLAYLIST, playlist
+export const receivePlaylist = data => ({
+  type: RECEIVE_PLAYLIST, data
 });
 
 export const removePlaylist = playlistId => ({

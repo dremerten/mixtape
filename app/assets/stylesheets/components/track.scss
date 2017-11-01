@@ -1,0 +1,50 @@
+// .track-row {
+//   width: 100%;
+//   padding: 5px 0
+// }
+
+
+.track-row-wrapper {
+  padding: 5px 8px;
+  width: 100%;
+  transition: background-color .2s;
+  margin-bottom: 21px;
+  color: $transluscent-white;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: lighter;
+  font-family: $open;
+  border-radius: 1px;
+}
+
+.track-row-wrapper:hover {
+  background-color: rgba(0,0,0,.1);
+  transition: .2s;
+}
+
+.track-info{
+  width: 95%;
+  margin-left: 27px;
+  height: 100%;
+  margin-top: 0;
+  list-style: decimal inside;
+}
+
+
+.track-details {
+  margin-top: -22px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: flex-start;
+}
+
+.track-title {
+  font-size: 16px;
+  color: white;
+}
+
+.track-album-artist span:hover {
+  text-decoration: underline;
+}

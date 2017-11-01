@@ -25,3 +25,13 @@ module SpinnRepo
     }
   end
 end
+
+# s3_client = Aws::S3::Client.new(region: ENV["s3_region"],
+#   access_key_id: ENV['s3_access_key_id'],
+#   secret_access_key: ENV['s3_secret_access_key'])
+#
+#   s3_client.list_objects(bucket:'spinnmusicfiles').each do |response|
+#     puts response.contents.map(&:key)
+#   end
+#
+# stream = open('http://s3.us-east-2.amazonaws.com/spinnmusicfiles/music/Schoolboy%20Q/Oxymoron%20(Deluxe%20Version)/schoolboy-q-oxymoron.jpg')

@@ -20,11 +20,15 @@ const App = () => (
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer}/>
       <AuthRoute path="/signup" component={SignupFormContainer}/>
-      <ProtectedRoute path="/browse/featured" component={MainPageContainer} />
+      <ProtectedRoute path="/browse" component={MainPageContainer} />
       <AuthRoute path="/" component={NewSessionContainer} />
     </Switch>
-    <ProtectedRoute path="/" component={NowPlayingBar} />
   </div>
 )
 
 export default App;
+
+
+
+
+const thing = "<ProtectedRoute path="/" component={NowPlayingBar} />"

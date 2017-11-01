@@ -1,10 +1,22 @@
 import React from 'react';
+import { Howl } from 'howler';
 
 class NowPlayingBar extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTrack: props.currentTrack,
+      // currentTrack: new Howl({
+      //   src: ['//s3.us-east-2.amazonaws.com/spinnmusicfiles/tracks/audios/000/000/370/original/open-uri20171031-93871-118mku?1509468090'],
+      //   volume: .7,
+      //   preload: true,
+      //   format: 'm4a'
+      // }),
+      // currentTrack: new Howl({
+      //   src: [props.currentTrack.trackUrl],
+      //   format: props.currentTrack.contentType,
+      //   preload: true,
+      // }),
+
       trackProgress: props.trackProgress,
       paused: true
     }
@@ -12,13 +24,20 @@ class NowPlayingBar extends React.Component {
     this.togglePlay = this.togglePlay.bind(this);
   }
 
-  togglePlay() {
-    let status = ((this.state.paused) ? false : true);
-    this.setState({paused: status });
-    
+  componentDidMount() {
+
+    // this.state.currentTrack.load();
   }
 
+  togglePlay() {
+
+    this.setState({ paused: !this.state.paused });
+    (this.state.paused) ? this.state.currentTrack.play() : this.state.currentTrack.pause()
+  }
+
+
   render() {
+
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
@@ -29,7 +48,7 @@ class NowPlayingBar extends React.Component {
                 <i className="fa fa-random" aria-hidden="true"></i>
               </button>
               <button className='small-button'>
-                <i class="fa fa-step-backward" aria-hidden="true"></i>
+                <i className="fa fa-step-backward" aria-hidden="true"></i>
               </button>
               <button
                 className={(this.state.paused) ? "play-button" : "play-button pause"}
@@ -48,7 +67,6 @@ class NowPlayingBar extends React.Component {
           </div>
           <div className="volume-controls"></div>
         </div>
-        <audio></audio>
       </footer>
     );
   }

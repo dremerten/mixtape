@@ -1,6 +1,10 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.all
+    if params[:playlistId]
+      @tracks = Playlist.find(params[:playlistId]).tracks.includes(:album)
+    else
+      @tracks = Track.includes(:album).all
+    end
   end
 
   def show
