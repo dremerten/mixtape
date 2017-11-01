@@ -28,6 +28,9 @@
   height: 100%;
   margin-top: 0;
   list-style: decimal inside;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .no-hover {
@@ -55,4 +58,12 @@
 
 .track-album-artist span:hover {
   text-decoration: underline;
+}
+
+.tracklist-play-pause {
+  display: none
+}
+
+.tracklist-play-pause:hover {
+  display:
 }
