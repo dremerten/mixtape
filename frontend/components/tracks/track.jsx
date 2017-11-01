@@ -10,12 +10,24 @@ class Track extends React.Component {
      }
   }
 
+  playTrack() {
+
+  }
+
+  pauseTrack() {
+
+  }
+  
   render() {
+    let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
+    if (this.state.inProgress) {
+      playButton = <i class="fa fa-pause" aria-hidden="true"></i>
+    }
     return(
       <div className='track-row-wrapper'>
         <li className='track-row' onClick={this.props.playAudio}>
           <div className='track-play-pause'>
-            <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
+            {playButton}
           </div>
           <div className="track-info">
             <div className='track-details'>

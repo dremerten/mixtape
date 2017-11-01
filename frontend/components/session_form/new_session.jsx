@@ -13,7 +13,7 @@ class NewSession extends React.Component {
 
   demoLogin() {
     this.props.login({
-      email: 'Sennacy_17',
+      email: 'Sennacy17',
       password: 'starwars'
     })
   }

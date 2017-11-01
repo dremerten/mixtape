@@ -1,12 +1,12 @@
 import merge from 'lodash/merge';
 import {
-  PLAY_AUDIO,
-  PAUSE_AUDIO,
+  PLAY,
+  PAUSE,
+  PLAY_SINGLE_TRACK,
   RECEIVE_QUEUE,
   ADD_TRACK_TO_QUEUE,
   CLEAR_QUEUE,
-  SET_NEXT_TRACK,
-  SET_CURRENT_TRACK
+  SET_NEXT_TRACK
 } from '../actions/audio_actions';
 
 const initialState = {
@@ -21,9 +21,9 @@ const NowPlayingReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState;
   switch(action.type) {
-    case PLAY_AUDIO:
+    case PLAY:
       return merge({}, state, { inProgress: true });
-    case PAUSE_AUDIO:
+    case PAUSE:
       return merge({}, state, { inProgress: false });
     case RECEIVE_QUEUE:
       return merge({}, state, { queue: action.queue });
@@ -37,7 +37,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       return newState;
     case SET_NEXT_TRACK:
       return merge({}, state, { nextTrack: action.track });
-    case SET_CURRENT_TRACK:
+    case PLAY_SINGLE_TRACK:
       return merge({}, state, { currentTrack: action.track });
     default:
       return state;

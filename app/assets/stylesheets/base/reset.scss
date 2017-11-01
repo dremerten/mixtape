@@ -54,6 +54,11 @@ input[type="submit"] {
   clear: both;
 }
 
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
+
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
     color:    #000000;
     opacity: .4;

@@ -1,4 +1,23 @@
+User.destroy_all
 
+spinn = User.create!(
+  name: 'Spinn',
+  email: 'Spinn',
+  password: 'x9z8a7q6',
+  password_confirmation: 'x9z8a7q6',
+  birthday: '000000'
+)
+
+User.create!(
+  name: 'Sennacy',
+  email: 'Sennacy17',
+  password: 'starwars',
+  password_confirmation: 'starwars',
+  birthday: '123456'
+)
+
+spinn.id = 0;
+spinn.save!
 
 Album.destroy_all
 Artist.destroy_all
@@ -141,12 +160,12 @@ GenreTagging.create!(artist_id: coldplay.id, genre_id: pop.id)
 GenreTagging.create!(artist_id: coldplay.id, genre_id: chill.id)
 GenreTagging.create!(artist_id: justin.id, genre_id: pop.id)
 
-playlist1 = Playlist.create!(name: 'Hip-Hop Essentials')
-playlist2 = Playlist.create!(name: 'Monday Jazz')
-playlist3 = Playlist.create!(name: 'This is Soul')
-playlist4 = Playlist.create!(name: 'Turn Up')
-playlist5 = Playlist.create!(name: 'Pop Hits')
-playlist6 = Playlist.create!(name: 'Chill Out')
+playlist1 = Playlist.create!(name: 'Hip-Hop Essentials', author_id: 0)
+playlist2 = Playlist.create!(name: 'Monday Jazz', author_id: 0)
+playlist3 = Playlist.create!(name: 'This is Soul', author_id: 0)
+playlist4 = Playlist.create!(name: 'Turn Up', author_id: 0)
+playlist5 = Playlist.create!(name: 'Pop Hits', author_id: 0)
+playlist6 = Playlist.create!(name: 'Chill Out', author_id: 0)
 
 20.times do
   begin

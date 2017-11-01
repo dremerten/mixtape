@@ -1,8 +1,9 @@
 import { connect } from 'react-redux';
 import Playlist from './playlist';
 import {
-  playAudio,
-  pauseAudio,
+  play,
+  pause,
+  playSingleTrack,
   receiveQueue,
   addTrackToQueue,
   clearQueue,
@@ -21,8 +22,9 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = dispatch => ({
   fetchTracks: filter => dispatch(fetchTracks(filter)),
   removeTracks: () => dispatch(removeTracks()),
-  playAudio: track => dispatch(playAudio(track)),
-  pauseAudio: () => dispatch(pauseAudio()),
+  play: () => dispatch(play()),
+  pause: () => dispatch(pause()),
+  playSingleTrack: track => dispatch(playSingleTrack(track)),
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchPlaylist: id => dispatch(fetchPlaylist(id))
