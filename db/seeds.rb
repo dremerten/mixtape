@@ -1,4 +1,4 @@
-require 'byebug'
+
 
 Album.destroy_all
 Artist.destroy_all

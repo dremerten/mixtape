@@ -14,8 +14,8 @@ class Track extends React.Component {
     return(
       <div className='track-row-wrapper'>
         <li className='track-row' onClick={this.props.playAudio}>
-          <div className='tracklist-play-pause'>
-            <i class="fa fa-play" aria-hidden="true"></i>
+          <div className='track-play-pause'>
+            <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
           </div>
           <div className="track-info">
             <div className='track-details'>
