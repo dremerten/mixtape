@@ -46,3 +46,27 @@
   list-style: decimal inside;
   overflow-y: scroll;
 }
+
+.headers {
+  position: fixed;
+  width: 230px;
+  padding-left: 40px;
+  padding-top: 10px;
+  color: #e2e2e2;
+  font-size: 30px;
+  font-family: $open;
+  font-weight: bolder;
+}
+
+.author {
+  margin-top: 10px;
+  color: $transluscent-white;
+  letter-spacing: 1px;
+  font-size: 14px;
+  font-weight: 300;
+  font-family: $open;
+}
+
+.author span {
+  text-decoration: underline;
+}

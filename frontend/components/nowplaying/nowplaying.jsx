@@ -17,30 +17,32 @@ class NowPlayingBar extends React.Component {
     this.state = {
       trackProgress: null,
       inProgress: props.inProgress,
-      currentTrack: props.currentTrack
+      currentTrack: props.currentTrack,
+      repeatEnabled: false
     }
 
     this.togglePlay = this.togglePlay.bind(this);
     this.play = this.play.bind(this);
     this.pause = this.pause.bind(this);
     this.pauseElement = this.pauseElement.bind(this);
-    this.playElement = this.playElement.bind(this)
+    this.playElement = this.playElement.bind(this);
+    this.receiveAction = this.receiveAction.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
-    debugger
     this.setState({
-      currentTrack: newProps.currentTrack,
-      inProgress: newProps.inProgress
-    });
+        currentTrack: newProps.currentTrack,
+        inProgress: newProps.inProgress
+    }, () => this.receiveAction());
+  }
 
-    (this.state.inProgress) ? this.pauseElement() : this.playElement()
+  receiveAction() {
+    (this.state.inProgress) ? this.playElement() : this.pauseElement()
   }
 
   play() {
     this.playElement();
     this.props.play()
-    // console.log(document.getElementById('track').duration)
   }
 
   pause() {
@@ -56,9 +58,8 @@ class NowPlayingBar extends React.Component {
     document.getElementById('track').play();
   }
 
-
   togglePlay() {
-    debugger
+    if (!this.state.currentTrack) return;
     this.setState({ inProgress: !this.state.inProgress });
     if (this.state.inProgress) {
       this.pause();

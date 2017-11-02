@@ -6,15 +6,21 @@ class Track extends React.Component {
     this.track = props.track
     this.currentTrack = props.props.currentTrack
     this.state = {
-      inProgress: props.props.inProgress,
-      duration: null
-     }
-
-     this.handlePlay = this.handlePlay.bind(this);
+      inProgress: props.props.currentTrack &&
+        (props.props.currentTrack.id == this.track.id) &&
+        props.props.inProgress
+    };
+    this.isCurrentTrack = this.isCurrentTrack.bind(this);
+    this.handlePlay = this.handlePlay.bind(this);
   }
 
   play() {
     this.props.props.play()
+  }
+
+  isCurrentTrack() {
+    return this.props.props.currentTrack &&
+    this.props.props.currentTrack.id == this.track.id
   }
 
   pause() {
@@ -22,7 +28,6 @@ class Track extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    // debugger
     if (newProps.props.currentTrack.id == this.track.id) {
       this.setState({
         inProgress: newProps.props.inProgress
@@ -35,8 +40,7 @@ class Track extends React.Component {
   }
 
   handlePlay() {
-    // debugger
-    if (this.props.props.currentTrack && this.props.props.currentTrack.id == this.track.id) {
+    if (this.isCurrentTrack()) {
       (this.props.props.inProgress) ? this.pause() : this.play();
       this.setState({ inProgress: !this.state.inProgress });
     } else {
@@ -47,7 +51,7 @@ class Track extends React.Component {
 
   render() {
     let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
-    // debugger
+  
     if (this.state.inProgress) {
       playButton = <i className="fa fa-pause track-play-pause" aria-hidden="true"></i>
     }

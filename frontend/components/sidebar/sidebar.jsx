@@ -17,7 +17,7 @@ const SideBar = ({ currentUser }) => {
               </div>
           </Link>
             <div className="sidebar-group">
-              <li className="sidebar-item">Home</li>
+              <Link to="/browse/featured"className="sidebar-item">Home</Link>
               <li className="sidebar-item">Your Music</li>
             </div>
           </ul>

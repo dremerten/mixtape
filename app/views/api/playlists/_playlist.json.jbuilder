@@ -1,7 +1,7 @@
 json.playlist do
   json.extract! playlist, :id, :name, :author_id
-  json.trackIds playlist.tracks.map(&:id)
   json.image_url asset_path(playlist.image.url)
+  json.author_name playlist.author.name
 end
 
 json.tracks do
