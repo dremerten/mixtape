@@ -14,7 +14,8 @@ class NowPlayingBar extends React.Component {
       rendered: false,
       volume: 1,
       duration: "0:00",
-      currentTime: "0:00"
+      currentTime: "0:00",
+      progress: 0
     }
 
     this.togglePlay = this.togglePlay.bind(this);
@@ -27,6 +28,8 @@ class NowPlayingBar extends React.Component {
     this.setDuration = this.setDuration.bind(this);
     this.setCurrentTime = this.setCurrentTime.bind(this);
     this.getCurrentTime = this.getCurrentTime.bind(this);
+    this.getProgress = this.getProgress.bind(this);
+    this.scaleTime = this.scaleTime.bind(this);
   }
 
   componentDidMount() {
@@ -119,6 +122,19 @@ class NowPlayingBar extends React.Component {
     this.setState({ currentTime });
   }
 
+
+  getProgress() {
+    if (this.scaleTime()) {
+      return ((this.scaleTime() + 0.005) * 100 + "%");
+    }
+    return 0;
+  }
+
+  scaleTime() {
+    if (!this.state.currentTrack || !this.state.rendered) return 0;
+    return (this.getAudio().currentTime / this.getAudio().duration);
+  }
+
   toggleVolumeIcon() {
     if (this.state.volume > .5) {
       return <i className="fa fa-volume-up" aria-hidden="true"></i>
@@ -161,14 +177,19 @@ class NowPlayingBar extends React.Component {
                 {this.state.currentTime}
               </div>
               <div className="progress-bar-container">
+                <div
+                  className="current-progress"
+                  id='progress'
+                  style={{ width: this.getProgress()}}
+                  ></div>
                 <input
                   onChange={this.setCurrentTime}
                   className="slider"
                   type="range"
                   min="0"
-                  max={this.state.duration}
-                  step="0.01"
-                  value={(this.state.rendered) ? this.getAudio().currentTime : 0}
+                  max="1"
+                  step="0.000001"
+                  value={this.scaleTime()}
                   >
                 </input>
               </div>
