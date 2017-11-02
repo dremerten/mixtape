@@ -4,8 +4,8 @@ import Track from '../tracks/track';
 class Playlist extends React.Component {
   constructor(props) {
     super(props)
-    // this.playlist = props.playlist
-    // this.tracks = props.tracks
+    // this.playlist = props.props.playlist
+    // this.tracks = props.props.tracks
     this.state = {
       paused: this.props.inProgress
     }
@@ -42,7 +42,9 @@ class Playlist extends React.Component {
         )
       )
       if (!tracks.length) {
-        tracks = [<span className="track-row-wrapper no-hover">There aren't any tracks on this playlist yet.</span>]
+        tracks = [<span className="track-row-wrapper no-hover">
+          There aren't any tracks on this playlist yet.
+        </span>]
       }
       title = this.props.playlist.title
       imageUrl = { backgroundImage: 'url(' + this.props.playlist.image_url + ')' }

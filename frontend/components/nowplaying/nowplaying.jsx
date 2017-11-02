@@ -4,40 +4,72 @@ import { Howl } from 'howler';
 class NowPlayingBar extends React.Component {
   constructor(props) {
     super(props);
+    // let src = (props.currentTrack) ? [props.currentTrack.trackUrl] : [null];
+    // let format = (props.currentTrack) ? [props.currentTrack.contentType] : [null];
+    // this.state = {
+    //   currentTrack: new Howl({
+    //       src,
+    //       format
+    //   }),
+    //   trackProgress: props.trackProgress,
+    //   paused: props.inProgress
+    // }
     this.state = {
-      // currentTrack: new Howl({
-      //   src: ['//s3.us-east-2.amazonaws.com/spinnmusicfiles/tracks/audios/000/000/370/original/open-uri20171031-93871-118mku?1509468090'],
-      //   volume: .7,
-      //   preload: true,
-      //   format: 'm4a'
-      // }),
-      // currentTrack: new Howl({
-      //   src: [props.currentTrack.trackUrl],
-      //   format: props.currentTrack.contentType,
-      //   preload: true,
-      // }),
-
-      trackProgress: props.trackProgress,
-      paused: true
+      trackProgress: null,
+      inProgress: props.inProgress,
+      currentTrack: props.currentTrack
     }
 
     this.togglePlay = this.togglePlay.bind(this);
+    this.play = this.play.bind(this);
+    this.pause = this.pause.bind(this);
+    this.pauseElement = this.pauseElement.bind(this);
+    this.playElement = this.playElement.bind(this)
   }
 
-  componentDidMount() {
+  componentWillReceiveProps(newProps) {
+    debugger
+    this.setState({
+      currentTrack: newProps.currentTrack,
+      inProgress: newProps.inProgress
+    });
 
-    // this.state.currentTrack.load();
+    (this.state.inProgress) ? this.pauseElement() : this.playElement()
   }
+
+  play() {
+    this.playElement();
+    this.props.play()
+    // console.log(document.getElementById('track').duration)
+  }
+
+  pause() {
+    this.pauseElement();
+    this.props.pause()
+  }
+
+  pauseElement() {
+    document.getElementById('track').pause();
+  }
+
+  playElement() {
+    document.getElementById('track').play();
+  }
+
 
   togglePlay() {
-
-    this.setState({ paused: !this.state.paused });
-    (this.state.paused) ? this.state.currentTrack.play() : this.state.currentTrack.pause()
+    debugger
+    this.setState({ inProgress: !this.state.inProgress });
+    if (this.state.inProgress) {
+      this.pause();
+    } else {
+      this.play();
+    }
   }
 
 
   render() {
-
+    let source = (this.state.currentTrack) ? this.state.currentTrack.trackUrl : ''
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
@@ -51,7 +83,7 @@ class NowPlayingBar extends React.Component {
                 <i className="fa fa-step-backward" aria-hidden="true"></i>
               </button>
               <button
-                className={(this.state.paused) ? "play-button" : "play-button pause"}
+                className={(this.state.inProgress) ? "play-button pause" : "play-button"}
                 onClick={this.togglePlay}
                 >
               </button>
@@ -67,6 +99,7 @@ class NowPlayingBar extends React.Component {
           </div>
           <div className="volume-controls"></div>
         </div>
+        <audio id={`track`} src={source} />
       </footer>
     );
   }

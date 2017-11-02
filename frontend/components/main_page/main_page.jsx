@@ -1,7 +1,7 @@
 import React from 'react';
 import SideBar from '../sidebar/sidebar';
 import Search from '../search/search';
-import NowPlayingBar from '../nowplaying/nowplaying';
+import NowPlayingBarContainer from '../nowplaying/nowplaying_container';
 import MusicPortal from '../music_portal';
 import PlaylistContainer from '../featured_playlists/playlist_container';
 
@@ -20,7 +20,7 @@ const MainPage = ( { currentUser }) => {
           <Route path="/browse/playlists/:playlistId" component={PlaylistContainer} />
           <Route path="/browse/:musicPage" component={MusicPortal}/>
         </Switch>
-        <NowPlayingBar/>
+        <NowPlayingBarContainer/>
       </div>
     </div>
   );

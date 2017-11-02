@@ -3,17 +3,17 @@ import {
   PLAY,
   PAUSE,
   PLAY_SINGLE_TRACK,
+  PLAY_ALL_TRACKS,
   RECEIVE_QUEUE,
   ADD_TRACK_TO_QUEUE,
   CLEAR_QUEUE,
-  SET_NEXT_TRACK
+  PLAY_NEXT_TRACK
 } from '../actions/audio_actions';
 
 const initialState = {
   queue: [],
   currentTrack: null,
   nextTrack: null,
-  // trackProgress: 0,
   inProgress: false
 };
 
@@ -35,10 +35,19 @@ const NowPlayingReducer = (state = initialState, action) => {
       newState = merge({}, state);
       newState.queue = [];
       return newState;
-    case SET_NEXT_TRACK:
-      return merge({}, state, { nextTrack: action.track });
+    case PLAY_NEXT_TRACK:
+      newState = merge({}, state);
+      newState.currentTrack = newState.queue.shift;
+      newState.nextTrack = newState.queue[0];
+      return newState;
     case PLAY_SINGLE_TRACK:
-      return merge({}, state, { currentTrack: action.track });
+      return merge({}, state, { currentTrack: action.track, inProgress: true });
+    case PLAY_ALL_TRACKS:
+      let queue = action.tracks.slice(1);
+      let currentTrack = action.tracks[0];
+      let nextTrack = action.tracks[1];
+      let inProgress = true;
+      return { queue, currentTracl, nextTrack, inProgress };
     default:
       return state;
     }

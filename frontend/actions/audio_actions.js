@@ -1,10 +1,12 @@
-export const PLAY = 'PLAY_AUDIO';
-export const PAUSE = 'PAUSE_AUDIO';
+export const PLAY = 'PLAY';
+export const PAUSE = 'PAUSE';
 export const PLAY_SINGLE_TRACK = 'PLAY_SINGLE_TRACK';
+export const PLAY_ALL_TRACKS = 'PLAY_ALL_TRACKS';
 export const RECEIVE_QUEUE = 'RECEIVE_QUEUE';
 export const ADD_TRACK_TO_QUEUE = 'ADD_TRACK_TO_QUEUE';
 export const CLEAR_QUEUE = 'CLEAR_QUEUE';
-export const SET_NEXT_TRACK = 'SET_UP_NEXT';
+export const PLAY_NEXT_TRACK = 'PLAY_NEXT_TRACK';
+export const PLAY_NEXT_FROM_QUEUE = 'PLAY_NEXT_FROM_QUEUE';
 // export const SET_CURRENT_TRACK = 'SET_CURRENT_TRACK'
 
 export const play = () => ({
@@ -13,6 +15,10 @@ export const play = () => ({
 
 export const playSingleTrack = track => ({
   type: PLAY_SINGLE_TRACK, track
+});
+
+export const playAllTracks = tracks => ({
+  type: PLAY_ALL_TRACKS, tracks
 });
 
 export const pause = () => ({
@@ -31,8 +37,9 @@ export const clearQueue = () => ({
   type: CLEAR_QUEUE
 });
 
-export const setNextTrack = track => ({
-  type: SET_NEXT_TRACK, track
+
+export const playNextTrack = track => ({
+  type: PLAY_NEXT_TRACK, track
 });
 
 // export const setCurrentTrack = track => ({

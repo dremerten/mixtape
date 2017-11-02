@@ -16,7 +16,8 @@ const mapStateToProps = (state, ownProps) => ({
   playlist: state.entities.playlists[ownProps.match.params.playlistId],
   tracks: Object.keys(state.entities.tracks)
                 .map(id => state.entities.tracks[id]),
-  inProgress: state.nowPlaying.inProgress
+  inProgress: state.nowPlaying.inProgress,
+  currentTrack: state.nowPlaying.currentTrack
 });
 
 const mapDispatchToProps = dispatch => ({

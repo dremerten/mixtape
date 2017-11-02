@@ -39,10 +39,13 @@ class S3Helper
     find_music_paths
   end
 
+  def run!
+    find_artists
+    construct_artist_objects
+  end
+
   def find_music_paths
-    @bucket_paths = S3_CLIENT.list_objects(bucket: 'spinnmusicfiles')
-             .contents.map(&:key)
-             .select { |key| /^music\//.match(key) }
+    @bucket_paths = S3_CLIENT.list_objects(bucket: 'spinnmusicfiles').contents.map(&:key).select { |key| /^music\//.match(key) }
   end
 
   def find_artists
@@ -55,18 +58,18 @@ class S3Helper
   end
 
   def add_image_and_albums(artist)
-    files = @bucket_paths.select { |p| p.include?(artist.name) && p.split('/').length == 3 }
+    files = @bucket_paths.select { |p| p.include?(artist.name) && p.split('/').length >= 3 }
     albums, image = files.partition { |f| is_album_path?(f) }
     image_file = open(make_url(image[0]))
     artist.image = File.open(image_file)
     artist.save!
 
-    album_objects = albums.map { |a| Album.create!(title: a.split('/').last, artist_id: artist.id) }
+    album_objects = albums.map { |a| Album.create!(title: a.split('/')[2], artist_id: artist.id) }
     album_objects.each { |obj| find_album_files(obj) }
   end
 
   def find_album_files(album)
-    files = @bucket_paths.select { |p| p.include?(album.title) && p.split('/').length == 4 }
+    files = @bucket_paths.select { |p| p.include?(album.title) && p.split('/').length >= 4 }
     image, tracks = files.partition { |p| /\.jpg$|\.jpeg$|\.png/.match(p) }
     artwork = open(make_url(image[0]))
     album.artwork = File.open(artwork)
@@ -104,10 +107,6 @@ class S3Helper
     "http://s3.us-east-2.amazonaws.com/spinnmusicfiles/#{path}"
   end
 
-  def run!
-    find_artists
-    construct_artist_objects
-  end
 end
 
 S3Helper.new.run!
