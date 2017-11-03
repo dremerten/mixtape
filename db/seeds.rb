@@ -242,7 +242,7 @@ end
 100.times do
   p = Playlist.create!(name: Faker::Book.title, author_id: sennacy.id )
   i = rand(1..11)
-  p.image = File.open("pp/assets/images/playlist-#{i}.jpg")
+  p.image = File.open("app/assets/images/playlist-#{i}.jpg")
   p.save!
   20.times do
     begin
