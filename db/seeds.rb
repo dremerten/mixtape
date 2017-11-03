@@ -74,7 +74,7 @@ class S3Helper
     artist.save!
     albums.reject! { |el| /.DS_Store/.match(el) }
 
-    album_objects = albums.map { |a| Album.create!(title: album, artist_id: artist.id) }
+    album_objects = albums.map { |a| Album.create!(title: a, artist_id: artist.id) }
     album_objects.each { |obj| find_album_files(obj) }
   end
 
