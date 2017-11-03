@@ -9,8 +9,10 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-  has_many :playlists
-
+  has_many :playlists, foreign_key: :author_id, class_name: 'Playlist'
+  has_many :saved_tracks
+  has_many :tracks, through: :saved_tracks, source: :track
+  
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
 

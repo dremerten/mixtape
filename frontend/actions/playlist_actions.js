@@ -15,9 +15,6 @@ export const receivePlaylist = data => ({
 
 // TODO: Make into thunk action
 
-export const deletePlaylist = playlistId => ({
-  type: DELETE_PLAYLIST, playlistId
-});
 
 export const removePlaylists = () => ({
   type: REMOVE_PLAYLISTS
@@ -32,5 +29,17 @@ export const fetchPlaylists = filters => dispatch => (
 export const fetchPlaylist = playlistId => dispatch => (
   PlaylistApiUtil.fetchPlaylist(playlistId).then(playlist => (
     dispatch(receivePlaylist(playlist))
+  ))
+);
+
+export const createPlaylist = playlist => dispatch => (
+  PlaylistApiUtil.createPlaylist(playlist).then(playlist => (
+    dispatch(receivePlaylist(playlist))
+  ))
+);
+
+export const deletePlaylist = playlistId => dispatch => (
+  PlaylistApiUtil.deletePlaylist(playlistId).then(playlist => (
+    dispatch(removePlaylist(playlist.id))
   ))
 );

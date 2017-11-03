@@ -58,6 +58,7 @@
   font-weight: bolder;
 }
 
+
 .author {
   margin-top: 10px;
   color: $transluscent-white;
@@ -67,6 +68,12 @@
   font-family: $open;
 }
 
-.author span {
+.artist {
+  font-size: 12px;
+  margin-top: 5px;
+  text-align: center;
+}
+.author span:hover {
   text-decoration: underline;
+  cursor: pointer;
 }

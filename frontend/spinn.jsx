@@ -5,6 +5,7 @@ import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { fetchPlaylists, fetchPlaylist } from './actions/playlist_actions';
 import { fetchTracks, fetchTrack } from './actions/track_actions';
+import { fetchResults } from './actions/search_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // TEST FUNCTIONS
+  window.fetchResults = fetchResults
   window.login = login;
   window.signup = signup;
   window.logout = logout;

@@ -1,9 +1,10 @@
 import React from 'react';
 import SideBar from '../sidebar/sidebar';
-import Search from '../search/search';
+import SearchContainer from '../search/search_container';
 import NowPlayingBarContainer from '../nowplaying/nowplaying_container';
 import MusicPortal from '../music_portal';
 import PlaylistContainer from '../featured_playlists/playlist_container';
+import AlbumContainer from '../albums/album_container';
 
 import {
   Route,
@@ -16,9 +17,11 @@ const MainPage = ( { currentUser }) => {
       <div className="main-page-container">
         <SideBar currentUser={currentUser}/>
         <Switch>
-          <Route path="/browse/search" component={Search}/>
+          <Route path="/browse/search" component={SearchContainer}/>
           <Route path="/browse/playlists/:playlistId" component={PlaylistContainer} />
+          <Route path="/browse/albums/:albumId" component={AlbumContainer} />
           <Route path="/browse/:musicPage" component={MusicPortal}/>
+          <Route path="/collection/playlists" component={MusicPortal}/>
         </Switch>
         <NowPlayingBarContainer/>
       </div>

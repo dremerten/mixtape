@@ -1,7 +1,7 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    playlists = featured ? Playlist.featured : Playlist.all
+    playlists = featured ? Playlist.featured : Playlist.user_playlists(current_user)
 
     if params[:genreId]
       playlists = Genre.find(params[:genreId]).playlists

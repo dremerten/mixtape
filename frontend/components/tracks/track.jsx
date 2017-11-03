@@ -12,6 +12,7 @@ class Track extends React.Component {
     };
     this.isCurrentTrack = this.isCurrentTrack.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
+    this.isPlaylist = this.isPlaylist.bind(this);
   }
 
   play() {
@@ -28,7 +29,7 @@ class Track extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.props.currentTrack.id == this.track.id) {
+    if (newProps.props.currentTrack && newProps.props.currentTrack.id == this.track.id) {
       this.setState({
         inProgress: newProps.props.inProgress
       })
@@ -49,12 +50,18 @@ class Track extends React.Component {
     }
   }
 
+  isPlaylist() {
+    return !!(this.props.props.match.params.playlistId)
+  }
+
   render() {
     let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
-  
+    let trackInfo;
+
     if (this.state.inProgress) {
       playButton = <i className="fa fa-pause track-play-pause" aria-hidden="true"></i>
     }
+
     return(
       <div className='track-row-wrapper'>
         <li className='track-row' onClick={this.handlePlay}>
@@ -64,7 +71,10 @@ class Track extends React.Component {
           <div className="track-info">
             <div className='track-details'>
               <span className='track-title'>{this.props.track.title}</span>
-              <span className='track-album-artist'>
+              <span
+                className='track-album-artist'
+                style={{display: (this.isPlaylist()) ? "" : "none"}}
+                >
                 <span>{`${this.track.artist} `}</span>
                 &middot;
                 <span>{` ${this.track.album}`}</span>

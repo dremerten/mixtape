@@ -25,3 +25,18 @@
   color: #e2e2e2;
   padding: 4px 25px;
 }
+
+.new-playlist {
+  position: absolute;
+  top: 75px;
+  right: 60px;
+  background-color: $spotify-green;
+  font-family: $open;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  padding: 6px 20px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}

@@ -8,4 +8,8 @@ class Artist < ApplicationRecord
   has_many :tracks, through: :albums, source: :tracks
   has_many :genre_taggings
   has_many :genres, through: :genre_taggings, source: :genre
+
+  def popularity
+    tracks.map(&:popularity).reduce(:+) / tracks.count
+  end
 end

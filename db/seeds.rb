@@ -1,3 +1,6 @@
+require 'faker'
+# require 'byebug'
+
 User.destroy_all
 
 spinn = User.create!(
@@ -8,7 +11,7 @@ spinn = User.create!(
   birthday: '000000'
 )
 
-User.create!(
+sennacy = User.create!(
   name: 'Sennacy',
   email: 'Sennacy17',
   password: 'starwars',
@@ -49,30 +52,41 @@ class S3Helper
   end
 
   def find_artists
-    artist_paths = @bucket_paths.select { |path| path.split('/').length == 2 }
-    @artists = artist_paths.map { |path| Artist.create!(name: path.split('/')[1]) }
+    artist_paths = @bucket_paths.select { |path| path.split('/').length >= 2 }
+    artist_paths = artist_paths.map { |path| path.split('/')[1] }
+    artist_paths.uniq!
+    debugger
+    @artists = artist_paths.map { |path| Artist.create!(name: artist) }
   end
 
   def construct_artist_objects
+
     @artists.each { |artist| add_image_and_albums(artist) }
   end
 
   def add_image_and_albums(artist)
     files = @bucket_paths.select { |p| p.include?(artist.name) && p.split('/').length >= 3 }
-    albums, image = files.partition { |f| is_album_path?(f) }
-    image_file = open(make_url(image[0]))
-    artist.image = File.open(image_file)
+    files.reject! { |e| /.DS_Store/.match(e) }
+    albums, images = files.partition { |f| is_album_path?(f) }
+    albums.map! { |album| album.split('/')[2] }
+    albums.uniq!
+    # debugger
+    images.select! { |image| image.split('/').length == 3 && /\.jpg$|\.jpeg$|\.png/.match(image) }
+    # debugger
+    artist.image = open(make_url(images[0]))
     artist.save!
+    albums.reject! { |el| /.DS_Store/.match(el) }
 
-    album_objects = albums.map { |a| Album.create!(title: a.split('/')[2], artist_id: artist.id) }
+    album_objects = albums.map { |a| Album.create!(title: album, artist_id: artist.id) }
     album_objects.each { |obj| find_album_files(obj) }
   end
 
   def find_album_files(album)
     files = @bucket_paths.select { |p| p.include?(album.title) && p.split('/').length >= 4 }
     image, tracks = files.partition { |p| /\.jpg$|\.jpeg$|\.png/.match(p) }
-    artwork = open(make_url(image[0]))
-    album.artwork = File.open(artwork)
+    # debugger
+    album.artwork = open(make_url(image[0]))
+
     album.save!
 
     tracks.each { |t| create_track(album, t) }
@@ -99,7 +113,7 @@ class S3Helper
   end
 
   def is_album_path?(path)
-    path.split('/').length == 3 && !/.jpg|.jpeg|.png/.match(path)
+    path.split('/').length >= 3 && !/.jpg|.jpeg|.png/.match(path) && !/.m4a|.mp3/.match(path)
   end
 
   def make_url(path)
@@ -119,6 +133,14 @@ justin = Artist.find_by(name: "Justin Timberlake")
 kendrick = Artist.find_by(name: "Kendrick Lamar")
 ed = Artist.find_by(name: "Ed Sheeran")
 schoolboy = Artist.find_by(name: "Schoolboy Q")
+adele = Artist.find_by(name: "Adele")
+james_blake = Artist.find_by(name: "James Blake")
+lorde = Artist.find_by(name: "Lorde")
+taylor = Artist.find_by(name: "Taylor Swift")
+drake = Artist.find_by(name: "Drake")
+typhoon = Artist.find_by(name: 'Typhoon')
+daft = Artist.find_by(name: "Daft Punk")
+
 
 genres = [
   "Hip-Hop",
@@ -137,6 +159,10 @@ genres = [
   "Workout"
 ]
 
+30.times do
+  SavedTrack.create!(user_id: sennacy.id, track_id: Track.all.sample.id)
+end
+
 genres.each { |genre| Genre.create!(name: genre) }
 
 hip_hop = Genre.find_by(name: "Hip-Hop")
@@ -146,6 +172,8 @@ soul = Genre.find_by(name: "Soul")
 pop = Genre.find_by(name: "Pop")
 acoustic = Genre.find_by(name: "Acoustic")
 chill = Genre.find_by(name: "Chill")
+indie = Genre.find_by(name: 'Indie')
+rock = Genre.find_by(name: 'Rock')
 
 GenreTagging.create!(artist_id: frank.id, genre_id: hip_hop.id)
 GenreTagging.create!(artist_id: frank.id, genre_id: soul.id)
@@ -158,13 +186,77 @@ GenreTagging.create!(artist_id: ed.id, genre_id: acoustic.id)
 GenreTagging.create!(artist_id: coldplay.id, genre_id: pop.id)
 GenreTagging.create!(artist_id: coldplay.id, genre_id: chill.id)
 GenreTagging.create!(artist_id: justin.id, genre_id: pop.id)
+GenreTagging.create!(artist_id: adele.id, genre_id: pop.id)
+GenreTagging.create!(artist_id: adele.id, genre_id: soul.id)
+GenreTagging.create!(artist_id: taylor.id, genre_id: pop.id)
+GenreTagging.create!(artist_id: lorde.id, genre_id: pop.id)
+GenreTagging.create!(artist_id: drake.id, genre_id: hip_hop.id)
+GenreTagging.create!(artist_id: james_blake.id, genre_id: indie.id)
+GenreTagging.create!(artist_id: typhoon.id, genre_id: indie.id)
+GenreTagging.create!(artist_id: daft.id, genre_id: rock.id)
 
 playlist1 = Playlist.create!(name: 'Hip-Hop Essentials', author_id: 0)
+playlist1.image = File.open('app/assets/images/rap.jpg')
+playlist1.save!
+sleep(2)
 playlist2 = Playlist.create!(name: 'Monday Jazz', author_id: 0)
+playlist2.image = File.open('app/assets/images/jazz.jpeg')
+playlist2.save!
+sleep(2)
 playlist3 = Playlist.create!(name: 'This is Soul', author_id: 0)
+playlist3.image = File.open('app/assets/images/soul.jpg')
+playlist3.save!
+sleep(2)
 playlist4 = Playlist.create!(name: 'Turn Up', author_id: 0)
+playlist4.image = File.open('app/assets/images/party.jpeg')
+playlist4.save!
+sleep(2)
 playlist5 = Playlist.create!(name: 'Pop Hits', author_id: 0)
+playlist5.image = File.open('app/assets/images/pop.jpeg')
+playlist5.save!
+sleep(2)
 playlist6 = Playlist.create!(name: 'Chill Out', author_id: 0)
+playlist6.image = File.open('app/assets/images/chill.jpg')
+playlist6.save!
+
+['Weekend Jams',
+  'Weekday Blues',
+  'Beach Music',
+  'Work Hard',
+  'Pump Up',
+  'Wedding',
+  'Calm Night',
+  'Electro Groove',
+  'Foreign Hits',
+  'Mellow Vibes',
+  'Travel'
+].each.with_index(1) do |name, i|
+  p = Playlist.new(name: name, author_id: 0)
+  p.image = File.open("app/assets/images/playlist-#{i}.jpg")
+  p.save!
+  20.times do
+    begin
+      PlaylistTrack.create!(playlist_id: p.id, track_id: Track.all.sample.id)
+    rescue
+      nil
+    end
+  end
+end
+
+100.times do
+  p = Playlist.create!(name: Faker::Book.title, author_id: sennacy.id )
+  i = rand(1..11)
+  p.image = File.open("pp/assets/images/playlist-#{i}.jpg")
+  p.save!
+  20.times do
+    begin
+      PlaylistTrack.create!(playlist_id: p.id, track_id: Track.all.sample.id)
+    rescue
+      nil
+    end
+  end
+end
+
 
 20.times do
   begin

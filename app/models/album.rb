@@ -7,4 +7,14 @@ class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks
   has_many :genres, through: :artist, source: :genres
+
+  def self.new_releases
+    Album.all.limit(12).order('created_at')
+  end
+
+  def popularity
+    tracks.map(&:popularity).reduce(:+) / tracks.count
+  end
+
+
 end

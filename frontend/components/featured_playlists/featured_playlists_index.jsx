@@ -6,11 +6,25 @@ import PlaylistsIndexItem from './playlists_index_item';
 class FeaturedPlaylistsIndex extends React.Component {
 
   componentDidMount() {
-    this.props.fetchPlaylists({ featured: true });
+    if (this.props.match.path.match(/featured/)) {
+      this.props.fetchPlaylists({ featured: true });
+    } else if (this.props.match.path.match(/collection/)) {
+      this.props.fetchPlaylists();
+    }
   }
 
   componentWillUnmount() {
     this.props.removePlaylists();
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.match.path == this.props.match.path) {
+      return;
+    } else if (newProps.match.path.match(/featured/)) {
+      this.props.fetchPlaylists({ featured: true });
+    } else if (newProps.match.path.match(/collection/)) {
+      this.props.fetchPlaylists();
+    }
   }
 
   render() {

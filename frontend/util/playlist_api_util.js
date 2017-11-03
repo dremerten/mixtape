@@ -1,10 +1,10 @@
-export const fetchPlaylists = (data) => (
-  $.ajax({
+export const fetchPlaylists = (data) => {
+  return $.ajax({
     method: 'GET',
     url: 'api/playlists',
     data
   })
-);
+};
 
 export const fetchPlaylist = id => (
   $.ajax({
@@ -13,13 +13,14 @@ export const fetchPlaylist = id => (
   })
 );
 
-export const createPlaylist = data => (
-  $.ajax({
+export const createPlaylist = playlist => {
+  debugger
+  return $.ajax({
     method: 'POST',
     url: 'api/playlists',
-    data
+    data: { playlist }
   })
-);
+};
 
 export const updatePlaylist = data => (
   $.ajax({

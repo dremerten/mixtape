@@ -1,5 +1,5 @@
 import React from 'react';
-import { Howl } from 'howler';
+import { Link } from 'react-router-dom';
 
 class NowPlayingBar extends React.Component {
   constructor(props) {
@@ -146,12 +146,41 @@ class NowPlayingBar extends React.Component {
   }
 
   render() {
-    let source = (this.state.currentTrack) ? this.state.currentTrack.trackUrl : ''
-    let currentVolume = this.toggleVolumeIcon()
+    let title, artist;
+    let source = ''
+    let currentVolume = this.toggleVolumeIcon();
+    let link = '/'
+
+    if (this.state.currentTrack) {
+      title = this.state.currentTrack.title;
+      artist = this.state.currentTrack.artist;
+      source = this.state.currentTrack.trackUrl
+      link = `/browse/albums/${this.state.currentTrack.album_id}`
+    }
+
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
-          <div className="current-song"></div>
+          <div className="current-song">
+            <div className="song-album-info">
+              <Link to={link}>
+                <img
+                  src={(this.state.currentTrack) ? this.state.currentTrack.imageUrl : ''}
+                  className="song-now-playing-image"
+                  style={{display: this.state.currentTrack ? "" : "none"}}
+                   />
+              </Link>
+              <div className="title-and-artist">
+                <span className="nav-bar-song">
+
+                  {title}
+                </span>
+                <span className="nav-bar-artist">
+                  {artist}
+                </span>
+              </div>
+            </div>
+          </div>
           <div className="audio-controls">
             <div className="audio-buttons">
               <button className='small-button'>

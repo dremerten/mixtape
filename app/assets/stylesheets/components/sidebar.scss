@@ -59,6 +59,10 @@
   transition: 0.25s ease-in-out;
 }
 
+.sidebar-item li {
+  padding-top: 5px;
+}
+
 .sidebar-item:hover {
   color: #d1d1d1;
   transition: ease-in-out;

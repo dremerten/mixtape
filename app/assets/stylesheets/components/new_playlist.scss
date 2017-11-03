@@ -1,0 +1,73 @@
+.new-playlist-wrapper {
+  position: relative;
+}
+
+.new-playlist-container {
+  position: fixed;
+  z-index: 102;
+  background: rgba(0,0,0,.9) fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-wrapper {
+  height: 75%;
+  width: 100%;
+  padding-bottom: 80px;
+}
+
+.form-header {
+  text-align: center;
+  font-size: 50px;
+  color: white;
+  font-family: $open;
+  font-weight: bolder;
+  padding-bottom: 30px;
+}
+
+.form-header button {
+  font-weight: lighter;
+  transition: .2s ease-out;
+  font-stretch: extra-expanded;
+}
+
+.form-header button:hover {
+  transform: scale(1.1);
+  transition: .2s ease-in
+}
+
+.playlist {
+  margin-left: 250px;
+}
+
+.new-playlist-buttons {
+  padding-top: 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+
+}
+
+[class*="new-playlist-button-"] {
+  font-family: $open;
+  font-size: 14px;
+  border-radius: 25px;
+  color: white;
+  padding: 13px 20px;
+  margin: 10px 15px;
+  background-color: $spotify-green;
+  font-weight: lighter;
+  letter-spacing: 1px;
+}
+
+.new-playlist-buttons button {
+  background: $black;
+  border: 1px solid white;
+  box-sizing: border-box;
+}

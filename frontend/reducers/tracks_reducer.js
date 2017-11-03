@@ -5,6 +5,8 @@ import {
   REMOVE_TRACKS
 } from '../actions/track_actions';
 import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
+import { RECEIVE_ALBUM } from '../actions/album_actions';
+import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 const _nullTracks = {}
 
@@ -19,6 +21,10 @@ const TrackReducer = (state = {}, action) => {
     case REMOVE_TRACKS:
       return _nullTracks;
     case RECEIVE_PLAYLIST:
+      return action.data.tracks || _nullTracks;
+    case RECEIVE_ALBUM:
+      return action.data.tracks || _nullTracks;
+    case RECEIVE_SEARCH_RESULTS:
       return action.data.tracks || _nullTracks;
     default:
       return state;

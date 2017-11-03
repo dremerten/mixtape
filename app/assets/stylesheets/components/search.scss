@@ -1,0 +1,81 @@
+.search-wrapper {
+  background: $black fixed;
+  height: 100vh;
+  width: 100%;
+}
+.search-container {
+  margin-left: 220px;
+  height: 100%;
+}
+
+.search-input-container {
+  height: 150px;
+  width: 100%;
+  background: #1E1E1E;
+}
+
+.input-heading-wrapper {
+  // height: 35%;
+  padding-top: 18px;
+}
+
+.input-header {
+  padding-left: 20px;
+  text-align: left;
+  color: white;
+  font-family: $open;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
+
+.search-input-field {
+  font-weight: 100;
+  padding: 20px;
+  font-size: 50px;
+  font-weight: bold;
+  // color: white;
+  font-family: $open;
+  border: none;
+  // font-size: 24px;
+  // padding: 10px;
+  color: $spotify-green;
+  text-shadow: 0px 0px 0px white;
+  -webkit-text-fill-color: transparent;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: $transluscent-white;
+    opacity: .4;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: white;
+   opacity: .4;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: white;
+  opacity: .7;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: white;
+  opacity: .7;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+  color: white;
+  opacity: .7;
+}
+
+
+.search-input-field::-webkit-input-placeholder {
+    color: #ccc;
+    text-shadow: none;
+    -webkit-text-fill-color: initial;
+}
+
+.top-tracks {
+  list-style: none;
+  width: 50%;
+}
