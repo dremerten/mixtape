@@ -55,7 +55,7 @@ class S3Helper
     artist_paths = @bucket_paths.select { |path| path.split('/').length >= 2 }
     artist_paths = artist_paths.map { |path| path.split('/')[1] }
     artist_paths.uniq!
-    @artists = artist_paths.map { |path| Artist.create!(name: artist) }
+    @artists = artist_paths.map { |path| Artist.create!(name: path) }
   end
 
   def construct_artist_objects
