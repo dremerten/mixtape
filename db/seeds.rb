@@ -55,7 +55,6 @@ class S3Helper
     artist_paths = @bucket_paths.select { |path| path.split('/').length >= 2 }
     artist_paths = artist_paths.map { |path| path.split('/')[1] }
     artist_paths.uniq!
-    debugger
     @artists = artist_paths.map { |path| Artist.create!(name: artist) }
   end
 
@@ -70,9 +69,7 @@ class S3Helper
     albums, images = files.partition { |f| is_album_path?(f) }
     albums.map! { |album| album.split('/')[2] }
     albums.uniq!
-    # debugger
     images.select! { |image| image.split('/').length == 3 && /\.jpg$|\.jpeg$|\.png/.match(image) }
-    # debugger
     artist.image = open(make_url(images[0]))
     artist.save!
     albums.reject! { |el| /.DS_Store/.match(el) }
@@ -84,7 +81,6 @@ class S3Helper
   def find_album_files(album)
     files = @bucket_paths.select { |p| p.include?(album.title) && p.split('/').length >= 4 }
     image, tracks = files.partition { |p| /\.jpg$|\.jpeg$|\.png/.match(p) }
-    # debugger
     album.artwork = open(make_url(image[0]))
 
     album.save!
