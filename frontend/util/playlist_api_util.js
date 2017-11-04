@@ -3,7 +3,7 @@ export const fetchPlaylists = (data) => {
     method: 'GET',
     url: 'api/playlists',
     data
-  })
+  });
 };
 
 export const fetchPlaylist = id => (
@@ -14,12 +14,11 @@ export const fetchPlaylist = id => (
 );
 
 export const createPlaylist = playlist => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: 'api/playlists',
     data: { playlist }
-  })
+  });
 };
 
 export const updatePlaylist = data => (

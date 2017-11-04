@@ -48,12 +48,14 @@ class S3Helper
   end
 
   def find_music_paths
-    @bucket_paths = S3_CLIENT.list_objects(bucket: 'spinnmusicfiles').contents.map(&:key).select { |key| /^music\//.match(key) }
+    @bucket_paths = S3_CLIENT.list_objects(bucket: 'spinnmusicfiles')
+                             .contents.map(&:key)
+                             .select { |key| /^music\//.match(key) }
   end
 
   def find_artists
     artist_paths = @bucket_paths.select { |path| path.split('/').length >= 2 }
-    artist_paths = artist_paths.map { |path| path.split('/')[1] }
+    artist_paths.map! { |path| path.split('/')[1] }
     artist_paths.uniq!
     @artists = artist_paths.map { |path| Artist.create!(name: path) }
   end

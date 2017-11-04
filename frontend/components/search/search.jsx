@@ -54,7 +54,6 @@ class Search extends React.Component {
     let topResults, artists, tracks, albums, playlists, imageUrl;
 
     if (this.state.topResults.length) {
-      debugger
       topResults = this.state.topResults.map(track => (
         <Track props={this.props} track={track} key={track.id}/>
       ));
