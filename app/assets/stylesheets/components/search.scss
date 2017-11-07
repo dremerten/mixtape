@@ -43,39 +43,41 @@
   -webkit-text-fill-color: transparent;
 }
 
-::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color: $transluscent-white;
-    opacity: .4;
-}
+.search-wrapper {
+  ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+      color: $transluscent-white;
+      opacity: .4;
+  }
 
-:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-   color: white;
-   opacity: .4;
-}
+  :-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+     color: white;
+     opacity: .4;
+  }
 
-::-moz-placeholder { /* Mozilla Firefox 19+ */
-  color: white;
-  opacity: .7;
-}
+  ::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: white;
+    opacity: .7;
+  }
 
-:-ms-input-placeholder { /* Internet Explorer 10-11 */
-  color: white;
-  opacity: .7;
-}
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: white;
+    opacity: .7;
+  }
 
-::-ms-input-placeholder { /* Microsoft Edge */
-  color: white;
-  opacity: .7;
-}
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: white;
+    opacity: .7;
+  }
 
 
-.search-input-field::-webkit-input-placeholder {
-    color: #ccc;
-    text-shadow: none;
-    -webkit-text-fill-color: initial;
-}
+  .search-input-field::-webkit-input-placeholder {
+      color: #ccc;
+      text-shadow: none;
+      -webkit-text-fill-color: initial;
+  }
 
-.top-tracks {
-  list-style: none;
-  width: 50%;
+  .top-tracks {
+    list-style: none;
+    width: 50%;
+  }
 }

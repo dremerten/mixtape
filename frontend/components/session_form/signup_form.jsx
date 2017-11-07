@@ -25,14 +25,12 @@ class SignupForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     delete this.state.imageUrl;
-
     const formData = new FormData();
     for (let i in this.state) {
-      if (this.state[i]) {
+      if (!(this.state[i] == null)) {
         formData.append(`user[${i}]`, this.state[i])
       }
     }
-
     this.props.processForm(formData).then(() => this.props.history.push('/browse/featured'));
   }
 

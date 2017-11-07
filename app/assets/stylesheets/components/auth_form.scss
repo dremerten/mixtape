@@ -1,3 +1,8 @@
+.signup-div, .login-div {
+  background: white;
+  height: 100%;
+}
+
 
 .login-header {
   border-bottom: 1px solid rgb(200, 200, 200);
@@ -86,6 +91,7 @@
   letter-spacing: 2px;
   font-size: 12px;
   text-align: center;
+  margin-bottom: 40px;
 }
 
 .form-label {
@@ -105,7 +111,7 @@
   letter-spacing: 3px;
   line-height: 10px;
   margin-top: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 30px;
 }
 
 .preview-container {

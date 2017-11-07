@@ -2,6 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const SideBar = ({ currentUser }) => {
+  let username = currentUser.email
+
+  if (username.length > 13) {
+    username = username.slice(0, 13) + '...';
+  }
+
   return(
     <div className="sidebar">
       <nav className="nav-links">
@@ -29,7 +35,7 @@ const SideBar = ({ currentUser }) => {
           <div className="user-widget">
             <Link to="/settings/acount">
               <img className="user-avatar" src={currentUser.avatar_url} />
-              <span className="user-link">{currentUser.email}</span>
+              <span className="user-link">{username}</span>
             </Link>
           </div>
         </div>

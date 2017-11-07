@@ -6,11 +6,18 @@ class NavBar extends React.Component {
   constructor(props) {
     super(props)
     this.state = { formActive: false }
+    this.state
     this.displayPlaylistForm = this.displayPlaylistForm.bind(this);
   }
 
   displayPlaylistForm() {
     this.setState({ formActive: true })
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.isNavVisible != this.props.isNavVisible) {
+      this.setState({ show: !show })
+    }
   }
 
   render() {
