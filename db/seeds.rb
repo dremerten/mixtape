@@ -1,5 +1,5 @@
 require 'faker'
-# require 'byebug'
+require 'taglib'
 
 User.destroy_all
 
@@ -44,7 +44,7 @@ class S3Helper
 
   def run!
     find_artists
-    construct_artist_objects
+    construct_artist_associations
   end
 
   def find_music_paths
@@ -60,8 +60,7 @@ class S3Helper
     @artists = artist_paths.map { |path| Artist.create!(name: path) }
   end
 
-  def construct_artist_objects
-
+  def construct_artist_associations
     @artists.each { |artist| add_image_and_albums(artist) }
   end
 

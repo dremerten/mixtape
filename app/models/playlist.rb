@@ -13,6 +13,5 @@ class Playlist < ApplicationRecord
 
   def self.user_playlists(user)
     Playlist.where(author_id: user.id).order(id: 'desc').limit(40)
-    # Playlist.all.concat(Playlist.all).concat(Playlist.all)
   end
 end
