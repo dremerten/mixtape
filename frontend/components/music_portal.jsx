@@ -16,7 +16,7 @@ const MusicPortal = (props) => {
         <Switch>
           <Route exact path="/browse/featured" component={FeaturedPlaylistsIndexContainer} />
           <Route exact path="/browse/genres" component={GenresIndex} />
-          <Route exact path="/browse/newreleases" component={NewReleasesIndex} />
+          <Route exact path="/browse/newreleases" component={FeaturedPlaylistsIndexContainer} />
         </Switch>
       </div>
     );

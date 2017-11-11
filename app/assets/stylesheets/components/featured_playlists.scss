@@ -1,12 +1,12 @@
 .featured-playlists-container {
-  background: linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed;
+  // background: linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed;
   height: 100vh;
   width: 100%;
   overflow: scroll;
 }
 
 .album-index-container {
-  background: linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed;
+  // background: linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed;
   height: 100vh;
   width: 100%;
   overflow: scroll;
@@ -15,13 +15,8 @@
 .playlist-items {
   list-style: none;
   display: flex;
-  // flex-direction: row;
   flex-wrap: wrap;
   margin-top: -40px;
-  // right: 0;
-  // padding-left: 275px;
-  // margin: 0 auto;
-  // padding-top: 100px;
 }
 
 .playlist-item {
@@ -46,6 +41,7 @@
   height: 150.33px;
   margin-top: 50px;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
+  border-radius: 0px;
 }
 
 .playlist-image:hover .overlay {
