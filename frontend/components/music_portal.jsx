@@ -9,7 +9,7 @@ import { Route, Switch } from 'react-router-dom';
 
 const MusicPortal = (props) => {
 
-  if (props.match.path.match(/browse/)) {
+  // if (props.match.path.match(/browse/)) {
     return(
       <div>
         <NavBar props={props}/>
@@ -17,19 +17,19 @@ const MusicPortal = (props) => {
           <Route exact path="/browse/featured" component={FeaturedPlaylistsIndexContainer} />
           <Route exact path="/browse/genres" component={GenresIndex} />
           <Route exact path="/browse/newreleases" component={FeaturedPlaylistsIndexContainer} />
-        </Switch>
-      </div>
-    );
-  } else {
-    return (
-      <div>
-        <NavBar props={props}/>
-        <Switch>
           <Route exact path="/collection/playlists" component={FeaturedPlaylistsIndexContainer} />
         </Switch>
       </div>
     );
-  }
+  // } else {
+    // return (
+      // <div>
+        // <NavBar props={props}/>
+        // <Switch>
+        // </Switch>
+      // </div>
+    // );
+  // }
 };
 
 export default MusicPortal;

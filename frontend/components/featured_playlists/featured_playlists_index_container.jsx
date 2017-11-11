@@ -9,12 +9,11 @@ const mapStateToProps = (state, ownProps) => {
   let path = ownProps.match.path;
   let indexItems;
   let itemType = "album";
-  
-  if (path.match(/featured/)) {
+
+  if (path.match(/featured|collection/)) {
     indexItems = Object.keys(state.entities.playlists)
                        .map(id => state.entities.playlists[id]);
-    itemType = "playlist";
-
+    itemType = (path.match(/collection/) ? "userPlaylist" : "playlist");
   } else {
     indexItems = Object.keys(state.entities.albums)
                        .map(id => state.entities.albums[id])
@@ -25,8 +24,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   let path = ownProps.match.path;
-  let fetchItems = (path.match(/featured/) ? fetchPlaylists : fetchAlbums);
-  let removeItems = (path.match(/featured/) ? removePlaylists : removeAlbums);
+  let fetchItems = (path.match(/featured|collection/) ? fetchPlaylists : fetchAlbums);
+  let removeItems = (path.match(/featured|collection/) ? removePlaylists : removeAlbums);
 
   return {
     fetchItems: filters => dispatch(fetchItems(filters)),

@@ -10,24 +10,21 @@ class FeaturedPlaylistsIndex extends React.Component {
     if (this.props.itemType == "album") {
       this.props.fetchItems({ order: 'recent' })
     } else {
-      this.props.fetchItems({ featured: true })
+      let filter = (this.props.itemType == "playlist" ? true : null);
+      this.props.fetchItems({ featured: filter })
     }
   }
 
-  componentWillUnmount() {
-    debugger
-    this.props.removeItems();
-  }
-
   componentWillReceiveProps(newProps) {
-    debugger
     if (newProps.itemType == this.props.itemType) {
-      debugger
       return;
     } else if (newProps.itemType == "album"){
+      this.props.removeItems();
       newProps.fetchItems({ order: 'recent' });
     } else {
-      newProps.fetchItems({ featured: true });
+      this.props.removeItems();
+      let filter = (newProps.itemType == "playlist" ? true : null);
+      newProps.fetchItems({ featured: filter });
     }
   }
 
@@ -54,7 +51,7 @@ class FeaturedPlaylistsIndex extends React.Component {
     }
 
     return(
-      <div className="featured-playlists-container" style={background}>
+      <div className="featured-playlists-container" style={background} id="music-items">
         <div className="list">
           <h1 className="playlists-header">Evening Jams</h1>
           <ul className="playlist-items">
