@@ -31,12 +31,25 @@ class FeaturedPlaylistsIndex extends React.Component {
   render() {
     let indexItems;
     let background;
+    let header;
 
     if (this.props.itemType == "album") {
-      background = { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' };
+        header = "Our Newest Releases";
+        background = { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' };
+    } else if (this.props.itemType == "userPlaylist") {
+        header = "Your Playlists";
+        background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
     } else {
-      background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
-    }
+        header = "Evening Jams";
+        background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' }
+    };
+
+    // if (this.props.itemType == "album") {
+    //   background = { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' };
+    //   header = "Our Newest Releases"
+    // } else {
+    //   background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
+    // }
 
     if (!_.isEmpty(this.props.indexItems)) {
       indexItems = this.props.indexItems.map(item => (
@@ -50,10 +63,11 @@ class FeaturedPlaylistsIndex extends React.Component {
       )
     }
 
+
     return(
       <div className="featured-playlists-container" style={background} id="music-items">
         <div className="list">
-          <h1 className="playlists-header">Evening Jams</h1>
+          <h1 className="playlists-header">{header}</h1>
           <ul className="playlist-items">
             {indexItems}
           </ul>
