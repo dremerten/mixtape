@@ -15,6 +15,7 @@ class AlbumIndexItem extends React.Component {
     this.props.history.push(`/browse/albums/${this.album.id}`)
   }
 
+  
   render() {
     let albumName, albumArtist;
     let background = { backgroundImage: 'assets/album_default.jpg' }

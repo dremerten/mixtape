@@ -2,47 +2,60 @@ import React from 'react';
 import NavBar from '../NavBar';
 import { isEmpty } from 'lodash';
 import PlaylistsIndexItem from './playlists_index_item';
+import MusicIndexItem from '../music/music_index_item';
 
 class FeaturedPlaylistsIndex extends React.Component {
 
   componentDidMount() {
-    if (this.props.match.path.match(/featured/)) {
-      this.props.fetchPlaylists({ featured: true });
-    } else if (this.props.match.path.match(/collection/)) {
-      this.props.fetchPlaylists();
+    if (this.props.itemType == "album") {
+      this.props.fetchItems({ order: 'recent' })
+    } else {
+      let filter = (this.props.itemType == "playlist" ? true : null);
+      this.props.fetchItems({ featured: filter })
     }
   }
 
-  componentWillUnmount() {
-    this.props.removePlaylists();
-  }
-
   componentWillReceiveProps(newProps) {
-    if (newProps.match.path == this.props.match.path) {
+    if (newProps.itemType == this.props.itemType) {
       return;
-    } else if (newProps.match.path.match(/featured/)) {
-      this.props.fetchPlaylists({ featured: true });
-    } else if (newProps.match.path.match(/collection/)) {
-      this.props.fetchPlaylists();
+    } else if (newProps.itemType == "album"){
+      this.props.removeItems();
+      newProps.fetchItems({ order: 'recent' });
+    } else {
+      this.props.removeItems();
+      let filter = (newProps.itemType == "playlist" ? true : null);
+      newProps.fetchItems({ featured: filter });
     }
   }
 
   render() {
-    let playlists;
+    let indexItems;
+    let background;
 
-    if (!_.isEmpty(this.props.playlists)) {
-      playlists = this.props.playlists.map(playlist => (
-        <PlaylistsIndexItem playlist={playlist} history={this.props.history} key={playlist.id}/>
+    if (this.props.itemType == "album") {
+      background = { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' };
+    } else {
+      background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
+    }
+
+    if (!_.isEmpty(this.props.indexItems)) {
+      indexItems = this.props.indexItems.map(item => (
+        <MusicIndexItem
+          item={item}
+          history={this.props.history}
+          key={item.id}
+          itemType={this.props.itemType}
+          />
         )
       )
     }
 
     return(
-      <div className="featured-playlists-container">
+      <div className="featured-playlists-container" style={background} id="music-items">
         <div className="list">
           <h1 className="playlists-header">Evening Jams</h1>
           <ul className="playlist-items">
-            {playlists}
+            {indexItems}
           </ul>
         </div>
       </div>
