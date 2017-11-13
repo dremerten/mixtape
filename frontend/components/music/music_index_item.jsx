@@ -20,9 +20,8 @@ class MusicIndexItem extends React.Component {
   }
 
   render() {
-    let background;
-    let itemName, albumArtist;
-    let id = 1
+    let itemName, albumArtist, background;
+    let id = 1;
 
     if (this.item) {
       background = { backgroundImage: 'url(' + this.item.imageUrl + ')' };

@@ -48,7 +48,7 @@ class Album extends React.Component {
           Oops! An error seems to have occured.
         </span>]
       }
-      imageUrl = { backgroundImage: 'url(' + this.props.album.artwork_url + ')' }
+      imageUrl = { backgroundImage: 'url(' + this.props.album.imageUrl + ')' }
     }
 
     return(

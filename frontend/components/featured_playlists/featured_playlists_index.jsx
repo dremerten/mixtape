@@ -4,6 +4,14 @@ import { isEmpty } from 'lodash';
 import PlaylistsIndexItem from './playlists_index_item';
 import MusicIndexItem from '../music/music_index_item';
 
+const LateEveningGreeting = "Sleep Well!";
+const EarlyEveningGreeting = "Wind Down";
+const AfternoonGreeting = "Daytime Jams";
+const MorningGreeting = "Rise and Shine";
+const FridayNightGreeting = "Friday Night";
+const SaturdayNightGreeting = "Saturday Night";
+const SundayGreeting = "Sunday Wind Down";
+
 class FeaturedPlaylistsIndex extends React.Component {
 
   componentDidMount() {
@@ -23,10 +31,29 @@ class FeaturedPlaylistsIndex extends React.Component {
       newProps.fetchItems({ order: 'recent' });
     } else {
       this.props.removeItems();
-      let filter = (newProps.itemType == "playlist" ? true : null);
-      newProps.fetchItems({ featured: filter });
+      let searchFilter = (newProps.itemType == "playlist" ? true : null);
+      newProps.fetchItems({ featured: searchFilter });
     }
   }
+
+  selectRandGreeting(arr) {
+    let i = Math.floor(Math.random() * arr.length);
+    return arr[i];
+  }
+
+  // setGreeting() {
+  //   let dateObj = new Date()
+  //   let time = dateObj.getHours();
+  //   let day = dateObj.getDay();
+  //   let greeting;
+  //
+  //   if (!day) {
+  //     greeting = SundayGreeting;
+  //   } else if (day > 4) {
+  //
+  //   }
+  // }
+
 
   render() {
     let indexItems;
@@ -44,12 +71,6 @@ class FeaturedPlaylistsIndex extends React.Component {
         background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' }
     };
 
-    // if (this.props.itemType == "album") {
-    //   background = { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' };
-    //   header = "Our Newest Releases"
-    // } else {
-    //   background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
-    // }
 
     if (!_.isEmpty(this.props.indexItems)) {
       indexItems = this.props.indexItems.map(item => (

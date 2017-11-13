@@ -49,7 +49,7 @@ class Playlist extends React.Component {
           There aren't any tracks on this playlist yet.
         </span>]
       }
-      imageUrl = { backgroundImage: 'url(' + this.props.playlist.image_url + ')' }
+      imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' }
     }
 
     return(
