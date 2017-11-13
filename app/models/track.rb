@@ -1,4 +1,4 @@
-require 'taglib'
+# require 'taglib'
 
 class Track < ApplicationRecord
   validates :title, presence: true, length: { maximum: 100 }
@@ -19,7 +19,7 @@ class Track < ApplicationRecord
   # def extract_audio_duration
   #   if self.audio_file_name
   #     TagLib::FileRef.open(open(self.audio.url)) do |fileref|
-  #       
+  #
   #       self.length = fileref.audio_properties.length
   #     end
   #   end
