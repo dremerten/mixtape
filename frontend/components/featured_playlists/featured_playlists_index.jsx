@@ -13,6 +13,10 @@ const SaturdayNightGreeting = "Saturday Night";
 const SundayGreeting = "Sunday Wind Down";
 
 class FeaturedPlaylistsIndex extends React.Component {
+  // constructor(props) {
+  //   super(props)
+  //
+  // }
 
   componentDidMount() {
     if (this.props.itemType == "album") {
@@ -41,18 +45,30 @@ class FeaturedPlaylistsIndex extends React.Component {
     return arr[i];
   }
 
-  // setGreeting() {
-  //   let dateObj = new Date()
-  //   let time = dateObj.getHours();
-  //   let day = dateObj.getDay();
-  //   let greeting;
-  //
-  //   if (!day) {
-  //     greeting = SundayGreeting;
-  //   } else if (day > 4) {
-  //
-  //   }
-  // }
+  setGreeting() {
+    let date = new Date()
+    let time = date.getHours();
+    let day = date.getDay();
+    let greeting;
+
+    if (day == 0) {
+      greeting = SundayGreeting;
+    } else if (day == 5) {
+      greeting = SaturdayNightGreeting;
+    } else if (day == 4) {
+      greeting = FridayNightGreeting;
+    } else if (time > 20) {
+      greeting = LateEveningGreeting;
+    } else if (time > 16) {
+      greeting = EarlyEveningGreeting;
+    } else if (time > 11) {
+      greeting = AfternoonGreeting;
+    } else {
+      greeting = MorningGreeting;
+    }
+
+    return greeting;
+  }
 
 
   render() {
@@ -67,7 +83,7 @@ class FeaturedPlaylistsIndex extends React.Component {
         header = "Your Playlists";
         background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
     } else {
-        header = "Evening Jams";
+        header = this.setGreeting();
         background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' }
     };
 
