@@ -34,6 +34,10 @@ class NavBar extends React.Component {
     }
   }
 
+  // selectLink(e) {
+  //   e.currentTarget.className = `${e.currentTarget.className} nav-selected`
+  // }
+
   handleScroll() {
     let pos = this.getScrollableElement().scrollTop
 
@@ -48,13 +52,26 @@ class NavBar extends React.Component {
 
   render() {
     let display = { display: (this.state.isVisible) ? "" : "none" }
-    
-    if (this.props.props.match.path.match(/collection/)) {
+    let currentPath = this.props.props.match.url;
+
+    if (currentPath.match(/collection/)) {
       return(
         <nav className="browse-nav-container" style={display}>
           <div className="browse-nav">
-            <Link to="/collection/playlists" className="nav-link-item">PLAYLISTS</Link>
-            <Link to="/collection/tracks" className="nav-link-item">SONGS</Link>
+            <Link to="/collection/playlists"
+              className={currentPath.match(/playlists/) ?
+                "nav-link-item nav-selected" :
+                "nav-link-item"}
+                >
+              <span>PLAYLISTS</span>
+            </Link>
+            <Link to="/collection/tracks"
+              className={currentPath.match(/tracks/) ?
+                "nav-link-item nav-selected" :
+                "nav-link-item"}
+                >
+              <span>SONGS</span>
+            </Link>
           </div>
           <button
             className='new-playlist'
@@ -69,9 +86,25 @@ class NavBar extends React.Component {
       return(
         <nav className="browse-nav-container" style={display}>
           <div className="browse-nav">
-            <Link to="/browse/featured" className="nav-link-item">FEATURED</Link>
-            <Link to="/browse/genres" className="nav-link-item">GENRES &amp; MOODS</Link>
-            <Link to="/browse/newreleases" className="nav-link-item">NEW RELEASES</Link>
+            <Link to="/browse/featured"
+              className={currentPath.match(/featured/) ?
+                "nav-link-item nav-selected" :
+                "nav-link-item"}
+                >
+              <span>FEATURED</span>
+            </Link>
+            <Link to="#"
+              className={currentPath.match(/genres/) ?
+              "nav-link-item nav-selected" :
+              "nav-link-item"}>
+              <span>GENRES &amp; MOODS</span>
+            </Link>
+            <Link to="/browse/newreleases"
+              className={currentPath.match(/newreleases/) ?
+                "nav-link-item nav-selected" :
+                "nav-link-item"}>
+              <span>NEW RELEASES</span>
+            </Link>
           </div>
         </nav>
       );
