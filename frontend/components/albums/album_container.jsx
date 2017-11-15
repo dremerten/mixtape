@@ -29,9 +29,9 @@ const mapDispatchToProps = dispatch => ({
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchAlbum: id => dispatch(fetchAlbum(id))
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Album)
+)(Album);

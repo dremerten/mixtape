@@ -2,7 +2,10 @@ class Api::SearchesController < ApplicationController
 
   def index
     @tracks = Track.joins(:artist, :album)
-                   .where('lower(tracks.title) ~* :query or lower(artists.name) ~* :query', query: make_query)
+                   .where('lower(tracks.title) ~* :query or
+                           lower(artists.name) ~* :query or
+                           lower(albums.title) ~* :query',
+                           query: make_query)
                    .limit(20)
 
     @artists = Artist.where('lower(name) ~* ?', make_query).limit(20)
