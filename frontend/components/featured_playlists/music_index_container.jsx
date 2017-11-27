@@ -16,10 +16,14 @@ const mapStateToProps = (state, ownProps) => {
     itemType = (path.match(/collection/) ? "userPlaylist" : "playlist");
   } else {
     indexItems = Object.keys(state.entities.albums)
-                       .map(id => state.entities.albums[id])
-  };
+                       .map(id => state.entities.albums[id]);
+  }
 
-  return { indexItems, itemType };
+  return {
+    indexItems,
+    itemType,
+    loading: state.ui.loading
+   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -31,7 +35,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchItems: filters => dispatch(fetchItems(filters)),
     removeItems: () => dispatch(removeItems())
   };
-}
+};
 
 export default connect(
   mapStateToProps,

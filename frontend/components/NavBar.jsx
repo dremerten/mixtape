@@ -4,7 +4,7 @@ import NewPlaylistContainer from './featured_playlists/new_playlist';
 
 class NavBar extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       formActive: false,
       isVisible: true
@@ -15,7 +15,7 @@ class NavBar extends React.Component {
   }
 
   displayPlaylistForm() {
-    this.setState({ formActive: true })
+    this.setState({ formActive: true });
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class NavBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.isNavVisible != this.props.isNavVisible) {
-      this.setState({ show: !show })
+      this.setState({ show: !show });
     }
   }
 
@@ -39,19 +39,17 @@ class NavBar extends React.Component {
   // }
 
   handleScroll() {
-    let pos = this.getScrollableElement().scrollTop
-
+    let pos = this.getScrollableElement().scrollTop;
 
     if (pos > 64) {
-      this.setState({ isVisible: false })
+      this.setState({ isVisible: false });
     } else if (!this.state.isVisible) {
-      this.setState({ isVisible: true })
+      this.setState({ isVisible: true });
     }
-
   }
 
   render() {
-    let display = { display: (this.state.isVisible) ? "" : "none" }
+    let display = { display: (this.state.isVisible) ? "" : "none" };
     let currentPath = this.props.props.match.url;
 
     if (currentPath.match(/collection/)) {

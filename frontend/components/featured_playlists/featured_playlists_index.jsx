@@ -13,24 +13,28 @@ const SaturdayNightGreeting = "Saturday Night";
 const SundayGreeting = "Sunday Wind Down";
 
 class FeaturedPlaylistsIndex extends React.Component {
-  // constructor(props) {
-  //   super(props)
-  //
-  // }
+  constructor(props) {
+    super(props);
+    this.state = { loading: props.loading };
+  }
 
   componentDidMount() {
     if (this.props.itemType == "album") {
-      this.props.fetchItems({ order: 'recent' })
+      this.props.fetchItems({ order: 'recent' });
     } else {
       let filter = (this.props.itemType == "playlist" ? true : null);
-      this.props.fetchItems({ featured: filter })
+      this.props.fetchItems({ featured: filter });
     }
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.itemType == this.props.itemType) {
+    if (newProps.loading != this.state.loading) {
+      this.setState({ loading: !this.state.loading });
+    } else if (newProps.itemType == this.props.itemType) {
       return;
-    } else if (newProps.itemType == "album"){
+    } else if (newProps.loading != this.state.loading) {
+      this.setState({ loading: !this.state.loading });
+    } else if (newProps.itemType == "album") {
       this.props.removeItems();
       newProps.fetchItems({ order: 'recent' });
     } else {
@@ -40,13 +44,8 @@ class FeaturedPlaylistsIndex extends React.Component {
     }
   }
 
-  selectRandGreeting(arr) {
-    let i = Math.floor(Math.random() * arr.length);
-    return arr[i];
-  }
-
   setGreeting() {
-    let date = new Date()
+    let date = new Date();
     let time = date.getHours();
     let day = date.getDay();
     let greeting;
@@ -84,11 +83,11 @@ class FeaturedPlaylistsIndex extends React.Component {
         background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
     } else {
         header = this.setGreeting();
-        background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' }
-    };
+        background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
+    }
 
 
-    if (!_.isEmpty(this.props.indexItems)) {
+    if (!this.state.loading) {
       indexItems = this.props.indexItems.map(item => (
         <MusicIndexItem
           item={item}
@@ -97,18 +96,22 @@ class FeaturedPlaylistsIndex extends React.Component {
           itemType={this.props.itemType}
           />
         )
-      )
+      );
     }
-
 
     return(
       <div className="featured-playlists-container" style={background} id="music-items">
+        { this.state.loading ?
+          <div className="loading-spinner">
+          </div>
+        :
         <div className="list">
           <h1 className="playlists-header">{header}</h1>
           <ul className="playlist-items">
             {indexItems}
           </ul>
         </div>
+        }
       </div>
     );
   }

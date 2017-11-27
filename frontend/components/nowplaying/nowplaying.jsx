@@ -112,8 +112,12 @@ class NowPlayingBar extends React.Component {
     if (!this.state.currentTrack || !this.state.rendered) return;
 
     let currentTime = e.target.value;
-    this.getAudio().currentTime = currentTime;
-    this.setState({ currentTime });
+
+    // Round time value to 6 decimal places
+    let newTime = Math.floor(currentTime * this.getAudio().duration * 1000000) / 1000000
+    debugger
+    this.getAudio().currentTime = newTime;
+    this.setState({ currentTime: this.parseTime(newTime) });
   }
 
   getCurrentTime() {
@@ -121,7 +125,6 @@ class NowPlayingBar extends React.Component {
 
     this.setState({ currentTime });
   }
-
 
   getProgress() {
     if (this.scaleTime()) {
@@ -172,7 +175,6 @@ class NowPlayingBar extends React.Component {
               </Link>
               <div className="title-and-artist">
                 <span className="nav-bar-song">
-
                   {title}
                 </span>
                 <span className="nav-bar-artist">

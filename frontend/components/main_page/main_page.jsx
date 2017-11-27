@@ -8,10 +8,10 @@ import AlbumContainer from '../albums/album_container';
 
 import {
   Route,
-  Switch,
+  Switch
 } from 'react-router-dom';
 
-const MainPage = ( { currentUser }) => {
+const MainPage = ({ currentUser }) => {
   return(
     <div className="main-page">
       <div className="main-page-container">

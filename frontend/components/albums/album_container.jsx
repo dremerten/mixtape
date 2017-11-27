@@ -1,5 +1,7 @@
 import { connect } from 'react-redux';
 import Album from './album';
+import { fetchTracks, removeTracks } from '../../actions/track_actions';
+import { fetchAlbum } from '../../actions/album_actions';
 import {
   play,
   pause,
@@ -9,15 +11,14 @@ import {
   clearQueue,
   setNextTrack
 } from '../../actions/audio_actions';
-import { fetchTracks, removeTracks } from '../../actions/track_actions';
-import { fetchAlbum } from '../../actions/album_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   album: state.entities.albums[ownProps.match.params.albumId],
   tracks: Object.keys(state.entities.tracks)
                 .map(id => state.entities.tracks[id]),
   inProgress: state.nowPlaying.inProgress,
-  currentTrack: state.nowPlaying.currentTrack
+  currentTrack: state.nowPlaying.currentTrack,
+  loading: state.ui.loading
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -17,7 +17,8 @@ const mapStateToProps = (state, ownProps) => ({
   tracks: Object.keys(state.entities.tracks)
                 .map(id => state.entities.tracks[id]),
   inProgress: state.nowPlaying.inProgress,
-  currentTrack: state.nowPlaying.currentTrack
+  currentTrack: state.nowPlaying.currentTrack,
+  loading: state.ui.loading
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -29,9 +30,9 @@ const mapDispatchToProps = dispatch => ({
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchPlaylist: id => dispatch(fetchPlaylist(id))
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Playlist)
+)(Playlist);

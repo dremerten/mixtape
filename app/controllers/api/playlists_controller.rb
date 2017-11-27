@@ -1,6 +1,7 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
+    sleep(1)
     playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
 
     if params[:genreId]
