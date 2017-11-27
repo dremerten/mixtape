@@ -1,12 +1,7 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    sleep(1)
     playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
-
-    if params[:genreId]
-      playlists = Genre.find(params[:genreId]).playlists
-    end
 
     @playlists = playlists.includes(:tracks)
   end
@@ -25,7 +20,7 @@ class Api::PlaylistsController < ApplicationController
     @playlist = Playlist.find(params[:id])
   end
 
-  def updated
+  def update
     @playlist = Playlist.find(params[:id])
 
     if @playlist.update(playlist_params)
@@ -49,7 +44,7 @@ class Api::PlaylistsController < ApplicationController
   private
 
   def is_featured
-    !params[:featured].empty?
+    !!params[:featured]
   end
 
   def playlist_params

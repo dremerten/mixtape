@@ -74,19 +74,19 @@ class NowPlayingBar extends React.Component {
   }
 
   getAudio() {
-    return document.getElementById('track')
+    return document.getElementById('track');
   }
 
   getDuration() {
-    this.getAudio().duration
+    return this.getAudio().duration;
   }
 
   parseTime(time) {
-    let minutes = String(Math.floor(time / 60))
+    let minutes = String(Math.floor(time / 60));
     let seconds = Math.floor(time % 60);
 
-    seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`
-    return `${minutes}:${seconds}`
+    seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+    return `${minutes}:${seconds}`;
   }
 
   setDuration() {
@@ -97,16 +97,16 @@ class NowPlayingBar extends React.Component {
   setVolume(e) {
     if (!this.state.currentTrack || !this.state.rendered) return;
 
-    let volume = e.target.value
+    let volume = e.target.value;
     this.getAudio().volume = volume;
-    this.setState({ volume })
+    this.setState({ volume });
   }
 
-  setDuration() {
-    let duration = this.getAudio().duration;
-
-    this.setState({ duration: this.parseTime(duration) });
-  }
+  // setDuration() {
+  //   let duration = this.getAudio().duration;
+  //
+  //   this.setState({ duration: this.parseTime(duration) });
+  // }
 
   setCurrentTime(e) {
     if (!this.state.currentTrack || !this.state.rendered) return;
@@ -114,14 +114,13 @@ class NowPlayingBar extends React.Component {
     let currentTime = e.target.value;
 
     // Round time value to 6 decimal places
-    let newTime = Math.floor(currentTime * this.getAudio().duration * 1000000) / 1000000
-    debugger
+    let newTime = Math.floor(currentTime * this.getAudio().duration * 1000000) / 1000000;
     this.getAudio().currentTime = newTime;
     this.setState({ currentTime: this.parseTime(newTime) });
   }
 
   getCurrentTime() {
-    let currentTime = this.parseTime(this.getAudio().currentTime)
+    let currentTime = this.parseTime(this.getAudio().currentTime);
 
     this.setState({ currentTime });
   }
@@ -139,26 +138,26 @@ class NowPlayingBar extends React.Component {
   }
 
   toggleVolumeIcon() {
-    if (this.state.volume > .5) {
-      return <i className="fa fa-volume-up" aria-hidden="true"></i>
-    } else if (this.state.volume > .1) {
-      return <i className="fa fa-volume-down" aria-hidden="true"></i>
+    if (this.state.volume > 0.5) {
+      return <i className="fa fa-volume-up" aria-hidden="true"></i>;
+    } else if (this.state.volume > 0.1) {
+      return <i className="fa fa-volume-down" aria-hidden="true"></i>;
     } else {
-      return <i className="fa fa-volume-off" aria-hidden="true"></i>
+      return <i className="fa fa-volume-off" aria-hidden="true"></i>;
     }
   }
 
   render() {
     let title, artist;
-    let source = ''
+    let source = '';
     let currentVolume = this.toggleVolumeIcon();
-    let link = '/'
+    let link = '/';
 
     if (this.state.currentTrack) {
       title = this.state.currentTrack.title;
       artist = this.state.currentTrack.artist;
-      source = this.state.currentTrack.trackUrl
-      link = `/browse/albums/${this.state.currentTrack.album_id}`
+      source = this.state.currentTrack.trackUrl;
+      link = `/browse/albums/${this.state.currentTrack.album_id}`;
     }
 
     return(

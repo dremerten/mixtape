@@ -69,7 +69,6 @@ class FeaturedPlaylistsIndex extends React.Component {
     return greeting;
   }
 
-
   render() {
     let indexItems;
     let background;
@@ -86,7 +85,6 @@ class FeaturedPlaylistsIndex extends React.Component {
         background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
     }
 
-
     if (!this.state.loading) {
       indexItems = this.props.indexItems.map(item => (
         <MusicIndexItem
@@ -100,7 +98,10 @@ class FeaturedPlaylistsIndex extends React.Component {
     }
 
     return(
-      <div className="featured-playlists-container" style={background} id="music-items">
+      <div className="featured-playlists-container"
+           style={background}
+           id="music-items"
+           >
         { this.state.loading ?
           <div className="loading-spinner">
           </div>

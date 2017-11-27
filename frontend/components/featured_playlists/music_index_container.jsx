@@ -4,16 +4,22 @@ import { connect } from 'react-redux';
 import { fetchPlaylists, removePlaylists } from '../../actions/playlist_actions';
 import { fetchAlbums, removeAlbums } from '../../actions/album_actions';
 
+// TODO: Create different containers for presentational components to avoid conditionals
 
 const mapStateToProps = (state, ownProps) => {
   let path = ownProps.match.path;
   let indexItems;
   let itemType = "album";
 
-  if (path.match(/featured|collection/)) {
-    indexItems = Object.keys(state.entities.playlists)
-                       .map(id => state.entities.playlists[id]);
-    itemType = (path.match(/collection/) ? "userPlaylist" : "playlist");
+  if (path.match(/featured/)) {
+    indexItems = Object.keys(state.entities.playlists.byId)
+                       .map(id => state.entities.playlists.byId[id]);
+
+    itemType = "playlist";
+  } else if (path.match(/collection/)) {
+    indexItems = Object.keys(state.entities.playlists.currentUser)
+                       .map(id => state.entities.playlists.currentUser[id]);
+    itemType = "userPlaylist";
   } else {
     indexItems = Object.keys(state.entities.albums)
                        .map(id => state.entities.albums[id]);
