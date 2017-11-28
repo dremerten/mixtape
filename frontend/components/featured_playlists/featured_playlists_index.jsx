@@ -16,6 +16,7 @@ class FeaturedPlaylistsIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = { loading: props.loading };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,7 @@ class FeaturedPlaylistsIndex extends React.Component {
       this.props.fetchItems({ featured: filter });
     }
   }
+
 
   componentWillReceiveProps(newProps) {
     if (newProps.loading != this.state.loading) {
@@ -69,6 +71,12 @@ class FeaturedPlaylistsIndex extends React.Component {
     return greeting;
   }
 
+  handleScroll() {
+    // debugger
+    // let pos = this.element.scrollTop;
+    this.props.setScrollPosition(this.element.scrollTop);
+  }
+
   render() {
     let indexItems;
     let background;
@@ -99,9 +107,11 @@ class FeaturedPlaylistsIndex extends React.Component {
 
     return(
       <div className="featured-playlists-container"
-           style={background}
-           id="music-items"
-           >
+        style={background}
+        id="music-items"
+        ref={(el) => { this.element = el; }}
+        onScroll={this.handleScroll}
+        >
         { this.state.loading ?
           <div className="loading-spinner">
           </div>

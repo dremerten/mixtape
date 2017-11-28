@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { fetchPlaylists, removePlaylists } from '../../actions/playlist_actions';
 import { fetchAlbums, removeAlbums } from '../../actions/album_actions';
-
+import { setScrollPosition } from '../../actions/ui_actions';
 // TODO: Create different containers for presentational components to avoid conditionals
 
 const mapStateToProps = (state, ownProps) => {
@@ -39,7 +39,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 
   return {
     fetchItems: filters => dispatch(fetchItems(filters)),
-    removeItems: () => dispatch(removeItems())
+    removeItems: () => dispatch(removeItems()),
+    setScrollPosition: pos => dispatch(setScrollPosition(pos))
   };
 };
 

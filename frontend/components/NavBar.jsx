@@ -18,15 +18,15 @@ class NavBar extends React.Component {
     this.setState({ formActive: true });
   }
 
-  componentDidMount() {
-    this.getScrollableElement().addEventListener(
-      'scroll', () => this.handleScroll()
-    );
-  }
-
-  getScrollableElement() {
-    return document.getElementById('music-items');
-  }
+  // componentDidMount() {
+  //   this.getScrollableElement().addEventListener(
+  //     'scroll', () => this.handleScroll()
+  //   );
+  // }
+  //
+  // getScrollableElement() {
+  //   return document.getElementById('music-items');
+  // }
 
   componentWillReceiveProps(newProps) {
     if (newProps.isNavVisible != this.props.isNavVisible) {
@@ -34,13 +34,8 @@ class NavBar extends React.Component {
     }
   }
 
-  // selectLink(e) {
-  //   e.currentTarget.className = `${e.currentTarget.className} nav-selected`
-  // }
-
   handleScroll() {
     let pos = this.getScrollableElement().scrollTop;
-
     if (pos > 64) {
       this.setState({ isVisible: false });
     } else if (!this.state.isVisible) {
