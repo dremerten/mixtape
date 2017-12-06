@@ -157,7 +157,11 @@ genres = [
 ]
 
 30.times do
-  SavedTrack.create!(user_id: sennacy.id, track_id: Track.all.sample.id)
+  begin
+    SavedTrack.create!(user_id: sennacy.id, track_id: Track.all.sample.id)
+  rescue
+    retry
+  end
 end
 
 genres.each { |genre| Genre.create!(name: genre) }

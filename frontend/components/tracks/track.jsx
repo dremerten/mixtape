@@ -2,64 +2,66 @@ import React from 'react';
 
 class Track extends React.Component {
   constructor(props) {
-    super(props)
-    this.track = props.track
-    this.currentTrack = props.props.currentTrack
+    super(props);
+    this.track = props.track;
+    this.currentTrack = props.currentTrack;
     this.state = {
-      inProgress: props.props.currentTrack &&
-        (props.props.currentTrack.id == this.track.id) &&
-        props.props.inProgress
+      inProgress: props.currentTrack &&
+        (props.currentTrack.id == this.track.id) &&
+        props.inProgress
     };
+
     this.isCurrentTrack = this.isCurrentTrack.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.isPlaylist = this.isPlaylist.bind(this);
   }
 
+  isCurrentTrack() {
+    return this.props.currentTrack &&
+    this.props.currentTrack.id == this.track.id;
+  }
+  
   play() {
-    this.props.props.play()
+    this.props.play();
   }
 
-  isCurrentTrack() {
-    return this.props.props.currentTrack &&
-    this.props.props.currentTrack.id == this.track.id
-  }
 
   pause() {
-    this.props.props.pause()
+    this.props.pause();
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.props.currentTrack && newProps.props.currentTrack.id == this.track.id) {
       this.setState({
         inProgress: newProps.props.inProgress
-      })
+      });
     } else {
       this.setState({
         inProgress: false
-      })
+      });
     }
   }
 
   handlePlay() {
     if (this.isCurrentTrack()) {
-      (this.props.props.inProgress) ? this.pause() : this.play();
+      (this.props.inProgress) ? this.pause() : this.play();
       this.setState({ inProgress: !this.state.inProgress });
     } else {
-      this.props.props.playSingleTrack(this.track)
-      this.setState({ inProgress: true })
+      this.props.playSingleTrack(this.track);
+      this.setState({ inProgress: true });
     }
   }
 
   isPlaylist() {
-    return !!(this.props.props.match.params.playlistId)
+    return !!(this.props.match.params.playlistId);
   }
 
   render() {
-    let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>
+    let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>;
     let trackInfo;
 
     if (this.state.inProgress) {
-      playButton = <i className="fa fa-pause track-play-pause" aria-hidden="true"></i>
+      playButton = <i className="fa fa-pause track-play-pause" aria-hidden="true"></i>;
     }
 
     return(
@@ -79,20 +81,22 @@ class Track extends React.Component {
                 &middot;
                 <span>{` ${this.track.album}`}</span>
               </span>
-              <span className="duration">
-                {this.duration}
-              </span>
             </div>
             <div>
-
+              <button
+                className='track-dropdown-button'
+                onClick
+                >
+                ...
+              </button>
+              <span>
+                3:26
+              </span>
             </div>
-            <div></div>
-            <div></div>
-            <div></div>
           </div>
         </li>
       </div>
-    )
+    );
   }
 
 }

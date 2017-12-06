@@ -3,18 +3,18 @@ import Track from '../tracks/track';
 // import Link from 'react-dom-router';
 class Playlist extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     // this.playlist = props.props.playlist
     // this.tracks = props.props.tracks
     this.state = {
       paused: this.props.inProgress
-    }
+    };
   }
 
   componentDidMount() {
     let playlistId = this.props.match.params.playlistId;
     if (playlistId) {
-      this.props.fetchPlaylist(playlistId)
+      this.props.fetchPlaylist(playlistId);
     }
   }
 
@@ -27,29 +27,30 @@ class Playlist extends React.Component {
     let newId = newProps.match.params.playlistId;
 
     if ( newId !== id) {
-      this.props.fetchPlaylist(newId)
+      this.props.fetchPlaylist(newId);
     }
   }
 
   render() {
+    debugger
     let tracks, title, author;
-    let imageUrl = { backgroundImage: "image_url('album_default.jpg')" }
+    let imageUrl = { backgroundImage: "image_url('album_default.jpg')" };
 
     if (this.props.playlist) {
       tracks = this.props.tracks.map(track => (
-        <Track props={this.props} track={track} key={track.id}/>
+        <Track { ...Object.assign({}, this.props, { track })  } key={track.id} />
         )
       );
 
-      title = this.props.playlist.name
-      author = this.props.playlist.author_name
+      title = this.props.playlist.name;
+      author = this.props.playlist.author_name;
 
       if (!tracks.length) {
         tracks = [<span className="track-row-wrapper no-hover">
           There aren't any tracks on this playlist yet.
-        </span>]
+        </span>];
       }
-      imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' }
+      imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' };
     }
 
     return(
@@ -75,7 +76,7 @@ class Playlist extends React.Component {
           </ol>
         </div>
       </div>
-    )
+    );
   }
 
 }

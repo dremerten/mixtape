@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const SideBar = ({ currentUser }) => {
   let username = currentUser.email
@@ -16,15 +16,15 @@ const SideBar = ({ currentUser }) => {
             <div className="sidebar-header">
               <Link to='/browse/featured' className='sidebar-logo'></Link>
             </div>
-            <Link to="/browse/search" className="search-lin">
+            <NavLink to="/browse/search" activeClassName='search-selected'>
               <div className="sidebar-group with-icon">
                 <li className="sidebar-item">Search</li>
                 <i className="sidebar-item fa fa-search" aria-hidden="true"></i>
               </div>
-          </Link>
+          </NavLink>
             <div className="sidebar-group">
-              <Link to="/browse/featured"className="sidebar-item">Home</Link>
-              <Link to="/collection/playlists" className="sidebar-item"><li>Your Music</li></Link>
+              <NavLink to="/browse/featured"className="sidebar-item" activeClassName="sidebar-item-selected">Home</NavLink>
+              <NavLink to="/collection/playlists" className="sidebar-item" activeClassName="sidebar-item-selected"><li>Your Music</li></NavLink>
             </div>
           </ul>
         </div>

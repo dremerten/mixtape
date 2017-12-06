@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import NewPlaylistContainer from './featured_playlists/new_playlist';
 
 class NavBar extends React.Component {
@@ -11,32 +12,14 @@ class NavBar extends React.Component {
     };
 
     this.displayPlaylistForm = this.displayPlaylistForm.bind(this);
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
   displayPlaylistForm() {
     this.setState({ formActive: true });
   }
 
-  // componentDidMount() {
-  //   this.getScrollableElement().addEventListener(
-  //     'scroll', () => this.handleScroll()
-  //   );
-  // }
-  //
-  // getScrollableElement() {
-  //   return document.getElementById('music-items');
-  // }
-
   componentWillReceiveProps(newProps) {
-    if (newProps.isNavVisible != this.props.isNavVisible) {
-      this.setState({ show: !show });
-    }
-  }
-
-  handleScroll() {
-    let pos = this.getScrollableElement().scrollTop;
-    if (pos > 64) {
+    if (newProps.scrollPosition > 60) {
       this.setState({ isVisible: false });
     } else if (!this.state.isVisible) {
       this.setState({ isVisible: true });
@@ -105,4 +88,10 @@ class NavBar extends React.Component {
   }
 }
 
-export default NavBar;
+const mapStateToProps = (state, ownProps) => ({
+  scrollPosition: state.ui.scrollPosition
+});
+
+export default connect(
+  mapStateToProps
+)(NavBar);

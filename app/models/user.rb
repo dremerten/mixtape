@@ -3,16 +3,23 @@ class User < ApplicationRecord
   validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
+  after_initialize :ensure_session_token
 
   has_attached_file :avatar, default_url: 'avatar.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  after_initialize :ensure_session_token
 
   has_many :playlists, foreign_key: :author_id, class_name: 'Playlist'
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
-  
+
+  def save_track(track_id)
+    SavedTrack.create(
+      track_id: track_id,
+      user_id: id
+    )
+  end
+
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
 

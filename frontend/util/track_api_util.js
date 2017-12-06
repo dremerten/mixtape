@@ -12,3 +12,10 @@ export const fetchTrack = id => (
     url: `api/tracks/${id}`
   })
 );
+
+export const saveTrack = id => (
+  $.ajax({
+    method: 'PATCH',
+    url: `api/`
+  })
+);

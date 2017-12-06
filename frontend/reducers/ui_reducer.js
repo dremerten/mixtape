@@ -1,5 +1,8 @@
 import merge from 'lodash/merge';
-import { SET_SCROLL_POSITION } from '../actions/ui_actions';
+import { SET_SCROLL_POSITION,
+  DISPLAY_PLAYLIST_FORM,
+  HIDE_PLAYLIST_FORM
+ } from '../actions/ui_actions';
 import {
   START_LOADING_ALL_ALBUMS,
   START_LOADING_SINGLE_ALBUM,
@@ -16,7 +19,8 @@ import {
 
 const defaultState = {
   loading: false,
-  scrollPosition: 0
+  scrollPosition: 0,
+  playlistFormVisible: false
 };
 
 const UIReducer = (state = defaultState, action) => {
@@ -25,6 +29,12 @@ const UIReducer = (state = defaultState, action) => {
   switch(action.type) {
     case SET_SCROLL_POSITION:
       newState = merge({}, state, { scrollPosition: action.pos });
+      return newState;
+    case DISPLAY_PLAYLIST_FORM:
+      newState = merge({}, state, { playlistFormVisible: true });
+      return newState;
+    case HIDE_PLAYLIST_FORM:
+      newState = merge({}, state, { playlistFormVisible: false });
       return newState;
     case START_LOADING_ALL_ALBUMS:
     case START_LOADING_SINGLE_ALBUM:

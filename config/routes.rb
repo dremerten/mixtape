@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#root'
 
-  namespace :api, defaults: {format: :json} do
+  namespace :api, defaults: { format: :json } do
     resources :tracks, only: [:index,:show]
     resources :users, only: [:show, :new, :create, :destroy]
     resource :session, only: [:create, :destroy]
@@ -10,6 +10,10 @@ Rails.application.routes.draw do
     resources :albums, only: [:index, :show]
     resources :genres, only: [:index, :show]
     resources :searches, only: [:index]
+    resources :saved_tracks, only: [:create, :destroy]
+
+    get 'tracks/:id/save', to: 'tracks#create_track_save'
+    delete 'tracks/:id/save', to: 'tracks#remove_track_save'
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
