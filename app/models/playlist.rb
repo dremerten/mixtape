@@ -14,4 +14,13 @@ class Playlist < ApplicationRecord
   def self.user_playlists(user)
     Playlist.where(author_id: user.id).order(id: 'desc').limit(40)
   end
+
+  def add_track(track_id)
+    update(track_ids: track_ids + [track_id])
+  end
+
+  def remove_track(track_id)
+    update(track_ids: track_ids - [track_id.to_i])
+  end
+
 end

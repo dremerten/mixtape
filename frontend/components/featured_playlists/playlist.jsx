@@ -32,7 +32,6 @@ class Playlist extends React.Component {
   }
 
   render() {
-    debugger
     let tracks, title, author;
     let imageUrl = { backgroundImage: "image_url('album_default.jpg')" };
 

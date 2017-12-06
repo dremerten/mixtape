@@ -1,4 +1,5 @@
 import React from 'react';
+import TrackDropDown from '../dropdowns/TrackDropDown';
 
 class Track extends React.Component {
   constructor(props) {
@@ -6,6 +7,7 @@ class Track extends React.Component {
     this.track = props.track;
     this.currentTrack = props.currentTrack;
     this.state = {
+      dropDownOpen: false,
       inProgress: props.currentTrack &&
         (props.currentTrack.id == this.track.id) &&
         props.inProgress
@@ -14,13 +16,14 @@ class Track extends React.Component {
     this.isCurrentTrack = this.isCurrentTrack.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.isPlaylist = this.isPlaylist.bind(this);
+    this.toggleDropDown = this.toggleDropDown.bind(this);
   }
 
   isCurrentTrack() {
     return this.props.currentTrack &&
     this.props.currentTrack.id == this.track.id;
   }
-  
+
   play() {
     this.props.play();
   }
@@ -31,9 +34,9 @@ class Track extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.props.currentTrack && newProps.props.currentTrack.id == this.track.id) {
+    if (newProps.currentTrack && newProps.currentTrack.id == this.track.id) {
       this.setState({
-        inProgress: newProps.props.inProgress
+        inProgress: newProps.inProgress
       });
     } else {
       this.setState({
@@ -44,7 +47,7 @@ class Track extends React.Component {
 
   handlePlay() {
     if (this.isCurrentTrack()) {
-      (this.props.inProgress) ? this.pause() : this.play();
+      this.props.inProgress ? this.pause() : this.play();
       this.setState({ inProgress: !this.state.inProgress });
     } else {
       this.props.playSingleTrack(this.track);
@@ -54,6 +57,17 @@ class Track extends React.Component {
 
   isPlaylist() {
     return !!(this.props.match.params.playlistId);
+  }
+
+  toggleDropDown() {
+    debugger
+    if (this.state.dropDownOpen) {
+      this.setState({ dropDownOpen: false });
+      this.dropDown.addClass('hidden');
+    } else {
+      this.setState({ dropDownOpen: true});
+      this.dropDown.removeClass('hidden');
+    }
   }
 
   render() {
@@ -66,8 +80,8 @@ class Track extends React.Component {
 
     return(
       <div className='track-row-wrapper'>
-        <li className='track-row' onClick={this.handlePlay}>
-          <div className='track-play-pause'>
+        <li className='track-row'>
+          <div className='track-play-pause' onClick={this.handlePlay}>
             {playButton}
           </div>
           <div className="track-info">
@@ -85,9 +99,10 @@ class Track extends React.Component {
             <div>
               <button
                 className='track-dropdown-button'
-                onClick
+                onClick={ this.toggleDropDown}
                 >
                 ...
+                {<TrackDropDown ref={(el) => { this.dropDown = el; }} />}
               </button>
               <span>
                 3:26

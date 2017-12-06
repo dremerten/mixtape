@@ -15,7 +15,14 @@ export const fetchTrack = id => (
 
 export const saveTrack = id => (
   $.ajax({
-    method: 'PATCH',
-    url: `api/`
+      method: 'POST',
+      url: `api/tracks/${id}/save`,
+  })
+);
+
+export const removeTrack = id => (
+  $.ajax({
+      method: 'DELETE',
+      url: `api/tracks/${id}/save`,
   })
 );

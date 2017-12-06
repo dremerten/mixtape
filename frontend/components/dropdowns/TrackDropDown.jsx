@@ -1,7 +1,12 @@
-import GenericDropDown from './GenericDropdown';
+import SaveSong from './SongSaveDropDownItem';
+import AddToPlaylist from './AddTrackToPlaylist';
+import GenericDropDown from './GenericDropDown';
+import { connect } from 'react-redux';
 
-const listItems = () => (
-    <div>
+const listItems = [SaveSong, AddToPlaylist];
 
-    </div>
-);
+const mapStateToProps = state => ({
+  listItems
+});
+
+export default connect(mapStateToProps)(GenericDropDown);

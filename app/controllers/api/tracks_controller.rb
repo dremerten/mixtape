@@ -18,11 +18,18 @@ class Api::TracksController < ApplicationController
   end
 
   def create_track_save
-    current_user.save_track(params[:id])
+    if current_user.track_ids.include?(params[:id].to_i)
+      render json: ["You have already saved this track"]
+    else
+      current_user.save_track(params[:id])
+      render json: ["Track successfully added"]
+    end
   end
 
   def remove_track_save
+    current_user.remove_track(params[:id])
 
+    render json: ["This track has been removed from your collection."]
   end
 
   private

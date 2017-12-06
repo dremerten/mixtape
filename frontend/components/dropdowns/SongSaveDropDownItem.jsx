@@ -1,8 +1,16 @@
 import GenericDropDownItem from './GenericDropDownItem';
 import { connect } from 'react-redux';
-import { saveSong } from '../actions/';
+import { saveSong } from '../../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  handleClick: (songId) => dispatch(saveSong(songId)),
-  currentUser: state.session.currentUser
+  buttonText: "Save Song"
 });
+
+const mapDispatchToProps = dispatch => ({
+  handleClick: songId => dispatch(saveSong(songId))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(GenericDropDownItem);

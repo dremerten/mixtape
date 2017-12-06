@@ -31,14 +31,26 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def destroy
-    @playlist = Playlist.find(params[:id])
+    playlist = Playlist.find(params[:id])
 
-    if @playlist
-      @playlist.destroy
+    if playlist
+      playlist.destroy
       render json: {}
     else
       render json: ['Playlist does not exist']
     end
+  end
+
+  def add_track
+    playlist = Playlist.find(params[:id])
+
+    playlist.add_track(params[:track_id])
+  end
+
+  def remove_track
+    playlist = Playlist.find(params[:id])
+
+    playlist.remove_track(params[:track_id])
   end
 
   private

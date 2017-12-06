@@ -14,10 +14,11 @@ class User < ApplicationRecord
   has_many :tracks, through: :saved_tracks, source: :track
 
   def save_track(track_id)
-    SavedTrack.create(
-      track_id: track_id,
-      user_id: id
-    )
+    update(track_ids: track_ids + [track_id])
+  end
+
+  def remove_track(track_id)
+    update(track_ids: track_ids - [track_id.to_i])
   end
 
   def self.find_by_credentials(email, pw)
