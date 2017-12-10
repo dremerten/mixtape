@@ -15,14 +15,24 @@ export const fetchTrack = id => (
 
 export const saveTrack = id => (
   $.ajax({
-      method: 'POST',
-      url: `api/tracks/${id}/save`,
+    method: 'POST',
+    url: `api/tracks/${id}/save`,
   })
 );
 
+export const saveTrackToPlaylist = (trackId, playlistId) => (
+  $.ajax({
+    method: 'POST',
+    url: `api/playlists/${playlistId}/tracks`,
+    data: {
+      trackId
+    }
+  })
+)
+
 export const removeTrack = id => (
   $.ajax({
-      method: 'DELETE',
-      url: `api/tracks/${id}/save`,
+    method: 'DELETE',
+    url: `api/tracks/${id}/save`,
   })
 );

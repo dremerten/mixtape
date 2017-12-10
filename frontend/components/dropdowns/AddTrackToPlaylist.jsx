@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 // import { saveSong } from '../actions/track_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  buttonText: "Save Song"
+  buttonText: "AddTrackToPlaylist"
 });
 
 // const mapDispatchToProps = dispatch => ({

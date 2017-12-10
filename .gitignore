@@ -23,6 +23,7 @@ node_modules/
 bundle.js
 bundle.js.map
 .DS_Store
+frontend/components/NavBar.jsx
 npm-debug.log
 aws_keys.yml
 artists/*

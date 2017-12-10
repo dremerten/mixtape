@@ -3,7 +3,7 @@ class Api::PlaylistsController < ApplicationController
   def index
     playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
 
-    @playlists = playlists.includes(:tracks)
+    @playlists = playlists
   end
 
   def create
@@ -17,7 +17,7 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def show
-    @playlist = Playlist.find(params[:id])
+    @playlist = Playlist.includes(tracks: [:album, :artist]).find(params[:id])
   end
 
   def update
@@ -44,19 +44,19 @@ class Api::PlaylistsController < ApplicationController
   def add_track
     playlist = Playlist.find(params[:id])
 
-    playlist.add_track(params[:track_id])
+    playlist.add_track(params[:trackId])
   end
 
   def remove_track
     playlist = Playlist.find(params[:id])
 
-    playlist.remove_track(params[:track_id])
+    playlist.remove_track(params[:trackId])
   end
 
   private
 
   def is_featured
-    !!params[:featured]
+    params[:type] == 'featured'
   end
 
   def playlist_params

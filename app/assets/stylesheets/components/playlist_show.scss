@@ -12,22 +12,54 @@
   overflow: hidden;
 }
 
+.playlist-image {
+  background-size: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
 .playlist-info {
   width: 25%;
-  margin: 0 auto;
   padding-left: 40px;
-  padding-right: 40px;
-  text-align: center;
-  margin: 0 auto;
+  padding-right: 30px;
   margin-top: 40px;
-  position: fixed;
+
+  .headers {
+    padding-top: 10px;
+    color: #e2e2e2;
+    font-size: 30px;
+    font-family: $open;
+    font-weight: bolder;
+
+    .playlist-title, .author {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      padding-top: 10px;
+
+      span:hover {
+        text-decoration: underline;
+        cursor: pointer;
+        color: white;
+        transition-duration: .5s;
+      }
+    }
+
+    .author {
+      margin-top: 10px;
+      color: $transluscent-white;
+      letter-spacing: 1px;
+      font-size: 14px;
+      font-weight: 300;
+      font-family: $open;
+    }
+  }
 }
 
 .show {
-  width: 230px;
-  height: 230px;
-  margin: 40px 8px 10px 40px;
-  padding: 0;
+  width: 100%;
+  background-position: contain;
+  background-repeat: no-repeat;
+  padding-bottom: 100%;
   border-radius: 2px;
 }
 
@@ -38,42 +70,15 @@
 .tracklist-container {
   width: 75%;
   height: auto;
-  padding-bottom: 100px;
-  padding-right: 8px;
+  padding: 40px 8px 100px 0;
   margin: 0 auto;
-  padding-top: 80px;
-  margin-left: 330px;
   list-style: decimal inside;
   overflow-y: scroll;
 }
 
-.headers {
-  position: fixed;
-  width: 230px;
-  padding-left: 40px;
-  padding-top: 10px;
-  color: #e2e2e2;
-  font-size: 30px;
-  font-family: $open;
-  font-weight: bolder;
-}
-
-
-.author {
-  margin-top: 10px;
-  color: $transluscent-white;
-  letter-spacing: 1px;
-  font-size: 14px;
-  font-weight: 300;
-  font-family: $open;
-}
 
 .artist {
   font-size: 12px;
   margin-top: 5px;
   text-align: center;
-}
-.author span:hover {
-  text-decoration: underline;
-  cursor: pointer;
 }

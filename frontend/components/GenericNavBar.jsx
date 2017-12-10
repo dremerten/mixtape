@@ -10,6 +10,7 @@ export default function(props) {
             <NavLink to={ path }
               className='nav-link-item'
               activeClassName='nav-link-item nav-selected'
+              key={index}
               >
               <span>{ props.linkNames[index] }</span>
             </NavLink>

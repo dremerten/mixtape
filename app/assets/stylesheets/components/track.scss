@@ -11,7 +11,7 @@
   transition: background-color .2s;
   color: $transluscent-white;
   letter-spacing: 1px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: lighter;
   font-family: $open;
   border-radius: 1px;
@@ -54,7 +54,10 @@
   letter-spacing: 4px;
   font-weight: bold;
   display: none;
-  position: relative;
+
+  &:focus {
+    display: inline;
+  }
 }
 
 .track-row-wrapper:hover .track-dropdown-button {
@@ -95,6 +98,13 @@
   color: white;
 }
 
-.track-album-artist span:hover {
-  text-decoration: underline;
+.track-album-artist {
+  padding-top: 5px;
+
+  span:hover {
+    text-decoration: underline;
+    color: white;
+    cursor: pointer;
+    transition-duration: 0.5s;
+  }
 }

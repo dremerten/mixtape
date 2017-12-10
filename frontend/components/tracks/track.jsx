@@ -45,6 +45,14 @@ class Track extends React.Component {
     }
   }
 
+  closeDropdown() {
+    $('root').on('click', () => this.toggleDropDown());
+  }
+
+  openDropDown() {
+
+  }
+
   handlePlay() {
     if (this.isCurrentTrack()) {
       this.props.inProgress ? this.pause() : this.play();
@@ -56,17 +64,25 @@ class Track extends React.Component {
   }
 
   isPlaylist() {
+    debugger
     return !!(this.props.match.params.playlistId);
   }
 
   toggleDropDown() {
-    debugger
     if (this.state.dropDownOpen) {
       this.setState({ dropDownOpen: false });
-      this.dropDown.addClass('hidden');
+      this.dropDown
+          .getWrappedInstance()
+          .setState({ clicked: false });
+
+      this.openDropdown();
     } else {
       this.setState({ dropDownOpen: true});
-      this.dropDown.removeClass('hidden');
+      this.dropDown
+          .getWrappedInstance()
+          .setState({ clicked: true });
+
+      this.closeDropdown();
     }
   }
 
@@ -99,16 +115,19 @@ class Track extends React.Component {
             <div>
               <button
                 className='track-dropdown-button'
-                onClick={ this.toggleDropDown}
+                onClick={this.toggleDropDown}
                 >
                 ...
-                {<TrackDropDown ref={(el) => { this.dropDown = el; }} />}
               </button>
               <span>
                 3:26
               </span>
             </div>
           </div>
+          <TrackDropDown
+            ref={(el) => { this.dropDown = el; }}
+            trackId={this.track.id}
+            />
         </li>
       </div>
     );

@@ -2,10 +2,10 @@ import React from 'react';
 
 export default function(props) {
   return(
-    <div>
-      <button onClick={props.handleClick}>
-        {props.buttonText}
-      </button>
-    </div>
+    <li onClick={() => props.handleClick(props.trackId)}
+        className='drop-down-item'
+        >
+      {props.buttonText}
+    </li>
   );
 }

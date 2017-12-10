@@ -38,3 +38,9 @@ export const saveTrack = id => dispatch => (
     dispatch(receiveSongSaveStatus(response))
   )
 );
+
+export const saveTrackToPlaylist = (trackId, playlistId) => dispatch => (
+  TrackApiUtil.saveTrackToPlaylist(trackId, playlistId).then(response => (
+    dispatch(receiveSongSaveStatus))
+  )
+);

@@ -45,7 +45,7 @@ class Playlist extends React.Component {
       author = this.props.playlist.author_name;
 
       if (!tracks.length) {
-        tracks = [<span className="track-row-wrapper no-hover">
+        tracks = [<span className="track-row-wrapper no-hover" key={1}>
           There aren't any tracks on this playlist yet.
         </span>];
       }

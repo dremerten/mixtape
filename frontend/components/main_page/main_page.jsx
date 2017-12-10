@@ -18,10 +18,10 @@ const MainPage = ({ currentUser }) => {
         <SideBar currentUser={currentUser}/>
         <Switch>
           <Route path="/browse/search" component={SearchContainer}/>
-          <Route path="/browse/playlists/:playlistId" component={PlaylistContainer} />
-          <Route path="/browse/albums/:albumId" component={AlbumContainer} />
-          <Route path="/browse/:musicPage" component={MusicPortal}/>
-          <Route path="/collection/playlists" component={MusicPortal}/>
+          <Route exact path="/browse/playlists/:playlistId" component={PlaylistContainer} />
+          <Route exact path="/collection/playlists/:playlistId" component={PlaylistContainer} />
+          <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
+          <Route path="/" component={MusicPortal}/>
         </Switch>
         <NowPlayingBarContainer/>
       </div>
@@ -30,25 +30,26 @@ const MainPage = ({ currentUser }) => {
 }
 
 export default MainPage;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-const thing = '<Route path="browse/playlist/:playlistId" component={PlaylistContainer}/>'
+//
+// <Route path="/browse/:musicPage" component={MusicPortal}/>
+// <Route path="/collection/playlists" component={MusicPortal}/>
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+// const thing = '<Route path="browse/playlist/:playlistId" component={PlaylistContainer}/>'
