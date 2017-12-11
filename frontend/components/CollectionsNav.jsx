@@ -8,7 +8,8 @@ const mapStateToProps = state => {
   return {
     scrollPosition: state.ui.scrollPosition,
     pathNames,
-    linkNames
+    linkNames,
+    isButtonVisible: true
   };
 };
 

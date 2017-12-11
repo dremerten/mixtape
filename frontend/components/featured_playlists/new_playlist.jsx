@@ -4,98 +4,82 @@ import { withRouter } from 'react-router-dom';
 import React from 'react';
 
 
-class NewPlaylist extends React.Component {
+class NewPlaylistForm extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
       name: '',
-      author_id: props.currentUser.id,
-      active: props.active
-    }
+    };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.closeModal = this.closeModal.bind(this);
     this.update = this.update.bind(this);
   }
 
   update(e) {
     e.preventDefault();
 
-    this.setState({ name: e.target.value })
+    this.setState({ name: e.target.value });
   }
 
 
   handleSubmit(e) {
     e.preventDefault();
-    let { name, author_id } = this.state
-
-    this.props.createPlaylist({ name, author_id }).then(() =>
-      this.setState({ active: false })
-    )
+    const { name } = this.state;
+    this.props.createPlaylist({ name }).then(({ data }) => (
+      this.props.history.push(`/collection/playlists/${data.playlist.id}`)
+    ))
   }
 
-  componentWillReceiveProps(newProps) {
-    if (newProps.active != this.props.active) {
-      this.setState({ active: !this.state.active })
-    }
-  }
-
-  closeModal() {
-    this.setState({ active: false })
-    this.props.history.push('/collection/playlists')
-  }
 
   render() {
     return(
       <div className="new-playlist-wrapper">
-      <div
-        className="new-playlist-container"
-        id='new-playlist'
-        style={{ display: (this.state.active) ? "" : "none" }}
-        >
-        <div className="form-wrapper">
-          <div className="form-header">
-            <button className='close=button'
-              onClick={this.closeModal}
-              >X</button>
-            <h1>Create new playlist</h1>
-          </div>
-          <div className="search-input-container">
-            <div className="input-heading-wrapper playlist">
-              <span className="input-header">Playlist Name</span>
+        <div
+          className="new-playlist-container"
+          >
+          <div className="form-wrapper">
+            <div className="form-header">
+              <button className='close-button'
+                onClick={this.props.handleCloseModal}
+                >X</button>
+              <h1>Create new playlist</h1>
             </div>
-            <form>
-              <input
-                className="search-input-field playlist"
-                onChange={e => this.update(e)}
-                placeholder="Start typing..."
-                type="text"
-                value={this.state.name}
-                ></input>
-              <div className="new-playlist-buttons">
-                <button
-                  className="new-playlist-button-cancel"
-                  onClick={this.closeModal}
-                  >CANCEL</button>
-                <input
-                  type="submit"
-                  onClick={this.handleSubmit}
-                  value="SUBMIT"
-                  className="new-playlist-button-submit">
-                </input>
+            <div className="search-input-container">
+              <div className="input-heading-wrapper playlist-input">
+                <span className="input-header">Playlist Name</span>
               </div>
-            </form>
+              <form>
+                <input
+                  className="search-input-field playlist-input"
+                  onChange={e => this.update(e)}
+                  placeholder="Start typing..."
+                  type="text"
+                  value={this.state.name}
+                  ></input>
+                <div className="new-playlist-buttons">
+                  <button
+                    className="new-playlist-button-cancel"
+                    onClick={this.props.handleCloseModal}
+                    >CANCEL</button>
+                  <input
+                    type="submit"
+                    onClick={this.handleSubmit}
+                    value="SUBMIT"
+                    className="new-playlist-button-submit">
+                  </input>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-      </div>
-    )
+    );
   }
 }
 
 const mapStateToProps = state => ({
   currentUser: state.session.currentUser
-})
+});
 
 const mapDispatchToProps = dispatch => ({
   createPlaylist: playlist => dispatch(createPlaylist(playlist))
@@ -104,4 +88,4 @@ const mapDispatchToProps = dispatch => ({
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(NewPlaylist))
+)(NewPlaylistForm));

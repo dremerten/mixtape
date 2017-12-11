@@ -7,12 +7,13 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def create
-    @playlist = Playlist.new(playlist_params)
+    @playlist = current_user.playlists.new(playlist_params)
+    debugger
 
     if @playlist.save
       render :show
     else
-      render json: @playlist.errors.full_messages
+      render json: @playlist.errors.full_messages, status: 500
     end
   end
 
@@ -60,6 +61,6 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def playlist_params
-    params.require(:playlist).permit(:name, :author_id)
+    params.require(:playlist).permit(:name)
   end
 end

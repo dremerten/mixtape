@@ -6,6 +6,7 @@ class Playlist < ApplicationRecord
 
   has_attached_file :image, default_url: 'album_default.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
+  before_save :inherit_artwork
 
   def self.featured
     Playlist.where(author_id: 0).limit(12).order('random()')
@@ -23,4 +24,12 @@ class Playlist < ApplicationRecord
     update(track_ids: track_ids - [track_id.to_i])
   end
 
+  # Make playlist take the artwork of the first track that was added
+  def inherit_artwork
+    # Only update artwork if it hasn't been updated yet
+    debugger
+    return unless image && self.image.url.match(/album_default/) && !tracks.empty?
+
+    self.image = open("http:#{tracks.first.album.artwork.url}")
+  end
 end

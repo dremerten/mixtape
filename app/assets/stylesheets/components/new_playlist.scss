@@ -1,48 +1,49 @@
 .new-playlist-wrapper {
   position: relative;
+
+  .new-playlist-container {
+    position: fixed;
+    background: rgba(0,0,0,.95) fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .form-wrapper {
+      height: 75%;
+      width: 100%;
+
+      .form-header {
+        text-align: center;
+        font-size: 50px;
+        color: white;
+        font-family: $open;
+        font-weight: bolder;
+        padding-bottom: 30px;
+
+        button {
+          font-weight: lighter;
+          transition: .2s ease-out;
+          font-stretch: extra-expanded;
+
+          &:hover {
+            transform: scale(1.1);
+            transition: .2s ease-in
+          }
+        }
+      }
+    }
+  }
 }
 
-.new-playlist-container {
-  position: fixed;
-  z-index: 102;
-  background: rgba(0,0,0,.95) fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
 
-.form-wrapper {
-  height: 75%;
-  width: 100%;
-  padding-bottom: 80px;
-}
 
-.form-header {
-  text-align: center;
-  font-size: 50px;
-  color: white;
-  font-family: $open;
-  font-weight: bolder;
-  padding-bottom: 30px;
-}
 
-.form-header button {
-  font-weight: lighter;
-  transition: .2s ease-out;
-  font-stretch: extra-expanded;
-}
-
-.form-header button:hover {
-  transform: scale(1.1);
-  transition: .2s ease-in
-}
-
-.playlist {
+.playlist-input {
   margin-left: 250px;
 }
 
@@ -51,7 +52,6 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
-
 }
 
 [class*="new-playlist-button-"] {
@@ -59,15 +59,22 @@
   font-size: 14px;
   border-radius: 25px;
   color: white;
-  padding: 13px 20px;
-  margin: 10px 15px;
+  padding: 8px 30px;
+  margin: 50px 15px;
   background-color: $spotify-green;
   font-weight: lighter;
   letter-spacing: 1px;
+  transition-duration: .2s;
+  transform: scale(1);
+
+  &:hover {
+    transition-duration: .2s;
+    transform: scale(1.05);
+  }
 }
 
 .new-playlist-buttons button {
-  background: $black;
+  background: transparent;
   border: 1px solid white;
   box-sizing: border-box;
 }
