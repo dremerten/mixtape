@@ -64,7 +64,6 @@ class Track extends React.Component {
   }
 
   isPlaylist() {
-    debugger
     return !!(this.props.match.params.playlistId);
   }
 
@@ -75,14 +74,14 @@ class Track extends React.Component {
           .getWrappedInstance()
           .setState({ clicked: false });
 
-      this.openDropdown();
+      // this.openDropdown();
     } else {
       this.setState({ dropDownOpen: true});
       this.dropDown
           .getWrappedInstance()
           .setState({ clicked: true });
 
-      this.closeDropdown();
+      // this.closeDropdown();
     }
   }
 
@@ -127,6 +126,7 @@ class Track extends React.Component {
           <TrackDropDown
             ref={(el) => { this.dropDown = el; }}
             trackId={this.track.id}
+            collectionId={this.props.collectionId}
             />
         </li>
       </div>

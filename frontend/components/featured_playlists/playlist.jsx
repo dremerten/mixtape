@@ -37,7 +37,7 @@ class Playlist extends React.Component {
 
     if (this.props.playlist) {
       tracks = this.props.tracks.map(track => (
-        <Track { ...Object.assign({}, this.props, { track })  } key={track.id} />
+        <Track { ...Object.assign({}, this.props, { track, collectionId: this.props.playlist.id })  } key={track.id} />
         )
       );
 

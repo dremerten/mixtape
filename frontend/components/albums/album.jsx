@@ -3,17 +3,17 @@ import Track from '../tracks/track';
 
 class Album extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.state = {
       paused: this.props.inProgress
-    }
+    };
   }
 
   componentDidMount() {
     let albumId = this.props.match.params.albumId;
     if (albumId) {
-      this.props.fetchAlbum(albumId)
+      this.props.fetchAlbum(albumId);
     }
   }
 
@@ -26,29 +26,29 @@ class Album extends React.Component {
     let newId = newProps.match.params.albumId;
 
     if ( newId !== id) {
-      this.props.fetchAlbum(newId)
+      this.props.fetchAlbum(newId);
     }
   }
 
   render() {
     let tracks, title, artist;
-    let imageUrl = { backgroundImage: "image_url('album_default.jpg')" }
+    let imageUrl = { backgroundImage: "image_url('album_default.jpg')" };
 
     if (this.props.album) {
       tracks = this.props.tracks.map(track => (
-        <Track props={this.props} track={track} key={track.id}/>
+        <Track { ...Object.assign({}, this.props, { track, collectionId: this.props.album.id })} key={track.id}/>
         )
       );
 
-      title = this.props.album.title
-      artist = this.props.album.artist
+      title = this.props.album.title;
+      artist = this.props.album.artist;
 
       if (!tracks.length) {
         tracks = [<span className="track-row-wrapper no-hover">
           Oops! An error seems to have occured.
-        </span>]
+        </span>];
       }
-      imageUrl = { backgroundImage: 'url(' + this.props.album.imageUrl + ')' }
+      imageUrl = { backgroundImage: 'url(' + this.props.album.imageUrl + ')' };
     }
 
     return(
@@ -74,7 +74,7 @@ class Album extends React.Component {
           </ol>
         </div>
       </div>
-    )
+    );
   }
 
 }

@@ -1,5 +1,6 @@
 .dropdown-container-visible {
   position: absolute;
+  z-index: 2;
   top: 50px;
   right: 90px;
   background-color: $black;

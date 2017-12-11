@@ -8,11 +8,12 @@ class GenericDropDown extends React.Component {
 
   render() {
     let className = this.state.clicked ? 'visible' : 'hidden';
+    debugger
     return(
       <div className={`dropdown-container-${className}`}>
         <ul className='dropdown-list'>
           { this.props.listItems.map((Item, idx) => (
-            < Item key={idx} { ...this.props.ownProps} />
+            < Item key={idx} { ...this.props} />
             ))
           }
         </ul>
