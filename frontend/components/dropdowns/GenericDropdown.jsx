@@ -8,7 +8,6 @@ class GenericDropDown extends React.Component {
 
   render() {
     let className = this.state.clicked ? 'visible' : 'hidden';
-    debugger
     return(
       <div className={`dropdown-container-${className}`}>
         <ul className='dropdown-list'>

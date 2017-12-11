@@ -18,9 +18,16 @@
 }
 
 .browse-nav {
-  padding-top: 50px;
+  padding-top: 30px;
   max-width: 70%;
   display: flex;
+  flex-direction: column;
+
+  @include small {
+    padding-top: 50px;
+    flex-direction: row;
+  }
+
 }
 
 .nav-link-item {

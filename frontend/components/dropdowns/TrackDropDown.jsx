@@ -1,6 +1,6 @@
 import SaveSong from './SongSaveDropDownItem';
 import AddToPlaylist from './AddTrackToPlaylist';
-import GenericDropDown from './GenericDropDown';
+import GenericDropdown from './GenericDropdown';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
@@ -15,4 +15,4 @@ const mapStateToProps = (state, { trackId, collectionId }) => ({
   collectionId
 });
 
-export default connect(mapStateToProps, null, null, { withRef: true })(GenericDropDown);
+export default connect(mapStateToProps, null, null, { withRef: true })(GenericDropdown);

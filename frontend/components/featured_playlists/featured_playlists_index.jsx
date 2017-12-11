@@ -1,9 +1,6 @@
 import React from 'react';
 import NavBar from '../NavBar';
-import { isEmpty } from 'lodash';
-import PlaylistsIndexItem from './playlists_index_item';
 import MusicIndexItem from '../music/music_index_item';
-// import { setHeader } from '../selectors/DynamicHeaderSelector';
 
 class GenericMusicIndex extends React.Component {
   constructor(props) {
