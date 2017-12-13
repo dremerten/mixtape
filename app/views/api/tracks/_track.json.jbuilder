@@ -1,4 +1,4 @@
-json.extract! track, :id, :title, :ord, :popularity, :artist_id, :album_id, :year
+json.extract! track, :id, :title, :ord, :popularity, :artist_id, :album_id, :year, :duration
 # json.playlistIds track.playlists.map(&:id)
 json.trackUrl asset_path(track.audio.url)
 json.imageUrl asset_path(track.album.artwork.url)

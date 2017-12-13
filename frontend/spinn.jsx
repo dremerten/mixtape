@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import Modal from 'react-modal';
 import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
@@ -22,14 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     store = configureStore(preloadedState);
 
-    delete window.userPlaylists;
+    // delete window.userPlaylists;
     delete window.currentUser;
   } else {
     store = configureStore();
   }
 
   // TEST FUNCTIONS
-  window.fetchResults = fetchResults;
   window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
@@ -39,5 +39,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // TEST FUNCTIONS
 
   const rootEl = document.getElementById('root');
+  Modal.setAppElement('#root');
   ReactDOM.render(<Root store={store}/>, rootEl);
 });

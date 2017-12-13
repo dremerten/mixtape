@@ -21,8 +21,10 @@ class MusicIndexItem extends React.Component {
       this.props.history.push(`/browse/playlists/${this.item.id}`);
     } else if (this.props.itemType == "userPlaylist") {
       this.props.history.push(`/collection/playlists/${this.item.id}`);
-    } else {
+    } else if (this.props.itemType == "album") {
       this.props.history.push(`/browse/albums/${this.item.id}`);
+    } else {
+      this.props.handleClick();
     }
   }
 
@@ -30,6 +32,7 @@ class MusicIndexItem extends React.Component {
     let itemName, albumArtist, background;
     let id = 1;
 
+    debugger
     if (this.item) {
       background = { backgroundImage: 'url(' + this.item.imageUrl + ')' };
       itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);

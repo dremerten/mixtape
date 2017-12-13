@@ -8,7 +8,6 @@ class Api::PlaylistsController < ApplicationController
 
   def create
     @playlist = current_user.playlists.new(playlist_params)
-    debugger
 
     if @playlist.save
       render :show

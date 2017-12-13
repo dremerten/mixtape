@@ -7,7 +7,7 @@ const mapStateToProps = (state, { trackId}) => ({
 });
 
 const mapDispatchToProps = (dispatch, { trackId }) => ({
-  handleClick: () => dispatch(saveTrack(traclId))
+  handleClick: () => dispatch(saveTrack(trackId))
 });
 
 export default connect(

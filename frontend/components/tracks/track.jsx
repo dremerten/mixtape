@@ -119,7 +119,7 @@ class Track extends React.Component {
                 ...
               </button>
               <span>
-                3:26
+                {this.track.duration}
               </span>
             </div>
           </div>

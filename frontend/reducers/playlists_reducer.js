@@ -9,7 +9,6 @@ import {
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 const initialState = {
-  currentUser: {},
   byId: {},
 };
 
@@ -21,11 +20,10 @@ const PlaylistsReducer = (state = initialState, action) => {
       newState = merge({}, state, { byId: action.playlists });
       return newState;
     case RECEIVE_PLAYLIST:
-      debugger
       newState = merge({}, state, { [action.data.playlist.id]: action.data.playlist });
       return newState;
     case REMOVE_PLAYLISTS:
-      return initialState;
+      return Object.assign({}, state, initialState);
     case RECEIVE_SEARCH_RESULTS:
       return action.data.playlists || {};
     default:

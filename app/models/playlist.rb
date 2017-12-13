@@ -27,7 +27,6 @@ class Playlist < ApplicationRecord
   # Make playlist take the artwork of the first track that was added
   def inherit_artwork
     # Only update artwork if it hasn't been updated yet
-    debugger
     return unless image && self.image.url.match(/album_default/) && !tracks.empty?
 
     self.image = open("http:#{tracks.first.album.artwork.url}")
