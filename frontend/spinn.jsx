@@ -23,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     store = configureStore(preloadedState);
 
-    // delete window.userPlaylists;
+    delete window.userPlaylists;
     delete window.currentUser;
   } else {
     store = configureStore();

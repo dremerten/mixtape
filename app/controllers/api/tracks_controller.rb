@@ -22,14 +22,14 @@ class Api::TracksController < ApplicationController
       render json: ["You have already saved this track"]
     else
       current_user.save_track(params[:id])
-      render json: ["Track successfully added"]
+      render json: ["Track successfully added!"]
     end
   end
 
   def remove_track_save
     current_user.remove_track(params[:id])
 
-    render json: ["This track has been removed from your collection."]
+    render json: ["This successfully removed!"]
   end
 
   private

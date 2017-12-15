@@ -4,13 +4,21 @@ import UserPlaylistModal from '../modals/UserPlaylistModal';
 class GenericDropDown extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      clicked: false,
+      clicked: props.clicked,
       isModalOpen: false,
      };
 
+    this.name = props.name;
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.clicked != this.state.clicked) {
+      this.setState({ clicked: !this.state.clicked});
+    }
   }
 
   handleCloseModal() {

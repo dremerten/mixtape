@@ -1,14 +1,20 @@
 import merge from 'lodash/merge';
+import { union } from 'lodash';
+
 import { SET_SCROLL_POSITION,
   DISPLAY_PLAYLIST_FORM,
-  HIDE_PLAYLIST_FORM
+  HIDE_PLAYLIST_FORM,
+  HIDE_ALL_DROPDOWNS,
+  SHOW_DROPDOWN
  } from '../actions/ui_actions';
+
 import {
   START_LOADING_ALL_ALBUMS,
   START_LOADING_SINGLE_ALBUM,
   RECEIVE_ALBUM,
   RECEIVE_ALBUMS
 } from '../actions/album_actions';
+
 import {
   START_LOADING_ALL_PLAYLISTS,
   START_LOADING_SINGLE_PLAYLIST,
@@ -20,7 +26,7 @@ import {
 const defaultState = {
   loading: false,
   scrollPosition: 0,
-  playlistFormVisible: false
+  dropdowns: []
 };
 
 const UIReducer = (state = defaultState, action) => {
@@ -29,12 +35,6 @@ const UIReducer = (state = defaultState, action) => {
   switch(action.type) {
     case SET_SCROLL_POSITION:
       newState = merge({}, state, { scrollPosition: action.pos });
-      return newState;
-    case DISPLAY_PLAYLIST_FORM:
-      newState = merge({}, state, { playlistFormVisible: true });
-      return newState;
-    case HIDE_PLAYLIST_FORM:
-      newState = merge({}, state, { playlistFormVisible: false });
       return newState;
     case START_LOADING_ALL_ALBUMS:
     case START_LOADING_SINGLE_ALBUM:
@@ -47,6 +47,11 @@ const UIReducer = (state = defaultState, action) => {
     case RECEIVE_ALBUM:
     case RECEIVE_ALBUMS:
       return defaultState;
+    case HIDE_ALL_DROPDOWNS:
+      return defaultState;
+    case SHOW_DROPDOWN:
+      newState = merge({}, state, { dropdowns: union(state.dropdowns, [action.name]) });
+      return newState;
     default:
       return state;
   }

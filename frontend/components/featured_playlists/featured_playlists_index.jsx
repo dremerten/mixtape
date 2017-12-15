@@ -7,7 +7,6 @@ class GenericMusicIndex extends React.Component {
     super(props);
     this.state = {
       loading: props.loading,
-      // indexItems: props.indexItems
      };
 
     this.handleScroll = this.handleScroll.bind(this);
@@ -32,7 +31,6 @@ class GenericMusicIndex extends React.Component {
 
   render() {
     let indexItems;
-    // let background;
 
     if (!this.state.loading) {
       indexItems = this.props.indexItems.map(item => (

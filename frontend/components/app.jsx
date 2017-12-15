@@ -1,22 +1,27 @@
 import React from 'react';
-import { Provider } from 'react-redux';
+import { Provider, connect} from 'react-redux';
 import { ProtectedRoute, AuthRoute } from '../util/route_util';
 import { LoginFormContainer, SignupFormContainer } from './session_form/session_form_container';
 import NewSessionContainer from './session_form/new_session';
 import MainPageContainer from './main_page/main_page_container';
 import NowPlayingBar from './nowplaying/nowplaying';
+import { hideAllDropdowns } from '../actions/ui_actions';
 
 import {
   Route,
   Redirect,
   Switch,
   Link,
-  HashRouter
+  HashRouter,
+  withRouter
 } from 'react-router-dom';
 
+const mapDispatchToProps = dispatch => ({
+  hideAllDropdowns: () => dispatch(hideAllDropdowns())
+});
 
-const App = () => (
-  <div className="application-wrapper">
+const App = (props) => (
+  <div className="application-wrapper" onClick={ props.hideAllDropdowns }>
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer}/>
       <AuthRoute path="/signup" component={SignupFormContainer}/>
@@ -26,11 +31,11 @@ const App = () => (
       <AuthRoute path="/" component={NewSessionContainer} />
     </Switch>
   </div>
-)
+);
 
-export default App;
-
-
+export default withRouter(connect(null, mapDispatchToProps)(App));
 
 
-const thing = "<ProtectedRoute path="/" component={NowPlayingBar} />"
+
+
+// const thing = "<ProtectedRoute path="/" component={NowPlayingBar} />";

@@ -42,9 +42,13 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def add_track
-    playlist = Playlist.find(params[:id])
+    @playlist = Playlist.find(params[:id])
 
-    playlist.add_track(params[:trackId])
+    if @playlist.add_track(params[:trackId])
+      render json: ['Song successfully added!']
+    else
+      render json: ['An error occured with your request']
+    end
   end
 
   def remove_track

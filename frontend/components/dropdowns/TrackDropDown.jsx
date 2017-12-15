@@ -12,7 +12,9 @@ const listItems = [
 const mapStateToProps = (state, { trackId, collectionId }) => ({
   listItems,
   trackId,
-  collectionId
+  collectionId,
+  name: `track-dropdown-${trackId}`,
+  clicked: state.ui.dropdowns.includes(`track-dropdown-${trackId}`)
 });
 
 export default connect(mapStateToProps, null, null, { withRef: true })(GenericDropdown);

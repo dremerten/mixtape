@@ -57,7 +57,8 @@
 
 .new-playlist {
   position: absolute;
-  top: calc(100% - 25px);
+  // top: calc(100% - 25px);
+  top: 100%;
   right: 60px;
   background-color: $spotify-green;
   font-family: $open;
@@ -68,12 +69,11 @@
   font-size: 12px;
   font-weight: lighter;
   letter-spacing: 1px;
-  transform: scale(1);
+  transform: scale(1) translateY(-110%);
   transition-duration: .2s;
 
   &:hover {
-    // border: 3px solid $spotify-green;
-    transform: scale(1.05);
+    transform: scale(1.02) translateY(-110%);
     transition-duration: .2s;
   }
 }

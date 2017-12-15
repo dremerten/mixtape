@@ -77,15 +77,11 @@ class NewPlaylistForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => ({
-  currentUser: state.session.currentUser
-});
-
 const mapDispatchToProps = dispatch => ({
   createPlaylist: playlist => dispatch(createPlaylist(playlist))
 });
 
 export default withRouter(connect(
-  mapStateToProps,
+  null,
   mapDispatchToProps
 )(NewPlaylistForm));

@@ -5,6 +5,7 @@ import NowPlayingBarContainer from '../nowplaying/nowplaying_container';
 import MusicPortal from '../music_portal';
 import PlaylistContainer from '../featured_playlists/playlist_container';
 import AlbumContainer from '../albums/album_container';
+import AlertBar from '../AlertBar';
 
 import {
   Route,
@@ -16,6 +17,7 @@ const MainPage = ({ currentUser }) => {
     <div className="main-page">
       <div className="main-page-container">
         <SideBar currentUser={currentUser}/>
+        <AlertBar />
         <Switch>
           <Route path="/browse/search" component={SearchContainer}/>
           <Route exact path="/browse/playlists/:playlistId" component={PlaylistContainer} />
@@ -32,24 +34,6 @@ const MainPage = ({ currentUser }) => {
 export default MainPage;
 //
 // <Route path="/browse/:musicPage" component={MusicPortal}/>
-// <Route path="/collection/playlists" component={MusicPortal}/>
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+// <Route path="/collection/playlists" component={MusicPortal}/>a
 //
 // const thing = '<Route path="browse/playlist/:playlistId" component={PlaylistContainer}/>'

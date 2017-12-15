@@ -7,10 +7,6 @@ const mapStateToProps = (state, ownProps) => ({
   handleClick: ownProps.handleOpenModal
 });
 
-// const mapDispatchToProps = (dispatch, ownProps) => ({
-//   handleClick: () =>
-// });
-
 export default connect(
   mapStateToProps
 )(GenericDropDownItem);

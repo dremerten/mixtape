@@ -1,10 +1,9 @@
 import React from 'react';
 import Modal from 'react-modal';
 import PlaylistModalIndex from './PlaylistModalIndex';
-
+import NewPlaylistButton from '../buttons/NewPlaylistButton';
 
 export default function(props) {
-  debugger
   return(
     <Modal
       isOpen={props.isOpen}
@@ -15,17 +14,19 @@ export default function(props) {
       >
       <div className='new-playlist-wrapper'>
         <div className='new-playlist-container'>
-            <div className="form-header">
+            <div className="form-header modal">
               <button className='close-button'
                 onClick={props.handleCloseModal}
                 >X</button>
-              <h1>Add to playlist</h1>
+              <h1>Add to playlist
+                <NewPlaylistButton isButtonVisible={true} />
+              </h1>
             </div>
-            <div className='playlist-items'>
-              <PlaylistModalIndex />
-            </div>
+            <ul className='playlist-items modal'>
+              <PlaylistModalIndex { ...props }/>
+            </ul>
+          </div>
         </div>
-      </div>
     </Modal>
   );
 }

@@ -7,7 +7,6 @@ class Track extends React.Component {
     this.track = props.track;
     this.currentTrack = props.currentTrack;
     this.state = {
-      dropDownOpen: false,
       inProgress: props.currentTrack &&
         (props.currentTrack.id == this.track.id) &&
         props.inProgress
@@ -16,7 +15,7 @@ class Track extends React.Component {
     this.isCurrentTrack = this.isCurrentTrack.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
     this.isPlaylist = this.isPlaylist.bind(this);
-    this.toggleDropDown = this.toggleDropDown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   isCurrentTrack() {
@@ -45,12 +44,10 @@ class Track extends React.Component {
     }
   }
 
-  closeDropdown() {
-    $('root').on('click', () => this.toggleDropDown());
-  }
+  handleClick(e) {
+    e.stopPropagation();
 
-  openDropDown() {
-
+    this.props.showDropdown(`track-dropdown-${this.track.id}`);
   }
 
   handlePlay() {
@@ -67,23 +64,6 @@ class Track extends React.Component {
     return !!(this.props.match.params.playlistId);
   }
 
-  toggleDropDown() {
-    if (this.state.dropDownOpen) {
-      this.setState({ dropDownOpen: false });
-      this.dropDown
-          .getWrappedInstance()
-          .setState({ clicked: false });
-
-      // this.openDropdown();
-    } else {
-      this.setState({ dropDownOpen: true});
-      this.dropDown
-          .getWrappedInstance()
-          .setState({ clicked: true });
-
-      // this.closeDropdown();
-    }
-  }
 
   render() {
     let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>;
@@ -114,7 +94,7 @@ class Track extends React.Component {
             <div>
               <button
                 className='track-dropdown-button'
-                onClick={this.toggleDropDown}
+                onClick={this.handleClick}
                 >
                 ...
               </button>

@@ -7,16 +7,15 @@ class MusicIndexItem extends React.Component {
     this.item = props.item;
 
     this.handleClick = this.handleClick.bind(this);
-    this.paths = {
-      "playlist": `/browse/playlists/${this.item.id}`,
-      "userPlaylist": `/collection/playlists/${this.item.id}`,
-      "album": `/browse/albums/${this.item.id}`
-    };
+    // this.paths = {
+    //   "playlist": `/browse/playlists/${this.item.id}`,
+    //   "userPlaylist": `/collection/playlists/${this.item.id}`,
+    //   "album": `/browse/albums/${this.item.id}`
+    // };
   }
 
   handleClick(e) {
     e.preventDefault();
-
     if (this.props.itemType == "playlist") {
       this.props.history.push(`/browse/playlists/${this.item.id}`);
     } else if (this.props.itemType == "userPlaylist") {
@@ -24,7 +23,7 @@ class MusicIndexItem extends React.Component {
     } else if (this.props.itemType == "album") {
       this.props.history.push(`/browse/albums/${this.item.id}`);
     } else {
-      this.props.handleClick();
+      this.props.handleClick()
     }
   }
 
@@ -32,7 +31,6 @@ class MusicIndexItem extends React.Component {
     let itemName, albumArtist, background;
     let id = 1;
 
-    debugger
     if (this.item) {
       background = { backgroundImage: 'url(' + this.item.imageUrl + ')' };
       itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);
@@ -42,7 +40,7 @@ class MusicIndexItem extends React.Component {
 
     return(
       <li key={id} className="playlist-item">
-        <button to={this.paths[this.props.itemType]}
+        <button
           style={background}
           className="playlist-image"
           onClick={this.handleClick}

@@ -1,5 +1,5 @@
 import * as TrackApiUtil from '../util/track_api_util';
-
+import { clearAllAlerts } from './alert_actions';
 export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACKS = 'REMOVE_TRACKS';
@@ -35,12 +35,16 @@ export const fetchTrack = id => dispatch => (
 
 export const saveTrack = id => dispatch => (
   TrackApiUtil.saveTrack(id).then(response =>
-    dispatch(receiveSongSaveStatus(response))
+    dispatch(receiveSongSaveStatus(response)).then(
+      setTimeout(() => dispatch(clearAllAlerts()), 2500)
+    )
   )
 );
 
 export const saveTrackToPlaylist = (trackId, playlistId) => dispatch => (
   TrackApiUtil.saveTrackToPlaylist(trackId, playlistId).then(response => (
-    dispatch(receiveSongSaveStatus))
+    dispatch(receiveSongSaveStatus(response)).then(
+      setTimeout(() => dispatch(clearAllAlerts()), 2500)
+    ))
   )
 );

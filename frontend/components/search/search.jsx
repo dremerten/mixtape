@@ -57,7 +57,7 @@ class Search extends React.Component {
       topResults = this.state.topResults.map(track => (
         <Track props={this.props} track={track} key={track.id}/>
       ));
-      imageUrl = { backgroundImage: 'url(' + this.state.topResults[0].imageUrl + ')' }
+      imageUrl = { backgroundImage: 'url(' + this.state.topResults[0].imageUrl + ')' };
     }
     // if (this.state.artists.length) {
     //   artists = this.state.artists;
@@ -65,7 +65,7 @@ class Search extends React.Component {
 
     if (this.state.tracks.length) {
       tracks = this.state.tracks.map(track => (
-        <Track props={this.props} track={track} key={track.id}/>
+        <Track { ...this.props} track={track} key={track.id}/>
       ));
     }
 
