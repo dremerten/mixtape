@@ -6,7 +6,7 @@ import { login } from '../../actions/session_actions';
 
 class NewSession extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
 
     this.demoLogin = this.demoLogin.bind(this);
   }
@@ -15,7 +15,7 @@ class NewSession extends React.Component {
     this.props.login({
       email: 'Sennacy17',
       password: 'starwars'
-    })
+    });
   }
 
   render() {
@@ -63,13 +63,13 @@ class NewSession extends React.Component {
           <button onClick={this.demoLogin} className='demo-login-button'>DEMO</button>
         </div>
       </div>
-    )
+    );
   }
 }
 
 const mapDispatchToProps = (dispatch) => ({
   login: user => dispatch(login(user))
-})
+});
 
 export default connect(
   null,

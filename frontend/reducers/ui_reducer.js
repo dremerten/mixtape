@@ -1,5 +1,6 @@
 import merge from 'lodash/merge';
 import { union } from 'lodash';
+import { LOGOUT } from '../actions/session_actions';
 
 import { SET_SCROLL_POSITION,
   DISPLAY_PLAYLIST_FORM,
@@ -46,6 +47,7 @@ const UIReducer = (state = defaultState, action) => {
     case RECEIVE_PLAYLIST:
     case RECEIVE_ALBUM:
     case RECEIVE_ALBUMS:
+    case LOGOUT:
       return defaultState;
     case HIDE_ALL_DROPDOWNS:
       return defaultState;

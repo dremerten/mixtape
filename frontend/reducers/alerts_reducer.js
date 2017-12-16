@@ -1,6 +1,7 @@
 import { RECEIVE_SONG_SAVE_STATUS } from '../actions/track_actions';
 import { CLEAR_ALL_ALERTS } from '../actions/alert_actions';
 import { RECEIVE_ALERT } from '../actions/alert_actions';
+import { LOGOUT } from '../actions/session_actions';
 
 const _nullAlerts = [];
 

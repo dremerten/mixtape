@@ -8,6 +8,9 @@ end
 # gem 'ruby-audio'
 #
 # gem 'ruby-mp3info'
+gem 'taglib-heroku'
+
+gem 'cmake-heroku'
 
 gem 'taglib-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

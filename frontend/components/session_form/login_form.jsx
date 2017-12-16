@@ -7,14 +7,15 @@ class LoginForm extends React.Component {
     this.state = {
       email: '',
       password: '',
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.processForm(this.state).then(() => this.props.history.push('/browse/featured'));;
+    this.props.processForm(this.state).then(() => this.props.history.push('/browse/featured'));
   }
 
   componentWillUnmount() {
@@ -23,8 +24,8 @@ class LoginForm extends React.Component {
 
   update(field) {
     return (e) => {
-      this.setState({[field]: e.target.value})
-    }
+      this.setState({[field]: e.target.value});
+    };
   }
 
   render() {

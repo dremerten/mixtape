@@ -5,11 +5,9 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const REMOVE_SESSION_ERRORS = "REMOVE_SESSION_ERRORS";
 export const LOGOUT = "LOGOUT";
 
-export const receiveCurrentUser = currentUser => {
-  return ({
+export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER, currentUser
-  });
-};
+});
 
 export const receiveErrors = errors => ({
   type: RECEIVE_SESSION_ERRORS, errors

@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { LOGOUT } from '../actions/session_actions';
 import merge from 'lodash/merge';
 import {
   RECEIVE_PLAYLISTS,
@@ -28,6 +29,8 @@ const PlaylistsReducer = (state = initialState, action) => {
     case RECEIVE_SEARCH_RESULTS:
       newState = merge({}, state, { byId: action.data.playlists });
       return newState;
+    case LOGOUT:
+      return initialState;
     default:
       return state;
   }

@@ -15,6 +15,6 @@ const SessionForm = (props) => (
         />
     </Switch>
   </div>
-)
+);
 
 export default SessionForm;

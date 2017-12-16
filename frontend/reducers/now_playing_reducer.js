@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import { LOGOUT } from '../actions/session_actions';
 import {
   PLAY,
   PAUSE,
@@ -48,6 +49,8 @@ const NowPlayingReducer = (state = initialState, action) => {
       let nextTrack = action.tracks[1];
       let inProgress = true;
       return { queue, currentTracl, nextTrack, inProgress };
+    case LOGOUT:
+      return initialState;
     default:
       return state;
     }

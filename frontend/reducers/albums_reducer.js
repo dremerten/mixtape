@@ -4,7 +4,7 @@ import {
   RECEIVE_ALBUM,
   REMOVE_ALBUMS
 } from '../actions/album_actions';
-
+import { LOGOUT } from '../actions/session_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 const AlbumReducer = (state = {}, action) => {
@@ -17,6 +17,7 @@ const AlbumReducer = (state = {}, action) => {
       newState = merge({}, state, { [action.data.album.id]: action.data.album });
       return newState;
     case REMOVE_ALBUMS:
+    case LOGOUT:
       return {};
     case RECEIVE_SEARCH_RESULTS:
       return action.data.albums || {};

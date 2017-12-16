@@ -3,7 +3,7 @@ import {
   RECEIVE_SEARCH_ERRORS,
   REMOVE_SEARCH_ERRORS
  } from '../actions/search_actions';
-
+import { LOGOUT } from '../actions/session_actions';
 const _nullErrors = [];
 
 const SearchErrorsReducer = (state = _nullErrors, action) => {
@@ -12,8 +12,8 @@ const SearchErrorsReducer = (state = _nullErrors, action) => {
     case RECEIVE_SEARCH_ERRORS:
       return action.errors;
     case RECEIVE_SEARCH_RESULTS:
-      return _nullErrors;
     case REMOVE_SEARCH_ERRORS:
+    case LOGOUT:
       return _nullErrors;
     default:
       return state;

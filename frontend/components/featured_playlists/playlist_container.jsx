@@ -10,7 +10,7 @@ import {
   setNextTrack
 } from '../../actions/audio_actions';
 import { fetchTracks, removeTracks } from '../../actions/track_actions';
-import { fetchPlaylist } from '../../actions/playlist_actions';
+import { fetchPlaylist, removePlaylists } from '../../actions/playlist_actions';
 import { showDropdown } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -24,7 +24,10 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchTracks: filter => dispatch(fetchTracks(filter)),
-  removeTracks: () => dispatch(removeTracks()),
+  removeItems: () => {
+    dispatch(removeTracks());
+    dispatch(removePlaylists());
+  },
   play: () => dispatch(play()),
   pause: () => dispatch(pause()),
   playSingleTrack: track => dispatch(playSingleTrack(track)),

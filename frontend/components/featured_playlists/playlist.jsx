@@ -1,6 +1,8 @@
 import React from 'react';
 import Track from '../tracks/track';
-// import Link from 'react-dom-router';
+
+// TODO: REMOVE PLAYLISTS FROM STATE ON LOGOUT YOU IDIOT
+
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
@@ -17,7 +19,7 @@ class Playlist extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.removeTracks();
+    this.props.removeItems();
   }
 
   componentWillReceiveProps(newProps) {
