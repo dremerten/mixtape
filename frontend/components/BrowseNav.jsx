@@ -1,11 +1,12 @@
 import GenericNavBar from './GenericNavBar';
 import { connect } from 'react-redux';
+import { SCROLL_BREAKPOINT } from '../util/constants';
 
 const mapStateToProps = state => {
   let pathNames = ["/browse/featured", "/browse/genres", "/browse/newreleases"];
   let linkNames = ["FEATURED", "GENRES & MOODS", "NEW RELEASES"];
   return {
-    scrollPosition: state.ui.scrollPosition,
+    isVisible: state.ui.scrollPosition < SCROLL_BREAKPOINT,
     pathNames,
     linkNames,
     isButtonVisible: false

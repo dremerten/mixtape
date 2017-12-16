@@ -2,9 +2,9 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NewPlaylistButton from './buttons/NewPlaylistButton';
 
-export default function({ pathNames, linkNames, isButtonVisible, scrollPosition }) {
+export default function({ isVisible, pathNames, linkNames, isButtonVisible, scrollPosition }) {
   return (
-    <nav className="browse-nav-container" style={{ display: "" }}>
+    <nav className="browse-nav-container" style={ isVisible ? { display: "" } : { display: 'none' }}>
       <div className="browse-nav">
         {
           pathNames.map( (path, index) => (

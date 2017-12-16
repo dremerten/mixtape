@@ -25,6 +25,7 @@ class GenericMusicIndex extends React.Component {
     }
   }
 
+
   handleScroll() {
     this.props.setScrollPosition(this.element.scrollTop);
   }
@@ -35,9 +36,9 @@ class GenericMusicIndex extends React.Component {
     if (!this.state.loading) {
       indexItems = this.props.indexItems.map(item => (
         <MusicIndexItem
+          key={item.id}
           item={item}
           history={this.props.history}
-          key={item.id}
           itemType={this.props.itemType}
           />
         )

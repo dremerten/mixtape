@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
                        .map(id => state.entities.playlists.byId[id]);
     itemType = "userPlaylist";
     header = 'Your Playlists';
-    background = { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' };
+    background = { background: 'linear-gradient(rgb(142, 11, 61), rgb(14, 1, 6) 85%) fixed' };
   } else {
     indexItems = Object.keys(state.entities.albums)
                        .map(id => state.entities.albums[id]);

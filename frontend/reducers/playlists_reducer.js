@@ -23,7 +23,8 @@ const PlaylistsReducer = (state = initialState, action) => {
       newState = { byId:  { [action.data.playlist.id]: action.data.playlist } };
       return merge({}, state, newState);
     case REMOVE_PLAYLISTS:
-      return merge({}, state, initialState);
+      newState = Object.assign({}, state, initialState);
+      return newState;
     case RECEIVE_SEARCH_RESULTS:
       newState = merge({}, state, { byId: action.data.playlists });
       return newState;
