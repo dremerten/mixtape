@@ -8,11 +8,8 @@ end
 # gem 'ruby-audio'
 #
 # gem 'ruby-mp3info'
-gem 'taglib-heroku'
 
-gem 'cmake-heroku'
-
-gem 'taglib-ruby'
+# gem 'taglib-ruby'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
 # Use postgresql as the database for Active Record

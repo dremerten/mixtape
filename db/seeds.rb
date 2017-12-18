@@ -31,8 +31,8 @@ Genre.destroy_all
 GenreTagging.destroy_all
 
 class S3Helper
-
-  S3_CLIENT = Aws::S3::Client.new(region: ENV["s3_region"], access_key_id: ENV['s3_access_key_id'],secret_access_key: ENV['s3_secret_access_key'])
+  #
+  # S3_CLIENT = Aws::S3::Client.new(region: ENV["s3_region"], access_key_id: ENV['s3_access_key_id'],secret_access_key: ENV['s3_secret_access_key'])
 
   def initialize
     find_music_paths
@@ -44,7 +44,7 @@ class S3Helper
   end
 
   def find_music_paths
-    @bucket_paths = S3_CLIENT.list_objects(bucket: 'spinnmusicfiles')
+    @bucket_paths = Rails.configuration.s3_client.list_objects(bucket: 'spinnmusicfiles')
                              .contents.map(&:key)
                              .select { |key| /^music\//.match(key) }
   end
