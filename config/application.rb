@@ -11,6 +11,7 @@ module SpinnRepo
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
     config.autoload_paths += %W(#{config.root}/lib)
+    
     config.s3_resource = Aws::S3::Resource.new(region: ENV["s3_region"], access_key_id: ENV['s3_access_key_id'], secret_access_key: ENV['s3_secret_access_key'])
     config.s3_client = Aws::S3::Client.new(region: ENV["s3_region"], access_key_id: ENV['s3_access_key_id'], secret_access_key: ENV['s3_secret_access_key'])
     # Settings in config/environments/* take precedence over those specified here.
