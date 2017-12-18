@@ -49,7 +49,7 @@ module Helpers
 
       object = bucket.object(self.audio.path[1..-1])
 
-      puts "Getting object #{self.name}..."
+      puts "Getting object #{self.to_s}..."
 
       object_output = object.get
       location = self.audio.url[/.com\/(.+)\?/, 1]

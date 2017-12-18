@@ -18,15 +18,17 @@ class Track < ApplicationRecord
   before_validation :extract_audio_duration
 
 
-
-
   def extract_audio_duration
     bucket_name = (ENV["RAILS_ENV"] == "development" ? "spinnmusicfiles" : "spinnmusicfiles-pro")
+
+    puts "Extracting audio from #{bucket_name}..."
 
     self.duration ||= Rails.configuration.s3_resource
       .bucket(bucket_name)
       .object("#{audio.path[1..-1]}")
       .metadata["duration"]
+
+    puts "Bucket: #{bu}"
   end
 
   private
