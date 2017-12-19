@@ -1,4 +1,4 @@
-# require 'taglib'
+require 'taglib'
 
 class Track < ApplicationRecord
   include Helpers::Metadata
