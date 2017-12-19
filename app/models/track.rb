@@ -31,49 +31,49 @@ class Track < ApplicationRecord
     puts "Bucket: #{bu}"
   end
 
-  private
+  # private
 
-  # def read_audio
-  #   puts "Fetching audio information..."
-  #
-  #   if audio.content_type.match(/mpeg/)
-  #     open_mpeg
-  #   else
-  #     file_extension = audio.content_type.split('/').last
-  #     file_name = "temp.#{file_extension}"
-  #
-  #     open(file_name, 'wb') do |file|
-  #       file << open("http:#{audio.url}").read
-  #     end
-  #
-  #     TagLib::FileRef.open(file_name) do |f|
-  #       duration = f.audio_properties.length
-  #       minutes = (duration / 60).to_s
-  #       seconds = (duration % 60 < 10 ? "0#{duration % 60}" : "#{duration % 60}")
-  #       self.duration = minutes + ":" + seconds
-  #     end
-  #
-  #     File.delete(file_name)
-  #   end
-  #
-  # rescue => e
-  #   puts "The following exception was raised: #{e}"
-  # end
-  #
-  # def open_mpeg
-  #   file_name = "temp.mpeg"
-  #
-  #   open(file_name, 'wb') do |file|
-  #     file << open("http:#{audio.url}").read
-  #   end
-  #
-  #   TagLib::MPEG::File.open(file_name) do |f|
-  #     duration = f.audio_properties.length
-  #     minutes = (duration / 60).to_s
-  #     seconds = (duration % 60 < 10 ? "0#{duration % 60}" : "#{duration % 60}")
-  #     self.duration = minutes + ":" + seconds
-  #   end
-  #
-  #   File.delete(file_name)
-  # end
+  def read_audio
+    puts "Fetching audio information..."
+
+    if audio.content_type.match(/mpeg/)
+      open_mpeg
+    else
+      file_extension = audio.content_type.split('/').last
+      file_name = "temp.#{file_extension}"
+
+      open(file_name, 'wb') do |file|
+        file << open("http:#{audio.url}").read
+      end
+
+      TagLib::FileRef.open(file_name) do |f|
+        duration = f.audio_properties.length
+        minutes = (duration / 60).to_s
+        seconds = (duration % 60 < 10 ? "0#{duration % 60}" : "#{duration % 60}")
+        self.duration = minutes + ":" + seconds
+      end
+
+      File.delete(file_name)
+    end
+
+  rescue => e
+    puts "The following exception was raised: #{e}"
+  end
+
+  def open_mpeg
+    file_name = "temp.mpeg"
+
+    open(file_name, 'wb') do |file|
+      file << open("http:#{audio.url}").read
+    end
+
+    TagLib::MPEG::File.open(file_name) do |f|
+      duration = f.audio_properties.length
+      minutes = (duration / 60).to_s
+      seconds = (duration % 60 < 10 ? "0#{duration % 60}" : "#{duration % 60}")
+      self.duration = minutes + ":" + seconds
+    end
+
+    File.delete(file_name)
+  end
 end
