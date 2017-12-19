@@ -7,10 +7,16 @@
       rgba(0, 0, 0, .75),
       rgba(0, 0, 0, .75)
     ),
-    image_url('background-5.jpg');
+    image_url('background-5-compresses.jpg');
   background-size: cover;
   background-position: 0px -70px;
   height: 100vh;
+  animation: fadeInLoad 2s ease-in;
+}
+
+.session-background {
+  height: 100%;
+  width: auto;
 }
 
 .content-container {

@@ -62,7 +62,8 @@ class NewSession extends React.Component {
           <span className="demo-text">Just looking around? Login with a</span>
           <button onClick={this.demoLogin} className='demo-login-button'>DEMO</button>
         </div>
-      </div>
+
+    </div>
     );
   }
 }

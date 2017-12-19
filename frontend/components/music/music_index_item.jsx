@@ -29,21 +29,15 @@ class MusicIndexItem extends React.Component {
   }
 
   render() {
-    let itemName, albumArtist, background;
-    let id = 1;
     const { loaded } = this.state;
-    // 'url(' + this.item.imageUrl + "),
-    if (this.item) {
-      background = { backgroundImage: "url('/assets/album_loading.png')" };
-      itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);
-      id = this.item.id;
-      albumArtist = (this.props.itemType == "album" ? this.item.artist : "");
-    }
+
+    const itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);
+    const id = this.item.id;
+    const albumArtist = (this.props.itemType == "album" ? this.item.artist : "");
 
     return(
       <li key={id} className="playlist-item">
         <figure
-          style={background}
           className="playlist-loading"
           onClick={this.handleClick}
           >
