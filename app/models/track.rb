@@ -28,7 +28,6 @@ class Track < ApplicationRecord
       .object("#{audio.path[1..-1]}")
       .metadata["duration"]
 
-    puts "Bucket: #{bu}"
   end
 
   # private
