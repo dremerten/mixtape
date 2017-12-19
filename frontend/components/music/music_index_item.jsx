@@ -5,13 +5,14 @@ class MusicIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.item = props.item;
+    this.state = { loaded: false };
 
     this.handleClick = this.handleClick.bind(this);
-    // this.paths = {
-    //   "playlist": `/browse/playlists/${this.item.id}`,
-    //   "userPlaylist": `/collection/playlists/${this.item.id}`,
-    //   "album": `/browse/albums/${this.item.id}`
-    // };
+    this.handleLoad = this.handleLoad.bind(this);
+  }
+
+  handleLoad() {
+    this.setState({ loaded: true });
   }
 
   handleClick(e) {
@@ -23,16 +24,17 @@ class MusicIndexItem extends React.Component {
     } else if (this.props.itemType == "album") {
       this.props.history.push(`/browse/albums/${this.item.id}`);
     } else {
-      this.props.handleClick()
+      this.props.handleClick();
     }
   }
 
   render() {
     let itemName, albumArtist, background;
     let id = 1;
-
+    const { loaded } = this.state;
+    // 'url(' + this.item.imageUrl + "),
     if (this.item) {
-      background = { backgroundImage: 'url(' + this.item.imageUrl + ')' };
+      background = { backgroundImage: "url('/assets/album_loading.png')" };
       itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);
       id = this.item.id;
       albumArtist = (this.props.itemType == "album" ? this.item.artist : "");
@@ -40,14 +42,19 @@ class MusicIndexItem extends React.Component {
 
     return(
       <li key={id} className="playlist-item">
-        <button
+        <figure
           style={background}
-          className="playlist-image"
+          className="playlist-loading"
           onClick={this.handleClick}
           >
+          <img src={this.item.imageUrl}
+            onLoad={this.handleLoad}
+            style={ loaded ? { display: ''} : {display: 'none'} }
+            className="playlist-image"
+            />
           <div className="shadow-light"></div>
           <div className="overlay"></div>
-        </button>
+        </figure>
         <div className="playlist-name">
           {itemName}
         </div>

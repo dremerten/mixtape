@@ -1,4 +1,4 @@
-import GenericMusicIndex from './featured_playlists_index';
+import GenericMusicIndex from './music_index';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';

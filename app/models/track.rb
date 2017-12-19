@@ -21,19 +21,16 @@ class Track < ApplicationRecord
   def extract_audio_duration
     bucket_name = (ENV["RAILS_ENV"] == "development" ? "spinnmusicfiles" : "spinnmusicfiles-pro")
 
-    puts "Extracting audio from #{bucket_name}..."
-
     self.duration ||= Rails.configuration.s3_resource
       .bucket(bucket_name)
       .object("#{audio.path[1..-1]}")
       .metadata["duration"]
-
   end
 
   # private
 
   def read_audio
-    puts "Fetching audio information..."
+    puts "Fetching audio information...\n\n\n"
 
     if audio.content_type.match(/mpeg/)
       open_mpeg
@@ -56,7 +53,11 @@ class Track < ApplicationRecord
     end
 
   rescue => e
-    puts "The following exception was raised: #{e}"
+    puts (<<-BASH)
+      The following exception was raised: #{e}
+      All other audio files are unaffected.
+      Rails will skip this audio file and continue reading files.
+      BASH
   end
 
   def open_mpeg

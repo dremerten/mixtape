@@ -49,12 +49,19 @@
     padding-right: 8px;
     margin-top: 30px;
 
-    .playlist-image {
+    .playlist-loading {
       background-size: cover;
       width: 100%;
       padding-bottom: 100%; //creates 1:1 aspect ratio
       box-shadow: 0 0 10px rgba(0,0,0,.3);
       border-radius: 0px;
+      position: relative;
+
+      .playlist-image {
+        animation: fadeInLoad .5s ease-in;
+        max-height: 100%;
+        position: absolute;
+      }
     }
 
     .playlist-image:hover .overlay {

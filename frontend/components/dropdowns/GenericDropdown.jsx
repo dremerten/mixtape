@@ -1,6 +1,8 @@
 import React from 'react';
 import UserPlaylistModal from '../modals/UserPlaylistModal';
 
+//TODO: Put UserPlaylistModal in higher component so it isn't on the Dom for every track.
+
 class GenericDropDown extends React.Component {
   constructor(props) {
     super(props);
