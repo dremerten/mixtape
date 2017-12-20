@@ -85,9 +85,9 @@ class Track extends React.Component {
                 className='track-album-artist'
                 style={{display: (this.isPlaylist()) ? "" : "none"}}
                 >
-                <span>{`${this.track.artist} `}</span>
+                <span>{`${this.track.artist}`}</span>
                 &middot;
-                <span>{` ${this.track.album}`}</span>
+                <span>{`${this.track.album}`}</span>
               </span>
             </div>
             <div>

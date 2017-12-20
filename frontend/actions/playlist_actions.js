@@ -34,11 +34,12 @@ export const fetchPlaylists = filters => dispatch => {
   ));
 };
 
-export const fetchPlaylist = playlistId => dispatch => (
+export const fetchPlaylist = playlistId => dispatch => {
+  dispatch(startLoadingSinglePlaylist());
   PlaylistApiUtil.fetchPlaylist(playlistId).then(playlist => (
     dispatch(receivePlaylist(playlist))
-  ))
-);
+  ));
+};
 
 export const createPlaylist = playlist => dispatch => (
   PlaylistApiUtil.createPlaylist(playlist).then(playlist => (

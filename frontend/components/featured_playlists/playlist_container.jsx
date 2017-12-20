@@ -34,7 +34,7 @@ const mapDispatchToProps = dispatch => ({
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchPlaylist: id => dispatch(fetchPlaylist(id)),
-  showDropdown: name => dispatch(showDropdown(name))
+  showDropdown: name => dispatch(showDropdown(name)),
 });
 
 export default connect(

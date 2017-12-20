@@ -1,16 +1,20 @@
 import React from 'react';
+import Track from './track';
 
-
-const TrackIndex = ({tracks}) => (
-  tracks.map(track => (
-    <Track
-      { ...this.props}
-      track={track}
-      collectionId={this.props.playlist.id}
-      showDropdown={this.props.showDropdown}
-      key={track.id} />
-    )
-  )
+const TrackIndex = (props) => (
+  <ol className='tracklist-container'>
+    {
+      props.tracks.map(track => (
+        <Track
+          { ...props}
+          track={track}
+          collectionId={props.playlist.id}
+          showDropdown={props.showDropdown}
+          key={track.id} />
+        )
+      )
+    }
+  </ol>
 );
 
 export default TrackIndex;

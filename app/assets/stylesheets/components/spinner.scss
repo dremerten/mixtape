@@ -53,11 +53,16 @@
   }
 }
 
+.lds-css {
+
+  padding-top: 15%;
+}
+
 .lds-default {
   position: relative;
   margin-left: 50%;
-  margin-top: 15%;
 }
+
 .lds-default div {
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
