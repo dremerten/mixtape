@@ -65,7 +65,6 @@ class Playlist extends React.Component {
     //   }
     //   imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' };
     // }
-    debugger
     return(
       <div className="playlist-show-wrapper">
       { loading ?

@@ -31,7 +31,7 @@ class Album extends React.Component {
   }
 
   render() {
-    let tracks, title, artist;
+    let tracks, title, artist, background;
     let imageUrl = { backgroundImage: "image_url('album_default.jpg')" };
 
     if (this.props.album) {
@@ -49,10 +49,13 @@ class Album extends React.Component {
         </span>];
       }
       imageUrl = { backgroundImage: 'url(' + this.props.album.imageUrl + ')' };
+      background = { background: this.props.album.background };
     }
 
+    
+    debugger
     return(
-      <div className="playlist-show-wrapper">
+      <div className="playlist-show-wrapper" style={background}>
         <div className="playlist-show-container">
           <div className="playlist-info">
             <div
