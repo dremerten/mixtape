@@ -1,7 +1,6 @@
 import React from 'react';
 import Track from '../tracks/track';
 
-// TODO: REMOVE PLAYLISTS FROM STATE ON LOGOUT YOU IDIOT
 
 class Playlist extends React.Component {
   constructor(props) {
@@ -49,6 +48,7 @@ class Playlist extends React.Component {
       title = this.props.playlist.name;
       author = this.props.playlist.author_name;
       count = this.props.tracks.length;
+
       if (!tracks.length) {
         tracks = [<span className="track-row-wrapper no-hover" key={1}>
           There aren't any tracks on this playlist yet.

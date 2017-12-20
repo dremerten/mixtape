@@ -27,7 +27,6 @@ class Track extends React.Component {
     this.props.play();
   }
 
-
   pause() {
     this.props.pause();
   }

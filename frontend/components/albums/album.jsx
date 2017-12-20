@@ -64,7 +64,7 @@ class Album extends React.Component {
               <div className='playlist-title'>
                 {title}
               </div>
-              <div className='author'>
+              <div className='sub-header'>
                 by <span>{artist}</span>
               </div>
             </div>

@@ -1,9 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+
 class AlbumIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.album = props.album
+    this.album = props.album;
 
     this.handleClick = this.handleClick.bind(this);
   }
@@ -12,20 +13,20 @@ class AlbumIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
 
-    this.props.history.push(`/browse/albums/${this.album.id}`)
+    this.props.history.push(`/browse/albums/${this.album.id}`);
   }
 
-  
+
   render() {
     let albumName, albumArtist;
-    let background = { backgroundImage: 'assets/album_default.jpg' }
-    let id = 1
+    let background = { backgroundImage: 'assets/album_default.jpg' };
+    let id = 1;
 
     if (this.album) {
       background = { backgroundImage: 'url(' + this.album.artwork_url + ')' };
-      albumName = this.album.title
-      albumArtist = this.album.artist
-      id = this.album.id
+      albumName = this.album.title;
+      albumArtist = this.album.artist;
+      id = this.album.id;
     }
 
     return(
@@ -45,7 +46,7 @@ class AlbumIndexItem extends React.Component {
           {albumArtist}
         </div>
       </li>
-    )
+    );
   }
 }
 
