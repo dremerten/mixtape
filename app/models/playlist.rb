@@ -1,4 +1,6 @@
 class Playlist < ApplicationRecord
+  include Helpers::ImageScanner
+
   has_many :playlist_tracks
   has_many :tracks, through: :playlist_tracks, source: :track
   has_many :genres, through: :tracks, source: :genres
@@ -27,8 +29,18 @@ class Playlist < ApplicationRecord
   # Make playlist take the artwork of the first track that was added
   def inherit_artwork
     # Only update artwork if it hasn't been updated yet
-    return unless image && self.image.url.match(/album_default/) && !tracks.empty?
+    return if image.url.include?('compiled-image') ||
+              tracks.empty? ||
+              author_id.zero?
 
-    self.image = open("http:#{tracks.first.album.artwork.url}")
+    num_albums = tracks.includes(:album).pluck(:album_id).uniq.count
+
+    if num_albums < 4
+      return unless image.url.include?('default')
+
+      self.image = open("http:#{tracks.first.album.artwork.url}")
+    else
+      combine
+    end
   end
 end

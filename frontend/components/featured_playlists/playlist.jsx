@@ -37,8 +37,8 @@ class Playlist extends React.Component {
   }
 
   render() {
-    let tracks, title, author, count;
-    let imageUrl = { backgroundImage: "url('album_default.jpg')" };
+    // let tracks, title, author, count;
+    // let imageUrl = { backgroundImage: "url('album_default.jpg')" };
     const { loading } = this.state;
 
 
@@ -66,7 +66,7 @@ class Playlist extends React.Component {
     //   imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' };
     // }
     return(
-      <div className="playlist-show-wrapper">
+      <div className="playlist-show-wrapper" style={ { background: 'linear-gradient(rgb(115, 39, 38), rgb(11, 3, 3) 85%) fixed' } }>
       { loading ?
         <Spinner />
         :
