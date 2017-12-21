@@ -4,6 +4,7 @@ export const RECEIVE_TRACKS = 'RECEIVE_TRACKS';
 export const RECEIVE_TRACK = 'RECEIVE_TRACK';
 export const REMOVE_TRACKS = 'REMOVE_TRACKS';
 export const RECEIVE_SONG_SAVE_STATUS = 'RECEIVE_SONG_SAVE_STATUS';
+export const START_LOADING_ALL_TRACKS = 'START_LOADING_ALL_TRACKS';
 
 export const receiveTracks = tracks => ({
   type: RECEIVE_TRACKS, tracks
@@ -26,6 +27,13 @@ export const fetchTracks = filters => dispatch => (
     dispatch(receiveTracks(tracks))
   )
 );
+
+export const fetchTracksForUser = () => dispatch => {
+  dispatch({ type: START_LOADING_ALL_TRACKS});
+  TrackApiUtil.fetchTracksForUser().then(tracks => (
+    dispatch(receiveTracks(tracks))
+  ));
+};
 
 export const fetchTrack = id => dispatch => (
   TrackApiUtil.fetchTrack(id).then(track =>

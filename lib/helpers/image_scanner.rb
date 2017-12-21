@@ -44,9 +44,13 @@ module Helpers::ImageScanner
   def combine
     raise "You cannot call combine on a #{self.class}" unless self.is_a? Playlist
 
-    albums = Album.where(id:
-                Track.where(id: Playlist.first.track_ids).pluck(:album_id).uniq
-              ).limit(4)
+    # albums = Album.where(id:
+    #             Track.where(id: Playlist.first.track_ids).pluck(:album_id).uniq
+    #           ).limit(4)
+    albums = Album.joins(:tracks)
+                  .where('tracks.id': self.track_ids)
+                  .pluck(:id)
+                  .uniq.take(4)
 
     artwork_urls = albums.map { |a| a.artwork(:small) }
 

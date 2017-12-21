@@ -9,14 +9,14 @@ import { setHeader } from '../../selectors/DynamicHeaderSelector';
 const mapStateToProps = (state, ownProps) => ({
   indexItems: Object.keys(state.entities.playlists.byId)
                      .map(id => state.entities.playlists.byId[id]),
-  itemType: 'playlist',
-  header: setHeader(),
+  itemType: 'userPlaylist',
+  header: "Your Playlists",
   background: { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' },
   shouldFetchItems: true
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchItems: () => dispatch(fetchPlaylists({type: 'featured'})),
+  fetchItems: () => dispatch(fetchPlaylists()),
   removeItems: () => dispatch(removePlaylists()),
   setScrollPosition: pos => dispatch(setScrollPosition(pos))
 });

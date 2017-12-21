@@ -16,6 +16,6 @@ class Album < ApplicationRecord
   end
 
   def popularity
-    tracks.map(&:popularity).reduce(:+) / tracks.count
+    tracks.pluck(:popularity).reduce(:+) / tracks.count
   end
 end

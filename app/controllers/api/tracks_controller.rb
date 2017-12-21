@@ -1,6 +1,6 @@
 class Api::TracksController < ApplicationController
   def index
-    @tracks = Track.includes(:album, :artist).all
+    @tracks = current_user.tracks.includes(:album, :artist)
   end
 
   def show

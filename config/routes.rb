@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
     post 'tracks/:id/save', to: 'tracks#create_track_save'
     delete 'tracks/:id/save', to: 'tracks#remove_track_save'
-
     post 'playlists/:id/tracks', to: 'playlists#add_track'
     delete 'playlists/:id/tracks', to: 'playlists#remove_track'
   end

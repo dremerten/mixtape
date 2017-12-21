@@ -4,6 +4,7 @@ import CollectionsNav from './CollectionsNav';
 import AlbumIndex from './featured_playlists/AlbumIndex';
 import PlaylistIndex from './featured_playlists/PlaylistIndex';
 import UserPlaylistIndex from './featured_playlists/UserPlaylistIndex';
+import UserTrackIndex from './tracks/UserTrackIndex';
 import { Route, Switch } from 'react-router-dom';
 
 const MusicPortal = (props) => {
@@ -16,7 +17,7 @@ const MusicPortal = (props) => {
         <Route path='/browse/newreleases' component={AlbumIndex} />
         <Route path='/browse/featured' component={PlaylistIndex} />
         <Route path='/collection/playlists' component={UserPlaylistIndex} />
-
+        <Route path='/collection/tracks' component={UserTrackIndex} />
       </div>
     );
 };

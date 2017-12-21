@@ -1,6 +1,6 @@
 import React from 'react';
 import Track from '../tracks/track';
-import TrackIndex from '../tracks/TrackIndex';
+import TrackList from '../tracks/TrackList';
 import Spinner from '../Spinner';
 
 class Playlist extends React.Component {
@@ -63,7 +63,7 @@ class Playlist extends React.Component {
               </div>
             </div>
           </div>
-          <TrackIndex tracks={this.props.playlist.tracks} { ...this.props } />
+          <TrackList tracks={this.props.playlist.tracks} { ...this.props } />
         </div>
         }
       </div>

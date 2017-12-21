@@ -50,7 +50,6 @@ class GenericMusicIndex extends React.Component {
     return(
       <div className="featured-playlists-container"
         style={this.props.background}
-        id="music-items"
         ref={(el) => { this.element = el; }}
         onScroll={this.handleScroll}
         >
@@ -61,7 +60,7 @@ class GenericMusicIndex extends React.Component {
             {indexItems}
           </ul>
         </div>
-        
+
       </div>
     );
   }

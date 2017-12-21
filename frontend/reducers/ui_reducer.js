@@ -23,6 +23,7 @@ import {
   RECEIVE_PLAYLIST
 } from '../actions/playlist_actions';
 
+import { START_LOADING_ALL_TRACKS } from '../actions/track_actions';
 
 const defaultState = {
   loading: false,
@@ -41,6 +42,7 @@ const UIReducer = (state = defaultState, action) => {
     case START_LOADING_SINGLE_ALBUM:
     case START_LOADING_ALL_PLAYLISTS:
     case START_LOADING_SINGLE_PLAYLIST:
+    case START_LOADING_ALL_TRACKS:
       newState = merge({}, defaultState, { loading: true });
       return newState;
     case RECEIVE_PLAYLISTS:

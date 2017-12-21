@@ -33,7 +33,7 @@ class Playlist < ApplicationRecord
               tracks.empty? ||
               author_id.zero?
 
-    num_albums = tracks.includes(:album).pluck(:album_id).uniq.count
+    num_albums = tracks.pluck(:album_id).uniq.count
 
     if num_albums < 4
       return unless image.url.include?('default')

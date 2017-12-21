@@ -6,6 +6,13 @@ export const fetchTracks = (id = null) => {
   });
 };
 
+export const fetchTracksForUser = () => (
+  $.ajax({
+    method: 'GET',
+    url: 'api/tracks'
+  })
+);
+
 export const fetchTrack = id => (
   $.ajax({
     method: 'GET',
