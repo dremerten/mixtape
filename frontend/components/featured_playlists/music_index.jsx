@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../NavBar';
-import MusicIndexItem from '../music/music_index_item';
+import MusicIndexItem from './music_index_item';
 import Spinner from '../Spinner';
 
 class GenericMusicIndex extends React.Component {
