@@ -51,7 +51,7 @@ class Album extends React.Component {
       imageUrl = { backgroundImage: 'url(' + this.props.album.imageUrl + ')' };
       background = { background: this.props.album.background };
     }
-    debugger
+
     return(
       <div className="playlist-show-wrapper" style={background}>
         <div className="playlist-show-container">
