@@ -3,6 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setScrollPosition } from '../../actions/ui_actions';
+import { fetchAlbums, removeAlbums } from '../../actions/album_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   indexItems: Object.keys(state.entities.albums)

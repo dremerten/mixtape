@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchPlaylists, removePlaylists } from '../../actions/playlist_actions';
 import { setScrollPosition } from '../../actions/ui_actions';
+import { setHeader } from '../../selectors/DynamicHeaderSelector';
 
 const mapStateToProps = (state, ownProps) => ({
   indexItems: Object.keys(state.entities.playlists.byId)

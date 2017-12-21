@@ -1,11 +1,9 @@
 import React from 'react';
-import GenresIndex from './genres/genres_index';
-import MusicIndexContainer from './featured_playlists/music_index_container';
-import NavBarContainer from './NavBar';
 import BrowseNav from './BrowseNav';
 import CollectionsNav from './CollectionsNav';
-import SearchContainer from './search/search_container';
-import SideBar from './sidebar/sidebar';
+import AlbumIndex from './featured_playlists/AlbumIndex';
+import PlaylistIndex from './featured_playlists/PlaylistIndex';
+import UserPlaylistIndex from './featured_playlists/UserPlaylistIndex';
 import { Route, Switch } from 'react-router-dom';
 
 const MusicPortal = (props) => {
@@ -15,7 +13,10 @@ const MusicPortal = (props) => {
           <Route path='/browse' component={BrowseNav} { ...props } />
           <Route path='/collection' component={CollectionsNav} { ...props } />
         </Switch>
-        < MusicIndexContainer />
+        <Route path='/browse/newreleases' component={AlbumIndex} />
+        <Route path='/browse/featured' component={PlaylistIndex} />
+        <Route path='/collection/playlists' component={UserPlaylistIndex} />
+
       </div>
     );
 };

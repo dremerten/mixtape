@@ -37,34 +37,8 @@ class Playlist extends React.Component {
   }
 
   render() {
-    // let tracks, title, author, count;
-    // let imageUrl = { backgroundImage: "url('album_default.jpg')" };
     const { loading } = this.state;
 
-
-    // if (this.props.playlist) {
-    //   tracks
-    //   tracks = this.props.tracks.map(track => (
-    //     <Track
-    //       { ...this.props}
-    //       track={track}
-    //       collectionId={this.props.playlist.id}
-    //       showDropdown={this.props.showDropdown}
-    //       key={track.id} />
-    //     )
-    //   );
-
-    //   title = this.props.playlist.name;
-    //   author = this.props.playlist.author_name;
-    //   count = this.props.tracks.length;
-    //
-    //   if (!tracks.length) {
-    //     tracks = [<span className="track-row-wrapper no-hover" key={1}>
-    //       There aren't any tracks on this playlist yet.
-    //     </span>];
-    //   }
-    //   imageUrl = { backgroundImage: 'url(' + this.props.playlist.imageUrl + ')' };
-    // }
     return(
       <div className="playlist-show-wrapper" style={ { background: 'linear-gradient(rgb(115, 39, 38), rgb(11, 3, 3) 85%) fixed' } }>
       { loading ?
@@ -85,7 +59,7 @@ class Playlist extends React.Component {
                 by <span>{this.props.playlist.author_name}</span>
               </div>
               <div className='sub-header'>
-                {this.props.playlist.length} SONGS
+                {this.props.playlist.trackIds.length} SONGS
               </div>
             </div>
           </div>

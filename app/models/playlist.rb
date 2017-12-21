@@ -40,6 +40,7 @@ class Playlist < ApplicationRecord
 
       self.image = open("http:#{tracks.first.album.artwork.url}")
     else
+      # this calls the combine method inherited from the ImageScanner module
       combine
     end
   end

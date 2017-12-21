@@ -26,6 +26,7 @@ bundle.js.map
 frontend/components/NavBar.jsx
 npm-debug.log
 aws_keys.yml
+frontend/components/featured_playlists/music_index_container
 artists/*
 # Ignore application configuration
 /config/application.yml
