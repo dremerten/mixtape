@@ -18,14 +18,19 @@ class GenericMusicIndex extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loading != this.state.loading) {
-      this.setState({ loading: !this.state.loading });
-    }
+    // if (newProps.loading != this.state.loading) {
+    //   this.setState({ loading: !this.state.loading });
+    // }
+    //
+    // debugger
+    // if (newProps.itemType != this.props.itemType) {
+    //   this.props.removeItems();
+    //   newProps.fetchItems();
+    // }
+  }
 
-    if (newProps.itemType != this.props.itemType) {
-      this.props.removeItems();
-      newProps.fetchItems();
-    }
+  componentWillUnmount() {
+    this.props.removeItems();
   }
 
   handleScroll() {

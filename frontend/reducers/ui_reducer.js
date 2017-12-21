@@ -52,7 +52,8 @@ const UIReducer = (state = defaultState, action) => {
     case LOGOUT:
       return defaultState;
     case HIDE_ALL_DROPDOWNS:
-      return defaultState;
+      newState = merge({}, state, { dropdowns: [] });
+      return newState;
     case SHOW_DROPDOWN:
       newState = merge({}, state, { dropdowns: union(state.dropdowns, [action.name]) });
       return newState;

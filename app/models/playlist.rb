@@ -38,7 +38,7 @@ class Playlist < ApplicationRecord
     if num_albums < 4
       return unless image.url.include?('default')
 
-      self.image = open("http:#{tracks.first.album.artwork.url}")
+      self.image = open("http:#{tracks.first.album.artwork(:small)}")
     else
       # this calls the combine method inherited from the ImageScanner module
       combine
