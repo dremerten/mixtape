@@ -5,7 +5,7 @@ module Helpers::ImageScanner
 
   def generate_gradient
     # Skip all picture that are similar to the color white
-    max_intensity = Pixel.from_color('#D3C7BF').intensity
+    max_pixel = Pixel.from_color('white')
 
     image = ImageList.new("http:#{artwork(:small)}").first
 
@@ -18,7 +18,8 @@ module Helpers::ImageScanner
     # Keep track of number of pixels for averaging later
     count = 0
     image.each_pixel do |pix|
-      next if pix.intensity >= max_intensity
+      # Skip white pixels
+      next if pix >= max_pixel
 
       count += 1
       [:red, :green, :blue].each_with_index do |color, i|
@@ -29,6 +30,8 @@ module Helpers::ImageScanner
     # Find the average value for all color attributes
     rgb_av = rgb_total.map { |val| val / count }
 
+    # If the color is too bright, scale the color to make it darker
+    rgb_av = _scale_color(rgb_av) if _should_scale_color?(rgb_av)
     # There will be two rgb values passed up to create a gradient
     first_grad = rgb_av.join(',')
 
@@ -44,9 +47,6 @@ module Helpers::ImageScanner
   def combine
     raise "You cannot call combine on a #{self.class}" unless self.is_a? Playlist
 
-    # albums = Album.where(id:
-    #             Track.where(id: Playlist.first.track_ids).pluck(:album_id).uniq
-    #           ).limit(4)
     albums = Album.joins(:tracks)
                   .where('tracks.id': self.track_ids)
                   .distinct
@@ -76,5 +76,17 @@ module Helpers::ImageScanner
     self.image = File.open(image_path)
 
     File.delete(image_path)
+  end
+
+  private
+
+  def _should_scale_color?(rgb)
+    rgb.all? { |val| val > 150 }
+  end
+
+  def _scale_color(rgb)
+    amount_to_scale = rgb.max - 140
+
+    rgb.map { |val| val - amount_to_scale }
   end
 end
