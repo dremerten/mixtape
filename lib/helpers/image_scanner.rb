@@ -49,8 +49,8 @@ module Helpers::ImageScanner
     #           ).limit(4)
     albums = Album.joins(:tracks)
                   .where('tracks.id': self.track_ids)
-                  .pluck(:id)
-                  .uniq.take(4)
+                  .distinct
+                  .limit(4)
 
     artwork_urls = albums.map { |a| a.artwork(:small) }
 
