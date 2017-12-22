@@ -1,9 +1,10 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import MusicIndexItem from './music_index_item';
+import GenericMusicIndex from './GenericMusicIndex';
 import Spinner from '../Spinner';
 
-class GenericMusicIndex extends React.Component {
+class MusicPageContainer extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,27 +24,22 @@ class GenericMusicIndex extends React.Component {
   }
 
   render() {
-    const indexItems = this.props.indexItems.map(item => (
-      <MusicIndexItem
-        key={item.id}
-        item={item}
-        history={this.props.history}
-        itemType={this.props.itemType}
-        />
-      )
-    );
+    const { indexItems, itemType, background, header, MusicIndex } = this.props;
 
     return(
       <div className="featured-playlists-container"
-        style={this.props.background}
+        style={background}
         ref={(el) => { this.element = el; }}
         onScroll={this.handleScroll}
         >
 
         <div className="list">
-          <h1 className="playlists-header">{this.props.header}</h1>
-          <ul className="playlist-items">
-            {indexItems}
+          <h1 className="playlists-header">{header}</h1>
+          <ul className='playlist-items'>
+            <MusicIndex
+              indexItems={indexItems}
+              itemType={itemType}
+              />
           </ul>
         </div>
 
@@ -52,4 +48,6 @@ class GenericMusicIndex extends React.Component {
   }
 }
 
-export default GenericMusicIndex;
+export default MusicPageContainer;
+
+// { indexItems }

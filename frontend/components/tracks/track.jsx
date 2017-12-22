@@ -4,90 +4,46 @@ import TrackDropDown from '../dropdowns/TrackDropDown';
 class Track extends React.Component {
   constructor(props) {
     super(props);
-    this.track = props.track;
-    this.currentTrack = props.currentTrack;
-    this.state = {
-      inProgress: props.currentTrack &&
-        (props.currentTrack.id == this.track.id) &&
-        props.inProgress
-    };
 
-    this.isCurrentTrack = this.isCurrentTrack.bind(this);
     this.handlePlay = this.handlePlay.bind(this);
-    this.isPlaylist = this.isPlaylist.bind(this);
     this.handleClick = this.handleClick.bind(this);
-  }
-
-  isCurrentTrack() {
-    return this.props.currentTrack &&
-    this.props.currentTrack.id == this.track.id;
-  }
-
-  play() {
-    this.props.play();
-  }
-
-  pause() {
-    this.props.pause();
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.currentTrack && newProps.currentTrack.id == this.track.id) {
-      this.setState({
-        inProgress: newProps.inProgress
-      });
-    } else {
-      this.setState({
-        inProgress: false
-      });
-    }
   }
 
   handleClick(e) {
     e.stopPropagation();
 
-    this.props.showDropdown(`track-dropdown-${this.track.id}`);
+    this.props.showDropdown(`track-dropdown-${this.props.track.id}`);
   }
 
   handlePlay() {
-    if (this.isCurrentTrack()) {
-      this.props.inProgress ? this.pause() : this.play();
-      this.setState({ inProgress: !this.state.inProgress });
+    if (this.props.inProgress) {
+      this.props.pause();
+    } else if (this.props.isCurrentTrack) {
+      this.props.play();
     } else {
-      this.props.playSingleTrack(this.track);
-      this.setState({ inProgress: true });
+      this.props.playSingleTrack(this.props.track);
     }
   }
-
-  isPlaylist() {
-    return !!(this.props.match.params.playlistId);
-  }
-
 
   render() {
-    let playButton = <i className="fa fa-play track-play-pause" aria-hidden="true"></i>;
-    let trackInfo;
-
-    if (this.state.inProgress) {
-      playButton = <i className="fa fa-pause track-play-pause" aria-hidden="true"></i>;
-    }
+    const { track, buttonText, artistIsVisible } = this.props;
 
     return(
       <div className='track-row-wrapper'>
         <li className='track-row'>
           <div className='track-play-pause' onClick={this.handlePlay}>
-            {playButton}
+            <i className={`fa fa-${this.props.buttonText} track-play-pause`} aria-hidden="true"/>
           </div>
           <div className="track-info">
             <div className='track-details'>
               <span className='track-title'>{this.props.track.title}</span>
               <span
                 className='track-album-artist'
-                style={{display: (this.isPlaylist()) ? "" : "none"}}
+                style={{display: artistIsVisible ? "" : "none"}}
                 >
-                <span>{`${this.track.artist}`}</span>
+                <span>{`${track.artist}`}</span>
                 &middot;
-                <span>{`${this.track.album}`}</span>
+                <span>{`${track.album}`}</span>
               </span>
             </div>
             <div>
@@ -98,13 +54,13 @@ class Track extends React.Component {
                 ...
               </button>
               <span>
-                {this.track.duration}
+                {track.duration}
               </span>
             </div>
           </div>
           <TrackDropDown
             ref={(el) => { this.dropDown = el; }}
-            trackId={this.track.id}
+            trackId={this.props.track.id}
             collectionId={this.props.collectionId}
             />
         </li>
@@ -113,6 +69,7 @@ class Track extends React.Component {
   }
 
 }
+
 
 export default Track;
 

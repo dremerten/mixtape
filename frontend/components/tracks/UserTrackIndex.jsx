@@ -1,17 +1,22 @@
+import GenericTrackList from './TrackList';
+import MusicPageContainer from '../featured_playlists/MusicPageContainer';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import GenericTrackIndex from './GenericTrackIndex';
+import { fetchTracksForUser, removeTracks } from '../../actions/track_actions';
+import { setScrollPosition } from '../../actions/ui_actions';
 import { allTracks } from '../../selectors/track_selectors';
-import { fetchTracksForUser } from '../../actions/track_actions';
 
 const mapStateToProps = state => ({
-  tracks: allTracks(state.entities.tracks),
-  background: { backgroundImage: 'linear-gradient(rgb(68, 85, 68), rgb(6, 8, 6) 85%)' },
-  loading: state.ui.loading
+  indexItems: allTracks(state.entities.tracks),
+  background: { backgroundImage: 'linear-gradient(rgb(244, 161, 66), rgb(24, 16, 6) 85%)' },
+  loading: state.ui.loading,
+  MusicIndex: GenericTrackList
 });
 
 const mapDispatchToProps = dispatch => ({
-  fetchItems: () => dispatch(fetchTracksForUser())
+  fetchItems: () => dispatch(fetchTracksForUser()),
+  removeItems: () => dispatch(removeTracks()),
+  setScrollPosition: (pos) => dispatch(setScrollPosition(pos))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(GenericTrackIndex);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MusicPageContainer));

@@ -61,12 +61,12 @@ class NewPlaylistForm extends React.Component {
                     className="new-playlist-button-cancel"
                     onClick={this.props.handleCloseModal}
                     >CANCEL</div>
-                  <input
-                    type="submit"
-                    onClick={this.handleSubmit}
-                    value="SUBMIT"
-                    className="new-playlist-button-submit">
-                  </input>
+                    <input
+                      type="submit"
+                      onClick={this.handleSubmit}
+                      value="SUBMIT"
+                      className="new-playlist-button-submit">
+                    </input>
                 </div>
               </form>
             </div>

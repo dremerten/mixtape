@@ -1,14 +1,16 @@
 import React from 'react';
-import Track from './track';
+import Track from './TrackContainer';
 
 const TrackList = (props) => (
   <ol className='tracklist-container'>
     {
-      props.tracks.map(track => (
+      props.indexItems.map(track => (
         <Track
           { ...props}
           track={track}
-          key={track.id} />
+          key={track.id}
+          artistIsVisible
+           />
         )
       )
     }

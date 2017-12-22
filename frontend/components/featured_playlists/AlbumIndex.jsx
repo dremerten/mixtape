@@ -1,9 +1,10 @@
-import GenericMusicIndex from './music_index';
+import MusicPageContainer from './MusicPageContainer';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setScrollPosition } from '../../actions/ui_actions';
 import { fetchAlbums, removeAlbums } from '../../actions/album_actions';
+import GenericMusicIndex from './GenericMusicIndex';
 
 const mapStateToProps = (state, ownProps) => ({
   indexItems: Object.keys(state.entities.albums)
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => ({
   itemType: 'album',
   header: "What's Trending",
   background: { background: 'linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed' },
-  shouldFetchItems: true
+  shouldFetchItems: true,
+  MusicIndex: GenericMusicIndex
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
@@ -23,4 +25,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
 export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(GenericMusicIndex));
+)(MusicPageContainer));
