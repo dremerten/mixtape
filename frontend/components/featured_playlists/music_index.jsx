@@ -6,9 +6,6 @@ import Spinner from '../Spinner';
 class GenericMusicIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      loading: props.loading,
-     };
 
     this.handleScroll = this.handleScroll.bind(this);
   }
@@ -26,19 +23,15 @@ class GenericMusicIndex extends React.Component {
   }
 
   render() {
-    let indexItems;
-
-    if (!this.state.loading) {
-      indexItems = this.props.indexItems.map(item => (
-        <MusicIndexItem
-          key={item.id}
-          item={item}
-          history={this.props.history}
-          itemType={this.props.itemType}
-          />
-        )
-      );
-    }
+    const indexItems = this.props.indexItems.map(item => (
+      <MusicIndexItem
+        key={item.id}
+        item={item}
+        history={this.props.history}
+        itemType={this.props.itemType}
+        />
+      )
+    );
 
     return(
       <div className="featured-playlists-container"

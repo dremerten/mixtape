@@ -6,29 +6,20 @@ import PlaylistIndex from './featured_playlists/PlaylistIndex';
 import UserPlaylistIndex from './featured_playlists/UserPlaylistIndex';
 import UserTrackIndex from './tracks/UserTrackIndex';
 import { Route, Switch } from 'react-router-dom';
+import UserProfile from './UserProfile';
 
 const MusicPortal = (props) => {
     return(
       <div>
-        <Switch>
-          <Route path='/browse' component={BrowseNav} { ...props } />
-          <Route path='/collection' component={CollectionsNav} { ...props } />
-        </Switch>
+        <Route path='/browse' component={BrowseNav} { ...props } />
+        <Route path='/collection' component={CollectionsNav} { ...props } />
         <Route path='/browse/newreleases' component={AlbumIndex} />
         <Route path='/browse/featured' component={PlaylistIndex} />
         <Route path='/collection/playlists' component={UserPlaylistIndex} />
         <Route path='/collection/tracks' component={UserTrackIndex} />
+        <Route path='/account/profile' component={UserProfile} />
       </div>
     );
 };
 
 export default MusicPortal;
-
-// const scraps = {
-//   scraps: <Route path="/browse/newreleases" component={MusicIndexContainer} />
-// <Route path="/collection/playlists" component={MusicIndexContainer} />;
-// }
-// <Route path="/browse/search" component={SearchContainer} />
-
-// <Route path="/browse/playlists/:playlistId" component={PlaylistContainer} />
-// <Route path="/browse/albums/:albumId" component={AlbumContainer} />

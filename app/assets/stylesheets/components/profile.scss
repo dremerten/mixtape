@@ -1,0 +1,43 @@
+.user-page-container {
+  background: linear-gradient(rgba(15, 15, 15, 1), rgba(10, 10, 10, 1) 85%) fixed;
+  margin-left: 220px;
+  height: 100vh;
+}
+
+.user-info {
+  padding-top: 50px;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+
+  img {
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+  }
+
+  button, a {
+    padding: 5px 0;
+    width: 225px;
+    font-family: $open;
+    font-size: 12px;
+    font-weight: lighter;
+    text-align: center;
+    letter-spacing: 2px;
+    border: 2px solid $transluscent-white;
+    color: $transluscent-white;
+    background-color: rgb(22, 22, 22);
+    border-radius: 25px;
+    margin-top: 30px;
+    transform: scale(1);
+    transition: .2s;
+
+    &:hover {
+      transform: scale(1.1);
+      transition: .2s;
+    }
+  }
+
+}

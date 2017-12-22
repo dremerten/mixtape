@@ -33,7 +33,7 @@ const SideBar = ({ currentUser }) => {
         </ul>
         <div className="session-info">
           <div className="user-widget">
-            <Link to="/settings/acount">
+            <Link to="/account/profile">
               <img className="user-avatar" src={currentUser.avatar_url} />
               <span className="user-link">{username}</span>
             </Link>
