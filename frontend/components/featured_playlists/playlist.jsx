@@ -39,6 +39,7 @@ class Playlist extends React.Component {
   render() {
     const { loading } = this.state;
 
+    debugger
     return(
       <div className="playlist-show-wrapper" style={ { background: 'linear-gradient(rgb(115, 39, 38), rgb(11, 3, 3) 85%) fixed' } }>
       { loading ?
@@ -63,7 +64,9 @@ class Playlist extends React.Component {
               </div>
             </div>
           </div>
-          <TrackList tracks={this.props.playlist.tracks} { ...this.props } />
+          <div className='tracklist-container'>
+            <TrackList indexItems={this.props.tracks} { ...this.props } />
+          </div>
         </div>
         }
       </div>
