@@ -41,9 +41,9 @@ class Track extends React.Component {
                 className='track-album-artist'
                 style={{display: artistIsVisible ? "" : "none"}}
                 >
-                <span>{`${track.artist}`}</span>
+                <span>{`${track.artist} `}</span>
                 &middot;
-                <span>{`${track.album}`}</span>
+                <span>{` ${track.album}`}</span>
               </span>
             </div>
             <div>

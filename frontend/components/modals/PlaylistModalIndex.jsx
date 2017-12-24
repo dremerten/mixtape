@@ -12,7 +12,7 @@ export default connect(mapStateToProps)(props => {
   return props.playlists.map((playlist, index) => (
     <PlaylistModalItem
       key={index}
-      playlist={playlist}
+      item={playlist}
       { ...props }
       ></PlaylistModalItem>
   ));

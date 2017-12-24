@@ -8,7 +8,6 @@ class Playlist extends React.Component {
     super(props);
     this.state = {
       loading: true,
-      paused: this.props.inProgress
     };
   }
 
@@ -24,24 +23,20 @@ class Playlist extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+    // debugger
     if (newProps.loading != this.state.loading) {
       this.setState({ loading: !this.state.loading});
-    }
-
-    let id = this.props.match.params.playlistId;
-    let newId = newProps.match.params.playlistId;
-
-    if ( newId !== id) {
+    } else
+    if ( this.props.playlistId !== newProps.playlistId) {
       this.props.fetchPlaylist(newId);
     }
   }
 
   render() {
     const { loading } = this.state;
-
     debugger
     return(
-      <div className="playlist-show-wrapper" style={ { background: 'linear-gradient(rgb(115, 39, 38), rgb(11, 3, 3) 85%) fixed' } }>
+      <div className="playlist-show-wrapper">
       { loading ?
         <Spinner />
         :
@@ -57,7 +52,7 @@ class Playlist extends React.Component {
                 {this.props.playlist.name}
               </div>
               <div className='sub-header'>
-                by <span>{this.props.playlist.author_name}</span>
+                by <span>{this.props.playlist.author}</span>
               </div>
               <div className='sub-header'>
                 {this.props.playlist.trackIds.length} SONGS
@@ -65,7 +60,11 @@ class Playlist extends React.Component {
             </div>
           </div>
           <div className='tracklist-container'>
-            <TrackList indexItems={this.props.tracks} { ...this.props } />
+            <TrackList
+              indexItems={this.props.tracks}
+              { ...this.props }
+              artistIsVisible
+              />
           </div>
         </div>
         }

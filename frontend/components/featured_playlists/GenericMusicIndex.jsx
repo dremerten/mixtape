@@ -1,16 +1,17 @@
 import React from 'react';
-import MusicIndexItem from './music_index_item';
+// import MusicIndexItem from './music_index_item';
 import { withRouter } from 'react-router-dom';
 
 const GenericMusicIndex = (props) => {
+  const { IndexItem } = props;
+ 
   return(
     <ul className='playlist-items'>
       { props.indexItems.map(item => (
-        <MusicIndexItem
+        <IndexItem
           { ...props }
           key={item.id}
           item={item}
-          itemType={props.itemType}
           />
         )
       ) }

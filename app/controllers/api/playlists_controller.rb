@@ -1,9 +1,9 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
+    playlists = (is_featured ? Playlist.includes(:author).featured : Playlist.includes(:author).user_playlists(current_user))
 
-    @playlists = playlists
+    @playlists = playlists.includes(:author)
   end
 
   def create
@@ -26,7 +26,7 @@ class Api::PlaylistsController < ApplicationController
     if @playlist.update(playlist_params)
       render :show
     else
-      render json: @playlist.errors.full_messages
+      render json: @playlist.errors.full_messages, status: 422
     end
   end
 

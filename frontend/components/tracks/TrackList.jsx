@@ -10,7 +10,7 @@ const TrackList = (props) => {
           { ...props}
           track={track}
           key={track.id}
-          artistIsVisible
+          artistIsVisible={props.artistIsVisible}
            />
         )
       )

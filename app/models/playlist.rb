@@ -11,11 +11,11 @@ class Playlist < ApplicationRecord
   before_save :inherit_artwork
 
   def self.featured
-    Playlist.where(author_id: 0).limit(12).order('random()')
+    Playlist.includes(:author).where(author_id: 0).limit(12).order('random()')
   end
 
   def self.user_playlists(user)
-    Playlist.where(author_id: user.id).order(id: 'desc').limit(40)
+    Playlist.includes(:author).where(author_id: user.id).order(id: 'desc').limit(40)
   end
 
   def add_track(track_id)

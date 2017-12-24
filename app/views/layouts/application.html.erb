@@ -13,10 +13,11 @@
     <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
     <script type="text/javascript">
       <% if logged_in? %>
+        <% track_ids = SavedTrack.joins(:user, :track).where('users.id': current_user.id).order(created_at: :desc).pluck(:track_id) %>
         window.currentUser =
-          <%= render("api/users/user.json.jbuilder", user: current_user).html_safe %>
+          <%= render("api/users/user.json.jbuilder", user: current_user, track_ids: track_ids ).html_safe %>
         window.userPlaylists =
-          <%= render("api/playlists/playlists.json.jbuilder", playlists: current_user.playlists).html_safe %>
+          <%= render("api/playlists/playlists.json.jbuilder", playlists: Playlist.user_playlists(current_user)).html_safe %>
       <% end %>
     </script>
   </head>

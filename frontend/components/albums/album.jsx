@@ -41,7 +41,7 @@ class Album extends React.Component {
       );
 
       title = this.props.album.title;
-      artist = this.props.album.artist;
+      artist = this.props.album.auhtor;
 
       if (!tracks.length) {
         tracks = [<span className="track-row-wrapper no-hover">

@@ -11,6 +11,10 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @track_ids = SavedTrack.joins(:user, :track)
+                          .where('users.id': @user.id)
+                          .order(created_at: :desc)
+                          .pluck(:track_id)
   end
 
   def destroy

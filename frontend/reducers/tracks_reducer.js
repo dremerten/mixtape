@@ -9,7 +9,7 @@ import { RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 import { LOGOUT } from '../actions/session_actions';
 
-const _nullTracks = {}
+const _nullTracks = {};
 
 const TrackReducer = (state = {}, action) => {
   Object.freeze(state);

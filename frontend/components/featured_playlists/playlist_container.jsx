@@ -15,10 +15,10 @@ import { showDropdown } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => ({
   playlist: state.entities.playlists.byId[ownProps.match.params.playlistId],
+  playlistId: ownProps.match.params.playlistId,
   tracks: Object.keys(state.entities.tracks)
                 .map(id => state.entities.tracks[id]),
   inProgress: state.nowPlaying.inProgress,
-  currentTrack: state.nowPlaying.currentTrack,
   loading: state.ui.loading
 });
 
@@ -28,9 +28,6 @@ const mapDispatchToProps = dispatch => ({
     dispatch(removeTracks());
     dispatch(removePlaylists());
   },
-  play: () => dispatch(play()),
-  pause: () => dispatch(pause()),
-  playSingleTrack: track => dispatch(playSingleTrack(track)),
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchPlaylist: id => dispatch(fetchPlaylist(id)),

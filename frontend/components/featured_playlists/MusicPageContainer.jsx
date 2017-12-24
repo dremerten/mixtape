@@ -1,7 +1,5 @@
 import React from 'react';
 import NavBar from '../NavBar';
-import MusicIndexItem from './music_index_item';
-import GenericMusicIndex from './GenericMusicIndex';
 import Spinner from '../Spinner';
 
 class MusicPageContainer extends React.Component {
@@ -24,7 +22,7 @@ class MusicPageContainer extends React.Component {
   }
 
   render() {
-    const { indexItems, itemType, background, header, MusicIndex } = this.props;
+    const { indexItems, itemType, background, header, MusicIndex, IndexItem } = this.props;
 
     return(
       <div className="featured-playlists-container"
@@ -32,13 +30,14 @@ class MusicPageContainer extends React.Component {
         ref={(el) => { this.element = el; }}
         onScroll={this.handleScroll}
         >
-
         <div className="list">
           <h1 className="playlists-header">{header}</h1>
           <ul className='playlist-items'>
             <MusicIndex
               indexItems={indexItems}
               itemType={itemType}
+              IndexItem={IndexItem}
+              { ...this.props }
               />
           </ul>
         </div>
@@ -49,5 +48,3 @@ class MusicPageContainer extends React.Component {
 }
 
 export default MusicPageContainer;
-
-// { indexItems }

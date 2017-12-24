@@ -1,7 +1,7 @@
 json.album do
   json.extract! album, :id, :title
   json.imageUrl asset_path(album.artwork(:small))
-  json.artist album.artist.name
+  json.author album.artist.name
   json.background album.background
 end
 

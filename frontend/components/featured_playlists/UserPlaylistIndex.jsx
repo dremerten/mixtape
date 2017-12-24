@@ -1,5 +1,6 @@
 import MusicPageContainer from './MusicPageContainer';
 import GenericMusicIndex from './GenericMusicIndex';
+import UserPlaylistIndexItem from './UserPlaylistIndexItem';
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => ({
   header: "Your Playlists",
   background: { background: 'linear-gradient(rgb(43, 64, 110), rgb(4, 6, 11) 85%) fixed' },
   shouldFetchItems: true,
-  MusicIndex: GenericMusicIndex
+  MusicIndex: GenericMusicIndex,
+  IndexItem: UserPlaylistIndexItem
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

@@ -1,10 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-class MusicIndexItem extends React.Component {
+class GenericIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.item = props.item;
     this.state = { loaded: false };
 
     this.handleClick = this.handleClick.bind(this);
@@ -17,23 +16,13 @@ class MusicIndexItem extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    if (this.props.itemType == "playlist") {
-      this.props.history.push(`/browse/playlists/${this.item.id}`);
-    } else if (this.props.itemType == "userPlaylist") {
-      this.props.history.push(`/collection/playlists/${this.item.id}`);
-    } else if (this.props.itemType == "album") {
-      this.props.history.push(`/browse/albums/${this.item.id}`);
-    } else {
-      this.props.handleClick();
-    }
+
+    this.props.handleClick();
   }
 
   render() {
     const { loaded } = this.state;
-
-    const itemName = (this.props.itemType == "album" ? this.item.title : this.item.name);
-    const id = this.item.id;
-    const albumArtist = (this.props.itemType == "album" ? this.item.artist : "");
+    const { id, itemName, author, imageUrl } = this.props;
 
     return(
       <li key={id} className="playlist-item">
@@ -41,7 +30,7 @@ class MusicIndexItem extends React.Component {
           className="playlist-loading"
           onClick={this.handleClick}
           >
-          <img src={this.item.imageUrl}
+          <img src={imageUrl}
             onLoad={this.handleLoad}
             style={ loaded ? { display: ''} : {display: 'none'} }
             className="playlist-image"
@@ -53,11 +42,11 @@ class MusicIndexItem extends React.Component {
           {itemName}
         </div>
         <div className='author artist'>
-          {albumArtist}
+          {author}
         </div>
       </li>
     );
   }
 }
 
-export default MusicIndexItem;
+export default GenericIndexItem;
