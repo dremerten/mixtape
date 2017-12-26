@@ -14,8 +14,8 @@ import { fetchPlaylist, removePlaylists } from '../../actions/playlist_actions';
 import { showDropdown } from '../../actions/ui_actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  playlist: state.entities.playlists.byId[ownProps.match.params.playlistId],
-  playlistId: ownProps.match.params.playlistId,
+  item: state.entities.playlists.byId[ownProps.match.params.playlistId],
+  itemId: ownProps.match.params.playlistId,
   tracks: Object.keys(state.entities.tracks)
                 .map(id => state.entities.tracks[id]),
   inProgress: state.nowPlaying.inProgress,
@@ -30,7 +30,7 @@ const mapDispatchToProps = dispatch => ({
   },
   receiveQueue: queue => dispatch(receiveQueue(queue)),
   addTrackToQueue: track => dispatch(addTrackToQueue(track)),
-  fetchPlaylist: id => dispatch(fetchPlaylist(id)),
+  fetchEntity: id => dispatch(fetchPlaylist(id)),
   showDropdown: name => dispatch(showDropdown(name)),
 });
 

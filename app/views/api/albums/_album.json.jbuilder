@@ -3,6 +3,7 @@ json.album do
   json.imageUrl asset_path(album.artwork(:small))
   json.author album.artist.name
   json.background album.background
+  json.trackIds album.track_ids
 end
 
 json.tracks do

@@ -6,7 +6,9 @@ class Playlist < ApplicationRecord
   has_many :genres, through: :tracks, source: :genres
   belongs_to :author, foreign_key: :author_id, class_name: 'User'
 
-  has_attached_file :image, default_url: 'album_default.jpg'
+  has_attached_file :image,
+    styles: { large: '1000x1000#', small: '300x300#' },
+    default_url: 'album_default.jpg'
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_save :inherit_artwork
 
@@ -40,7 +42,7 @@ class Playlist < ApplicationRecord
 
       self.image = open("http:#{tracks.first.album.artwork(:small)}")
     else
-      # this calls the combine method inherited from the ImageScanner module
+      # This calls the combine method inherited from the ImageScanner module
       combine
     end
   end

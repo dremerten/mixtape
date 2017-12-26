@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 const mapStateToProps = (state, ownProps) => {
   return {
     itemName: ownProps.item.name,
-    author: ownProps.item.author,
+    // author: ownProps.item.author,
     loading: state.ui.loading,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,

@@ -3,5 +3,6 @@ playlists.each do |playlist|
     json.extract! playlist, :id, :name, :author_id
     json.imageUrl asset_path(playlist.image.url)
     json.author playlist.author.email
+    json.background playlist.background
   end
 end

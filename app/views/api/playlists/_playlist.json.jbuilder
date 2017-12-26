@@ -3,6 +3,7 @@ json.playlist do
   json.imageUrl asset_path(playlist.image.url)
   json.author playlist.author.email
   json.trackIds playlist.track_ids
+  json.background playlist.background
 end
 
 json.tracks do

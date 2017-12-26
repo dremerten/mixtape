@@ -7,7 +7,11 @@ module Helpers::ImageScanner
     # Skip all picture that are similar to the color white
     max_pixel = Pixel.from_color('white')
 
-    image = ImageList.new("http:#{artwork(:small)}").first
+    if self.is_a? Album
+      image = ImageList.new("http:#{artwork(:small)}").first
+    elsif self.is_a? Playlist
+      image = ImageList.new("http:#{image(:small)}").first
+    end
 
     # Instantiate a rgb value, which will be averaged
     rgb_total = [0, 0, 0]
