@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { SCROLL_BREAKPOINT } from '../util/constants';
 
 const mapStateToProps = state => {
-  let pathNames = ["/browse/featured", "/browse/genres", "/browse/newreleases"];
-  let linkNames = ["FEATURED", "GENRES & MOODS", "NEW RELEASES"];
+  const pathNames = ["/browse/featured", "/browse/genres", "/browse/newreleases"];
+  const linkNames = ["FEATURED", "GENRES & MOODS", "NEW RELEASES"];
+  
   return {
     isVisible: state.ui.scrollPosition < SCROLL_BREAKPOINT,
     pathNames,

@@ -4,8 +4,8 @@ import Modal from 'react-modal';
 import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
-import { fetchPlaylists, fetchPlaylist } from './actions/playlist_actions';
-import { fetchTracks, fetchTrack, saveTrack, saveTrackToPlaylist, removeTrack } from './actions/track_actions';
+import { fetchGenres } from './actions/genre_actions';
+// import { fetchTracks, fetchTrack, saveTrack, saveTrackToPlaylist, removeTrack } from './actions/track_actions';
 import { fetchResults } from './actions/search_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -30,12 +30,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // TEST FUNCTIONS
-  window.logout = logout;
+  // window.logout = logout;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
-  window.saveTrack = saveTrack;
-  window.removeTrack = removeTrack;
-  window.saveTrackToPlaylist = saveTrackToPlaylist;
+  // window.saveTrack = saveTrack;
+  // window.removeTrack = removeTrack;
+  // window.saveTrackToPlaylist = saveTrackToPlaylist;
+  window.fetchGenres = fetchGenres;
   // TEST FUNCTIONS
 
   const rootEl = document.getElementById('root');

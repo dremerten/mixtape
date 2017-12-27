@@ -4,7 +4,7 @@ class Playlist < ApplicationRecord
   has_many :playlist_tracks
   has_many :tracks, through: :playlist_tracks, source: :track
   has_many :genres, through: :tracks, source: :genres
-  belongs_to :author, foreign_key: :author_id, class_name: 'User'
+  belongs_to :author, optional: true, foreign_key: :author_id, class_name: 'User'
 
   has_attached_file :image,
     styles: { large: '1000x1000#', small: '300x300#' },

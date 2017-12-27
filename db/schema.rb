@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171226200002) do
+ActiveRecord::Schema.define(version: 20171227042253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(version: 20171226200002) do
 
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
-    t.integer "genre_id"
     t.text "about"
     t.string "image_file_name"
     t.string "image_content_type"
@@ -41,10 +40,8 @@ ActiveRecord::Schema.define(version: 20171226200002) do
   end
 
   create_table "genre_taggings", force: :cascade do |t|
-    t.integer "artist_id"
-    t.integer "genre_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer "genre_id", null: false
+    t.integer "artist_id", null: false
     t.index ["artist_id"], name: "index_genre_taggings_on_artist_id"
     t.index ["genre_id"], name: "index_genre_taggings_on_genre_id"
   end
@@ -53,6 +50,10 @@ ActiveRecord::Schema.define(version: 20171226200002) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "image_file_name"
+    t.string "image_content_type"
+    t.integer "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "playlist_tracks", force: :cascade do |t|

@@ -9,7 +9,7 @@ import { allTracks, userTracks } from '../../selectors/track_selectors';
 const mapStateToProps = state => {
   return {
     indexItems: userTracks(state),
-    background: { backgroundImage: 'linear-gradient(rgb(244, 131, 66), rgb(24, 13, 6) 85%)' },
+    background: { background: 'linear-gradient(rgb(31, 121, 100), rgb(3, 12, 10) 85%) fixed' },
     loading: state.ui.loading,
     MusicIndex: GenericTrackList,
     artistIsVisible: true
