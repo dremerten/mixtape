@@ -7,13 +7,13 @@ import { removeSessionErrors } from '../../actions/session_actions';
 import { login, signup } from '../../actions/session_actions';
 
 const mapStateToProps = (state) => ({
-  loggedIn: !!(state.session.currentUser),
+  loggedIn: Boolean(state.session.currentUser),
   errors: state.errors.session
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   const formType = (ownProps.match.path.match(/.+login/)) ? "login" : "signup";
-  const action = (formType == "login") ? login : signup;
+  const action = (formType === "login") ? login : signup;
   return {
     processForm: (user) => dispatch(action(user)),
     removeSessionErrors: () => dispatch(removeSessionErrors()),

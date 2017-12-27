@@ -16,7 +16,7 @@ class NowPlayingBar extends React.Component {
       duration: "0:00",
       currentTime: "0:00",
       progress: 0
-    }
+    };;
 
     this.togglePlay = this.togglePlay.bind(this);
     this.play = this.play.bind(this);
@@ -33,7 +33,7 @@ class NowPlayingBar extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ rendered: true })
+    this.setState({ rendered: true });
   }
 
   componentWillReceiveProps(newProps) {
@@ -49,12 +49,12 @@ class NowPlayingBar extends React.Component {
 
   play() {
     this.playElement();
-    this.props.play()
+    this.props.play();
   }
 
   pause() {
     this.pauseElement();
-    this.props.pause()
+    this.props.pause();
   }
 
   pauseElement() {
@@ -184,23 +184,15 @@ class NowPlayingBar extends React.Component {
           </div>
           <div className="audio-controls">
             <div className="audio-buttons">
-              <button className='small-button'>
-                <i className="fa fa-random" aria-hidden="true"></i>
-              </button>
-              <button className='small-button'>
-                <i className="fa fa-step-backward" aria-hidden="true"></i>
-              </button>
+              <img className='small-button' src={staticAssets.shuffleButton} />
+              <img className='small-button arrow' src={staticAssets.backButton} />
               <button
                 className={(this.state.inProgress) ? "play-button pause" : "play-button"}
                 onClick={this.togglePlay}
                 >
               </button>
-              <button className='small-button'>
-                <i className="fa fa-step-forward" aria-hidden="true"></i>
-              </button>
-              <button className='small-button'>
-                <i className="fa fa-repeat" aria-hidden="true"></i>
-              </button>
+              <img className='small-button' src={staticAssets.nextButton} />
+              <img className='small-button' src={staticAssets.repeatButton} />
             </div>
             <div className="progress-bar-div">
               <div className="song-time">

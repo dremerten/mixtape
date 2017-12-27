@@ -138,8 +138,26 @@
 }
 
 .small-button {
-  height: 16px;
-  width: 16px;
+  height: 12px;
+  width: 12px;
+  opacity: 0.5;
+  transition: .2s;
+  
+  &:hover {
+    cursor: pointer;
+    opacity: 1;
+    transition: .2s;
+  }
+
+  &:nth-of-type(2) {
+    height: 11px;
+    width: 11px
+  }
+
+  &:nth-of-type(3) {
+    height: 11px;
+    width: 11px;
+  }
 }
 
 .play-button {

@@ -8,6 +8,8 @@ class Api::SessionsController < ApplicationController
 
     if @user
       login!(@user)
+      @track_ids = SavedTrack.joins(:user, :track).where('users.id': current_user.id).order(created_at: :desc).pluck(:track_id)
+
       render "api/users/show"
     else
       render json: ["Please enter a valid username and password"], status: 401

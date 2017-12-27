@@ -11,7 +11,9 @@ class NewSession extends React.Component {
     this.demoLogin = this.demoLogin.bind(this);
   }
 
-  demoLogin() {
+  demoLogin(e) {
+    e.preventDefault();
+    
     this.props.login({
       email: 'Sennacy17',
       password: 'starwars'

@@ -13,7 +13,8 @@ class SignupForm extends React.Component {
       birthday: '',
       avatar: null,
       imageUrl: '',
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateFile = this.updateFile.bind(this);
   }
@@ -27,17 +28,18 @@ class SignupForm extends React.Component {
     delete this.state.imageUrl;
     const formData = new FormData();
     for (let i in this.state) {
-      if (!(this.state[i] == null)) {
-        formData.append(`user[${i}]`, this.state[i])
+      if (this.state[i] !== null) {
+        formData.append(`user[${i}]`, this.state[i]);
       }
     }
-    this.props.processForm(formData).then(() => this.props.history.push('/browse/featured'));
+
+    this.props.processForm(formData)
   }
 
   update(field) {
     return (e) => {
-      this.setState({[field]: e.target.value})
-    }
+      this.setState({[field]: e.target.value});
+    };
   }
 
   updateFile(e) {
@@ -47,7 +49,7 @@ class SignupForm extends React.Component {
     fileReader.onloadend = () => {
       this.setState({ avatar: file, imageUrl: fileReader.result });
       document.getElementById('preview').className = "preview-container-loaded";
-    }
+    };
 
     if (file) {
       fileReader.readAsDataURL(file);
@@ -124,7 +126,7 @@ class SignupForm extends React.Component {
           {errors}
         </ul>
       </div>
-    )
+    );
   }
 }
 

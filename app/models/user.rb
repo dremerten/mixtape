@@ -27,6 +27,13 @@ class User < ApplicationRecord
     user && user.is_password?(pw) ? user : nil
   end
 
+  def self.track_ids_for_current_user
+    SavedTrack.joins(:user, :track)
+              .where('users.id': current_user.id)
+              .order(created_at: :desc)
+              .pluck(:track_id)
+  end
+
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)
   end

@@ -18,6 +18,12 @@
           <%= render("api/users/user.json.jbuilder", user: current_user, track_ids: track_ids ).html_safe %>
         window.userPlaylists =
           <%= render("api/playlists/playlists.json.jbuilder", playlists: Playlist.user_playlists(current_user)).html_safe %>
+        window.staticAssets = {
+          backButton: "<%= asset_url "back.png" %>",
+          nextButton: "<%= asset_url "next.png" %>",
+          repeatButton: "<%=asset_url "repeat.png" %>",
+          shuffleButton: "<%=asset_url "shuffletracks.png" %>"
+        }
       <% end %>
     </script>
   </head>
