@@ -28,7 +28,16 @@ import { START_LOADING_ALL_TRACKS } from '../actions/track_actions';
 const defaultState = {
   loading: false,
   scrollPosition: 0,
-  dropdowns: []
+  dropdowns: {},
+  modals: {
+    userPlaylistModal: {
+      isOpen: false,
+      isFetching: false
+    },
+    newPlaylistModal: {
+      isOpen: false
+    }
+  }
 };
 
 const UIReducer = (state = defaultState, action) => {
@@ -43,20 +52,22 @@ const UIReducer = (state = defaultState, action) => {
     case START_LOADING_ALL_PLAYLISTS:
     case START_LOADING_SINGLE_PLAYLIST:
     case START_LOADING_ALL_TRACKS:
-      newState = merge({}, defaultState, { loading: true });
+      newState = merge({}, state, { loading: true });
       return newState;
     case RECEIVE_PLAYLISTS:
     case RECEIVE_PLAYLIST:
     case RECEIVE_ALBUM:
     case RECEIVE_ALBUMS:
-    case LOGOUT:
-      return defaultState;
+      newState = merge({}, state, { loading: false });
+      return newState;
     case HIDE_ALL_DROPDOWNS:
-      newState = merge({}, state, { dropdowns: [] });
+      newState = Object.assign({}, state, { dropdowns: [] });
       return newState;
     case SHOW_DROPDOWN:
-      newState = merge({}, state, { dropdowns: union(state.dropdowns, [action.name]) });
+      newState = merge({}, state, { dropdowns: { [action.name]: true } });
       return newState;
+    case LOGOUT:
+      return defaultState;
     default:
       return state;
   }

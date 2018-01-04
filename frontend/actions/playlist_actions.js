@@ -19,6 +19,10 @@ export const startLoadingAllPlaylists = () => ({
   type: START_LOADING_ALL_PLAYLISTS
 });
 
+export const startLoadingModalPlaylists = () => ({
+  type: START_LOADING_MODAL_PLAYLISTS
+});
+
 export const startLoadingSinglePlaylist = () => ({
   type: START_LOADING_SINGLE_PLAYLIST
 });
@@ -28,6 +32,13 @@ export const removePlaylists = () => ({
 });
 
 export const fetchPlaylists = filters => dispatch => {
+  dispatch(startLoadingAllPlaylists());
+  return PlaylistApiUtil.fetchPlaylists(filters).then(playlists => (
+    dispatch(receivePlaylists(playlists))
+  ));
+};
+
+export const fetchModalPlaylists = () => dispatch => {
   dispatch(startLoadingAllPlaylists());
   return PlaylistApiUtil.fetchPlaylists(filters).then(playlists => (
     dispatch(receivePlaylists(playlists))

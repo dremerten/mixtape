@@ -21,7 +21,7 @@ const mapStateToProps = (state, { track }) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  showDropdown: () => dispatch(showDropdown()),
+  showDropdown: (name) => dispatch(showDropdown(name)),
   playSingleTrack: (track) => dispatch(playSingleTrack(track)),
   play: () => dispatch(play()),
   pause: () => dispatch(pause()),

@@ -8,19 +8,11 @@ class GenericDropDown extends React.Component {
     super(props);
 
     this.state = {
-      clicked: props.clicked,
       isModalOpen: false,
      };
 
-    this.name = props.name;
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.handleOpenModal = this.handleOpenModal.bind(this);
-  }
-
-  componentWillReceiveProps(newProps) {
-    if (newProps.clicked != this.state.clicked) {
-      this.setState({ clicked: !this.state.clicked});
-    }
   }
 
   handleCloseModal() {
@@ -32,7 +24,7 @@ class GenericDropDown extends React.Component {
   }
 
   render() {
-    const className = this.state.clicked ? 'visible' : 'hidden';
+    const className = this.props.clicked ? 'visible' : 'hidden';
     const { isModalOpen } = this.state;
 
     return(

@@ -35,7 +35,6 @@ class GenericIndexItem extends React.Component {
             style={ loaded ? { display: ''} : {display: 'none'} }
             className="playlist-image"
             />
-          <div className="shadow-light"></div>
           <div className="overlay"></div>
         </figure>
         <div className="playlist-name">

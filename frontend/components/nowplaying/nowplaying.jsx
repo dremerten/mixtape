@@ -185,12 +185,10 @@ class NowPlayingBar extends React.Component {
           <div className="audio-controls">
             <div className="audio-buttons">
               <img className='small-button' src={staticAssets.shuffleButton} />
-              <img className='small-button arrow' src={staticAssets.backButton} />
-              <button
-                className={(this.state.inProgress) ? "play-button pause" : "play-button"}
-                onClick={this.togglePlay}
-                >
-              </button>
+              <img className='small-button' src={staticAssets.backButton} />
+              <div className='play-button-container'>
+                <img className='play-button' src={this.state.inProgress ? staticAssets.pauseButton : staticAssets.playButton} />
+              </div>
               <img className='small-button' src={staticAssets.nextButton} />
               <img className='small-button' src={staticAssets.repeatButton} />
             </div>

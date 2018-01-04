@@ -12,15 +12,11 @@ class Playlist extends React.Component {
   }
 
   componentDidMount() {
-    // const paramKey = Object.keys(this.props.match.params)[0];
-    // const itemId = this.props.match.params[paramKey];
-
-    // if (itemId) {
-      this.props.fetchEntity(this.props.itemId);
-    // }
+    this.props.fetchEntity(this.props.itemId);
   }
 
   componentWillUnmount() {
+    debugger
     this.props.removeItems();
   }
 
@@ -35,46 +31,42 @@ class Playlist extends React.Component {
 
   render() {
     const { loading } = this.state;
-    let background;
-
-    if (!loading) {
-      background = { background: this.props.item.background };
-    }
 
     return(
-      <div className="playlist-show-wrapper" style={background}>
-      { loading ?
-        <Spinner />
+      loading ?
+        <div className="playlist-show-wrapper">
+          <Spinner />
+        </div>
         :
-        <div className="playlist-show-container">
-          <div className="playlist-info">
-            <div
-              className='playlist-image show'
-              style={ { backgroundImage: 'url(' + this.props.item.imageUrl + ')'} }>
-              <div className="shadow-light show-light"></div>
+        <div className="playlist-show-wrapper" style={ { background: this.props.item.background } }>
+          <div className="playlist-show-container">
+            <div className="playlist-info">
+              <div
+                className='playlist-image show'
+                style={ { backgroundImage: 'url(' + this.props.item.imageUrl + ')'} }>
+                <div className="shadow-light show-light"></div>
+              </div>
+              <div className='headers'>
+                <div className='playlist-title'>
+                  {this.props.item.name}
+                </div>
+                <div className='sub-header'>
+                  by <span>{this.props.item.author}</span>
+                </div>
+                <div className='sub-header'>
+                  {this.props.item.trackIds.length} SONGS
+                </div>
+              </div>
             </div>
-            <div className='headers'>
-              <div className='playlist-title'>
-                {this.props.item.name}
-              </div>
-              <div className='sub-header'>
-                by <span>{this.props.item.author}</span>
-              </div>
-              <div className='sub-header'>
-                {this.props.item.trackIds.length} SONGS
-              </div>
+            <div className='tracklist-container'>
+              <TrackList
+                indexItems={this.props.tracks}
+                { ...this.props }
+                artistIsVisible
+                />
             </div>
-          </div>
-          <div className='tracklist-container'>
-            <TrackList
-              indexItems={this.props.tracks}
-              { ...this.props }
-              artistIsVisible
-              />
           </div>
         </div>
-        }
-      </div>
     );
   }
 

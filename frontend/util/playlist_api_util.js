@@ -6,6 +6,14 @@ export const fetchPlaylists = (data) => {
   });
 };
 
+export const fetchModalPlaylists = () => {
+  return $.ajax({
+    method: 'GET',
+    url: 'api/playlists',
+    data: { type: 'user' }
+  });
+};
+
 export const fetchPlaylist = id => (
   $.ajax({
     method: 'GET',

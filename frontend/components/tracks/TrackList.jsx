@@ -20,6 +20,3 @@ const TrackList = (props) => {
 };
 
 export default TrackList;
-
-// collectionId={props.playlist.id}
-// showDropdown={props.showDropdown}
