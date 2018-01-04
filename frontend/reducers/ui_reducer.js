@@ -61,7 +61,7 @@ const UIReducer = (state = defaultState, action) => {
       newState = merge({}, state, { loading: false });
       return newState;
     case HIDE_ALL_DROPDOWNS:
-      newState = Object.assign({}, state, { dropdowns: [] });
+      newState = Object.assign({}, state, { dropdowns: {} });
       return newState;
     case SHOW_DROPDOWN:
       newState = merge({}, state, { dropdowns: { [action.name]: true } });
