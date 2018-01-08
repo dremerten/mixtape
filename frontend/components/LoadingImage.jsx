@@ -12,7 +12,6 @@ class LoadingImage extends React.Component {
   }
 
   handleLoad() {
-    debugger
     this.setState({ loaded: true });
   }
 
