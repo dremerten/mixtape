@@ -26,19 +26,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     delete window.userPlaylists;
     delete window.currentUser;
-    delete window.siteGeneratedPlaylistIds
+    delete window.siteGeneratedPlaylistIds;
   } else {
-    store = configureStore();
+    const preloadedState = {
+      entities: {
+        playlists: {
+          currentUser: {},
+          byId: {},
+          siteGenerated: window.siteGeneratedPlaylistIds
+        }
+      }
+    };
+
+    store = configureStore(preloadedState);
   }
 
   // TEST FUNCTIONS
-  // window.logout = logout;
   window.getState = store.getState;
-  window.dispatch = store.dispatch;
-  // window.saveTrack = saveTrack;
-  // window.removeTrack = removeTrack;
-  // window.saveTrackToPlaylist = saveTrackToPlaylist;
-  window.fetchGenres = fetchGenres;
+  // window.dispatch = store.dispatch;
   // TEST FUNCTIONS
 
   const rootEl = document.getElementById('root');

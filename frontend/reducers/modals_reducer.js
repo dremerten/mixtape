@@ -10,6 +10,7 @@ import {
 } from '../actions/ui_actions';
 
 const defaultState = {
+  clickedFrom: null,
   userPlaylistModal: {
     isOpen: false,
     isFetching: false
@@ -30,7 +31,7 @@ const ModalReducer = (state = defaultState, action) => {
       newState = merge({}, state, { userPlaylistModal: { isFetching: false }});
       return newState;
     case SHOW_MODAL:
-      newState = merge({}, state, { [action.name]: { isOpen: true }});
+      newState = merge({}, state, { [action.name]: { isOpen: true }, clickedFrom: action.data.trackId});
       return newState;
     case CLOSE_MODAL:
       newState = merge({}, state, { [action.name]: { isOpen: false }});

@@ -50,7 +50,8 @@ class UserPlaylistModal extends React.Component {
 const mapStateToProps = state => {
   return {
     isOpen: state.ui.modals.userPlaylistModal.isOpen,
-    shouldFetchItems: shouldFetchPlaylists(state.session.currentUser.playlistIds, state)
+    shouldFetchItems: shouldFetchPlaylists(state.session.currentUser.playlistIds, state),
+    trackId: state.ui.modals.clickedFrom
   };
 };
 

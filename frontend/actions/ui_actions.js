@@ -26,8 +26,8 @@ export const showDropdown = name => ({
   type: SHOW_DROPDOWN, name
 });
 
-export const showModal = name => ({
-  type: SHOW_MODAL, name
+export const showModal = (name, data = {}) => ({
+  type: SHOW_MODAL, name, data
 });
 
 export const closeModal = name => ({

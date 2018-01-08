@@ -7,9 +7,11 @@ const mapStateToProps = (state, ownProps) => ({
   buttonText: "Add To Playlist",
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  handleClick: () => dispatch(showModal('userPlaylistModal'))
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    handleClick: () => dispatch(showModal('userPlaylistModal', { trackId: ownProps.trackId }))
+  };
+};
 
 export default connect(
   mapStateToProps,

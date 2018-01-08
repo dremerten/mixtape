@@ -1,17 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import LoadingImage from '../LoadingImage';
 
 class GenericIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { loaded: false };
 
     this.handleClick = this.handleClick.bind(this);
-    this.handleLoad = this.handleLoad.bind(this);
-  }
-
-  handleLoad() {
-    this.setState({ loaded: true });
   }
 
   handleClick(e) {
@@ -21,22 +16,16 @@ class GenericIndexItem extends React.Component {
   }
 
   render() {
-    const { loaded } = this.state;
     const { id, itemName, author, imageUrl } = this.props;
 
     return(
       <li key={id} className="playlist-item">
-        <figure
-          className="playlist-loading"
-          onClick={this.handleClick}
-          >
-          <img src={imageUrl}
-            onLoad={this.handleLoad}
-            style={ loaded ? { display: ''} : {display: 'none'} }
-            className="playlist-image"
-            />
-          <div className="overlay"></div>
-        </figure>
+        <LoadingImage
+          loadingClass={'playlist-loading'}
+          handleClick={this.handleClick}
+          imageClass={'playlist-image'}
+          imageSource={imageUrl}
+          />
         <div className="playlist-name">
           {itemName}
         </div>

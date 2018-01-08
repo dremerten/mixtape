@@ -12,7 +12,8 @@ import {
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 const initialState = {
-  byId: {},
+  currentUser: {},
+  byId: {}
 };
 
 const PlaylistsReducer = (state = initialState, action) => {
@@ -33,7 +34,7 @@ const PlaylistsReducer = (state = initialState, action) => {
       newState = merge({}, state, { byId: action.data.playlists });
       return newState;
     case LOGOUT:
-      return initialState;
+      return Object.assign({}, state, initialState);
     default:
       return state;
   }

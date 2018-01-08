@@ -16,7 +16,7 @@ class NowPlayingBar extends React.Component {
       duration: "0:00",
       currentTime: "0:00",
       progress: 0
-    };;
+    };
 
     this.togglePlay = this.togglePlay.bind(this);
     this.play = this.play.bind(this);
@@ -115,6 +115,7 @@ class NowPlayingBar extends React.Component {
 
     // Round time value to 6 decimal places
     let newTime = Math.floor(currentTime * this.getAudio().duration * 1000000) / 1000000;
+
     this.getAudio().currentTime = newTime;
     this.setState({ currentTime: this.parseTime(newTime) });
   }
@@ -184,13 +185,13 @@ class NowPlayingBar extends React.Component {
           </div>
           <div className="audio-controls">
             <div className="audio-buttons">
-              <img className='small-button' src={staticAssets.shuffleButton} />
-              <img className='small-button' src={staticAssets.backButton} />
+              <img className='small-button' src={window.staticAssets.shuffleButton} />
+              <img className='small-button' src={window.staticAssets.backButton} />
               <div className='play-button-container'>
-                <img className='play-button' src={this.state.inProgress ? staticAssets.pauseButton : staticAssets.playButton} />
+                <img className='play-button' src={this.state.inProgress ? window.staticAssets.pauseButton : staticAssets.playButton} />
               </div>
-              <img className='small-button' src={staticAssets.nextButton} />
-              <img className='small-button' src={staticAssets.repeatButton} />
+              <img className='small-button' src={window.staticAssets.nextButton} />
+              <img className='small-button' src={window.staticAssets.repeatButton} />
             </div>
             <div className="progress-bar-div">
               <div className="song-time">

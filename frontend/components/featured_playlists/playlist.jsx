@@ -2,6 +2,7 @@ import React from 'react';
 import Track from '../tracks/track';
 import TrackList from '../tracks/TrackList';
 import Spinner from '../Spinner';
+import LoadingImage from '../LoadingImage';
 
 class Playlist extends React.Component {
   constructor(props) {
@@ -40,11 +41,12 @@ class Playlist extends React.Component {
         <div className="playlist-show-wrapper" style={ { background: this.props.item.background } }>
           <div className="playlist-show-container">
             <div className="playlist-info">
-              <div
-                className='playlist-image show'
-                style={ { backgroundImage: 'url(' + this.props.item.imageUrl + ')'} }>
-                <div className="shadow-light show-light"></div>
-              </div>
+              <LoadingImage
+                loadingClass={'playlist-loading'}
+                handleClick={() => {}}
+                imageClass={'playlist-image'}
+                imageSource={this.props.item.imageUrl}
+                />
               <div className='headers'>
                 <div className='playlist-title'>
                   {this.props.item.name}
@@ -72,3 +74,10 @@ class Playlist extends React.Component {
 }
 
 export default Playlist;
+
+// <div
+//   className='playlist-image show'
+//   style={ { backgroundImage: 'url(' + this.props.item.imageUrl + ')'} }>
+//   <div className="shadow-light show-light"></div>
+// </div>
+//
