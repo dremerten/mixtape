@@ -27,7 +27,6 @@ class NewPlaylistForm extends React.Component {
     const { name } = this.state;
 
     this.props.createPlaylist({ name }).then(({ data }) => {
-      debugger
       this.props.history.push(`/collection/playlists/${data.playlist.id}`)
     }).then(() => this.props.handleCloseModal());
   }
