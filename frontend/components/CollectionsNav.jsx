@@ -9,7 +9,7 @@ const mapStateToProps = state => {
   let linkNames = ["PLAYLISTS", "SONGS"];
 
   return {
-    isVisible: state.ui.scrollPosition < SCROLL_BREAKPOINT,
+    isVisible: state.ui.scroll < SCROLL_BREAKPOINT,
     pathNames,
     linkNames,
     isButtonVisible: true

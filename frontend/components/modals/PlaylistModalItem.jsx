@@ -4,10 +4,14 @@ import { saveTrackToPlaylist } from '../../actions/track_actions';
 import { clearAllAlerts } from '../../actions/alert_actions';
 import MusicIndexItem from '../featured_playlists/GenericIndexItem';
 
-const mapStateToProps = (state, { playlist }) => ({
-  item: playlist,
-  itemType: 'modalItem'
-});
+const mapStateToProps = (state, ownProps) => {
+  debugger
+  return {
+    item: ownProps.item,
+    itemType: 'modalItem',
+    imageUrl: ownProps.item.imageUrl
+  };
+};
 
 const mapDispatchToProps = (dispatch, { trackId, playlist, handleCloseModal }) => ({
   handleClick: () => {

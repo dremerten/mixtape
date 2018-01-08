@@ -12,8 +12,12 @@ class Playlist < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_save :inherit_artwork
 
+  def self.site_generated
+    Playlist.includes(:author).where(author_id: 0)
+  end
+
   def self.featured
-    Playlist.includes(:author).where(author_id: 0).limit(12).order('random()')
+    site_generated.limit(12)
   end
 
   def self.user_playlists(user)

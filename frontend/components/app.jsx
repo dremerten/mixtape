@@ -34,8 +34,3 @@ const App = (props) => (
 );
 
 export default withRouter(connect(null, mapDispatchToProps)(App));
-
-
-
-
-// const thing = "<ProtectedRoute path="/" component={NowPlayingBar} />";

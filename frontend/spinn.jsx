@@ -16,7 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
       entities: {
         playlists: {
           currentUser: window.userPlaylists,
-          byId: {}
+          byId: {},
+          siteGenerated: window.siteGeneratedPlaylistIds
         }
       }
     };
@@ -25,6 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     delete window.userPlaylists;
     delete window.currentUser;
+    delete window.siteGeneratedPlaylistIds
   } else {
     store = configureStore();
   }

@@ -1,6 +1,7 @@
 import React from 'react';
 import NavBar from '../NavBar';
 import Spinner from '../Spinner';
+import UserPlaylistModal from '../modals/UserPlaylistModal';
 
 class MusicPageContainer extends React.Component {
   constructor(props) {
@@ -10,11 +11,13 @@ class MusicPageContainer extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchItems();
+    if (this.props.shouldFetchItems) {
+      this.props.fetchItems();
+    }
   }
 
   componentWillUnmount() {
-    this.props.removeItems();
+    // this.props.removeItems();
   }
 
   handleScroll() {
@@ -41,7 +44,6 @@ class MusicPageContainer extends React.Component {
               />
           </ul>
         </div>
-
       </div>
     );
   }

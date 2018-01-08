@@ -1,37 +1,35 @@
 import React from 'react';
 import NewPlaylistModal from '../modals/NewPlaylistModal';
+import { connect } from 'react-redux';
+import { showModal, closeModal } from '../../actions/ui_actions';
 
 class NewPlaylistButton extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      isModalOpen: false,
-      isButtonVisible: props.isButtonVisible
-    };
-
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
-  componentWillReceiveProps(newProps) {
-    const { isButtonVisible } = newProps;
-
-    if (this.state.isButtonVisible !== isButtonVisible) {
-      this.setState({ isButtonVisible: true});
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //   const { isButtonVisible } = newProps;
+  //
+  //   if (this.state.isButtonVisible !== isButtonVisible) {
+  //     this.setState({ isButtonVisible: true});
+  //   }
+  // }
 
   handleCloseModal() {
-    this.setState({ isModalOpen: false });
+    this.props.closeModal('newPlaylistModal');
   }
 
   handleOpenModal() {
-    this.setState({ isModalOpen: true });
+    this.props.showModal('newPlaylistModal');
   }
 
   render() {
-    const { isModalOpen, isButtonVisible } = this.state;
+    const { isModalOpen, isButtonVisible } = this.props;
+
     const className = (isButtonVisible ? 'new-playlist' : 'new-playlist-hidden' );
     return(
       <div>
@@ -47,4 +45,16 @@ class NewPlaylistButton extends React.Component {
   }
 }
 
-export default NewPlaylistButton;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    isModalOpen: Boolean(state.ui.modals.newPlaylistModal.isOpen),
+    isButtonVisible: ownProps.isButtonVisible
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => ({
+  showModal: name => dispatch(showModal(name)),
+  closeModal: name => dispatch(closeModal(name))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewPlaylistButton);

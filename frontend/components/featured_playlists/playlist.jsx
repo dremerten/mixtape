@@ -16,8 +16,7 @@ class Playlist extends React.Component {
   }
 
   componentWillUnmount() {
-    debugger
-    this.props.removeItems();
+    // this.props.removeItems();
   }
 
   componentWillReceiveProps(newProps) {

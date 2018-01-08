@@ -40,3 +40,11 @@ export const logout = () => dispatch => (
     dispatch(receiveErrors(err.responseJSON))
   ))
 );
+
+// export const reloadCurrentUser = id => dispatch => (
+//   APIUtil.fetchCurrentUser(id).then(user => (
+//     dispatch(receiveCurrentUser(user))
+//   ), err => (
+//     dispatch(receiveErrors(err.responseJSON))
+//   ))
+// );

@@ -6,6 +6,7 @@ import MusicPortal from '../music_portal';
 import PlaylistContainer from '../featured_playlists/playlist_container';
 import AlbumContainer from '../albums/album_container';
 import AlertBar from '../AlertBar';
+import DialogueContainer from '../DialogueContainer';
 
 import {
   Route,
@@ -25,6 +26,7 @@ const MainPage = ({ currentUser }) => {
           <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
           <Route path="/" component={MusicPortal}/>
         </Switch>
+        <DialogueContainer />
         <NowPlayingBarContainer/>
       </div>
     </div>
@@ -32,8 +34,3 @@ const MainPage = ({ currentUser }) => {
 }
 
 export default MainPage;
-//
-// <Route path="/browse/:musicPage" component={MusicPortal}/>
-// <Route path="/collection/playlists" component={MusicPortal}/>a
-//
-// const thing = '<Route path="browse/playlist/:playlistId" component={PlaylistContainer}/>'

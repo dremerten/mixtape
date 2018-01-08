@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
                           .where('users.id': @user.id)
                           .order(created_at: :desc)
                           .pluck(:track_id)
+                          
   end
 
   def destroy

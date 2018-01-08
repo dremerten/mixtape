@@ -3,12 +3,16 @@ import Modal from 'react-modal';
 import PlaylistModalIndex from './PlaylistModalIndex';
 import NewPlaylistButton from '../buttons/NewPlaylistButton';
 import { connect } from 'react-redux';
-import { fetchPlaylists, removePlaylists } from '../../actions/playlist_actions';
+import { fetchModalPlaylists, removePlaylists } from '../../actions/playlist_actions';
+import { shouldFetchPlaylists } from '../../selectors/playlist_selector';
+import { closeModal } from '../../actions/ui_actions';
 // export default function(props) {
 class UserPlaylistModal extends React.Component {
-  // componentWillReceiveProps(newProps) {
-  //   this.props.fetchItems();
-  // }
+  componentWillReceiveProps(newProps) {
+    if (this.props.isOpen && this.props.shouldFetchItems) {
+      this.props.fetchItems();
+    }
+  }
 
   // componentWillUnmount() {
   //   this.props.removeItems();
@@ -43,9 +47,17 @@ class UserPlaylistModal extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    isOpen: state.ui.modals.userPlaylistModal.isOpen,
+    shouldFetchItems: shouldFetchPlaylists(state.session.currentUser.playlistIds, state)
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  fetchItems: () => dispatch(fetchPlaylists({ type: 'user' })),
-  removeItems: () => dispatch(removePlaylists())
+  fetchItems: () => dispatch(fetchModalPlaylists()),
+  removeItems: () => dispatch(removePlaylists()),
+  handleCloseModal: () => dispatch(closeModal('userPlaylistModal')),
 });
 
-export default connect(null, mapDispatchToProps)(UserPlaylistModal);
+export default connect(mapStateToProps, mapDispatchToProps)(UserPlaylistModal);

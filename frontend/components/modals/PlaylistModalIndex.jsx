@@ -3,8 +3,8 @@ import PlaylistModalItem from './PlaylistModalItem';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state, ownProps) => ({
-  playlists: Object.keys(state.entities.playlists.currentUser)
-                   .map(id => state.entities.playlists.currentUser[id]),
+  playlists: state.session.currentUser.playlistIds.map(id => (
+                   state.entities.playlists.byId[id])),
   trackId: ownProps.trackId
 });
 

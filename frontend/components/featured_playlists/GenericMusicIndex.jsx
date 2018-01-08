@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 const GenericMusicIndex = (props) => {
   const { IndexItem } = props;
- 
+  
   return(
     <ul className='playlist-items'>
       { props.indexItems.map(item => (

@@ -12,7 +12,8 @@ const mapStateToProps = state => {
     background: { background: 'linear-gradient(rgb(31, 121, 100), rgb(3, 12, 10) 85%) fixed' },
     loading: state.ui.loading,
     MusicIndex: GenericTrackList,
-    artistIsVisible: true
+    artistIsVisible: true,
+    shouldFetchItems: true,
   };
 };
 
