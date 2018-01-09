@@ -27,6 +27,7 @@ class MusicPageContainer extends React.Component {
   render() {
     const { indexItems, itemType, background, header, MusicIndex, IndexItem } = this.props;
 
+    debugger
     return(
       <div className="featured-playlists-container"
         style={background}

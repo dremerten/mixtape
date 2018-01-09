@@ -19,8 +19,6 @@ export const staticPlaylists = (state) => {
 export const shouldFetchPlaylists = (playlistIds, state) => {
   let shouldFetch = false;
 
-  // if (_.isEmpty(playlistIds)) shouldFetch = true;
-
   playlistIds.forEach(id => {
     if (!state.entities.playlists.byId[id]) {
       shouldFetch = true;

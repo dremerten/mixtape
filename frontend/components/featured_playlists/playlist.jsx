@@ -16,10 +16,6 @@ class Playlist extends React.Component {
     this.props.fetchEntity(this.props.itemId);
   }
 
-  componentWillUnmount() {
-    // this.props.removeItems();
-  }
-
   componentWillReceiveProps(newProps) {
     if (newProps.loading !== this.state.loading) {
       this.setState({ loading: !this.state.loading});
@@ -64,6 +60,7 @@ class Playlist extends React.Component {
                 indexItems={this.props.tracks}
                 { ...this.props }
                 artistIsVisible
+
                 />
             </div>
           </div>
