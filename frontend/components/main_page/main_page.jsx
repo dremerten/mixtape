@@ -13,8 +13,7 @@ import {
   Switch
 } from 'react-router-dom';
 
-const MainPage = ({ currentUser }) => {
-  return(
+const MainPage = ({ currentUser }) => (
     <div className="main-page">
       <div className="main-page-container">
         <SideBar currentUser={currentUser}/>
@@ -30,7 +29,6 @@ const MainPage = ({ currentUser }) => {
         <NowPlayingBarContainer/>
       </div>
     </div>
-  );
-}
+)
 
 export default MainPage;

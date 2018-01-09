@@ -11,6 +11,8 @@ class MusicPageContainer extends React.Component {
   }
 
   componentDidMount() {
+    this.props.setScrollPosition(0);
+
     if (this.props.shouldFetchItems) {
       this.props.fetchItems();
     }
@@ -21,7 +23,14 @@ class MusicPageContainer extends React.Component {
   }
 
   render() {
-    const { indexItems, itemType, background, header, MusicIndex, IndexItem } = this.props;
+    const {
+      indexItems,
+      itemType,
+      background,
+      header,
+      MusicIndex,
+      IndexItem
+    } = this.props;
 
     return(
       <div className="featured-playlists-container"
