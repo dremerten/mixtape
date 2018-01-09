@@ -21,21 +21,21 @@ const SideBar = ({ currentUser }) => {
                 <li className="sidebar-item">Search</li>
                 <i className="sidebar-item fa fa-search" aria-hidden="true"></i>
               </div>
-          </NavLink>
+            </NavLink>
             <div className="sidebar-group">
-              <NavLink to="/browse/featured"className="sidebar-item" activeClassName="sidebar-item-selected">Home</NavLink>
+              <NavLink to="/browse/featured" className="sidebar-item" activeClassName="sidebar-item-selected">Home</NavLink>
               <NavLink to="/collection/playlists" className="sidebar-item" activeClassName="sidebar-item-selected"><li>Your Music</li></NavLink>
             </div>
           </ul>
         </div>
         <ul>
-          <li className="sidebar-item">Install App</li>
+          <a href='https://github.com/dwebster17' target="_blank">Developer Info</a>
         </ul>
         <div className="session-info">
           <div className="user-widget">
             <Link to="/account/profile">
-              <img className="user-avatar" src={currentUser.avatar_url} />
-              <span className="user-link">{email}</span>
+              <img src={currentUser.avatar_url} />
+              <span>{email}</span>
             </Link>
           </div>
         </div>

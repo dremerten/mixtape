@@ -7,7 +7,7 @@ const UserProfile = ({ currentUser, logout }) => (
     <div className='user-info'>
       <img src={currentUser.avatar_url} />
       <button onClick={logout}>LOGOUT</button>
-      <a href='https://github.com/dwebster17'>DEVELOPER INFO</a>
+      <a href='https://github.com/dwebster17' target="_blank">DEVELOPER INFO</a>
     </div>
   </div>
 );
