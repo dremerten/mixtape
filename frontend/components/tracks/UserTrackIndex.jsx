@@ -7,7 +7,7 @@ import { setScrollPosition } from '../../actions/ui_actions';
 import { allTracks, userTracks, shouldFetchTracks } from '../../selectors/track_selectors';
 
 const mapStateToProps = state => {
-  const obj = {
+  return {
     indexItems: userTracks(state),
     background: { background: 'linear-gradient(rgb(31, 121, 100), rgb(3, 12, 10) 85%) fixed' },
     loading: state.ui.loading,
@@ -15,8 +15,6 @@ const mapStateToProps = state => {
     artistIsVisible: true,
     shouldFetchItems: shouldFetchTracks(state.session.currentUser.trackIds, state),
   };
-  debugger
-  return obj;
 };
 
 const mapDispatchToProps = dispatch => ({

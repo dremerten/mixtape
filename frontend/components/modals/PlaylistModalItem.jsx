@@ -12,12 +12,14 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, { trackId, playlist, handleCloseModal }) => ({
-  handleClick: () => {
-    handleCloseModal();
-    dispatch(saveTrackToPlaylist(trackId, playlist.id));
-  }
-});
+const mapDispatchToProps = (dispatch, { trackId, item, handleCloseModal }) => {
+  return {
+    handleClick: () => {
+      handleCloseModal();
+      dispatch(saveTrackToPlaylist(trackId, item.id));
+    }
+  };
+};
 
 export default connect(
   mapStateToProps,

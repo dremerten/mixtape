@@ -16,22 +16,17 @@ class MusicPageContainer extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    // this.props.removeItems();
-  }
-
   handleScroll() {
-    this.props.setScrollPosition(this.element.scrollTop);
+    this.props.setScrollPosition(this.container.scrollTop);
   }
 
   render() {
     const { indexItems, itemType, background, header, MusicIndex, IndexItem } = this.props;
 
-    debugger
     return(
       <div className="featured-playlists-container"
         style={background}
-        ref={(el) => { this.element = el; }}
+        ref={(el) => { this.container = el; }}
         onScroll={this.handleScroll}
         >
         <div className="list">

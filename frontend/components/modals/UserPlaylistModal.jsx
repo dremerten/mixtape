@@ -9,14 +9,10 @@ import { closeModal } from '../../actions/ui_actions';
 // export default function(props) {
 class UserPlaylistModal extends React.Component {
   componentWillReceiveProps(newProps) {
-    if (this.props.isOpen && this.props.shouldFetchItems) {
-      this.props.fetchItems();
+    if (newProps.isOpen && newProps.shouldFetchItems) {
+      newProps.fetchItems();
     }
   }
-
-  // componentWillUnmount() {
-  //   this.props.removeItems();
-  // }
 
   render() {
     return(

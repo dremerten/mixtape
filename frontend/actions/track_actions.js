@@ -47,14 +47,14 @@ export const saveTrack = id => dispatch => (
   TrackApiUtil.saveTrack(id).then(response =>
     dispatch(receiveSongSaveStatus(response))
   ).then(
-      setTimeout(() => dispatch(clearAllAlerts()), 2500)
-    )
+    setTimeout(() => dispatch(clearAllAlerts()), 2500)
+  )
 );
 
-export const saveTrackToPlaylist = (trackId, playlistId) => dispatch => (
+export const saveTrackToPlaylist = (trackId, playlistId) => dispatch => {
   TrackApiUtil.saveTrackToPlaylist(trackId, playlistId).then(response => (
     dispatch(receiveSongSaveStatus(response))
-  ).then(
-      setTimeout(() => dispatch(clearAllAlerts()), 2500)
-    ))
-);
+  )).then(
+    setTimeout(() => dispatch(clearAllAlerts()), 2500)
+  );
+};

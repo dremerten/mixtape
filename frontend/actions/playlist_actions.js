@@ -58,7 +58,7 @@ export const fetchPlaylists = filters => dispatch => {
 
 export const fetchModalPlaylists = () => dispatch => {
   dispatch(startLoadingModalPlaylists());
-  return PlaylistApiUtil.fetchPlaylists(filters).then(playlists => (
+  return PlaylistApiUtil.fetchPlaylists().then(playlists => (
     dispatch(receivePlaylists(playlists))
   ));
 };
