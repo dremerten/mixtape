@@ -4,6 +4,7 @@ import {
   RECEIVE_ALBUM,
   REMOVE_ALBUMS
 } from '../actions/album_actions';
+import { RECEIVE_ARTIST } from '../actions/artist_actions';
 import { LOGOUT } from '../actions/session_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
@@ -20,6 +21,7 @@ const AlbumReducer = (state = {}, action) => {
     case LOGOUT:
       return {};
     case RECEIVE_SEARCH_RESULTS:
+    case RECEIVE_ARTIST:
       return action.data.albums || {};
     default:
       return state;
