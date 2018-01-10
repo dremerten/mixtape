@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   include Followable
-  
+
   validates :email, presence: true, uniqueness: true
   validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -10,12 +10,14 @@ class User < ApplicationRecord
   has_attached_file :avatar, default_url: 'avatar.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
-  has_many :playlists, foreign_key: :author_id, class_name: 'Playlist'
+  has_many :playlists, foreign_key: :author_id
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
-  has_many :followed_items, class_name: 'Follow', foreign_key: :user_id
-  # has_many :follows, as: :followable
-  # has_many :followers, through: :follows, source: :followable, source_type: 'User'
+  has_many :followed_items, class_name: 'Follow'
+
+  def followable_ids_for(type)
+    followed_items.where(followable_type: type).pluck(:followable_id)
+  end
 
   def save_track(track_id)
     update(track_ids: track_ids + [track_id])
@@ -62,6 +64,6 @@ class User < ApplicationRecord
   end
 
   private
-  attr_reader :password
 
+  attr_reader :password
 end

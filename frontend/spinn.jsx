@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import Root from './components/root';
 import { login, signup, logout } from './actions/session_actions';
 import { fetchGenres } from './actions/genre_actions';
+import { follow, unfollow } from './actions/follow_actions';
 // import { fetchTracks, fetchTrack, saveTrack, saveTrackToPlaylist, removeTrack } from './actions/track_actions';
 import { fetchResults } from './actions/search_actions';
 
@@ -43,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TEST FUNCTIONS
   window.getState = store.getState;
-  // window.dispatch = store.dispatch;
   // TEST FUNCTIONS
 
   const rootEl = document.getElementById('root');

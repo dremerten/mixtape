@@ -1,1 +1,22 @@
 <div id="root"></div>
+
+<script type="text/javascript">
+  <% if logged_in? %>
+    <% track_ids = SavedTrack.joins(:user, :track).where('users.id': current_user.id).order(created_at: :desc).pluck(:track_id) %>
+    window.currentUser =
+      <%= render("api/users/user.json.jbuilder", user: current_user, track_ids: track_ids ).html_safe %>
+    window.userPlaylists =
+      <%= render("api/playlists/playlists.json.jbuilder", playlists: Playlist.user_playlists(current_user)).html_safe %>
+  <% end %>
+
+    window.siteGeneratedPlaylistIds =
+      <%= Playlist.featured.pluck(:id) %>
+    window.staticAssets = {
+      backButton: "<%= asset_url "back.png" %>",
+      nextButton: "<%= asset_url "next.png" %>",
+      repeatButton: "<%=asset_url "repeat6.png" %>",
+      shuffleButton: "<%=asset_url "shuffle_big.png" %>",
+      playButton: "<%=asset_url "play-button_med.png" %>",
+      pauseButton: "<%=asset_url "pause_main.png" %>"
+    }
+</script>

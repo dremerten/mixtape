@@ -22,36 +22,44 @@ class ApplicationController < ActionController::Base
   end
 
   def follow
-    followable_type = self.class.to_s.match(/^Api::(.+)sController$/)[1]
+    followable_type = get_class_string
     followable_id = params[:followable_id]
 
-    follow = Follow.new(
+    @follow = Follow.new(
       user_id: current_user.id,
       followable_type: followable_type,
       followable_id: followable_id
     )
-    
-    if follow.save
-      render json: { followable_id: follow.followable_id, followable_type: follow.followable_type }
+
+    if @follow.save
+      # render json: { followableId: follow.followable_id, followableType: follow.followable_type }
+      render partial: 'api/follows/follow'
     else
-      render json: follow.errors.full_messages, status: 422
+      render json: @follow.errors.full_messages, status: 422
     end
   end
 
   def unfollow
-    followable_type = self.class.to_s.match(/^Api::(.+)sController$/)[1]
+    followable_type = get_class_string
     followable_id = params[:followable_id]
 
-    follow = Follow.where(
+    @follow = Follow.find_by(
       user_id: current_user.id,
       followable_type: followable_type,
       followable_id: followable_id
     )
 
-    if follow.destroy
-      render json: { followable_id: follow.followable_id, followable_type: follow.followable_type }
+    if @follow
+      @follow.destroy
+      render partial: 'api/follows/follow'
     else
-      render json: ['An error occued']
+      render json: ['An error occued'], status: 422
     end
+  end
+
+  private
+
+  def get_class_string
+    self.class.to_s.match(/^Api::(.+)sController$/)[1]
   end
 end
