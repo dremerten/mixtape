@@ -20,4 +20,38 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!current_user
   end
+
+  def follow
+    followable_type = self.class.to_s.match(/^Api::(.+)sController$/)[1]
+    followable_id = params[:followable_id]
+
+    follow = Follow.new(
+      user_id: current_user.id,
+      followable_type: followable_type,
+      followable_id: followable_id
+    )
+    
+    if follow.save
+      render json: { followable_id: follow.followable_id, followable_type: follow.followable_type }
+    else
+      render json: follow.errors.full_messages, status: 422
+    end
+  end
+
+  def unfollow
+    followable_type = self.class.to_s.match(/^Api::(.+)sController$/)[1]
+    followable_id = params[:followable_id]
+
+    follow = Follow.where(
+      user_id: current_user.id,
+      followable_type: followable_type,
+      followable_id: followable_id
+    )
+
+    if follow.destroy
+      render json: { followable_id: follow.followable_id, followable_type: follow.followable_type }
+    else
+      render json: ['An error occued']
+    end
+  end
 end

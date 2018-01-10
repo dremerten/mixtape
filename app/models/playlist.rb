@@ -1,11 +1,12 @@
 class Playlist < ApplicationRecord
+  include Followable
   include Helpers::ImageScanner
 
   belongs_to :author, optional: true, foreign_key: :author_id, class_name: 'User'
   has_many :playlist_tracks
   has_many :tracks, through: :playlist_tracks, source: :track
   has_many :genres, through: :tracks, source: :genres
-  has_many :follows, as: :followable
+  # has_many :follows, as: :followable, dependent: :destroy
 
   has_attached_file :image,
     styles: { large: '1000x1000#', small: '300x300#' },

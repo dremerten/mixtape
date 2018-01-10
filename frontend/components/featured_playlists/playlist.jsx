@@ -60,7 +60,6 @@ class Playlist extends React.Component {
                 indexItems={this.props.tracks}
                 { ...this.props }
                 artistIsVisible
-
                 />
             </div>
           </div>

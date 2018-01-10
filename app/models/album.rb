@@ -1,4 +1,5 @@
 class Album < ApplicationRecord
+  include Followable
   include Helpers::ImageScanner
 
   validates :title, presence: true, length: { maximum: 40 }
@@ -10,7 +11,7 @@ class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks
   has_many :genres, through: :artist, source: :genres
-  has_many :follows, as: :followable
+  # has_many :follows, as: :followable, dependent: :destroy
 
   def self.new_releases
     Album.all.limit(12).order('created_at')
