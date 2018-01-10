@@ -17,6 +17,14 @@
   justify-content: center;
 }
 
+[class*='__no-margin'] {
+  margin: 0;
+}
+
+[class*='__relative'] {
+  position: relative;
+}
+
 .browse-nav {
   padding-top: 30px;
   max-width: 70%;

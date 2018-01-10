@@ -1,5 +1,4 @@
 import React from 'react';
-import NavBar from '../NavBar';
 import Spinner from '../Spinner';
 import UserPlaylistModal from '../modals/UserPlaylistModal';
 

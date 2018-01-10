@@ -28,6 +28,7 @@ const App = (props) => (
       <ProtectedRoute path="/browse" component={MainPageContainer} />
       <ProtectedRoute path="/collection" component={MainPageContainer} />
       <ProtectedRoute path="/account" component={MainPageContainer} />
+      <ProtectedRoute path="/artists" component={MainPageContainer} />
       <AuthRoute path="/" component={NewSessionContainer} />
     </Switch>
   </div>

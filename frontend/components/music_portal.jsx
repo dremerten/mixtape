@@ -8,6 +8,7 @@ import UserTrackIndex from './tracks/UserTrackIndex';
 import { Route, Switch } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import GenreIndex from './genres/GenreIndex';
+import ArtistPage from './artists/Artist';
 
 const MusicPortal = (props) => {
     return(
@@ -19,6 +20,7 @@ const MusicPortal = (props) => {
         <Route path='/browse/genres' component={GenreIndex} />
         <Route path='/collection/playlists' component={UserPlaylistIndex} />
         <Route path='/collection/tracks' component={UserTrackIndex} />
+        <Route path='/artists/:artistId' component={ArtistPage}/>
         <Route path='/account/profile' component={UserProfile} />
       </div>
     );

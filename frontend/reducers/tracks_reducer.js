@@ -4,6 +4,7 @@ import {
   RECEIVE_TRACK,
   REMOVE_TRACKS
 } from '../actions/track_actions';
+import { RECEIVE_ARTIST } from '../actions/artist_actions';
 import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
@@ -23,9 +24,8 @@ const TrackReducer = (state = {}, action) => {
     case LOGOUT:
       return _nullTracks;
     case RECEIVE_PLAYLIST:
-      return action.data.tracks || _nullTracks;
+    case RECEIVE_ARTIST:
     case RECEIVE_ALBUM:
-      return action.data.tracks || _nullTracks;
     case RECEIVE_SEARCH_RESULTS:
       return action.data.tracks || _nullTracks;
     default:

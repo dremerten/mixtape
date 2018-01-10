@@ -14,6 +14,11 @@ import {
   RECEIVE_PLAYLIST
 } from '../actions/playlist_actions';
 
+import {
+  START_LOADING_ARTIST,
+  RECEIVE_ARTIST
+} from '../actions/artist_actions';
+
 import { START_LOADING_ALL_TRACKS } from '../actions/track_actions';
 
 const defaultState = false;
@@ -26,11 +31,13 @@ const LoadingReducer = (state = defaultState, action) => {
     case START_LOADING_ALL_PLAYLISTS:
     case START_LOADING_SINGLE_PLAYLIST:
     case START_LOADING_ALL_TRACKS:
+    case START_LOADING_ARTIST:
       return true;
     case RECEIVE_PLAYLISTS:
     case RECEIVE_PLAYLIST:
     case RECEIVE_ALBUM:
     case RECEIVE_ALBUMS:
+    case RECEIVE_ARTIST:
     case LOGOUT:
       return defaultState;
     default:

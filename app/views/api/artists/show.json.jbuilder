@@ -1,11 +1,9 @@
 # json.partial! 'api/artists/artist', artist: @artist
 json.artist do
-  json.set! @artist.id do
-    json.extract! @artist, :id, :name
-    json.imageUrl asset_path(@artist.image.url)
-    json.albumIds @artist.album_ids
-    json.topTrackIds @artist.tracks.order(popularity: :desc).pluck(:id)
-  end
+  json.extract! @artist, :id, :name
+  json.imageUrl asset_path(@artist.image.url)
+  json.albumIds @artist.album_ids
+  json.topTrackIds @artist.tracks.order(popularity: :desc).pluck(:id)
 end
 
 json.albums do
@@ -13,6 +11,17 @@ json.albums do
     json.set! album.id do
       json.extract! album, :id, :title, :year
       json.imageUrl album.artwork(:large)
+    end
+  end
+end
+
+json.tracks do
+  @artist.tracks.each do |track|
+    json.set! track.id do
+      json.extract! track, :id, :title, :duration
+      json.trackUrl track.audio.url
+      json.imageUrl track.album.artwork(:small)
+      json.artist @artist.name
     end
   end
 end
