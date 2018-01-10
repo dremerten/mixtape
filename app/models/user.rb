@@ -12,6 +12,8 @@ class User < ApplicationRecord
   has_many :playlists, foreign_key: :author_id, class_name: 'Playlist'
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
+  has_many :followed_items, class_name: 'Follow', foreign_key: :user_id
+  has_many :followers, as: :followable, class_name: 'Follow'
 
   def save_track(track_id)
     update(track_ids: track_ids + [track_id])

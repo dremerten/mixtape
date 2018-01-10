@@ -15,6 +15,7 @@ class Track < ApplicationRecord
   has_many :playlists, through: :playlist_tracks, source: :playlist
   has_many :saved_tracks
   has_many :user_adds, through: :saved_tracks, source: :user
+  
   before_validation :extract_audio_duration
 
 

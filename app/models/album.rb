@@ -10,6 +10,7 @@ class Album < ApplicationRecord
   belongs_to :artist
   has_many :tracks
   has_many :genres, through: :artist, source: :genres
+  has_many :follows, as: :followable
 
   def self.new_releases
     Album.all.limit(12).order('created_at')

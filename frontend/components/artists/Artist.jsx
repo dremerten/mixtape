@@ -37,7 +37,6 @@ class ArtistPage extends React.Component {
             <Route path='/artists/:artistId/about' render={() => <h1>About!</h1>} />
             <Route path='/artists/:artistId/overview' render={() => <section>Main</section>}/>
           </Switch>*/}
-          }
         </div>
       </div>
     );
