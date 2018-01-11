@@ -29,6 +29,7 @@
 #root {
   height: 100%;
   margin-bottom: 0px;
+  counter-reset: section;
 }
 
 .application-wrapper {

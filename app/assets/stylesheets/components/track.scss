@@ -10,12 +10,23 @@
   font-weight: lighter;
   font-family: $open;
   border-radius: 1px;
+  position: relative;
+
+  &::before {
+    counter-increment: section 1;
+    content: counter(section)".";
+    position: absolute;
+  }
 }
 
 .track-row-wrapper:hover {
   background-color: rgba(0,0,0,.2);
   transition: .2s;
   list-style: circle inside;
+
+  &::before {
+    content: '';
+  }
 }
 
 .track-play-pause {
@@ -42,6 +53,9 @@
   padding: 0;
 }
 
+.track-row-wrapper:hover .track-row::before {
+  display: none;
+}
 
 .track-play-pause:hover {
   cursor: pointer;
