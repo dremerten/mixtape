@@ -4,6 +4,8 @@ json.artist do
   json.imageUrl asset_path(@artist.image.url)
   json.albumIds @artist.album_ids
   json.topTrackIds @artist.tracks.order(popularity: :desc).pluck(:id)
+  json.followCount @artist.followers.count
+  json.about @artist.about
 end
 
 json.albums do

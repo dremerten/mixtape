@@ -8,7 +8,7 @@ import UserTrackIndex from './tracks/UserTrackIndex';
 import { Route, Switch } from 'react-router-dom';
 import UserProfile from './UserProfile';
 import GenreIndex from './genres/GenreIndex';
-import ArtistPage from './artists/Artist';
+import ArtistPage from './artists/ArtistPage';
 
 const MusicPortal = (props) => {
     return(

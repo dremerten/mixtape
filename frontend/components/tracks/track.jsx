@@ -47,16 +47,14 @@ class Track extends React.Component {
                 <span>{` ${track.album}`}</span>
               </span>
             </div>
-            <div>
+            <div className='track-detail-duration'>
               <button
                 className='track-dropdown-button'
                 onClick={this.handleClick}
                 >
-                ...
+                &middot;&middot;&middot;
               </button>
-              <span>
-                {track.duration}
-              </span>
+              <span>{track.duration}</span>
             </div>
           </div>
           <TrackDropDown

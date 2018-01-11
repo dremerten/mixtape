@@ -2,8 +2,10 @@ import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ArtistHeader from './ArtistHeader';
+import ArtistDescription from './ArtistDescription';
 import { fetchArtist } from '../../actions/artist_actions';
 import Spinner from '../Spinner';
+import TopArtistTracks from './TopArtistTracks';
 
 class ArtistPage extends React.Component {
   constructor(props) {
@@ -31,12 +33,14 @@ class ArtistPage extends React.Component {
           { loading ?
             <Spinner />
             :
+            <div>
             <ArtistHeader />
+              <Switch>
+                <Route path='/artists/:artistId/about' component={ArtistDescription} />
+                <Route path='/artists/:artistId/overview' component={TopArtistTracks} />
+              </Switch>
+            </div>
           }
-          {/*<Switch>
-            <Route path='/artists/:artistId/about' render={() => <h1>About!</h1>} />
-            <Route path='/artists/:artistId/overview' render={() => <section>Main</section>}/>
-          </Switch>*/}
         </div>
       </div>
     );

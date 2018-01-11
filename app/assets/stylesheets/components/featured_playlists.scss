@@ -132,13 +132,10 @@
 }
 
 .album-index-container {
-  // background: linear-gradient(rgb(15, 138, 115), rgb(1, 13, 11) 85%) fixed;
   height: 100vh;
   width: 100%;
   overflow: scroll;
 }
-
-
 
 .playlists-header {
   padding-top: 20px;
@@ -159,8 +156,6 @@
 div.shadow-light:hover {
   background-color: rgba(0, 0, 0, .75);
 }
-
-
 
 .loading-spinner {
   background-image: image_url('loading.gif');

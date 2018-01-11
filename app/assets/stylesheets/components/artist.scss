@@ -28,6 +28,14 @@
         position: relative;
       }
 
+      > span {
+        color: rgba(257, 257, 257, .8);
+        letter-spacing: 4px;
+        font-family: $open;
+        font-size: 10px;
+        position: relative
+      }
+
       &::before {
         content: '';
         position: absolute;
@@ -38,7 +46,56 @@
         height: 100%;
         background: linear-gradient(to top, $black, $black -20%, transparent);
       }
+
+      .artist-buttons {
+        padding-top: 40px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        .artist-follow-button {
+          border: 2px solid $transluscent-white;
+          padding: 10px 30px;
+          background-color: rgba(0, 0, 0, .5);
+          font-family: $open;
+          letter-spacing: 4px;
+          font-size: 10px;
+          color: white;
+          border-radius: 25px;
+          position: relative;
+          transition-duration: .2s;
+          transform: scale(1);
+
+          &:hover {
+            transition-duration: .2s;
+            transform: scale(1.05);
+            border: 2px solid white;
+          }
+        }
+      }
     }
 
+  }
+
+  .artist-description {
+    margin: 50px 0 100px 220px;
+
+    > p {
+      padding: 0 100px;
+      font-family: $open;
+      font-weight: lighter;
+      letter-spacing: 2px;
+      font-size: 10px;
+      color: $transluscent-white;
+    }
+  }
+
+  .artist-tracks {
+    margin-left: 220px;
+    padding: 0 20px;
+
+    > h1 {
+      text-align: center;
+    }
   }
 }
