@@ -29,19 +29,17 @@ class ArtistPage extends React.Component {
 
     return(
       <div className='artist-page-container'>
-        <div className='artist-page'>
-          { loading ?
-            <Spinner />
-            :
-            <div>
+        { loading ?
+          <Spinner />
+          :
+          <div className='artist-page'>
             <ArtistHeader />
-              <Switch>
-                <Route path='/artists/:artistId/about' component={ArtistDescription} />
-                <Route path='/artists/:artistId/overview' component={TopArtistTracks} />
-              </Switch>
-            </div>
-          }
-        </div>
+            <Switch>
+              <Route path='/artists/:artistId/about' component={ArtistDescription} />
+              <Route path='/artists/:artistId/overview' component={TopArtistTracks} />
+            </Switch>
+          </div>
+        }
       </div>
     );
   }

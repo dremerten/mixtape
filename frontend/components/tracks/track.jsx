@@ -28,7 +28,7 @@ class Track extends React.Component {
 
   render() {
     const { track, buttonText, artistIsVisible } = this.props;
-
+    // debugger
     return(
       <div className='track-row-wrapper'>
         <li className='track-row'>
@@ -42,9 +42,9 @@ class Track extends React.Component {
                 className='track-album-artist'
                 style={{display: artistIsVisible ? "" : "none"}}
                 >
-                <span>{`${track.artist} `}</span>
-                &middot;
-                <span>{` ${track.album}`}</span>
+                <Link to={`/artists/${track.artistId}/overview`}>{`${track.artist}`}</Link>
+                 &nbsp;&middot;&nbsp;
+                <Link to={`/browse/albums/${track.albumId}`}>{`${track.album}`}</Link>
               </span>
             </div>
             <div className='track-detail-duration'>

@@ -2,7 +2,7 @@
   padding: 16px 8px;
   margin: 0 auto;
   width: 95%;
-  height: 25px;
+  min-height: 30px;
   transition: background-color .5s;
   color: $transluscent-white;
   letter-spacing: 1px;
@@ -31,6 +31,10 @@
 
 .track-play-pause {
   font-size: 0px;
+
+  .fa-pause {
+    color: $spotify-green !important;
+  }
 
   > i {
     padding: 0 !important;
@@ -112,8 +116,8 @@
 }
 
 .track-title {
-  font-size: 13px;
-  color: $transluscent-white;
+  font-size: 14px;
+  color: white;
   font-family: $open;
 }
 
@@ -128,7 +132,7 @@
 .track-album-artist {
   padding-top: 5px;
 
-  span:hover {
+  > a:hover {
     text-decoration: underline;
     color: white;
     cursor: pointer;

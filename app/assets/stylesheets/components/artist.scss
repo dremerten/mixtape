@@ -6,7 +6,7 @@
   .artist-page {
     // margin-left: 220px;
     width: 100%;
-    height: 100%;
+    animation: fadeInLoad 1s;
 
     .artist-header {
       width: 100%;
@@ -85,7 +85,7 @@
       font-family: $open;
       font-weight: lighter;
       letter-spacing: 2px;
-      font-size: 10px;
+      font-size: 11px;
       color: $transluscent-white;
     }
   }
