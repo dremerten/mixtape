@@ -5,8 +5,8 @@ import { SCROLL_BREAKPOINT } from '../util/constants';
 
 
 const mapStateToProps = state => {
-  let pathNames = ["/collection/playlists", "/collection/tracks"];
-  let linkNames = ["PLAYLISTS", "SONGS"];
+  let pathNames = ["/collection/playlists", "/collection/tracks", "/collection/artists"];
+  let linkNames = ["PLAYLISTS", "SONGS", "ARTISTS"];
 
   return {
     isVisible: state.ui.scroll < SCROLL_BREAKPOINT,

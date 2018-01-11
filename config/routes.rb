@@ -17,6 +17,7 @@ Rails.application.routes.draw do
     resources :searches, only: [:index]
     resources :saved_tracks, only: [:create, :destroy]
 
+    get 'user/artists', to: 'artists#index'
     post 'tracks/:id/save', to: 'tracks#create_track_save'
     delete 'tracks/:id/save', to: 'tracks#remove_track_save'
     post 'playlists/:id/tracks', to: 'playlists#add_track'
