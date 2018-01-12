@@ -15,12 +15,16 @@ class ArtistPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArtist(this.props.match.params.artistId);
+    this.props.fetchArtist(this.props.itemId);
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.loading != this.state.loading) {
       this.setState({ loading: !this.state.loading });
+    } else if (this.props.itemId !== newProps.itemId) {
+      this.setState({ loading: true }, () =>
+        this.props.fetchArtist(newProps.itemId)
+      );
     }
   }
 
@@ -48,7 +52,8 @@ class ArtistPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loading: state.ui.loading
+    loading: state.ui.loading,
+    itemId: ownProps.match.params.artistId
   };
 };
 

@@ -19,9 +19,10 @@ class Playlist extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.loading !== this.state.loading) {
       this.setState({ loading: !this.state.loading});
-    } else
-    if (this.props.itemId !== newProps.itemId) {
-      this.props.fetchEntity(newProps.itemId);
+    } else if (this.props.itemId !== newProps.itemId) {
+      this.setState({ loading: true }, () => (
+        this.props.fetchEntity(newProps.itemId)
+      ));
     }
   }
 
