@@ -10,8 +10,7 @@ const listItems = [
 ];
 
 const mapStateToProps = (state, { trackId, collectionId }) => {
-  debugger
-  return {
+  const obj = {
     isSaved: state.session.currentUser.trackIds.includes(trackId),
     listItems,
     trackId,
@@ -19,6 +18,9 @@ const mapStateToProps = (state, { trackId, collectionId }) => {
     name: `track-dropdown-${trackId}`,
     clicked: Boolean(state.ui.dropdowns[`track-dropdown-${trackId}`])
   };
+
+  debugger
+  return obj;
 };
 
 export default connect(mapStateToProps, null, null, { withRef: true })(GenericDropdown);

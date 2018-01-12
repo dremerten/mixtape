@@ -27,19 +27,18 @@ const SessionReducer = (state = _nullUser, action) => {
       return newState;
     case REMOVE_FOLLOW:
       rmIndex = newState.currentUser.followIds[action.data.followableType]
-                                    .indexOf(action.data.followableId);
+                                    .indexOf(parseInt(action.data.followableId));
 
       newState.currentUser.followIds[action.data.followableType]
                           .splice(rmIndex, 1);
       return newState;
     case REMOVE_TRACK_SAVE:
-      rmIndex = newState.currentUser.trackIds.indexOf(action.trackId);
+      rmIndex = newState.currentUser.trackIds.indexOf(parseInt(action.trackId));
 
       newState.currentUser.trackIds.splice(rmIndex, 1);
-      debugger
       return newState;
     case RECEIVE_TRACK_SAVE:
-      newState.currentUser.trackIds.push(action.trackId);
+      newState.currentUser.trackIds.push(parseInt(action.trackId));
       return newState;
     case LOGOUT:
       return _nullUser;

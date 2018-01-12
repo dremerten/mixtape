@@ -58,7 +58,7 @@ export const saveTrack = id => dispatch => (
     dispatch(receiveTrackSave(response.data));
     dispatch(receiveSongSaveStatus(response.message));
   }, (err) => {
-    dispatch(receiveSongSaveStatus(response.message));
+    dispatch(receiveSongSaveStatus(err.message));
   }).then(
     setTimeout(() => dispatch(clearAllAlerts()), 2500)
   )
@@ -69,7 +69,7 @@ export const removeTrack = id => dispatch => (
     dispatch(removeTrackSave(response.data));
     dispatch(receiveSongSaveStatus(response.message));
   }, (err) => {
-    dispatch(receiveSongSaveStatus(response.message));
+    dispatch(receiveSongSaveStatus(err.message));
   }).then(
     setTimeout(() => dispatch(clearAllAlerts()), 2500)
   )
