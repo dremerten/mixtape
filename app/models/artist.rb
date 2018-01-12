@@ -2,7 +2,9 @@ class Artist < ApplicationRecord
   include Followable
   validates :name, presence: true, length: { maximum: 100 }
 
-  has_attached_file :image, default_url: 'avatar.png'
+  has_attached_file :image, default_url: 'avatar.png',
+    styles: { thumb: '800x800#' }
+    
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   has_many :albums

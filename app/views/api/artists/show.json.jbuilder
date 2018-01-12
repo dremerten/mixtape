@@ -1,7 +1,8 @@
 # json.partial! 'api/artists/artist', artist: @artist
 json.artist do
   json.extract! @artist, :id, :name
-  json.imageUrl asset_path(@artist.image.url)
+  json.imageUrl asset_path(@artist.image(:thumb))
+  json.hero asset_path(@artist.image.url)
   json.albumIds @artist.album_ids
   json.topTrackIds @artist.tracks.order(popularity: :desc).pluck(:id)
   json.followCount @artist.followers.count

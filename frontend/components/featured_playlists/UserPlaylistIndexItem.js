@@ -9,6 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     loading: state.ui.loading,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,
+    loadingClass: 'playlist-loading',
+    imageClass: 'playlist-image',
     handleClick: () => ownProps.history.push(`/collection/playlists/${ownProps.item.id}`)
   };
 };

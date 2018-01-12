@@ -6,7 +6,7 @@ import ArtistFollowButton from './ArtistFollowButton';
 
 const ArtistHeader = (props) => {
   const style = {
-    backgroundImage: `url(${props.artist.imageUrl})`
+    backgroundImage: `url(${props.artist.hero})`
   };
 
   return(

@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   include Followable
 
+  FOLLOWABLE_TYPES = ['Artist', 'Album', 'Playlist', 'User']
+
   validates :email, presence: true, uniqueness: true
   validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
@@ -13,11 +15,28 @@ class User < ApplicationRecord
   has_many :playlists, foreign_key: :author_id
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
-  has_many :followed_items, class_name: 'Follow'
+  has_many :followings, class_name: 'Follow'
+  # has_many :followed_artists, through: :followings, source: :followable, source_type: 'Artist'
 
   def followable_ids_for(type)
-    followed_items.where(followable_type: type).pluck(:followable_id)
+    followings.where(followable_type: type).pluck(:followable_id)
   end
+
+  def method_missing(name, *args, &blck)
+    if name.to_s.match(/^followed_/)
+      model_name = constantize(name)
+
+      super unless FOLLOWABLE_TYPES.include? model_name
+
+      Object.const_get(model_name).where(id: followings.pluck(:followable_id))
+    else
+      super
+    end
+  end
+  # def followed_artists
+  #   Artist.where(id: followed_items.pluck(:followable_id))
+  # end
+
 
   def save_track(track_id)
     update(track_ids: track_ids + [track_id])
@@ -64,6 +83,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def constantize(classname)
+    classname.to_s.match(/^followed_(.+)s$/)[1].capitalize
+  end
 
   attr_reader :password
 end

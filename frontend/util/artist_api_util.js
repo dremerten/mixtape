@@ -11,3 +11,10 @@ export const fetchArtists = () => (
     url: 'api/user/artists'
   })
 );
+
+export const fetchUserArtists = () => (
+  $.ajax({
+    method: 'GET',
+    url: '/user/follows/artists'
+  })
+);

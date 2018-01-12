@@ -1,8 +1,8 @@
-export const userArtist = (state) => {
+export const userArtists = (state) => {
   const mappedArtists = state.session.currentUser.followIds.artists.map(id => (
     state.entities.artists[id]
   ));
-
+  
   return (mappedArtists.includes(undefined) ? [] : mappedArtists);
 };
 

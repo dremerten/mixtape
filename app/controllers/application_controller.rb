@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def followed_items
+    @followed_items = current_user.send("followed_#{get_controller_name}")
+  end
+
   def follow
     followable_type = get_class_string
     followable_id = params[:followable_id]
@@ -58,6 +62,10 @@ class ApplicationController < ActionController::Base
   end
 
   private
+
+  def get_controller_name
+    params['controller'].split('/')[1]
+  end
 
   def get_class_string
     self.class.to_s.match(/^Api::(.+)sController$/)[1]

@@ -10,6 +10,8 @@ const mapStateToProps = (state, ownProps) => {
     loading: state.ui.loading,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,
+    loadingClass: 'playlist-loading',
+    imageClass: 'playlist-image',
     handleClick: () => ownProps.history.push(`/genres/${ownProps.item.id}`)
   };
 };

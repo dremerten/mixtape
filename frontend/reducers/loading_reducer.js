@@ -16,6 +16,7 @@ import {
 
 import {
   START_LOADING_ARTIST,
+  START_LOADING_ARTISTS,
   RECEIVE_ARTIST
 } from '../actions/artist_actions';
 

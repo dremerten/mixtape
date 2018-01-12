@@ -10,7 +10,9 @@ const listItems = [
 ];
 
 const mapStateToProps = (state, { trackId, collectionId }) => {
+  debugger
   return {
+    isSaved: state.session.currentUser.trackIds.includes(trackId),
     listItems,
     trackId,
     collectionId,

@@ -1,6 +1,6 @@
 class Api::ArtistsController < ApplicationController
   def index
-    @artists = currentUser.followed_items.where(followable_type: 'Artist')
+    @artists = current_user.followed_artists
   end
 
   def show

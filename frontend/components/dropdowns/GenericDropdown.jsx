@@ -11,7 +11,7 @@ class GenericDropDown extends React.Component {
       <div className={`dropdown-container-${className}`}>
         <ul className='dropdown-list'>
           { this.props.listItems.map((Item, idx) => (
-            <Item key={idx} trackId={this.props.trackId}/>
+            <Item key={this.props.trackId} trackId={this.props.trackId} isSaved={this.props.isSaved}/>
             ))
           }
         </ul>

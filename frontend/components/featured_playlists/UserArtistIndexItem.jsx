@@ -9,6 +9,8 @@ const mapStateToProps = (state, ownProps) => {
     loading: state.ui.loading,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,
+    loadingClass: 'playlist-loading circular',
+    imageClass: 'playlist-image circular',
     handleClick: () => ownProps.history.push(`/artists/${ownProps.item.id}/overview`)
   };
 };

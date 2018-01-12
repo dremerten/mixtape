@@ -16,14 +16,14 @@ class GenericIndexItem extends React.Component {
   }
 
   render() {
-    const { id, itemName, author, imageUrl } = this.props;
+    const { id, itemName, author, imageUrl, loadingClass, imageClass } = this.props;
 
     return(
       <li key={id} className="playlist-item">
         <LoadingImage
-          loadingClass={'playlist-loading'}
+          loadingClass={loadingClass}
           handleClick={this.handleClick}
-          imageClass={'playlist-image'}
+          imageClass={imageClass}
           imageSource={imageUrl}
           />
         <div className="playlist-name">

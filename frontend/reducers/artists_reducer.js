@@ -1,15 +1,22 @@
-import { RECEIVE_ARTIST, START_LOADING_ARTIST } from '../actions/artist_actions';
 import merge from 'lodash/merge';
+
+import {
+  RECEIVE_ARTIST,
+  RECEIVE_ARTISTS
+} from '../actions/artist_actions';
+
 
 const defaultState = {};
 
 const ArtistReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  let newState;
+  let newState = merge({}, state);
   switch(action.type) {
     case RECEIVE_ARTIST:
-      newState = merge({}, state, { [action.data.artist.id]: action.data.artist });
+      newState[action.data.artist.id] = action.data.artist;
       return newState;
+    case RECEIVE_ARTISTS:
+      return merge(newState, action.artists);
     default:
       return state;
   }
