@@ -74,7 +74,6 @@
         }
       }
     }
-
   }
 
   .artist-description {
@@ -96,6 +95,35 @@
 
     > h1 {
       text-align: center;
+    }
+  }
+
+  .artist-albums {
+    margin-left: 220px;
+    padding: 0 50px 20px;
+    margin-bottom: 200px;
+    background: #0f0f0f;
+
+    > h1 {
+      text-align: center;
+    }
+
+    .expand-button {
+      margin: 20px 0;
+      color: $spotify-green;
+      text-align: center;
+      font-family: $open;
+      font-weight: lighter;
+      font-size: 10px;
+      letter-spacing: 3px;
+      transform: scale(1);
+      transition: .2s;
+
+      &:hover {
+        cursor: pointer;
+        transition: .2s;
+        transform: scale(1.05);
+      }
     }
   }
 }

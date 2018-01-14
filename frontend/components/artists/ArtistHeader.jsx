@@ -11,12 +11,12 @@ const ArtistHeader = (props) => {
 
   return(
     <div className='artist-header' style={style}>
-      <span>{props.artist.followCount} FOLLOWERS</span>
-      <h1>{props.artist.name}</h1>
-      <div className='artist-buttons'>
-        <ArtistFollowButton followed={props.followed} />
-      </div>
-      <ArtistNav />
+        <span>{props.artist.followCount} FOLLOWERS</span>
+        <h1>{props.artist.name}</h1>
+        <div className='artist-buttons'>
+          <ArtistFollowButton followed={props.followed} />
+        </div>
+        <ArtistNav />
     </div>
   );
 };

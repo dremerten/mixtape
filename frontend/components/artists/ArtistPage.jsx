@@ -6,6 +6,7 @@ import ArtistDescription from './ArtistDescription';
 import { fetchArtist } from '../../actions/artist_actions';
 import Spinner from '../Spinner';
 import TopArtistTracks from './TopArtistTracks';
+import ArtistItems from './ArtistItems';
 
 class ArtistPage extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class ArtistPage extends React.Component {
             <ArtistHeader />
             <Switch>
               <Route path='/artists/:artistId/about' component={ArtistDescription} />
-              <Route path='/artists/:artistId/overview' component={TopArtistTracks} />
+              <Route path='/artists/:artistId/overview' component={ArtistItems} />
             </Switch>
           </div>
         }
