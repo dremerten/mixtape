@@ -7,6 +7,7 @@ import LoadingImage from '../LoadingImage';
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       loading: true,
     };

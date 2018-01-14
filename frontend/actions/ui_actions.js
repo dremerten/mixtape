@@ -5,6 +5,7 @@ export const HIDE_ALL_DROPDOWNS = 'HIDE_ALL_DROPDOWNS';
 export const SHOW_DROPDOWN = 'SHOW_DROPDOWN';
 export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
+export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
 
 export const setScrollPosition = pos => ({
   type: SET_SCROLL_POSITION, pos
@@ -32,4 +33,8 @@ export const showModal = (name, data = {}) => ({
 
 export const closeModal = name => ({
   type: CLOSE_MODAL, name
+});
+
+export const closeAllModals = () => ({
+  type: CLOSE_ALL_MODALS
 });

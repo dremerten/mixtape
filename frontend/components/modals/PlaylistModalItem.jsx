@@ -8,7 +8,11 @@ const mapStateToProps = (state, ownProps) => {
   return {
     item: ownProps.item,
     itemType: 'modalItem',
-    imageUrl: ownProps.item.imageUrl
+    imageUrl: ownProps.item.imageUrl,
+    author: ownProps.item.author,
+    itemName: ownProps.item.name,
+    loadingClass: 'playlist-loading',
+    imageClass: 'playlist-image'
   };
 };
 

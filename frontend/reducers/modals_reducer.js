@@ -6,7 +6,8 @@ import {
 
 import {
   SHOW_MODAL,
-  CLOSE_MODAL
+  CLOSE_MODAL,
+  CLOSE_ALL_MODALS
 } from '../actions/ui_actions';
 
 const defaultState = {
@@ -22,20 +23,28 @@ const defaultState = {
 
 const ModalReducer = (state = defaultState, action) => {
   Object.freeze(state);
-  let newState;
+  let newState = merge({}, state);
+
   switch(action.type) {
     case START_LOADING_MODAL_PLAYLISTS:
-      newState = merge({}, state, { userPlaylistModal: { isFetching: true }});
+      newState.userPlaylistModal.isFetching = true;
       return newState;
     case RECEIVE_MODAL_PLAYLISTS:
-      newState = merge({}, state, { userPlaylistModal: { isFetching: false }});
+      newState.userPlaylistModal.isFetching = false;
       return newState;
     case SHOW_MODAL:
-      newState = merge({}, state, { [action.name]: { isOpen: true }, clickedFrom: action.data.trackId});
+      if (action.data.trackId) {
+        newState.clickedFrom = action.data.trackId;
+      }
+
+      newState[action.name].isOpen = true;
       return newState;
     case CLOSE_MODAL:
-      newState = merge({}, state, { [action.name]: { isOpen: false }});
+      newState[action.name].isOpen = false;
+      newState.clickedFrom = null;
       return newState;
+    case CLOSE_ALL_MODALS:
+      return defaultState;
     default:
       return state;
   }

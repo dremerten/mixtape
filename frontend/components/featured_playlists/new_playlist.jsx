@@ -1,7 +1,11 @@
+import React from 'react';
 import { connect } from 'react-redux';
 import { createPlaylist } from '../../actions/playlist_actions';
 import { withRouter } from 'react-router-dom';
-import React from 'react';
+import { addTrackToPlaylist } from 'react-router-dom';
+import { closeModal, closeAllModals } from '../../actions/ui_actions';
+import { saveTrackToPlaylist } from '../../actions/track_actions';
+import NewPlaylistButton from '../buttons/NewPlaylistButton';
 
 
 class NewPlaylistForm extends React.Component {
@@ -13,6 +17,7 @@ class NewPlaylistForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.addAfterCreate = this.addAfterCreate.bind(this);
   }
 
   update(e) {
@@ -21,27 +26,39 @@ class NewPlaylistForm extends React.Component {
     this.setState({ name: e.target.value });
   }
 
+  addAfterCreate(playlistId) {
+    if (this.props.shouldAddTrack) {
+      this.props.addTrack(this.props.trackId, playlistId);
+    }
+
+    return playlistId;
+  }
 
   handleSubmit(e) {
     e.preventDefault();
-    const { name } = this.state;
 
-    this.props.createPlaylist({ name }).then(({ data }) => {
-      this.props.history.push(`/collection/playlists/${data.playlist.id}`)
-    }).then(() => this.props.handleCloseModal());
+    this.props.submit(this.state).then(id =>
+      this.addAfterCreate(id)).then((id) => {
+        this.props.closeAllModals();
+
+        if (!this.props.shouldAddTrack) {
+          this.props.history.push(`/collection/playlists/${id}`);
+        }
+      });
   }
 
 
   render() {
     return(
       <div className="new-playlist-wrapper">
+        <NewPlaylistButton />
         <div
           className="new-playlist-container"
           >
           <div className="form-wrapper">
             <div className="form-header">
               <button className='close-button'
-                onClick={this.props.handleCloseModal}
+                onClick={this.props.closeModal}
                 >X</button>
               <h1>Create new playlist</h1>
             </div>
@@ -60,7 +77,7 @@ class NewPlaylistForm extends React.Component {
                 <div className="new-playlist-buttons">
                   <div
                     className="new-playlist-button-cancel"
-                    onClick={this.props.handleCloseModal}
+                    onClick={this.props.closeModal}
                     >CANCEL</div>
                     <input
                       type="submit"
@@ -78,11 +95,21 @@ class NewPlaylistForm extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    shouldAddTrack: Boolean(state.ui.modals.userPlaylistModal.isOpen),
+    trackId: state.ui.modals.clickedFrom
+  };
+};
+
 const mapDispatchToProps = dispatch => ({
-  createPlaylist: playlist => dispatch(createPlaylist(playlist))
+  closeModal: () => dispatch(closeModal('newPlaylistModal')),
+  closeAllModals: () => dispatch(closeAllModals()),
+  submit: playlist => dispatch(createPlaylist(playlist)),
+  addTrack: (trackId, playlistId) => dispatch(saveTrackToPlaylist(trackId, playlistId))
 });
 
 export default withRouter(connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(NewPlaylistForm));

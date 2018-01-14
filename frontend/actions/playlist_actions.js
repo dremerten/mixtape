@@ -72,8 +72,9 @@ export const fetchPlaylist = playlistId => dispatch => {
 
 export const createPlaylist = playlist => dispatch => (
   PlaylistApiUtil.createPlaylist(playlist).then(data => {
-    // dispatch(receivePlaylistStatus(['Playlist Successfully Created']));
-    return dispatch(receiveCreatedPlaylist(data));
+    dispatch(receivePlaylistStatus(['Playlist Successfully Created']));
+    dispatch(receiveCreatedPlaylist(data));
+    return data.playlist.id;
   }, errors => (
     dispatch(receivePlaylistStatus(errors.responseJSON))
   ))

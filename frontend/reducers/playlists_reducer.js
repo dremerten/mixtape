@@ -9,6 +9,7 @@ import {
   REMOVE_PLAYLISTS,
   DELETE_PLAYLIST
 } from '../actions/playlist_actions';
+import { RECEIVE_PLAYLIST_TRACK_SAVE } from '../actions/track_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 
 const initialState = {
@@ -30,6 +31,15 @@ const PlaylistsReducer = (state = initialState, action) => {
       return newState;
     case REMOVE_PLAYLISTS:
       newState = Object.assign({}, state, initialState);
+      return newState;
+    case RECEIVE_PLAYLIST_TRACK_SAVE:
+      newState = merge({}, state);
+
+      if (state.byId[action.data.playlistId] && state.byId[action.data.playlistId].trackIds) {
+        newState.byId[action.data.playlistId].trackIds.push(action.data.trackId);
+        newState.byId[action.data.playlistId].imageUrl = action.data.imageUrl;
+      }
+
       return newState;
     case RECEIVE_SEARCH_RESULTS:
       newState = merge({}, state, { byId: action.data.playlists });

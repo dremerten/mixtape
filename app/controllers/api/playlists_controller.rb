@@ -18,10 +18,16 @@ class Api::PlaylistsController < ApplicationController
 
   def show
     @playlist = Playlist.includes(tracks: [:album, :artist]).find(params[:id])
+
+    if @playlist
+      render :show
+    else
+      render json: ["This playlist doesn't seem to exists"], status: 404
+    end
   end
 
   def update
-    @playlist = Playlist.find(params[:id])
+    @playlist = current_user.playlists.find(params[:id])
 
     if @playlist.update(playlist_params)
       render :show
@@ -31,28 +37,37 @@ class Api::PlaylistsController < ApplicationController
   end
 
   def destroy
-    playlist = Playlist.find(params[:id])
+    playlist = current_user.playlists.find(params[:id])
 
     if playlist
       playlist.destroy
       render json: {}
     else
-      render json: ['Playlist does not exist']
+      render json: ['Playlist does not exist'], status: 404
     end
   end
 
   def add_track
-    @playlist = Playlist.find(params[:id])
+    @playlist = current_user.playlists.find(params[:id])
+    @track_id = params[:trackId]
 
-    if @playlist.add_track(params[:trackId])
-      render json: ['Song successfully added!']
+    if @playlist.add_track(@track_id)
+      render :add_track
+      # render json: {
+      #   message: ['Song successfully added!'],
+      #   data: {
+      #     playlistId: @playlist.id,
+      #     trackId: params[:trackId],
+      #     imageUrl: @playlist.image(:small)
+      #    }
+      # }
     else
-      render json: ['An error occured with your request']
+      render json: ['An error occured with your request'], status: 422
     end
   end
 
   def remove_track
-    playlist = Playlist.find(params[:id])
+    playlist = current_user.playlists.find(params[:id])
 
     playlist.remove_track(params[:trackId])
   end

@@ -7,6 +7,7 @@ import PlaylistContainer from '../featured_playlists/playlist_container';
 import AlbumContainer from '../albums/album_container';
 import AlertBar from '../AlertBar';
 import DialogueContainer from '../DialogueContainer';
+// import NewPlaylistButton from '../buttons/NewPlaylistButton';
 
 import {
   Route,

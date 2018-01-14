@@ -10,7 +10,7 @@ const mapStateToProps = state => {
     isVisible: state.ui.scroll < SCROLL_BREAKPOINT,
     pathNames,
     linkNames,
-    isButtonVisible: false,
+    // isButtonVisible: false,
     className: 'browse-nav-container'
   };
 };

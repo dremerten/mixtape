@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Route, NavLink } from 'react-router-dom';
 import NewPlaylistButton from './buttons/NewPlaylistButton';
 
 export default function({ isVisible, pathNames, linkNames, isButtonVisible, scrollPosition, className }) {
@@ -18,7 +18,9 @@ export default function({ isVisible, pathNames, linkNames, isButtonVisible, scro
           ))
         }
       </div>
-      <NewPlaylistButton isButtonVisible={isButtonVisible} />
+      <Route path='/collection' component={NewPlaylistButton}/>
     </nav>
   );
 }
+
+// <NewPlaylistButton isButtonVisible={isButtonVisible} />

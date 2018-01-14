@@ -9,6 +9,7 @@ export const START_FETCHING_MODAL_PLAYLISTS = 'START_FETCHING_MODAL_PLAYLISTS';
 export const RECEIVE_MODAL_PLAYLISTS = 'RECEIVE_MODAL_PLAYLISTS';
 export const RECEIVE_TRACK_SAVE = 'RECEIVE_TRACK_SAVE';
 export const REMOVE_TRACK_SAVE = 'REMOVE_TRACK_SAVE';
+export const RECEIVE_PLAYLIST_TRACK_SAVE = 'RECEIVE_PLAYLIST_TRACK_SAVE';
 
 export const receiveTracks = tracks => ({
   type: RECEIVE_TRACKS, tracks
@@ -18,12 +19,13 @@ export const receiveTrack = track => ({
   type: RECEIVE_TRACK, track
 });
 
-// export const removeTracks = () => ({
-//   type: REMOVE_TRACKS
-// });
-
 export const receiveSongSaveStatus = data => ({
   type: RECEIVE_SONG_SAVE_STATUS, data
+});
+
+export const receivePlaylistTrackSave = data => ({
+  type: RECEIVE_PLAYLIST_TRACK_SAVE,
+  data
 });
 
 export const receiveTrackSave = trackId => ({
@@ -59,7 +61,7 @@ export const saveTrack = id => dispatch => (
     dispatch(receiveSongSaveStatus(response.message));
   }, (err) => {
     dispatch(receiveSongSaveStatus(err.message));
-  }).then(
+  }).then(() =>
     setTimeout(() => dispatch(clearAllAlerts()), 2500)
   )
 );
@@ -70,15 +72,18 @@ export const removeTrack = id => dispatch => (
     dispatch(receiveSongSaveStatus(response.message));
   }, (err) => {
     dispatch(receiveSongSaveStatus(err.message));
-  }).then(
+  }).then(() =>
     setTimeout(() => dispatch(clearAllAlerts()), 2500)
   )
 );
 
 export const saveTrackToPlaylist = (trackId, playlistId) => dispatch => {
-  TrackApiUtil.saveTrackToPlaylist(trackId, playlistId).then(response => (
-    dispatch(receiveSongSaveStatus(response))
-  )).then(
+  TrackApiUtil.saveTrackToPlaylist(trackId, playlistId).then(response => {
+    dispatch(receivePlaylistTrackSave(response));
+    dispatch(receiveSongSaveStatus(response.message));
+  }, (err) => (
+    dispatch(receiveSongSaveStatus(err.responseJSON))
+  )).then(() =>
     setTimeout(() => dispatch(clearAllAlerts()), 2500)
   );
 };

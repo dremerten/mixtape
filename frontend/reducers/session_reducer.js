@@ -18,7 +18,7 @@ const SessionReducer = (state = _nullUser, action) => {
     case RECEIVE_CURRENT_USER:
       return { currentUser: action.currentUser };
     case RECEIVE_CREATED_PLAYLIST:
-      newState.currentUser.playlistIds.push(action.data.playlist.id);
+      newState.currentUser.playlistIds.unshift(action.data.playlist.id);
       return newState;
     case RECEIVE_FOLLOW:
       newState.currentUser.followIds[action.data.followableType]

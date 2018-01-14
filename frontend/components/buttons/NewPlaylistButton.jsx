@@ -2,59 +2,30 @@ import React from 'react';
 import NewPlaylistModal from '../modals/NewPlaylistModal';
 import { connect } from 'react-redux';
 import { showModal, closeModal } from '../../actions/ui_actions';
+import { SCROLL_BREAKPOINT } from '../../util/constants';
 
-class NewPlaylistButton extends React.Component {
-  constructor(props) {
-    super(props);
+const NewPlaylistButton = function({ isVisible, showModal }) {
 
-    this.handleOpenModal = this.handleOpenModal.bind(this);
-    this.handleCloseModal = this.handleCloseModal.bind(this);
-  }
-
-  // componentWillReceiveProps(newProps) {
-  //   const { isButtonVisible } = newProps;
-  //
-  //   if (this.state.isButtonVisible !== isButtonVisible) {
-  //     this.setState({ isButtonVisible: true});
-  //   }
-  // }
-
-  handleCloseModal() {
-    this.props.closeModal('newPlaylistModal');
-  }
-
-  handleOpenModal() {
-    this.props.showModal('newPlaylistModal');
-  }
-
-  render() {
-    const { isModalOpen, isButtonVisible } = this.props;
-
-    const className = (isButtonVisible ? 'new-playlist' : 'new-playlist-hidden' );
-    return(
-      <div>
-        <button
-          className={className}
-          onClick={this.handleOpenModal}
-          >
-          NEW PLAYLIST
-        </button>
-        <NewPlaylistModal isModalOpen={isModalOpen}  handleCloseModal={this.handleCloseModal} />
-      </div>
-    );
-  }
-}
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    isModalOpen: Boolean(state.ui.modals.newPlaylistModal.isOpen),
-    isButtonVisible: ownProps.isButtonVisible
-  };
+  return(
+    <div>
+      <button
+        className={'new-playlist'}
+        onClick={showModal}
+        >
+        NEW PLAYLIST
+      </button>
+    </div>
+  );
 };
 
+// const mapStateToProps = (state, ownProps) => {
+//   return {
+//     isVisible: state.ui.scroll < SCROLL_BREAKPOINT
+//   };
+// };
+
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  showModal: name => dispatch(showModal(name)),
-  closeModal: name => dispatch(closeModal(name))
+  showModal: () => dispatch(showModal('newPlaylistModal'))
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewPlaylistButton);
+export default connect(null, mapDispatchToProps)(NewPlaylistButton);

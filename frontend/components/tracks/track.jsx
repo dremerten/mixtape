@@ -28,7 +28,7 @@ class Track extends React.Component {
 
   render() {
     const { track, buttonText, artistIsVisible } = this.props;
-    // debugger
+
     return(
       <div className='track-row-wrapper'>
         <li className='track-row'>

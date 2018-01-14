@@ -30,7 +30,7 @@ class UserPlaylistModal extends React.Component {
                 onClick={this.props.handleCloseModal}
                 >X</button>
               <h1>Add to playlist
-                <NewPlaylistButton isButtonVisible={true} />
+                <NewPlaylistButton />
               </h1>
             </div>
             <ul className='playlist-items modal'>
