@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import TrackInfo from './TrackInfo';
 
 class NowPlayingBar extends React.Component {
   constructor(props) {
@@ -9,8 +10,6 @@ class NowPlayingBar extends React.Component {
       trackProgress: null,
       inProgress: props.inProgress,
       currentTrack: props.currentTrack,
-      repeatEnabled: false,
-      shuffleEnabled: false,
       rendered: false,
       volume: 1,
       duration: "0:00",
@@ -165,25 +164,7 @@ class NowPlayingBar extends React.Component {
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
-          <div className="current-song">
-            <div className="song-album-info">
-              <Link to={link}>
-                <img
-                  src={(this.state.currentTrack) ? this.state.currentTrack.imageUrl : ''}
-                  className="song-now-playing-image"
-                  style={{display: this.state.currentTrack ? "" : "none"}}
-                   />
-              </Link>
-              <div className="title-and-artist">
-                <span className="nav-bar-song">
-                  {title}
-                </span>
-                <span className="nav-bar-artist">
-                  {artist}
-                </span>
-              </div>
-            </div>
-          </div>
+          <TrackInfo currentTrack={this.props.currentTrack} />
           <div className="audio-controls">
             <div className="audio-buttons">
               <img className='small-button' src={window.staticAssets.shuffleButton} />
