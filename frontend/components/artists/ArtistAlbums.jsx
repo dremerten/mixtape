@@ -12,6 +12,8 @@ class ArtistAlbums extends React.Component {
 
     this.expandIndex = this.expandIndex.bind(this);
     this.collapseIndex = this.collapseIndex.bind(this);
+    this.handleIndexExpand = this.handleIndexExpand.bind(this);
+    this.handleIndexCount = this.handleIndexCount.bind(this);
   }
 
   collapseIndex() {
@@ -30,14 +32,24 @@ class ArtistAlbums extends React.Component {
     }
   }
 
+  handleIndexCount() {
+    if (this.state.expanded) return this.props.indexItems;
+    
+    return this.props.indexItems.slice(0, 12);
+  }
+
   render() {
     const style = { display: this.props.isHidden ? "none" : "" };
     const expandText = this.state.expanded ? "LESS" : "MORE";
 
+
     return(
       <div className='artist-albums' style={style}>
         <h1 className='playlists-header'>Albums</h1>
-        <GenericMusicIndex { ...this.props}/>
+        <GenericMusicIndex
+          IndexItem={this.props.IndexItem}
+          indexItems={this.handleIndexCount()}
+          />
         <div
           className='expand-button'
           onClick={this.handleIndexExpand}

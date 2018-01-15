@@ -149,6 +149,7 @@ class NowPlayingBar extends React.Component {
   }
 
   render() {
+    const playButton = this.state.inProgress ? window.staticAssets.pauseButton : staticAssets.playButton;
     let title, artist;
     let source = '';
     let currentVolume = this.toggleVolumeIcon();
@@ -188,7 +189,11 @@ class NowPlayingBar extends React.Component {
               <img className='small-button' src={window.staticAssets.shuffleButton} />
               <img className='small-button' src={window.staticAssets.backButton} />
               <div className='play-button-container'>
-                <img className='play-button' src={this.state.inProgress ? window.staticAssets.pauseButton : staticAssets.playButton} />
+                <img
+                  className='play-button'
+                  src={playButton}
+                  onClick={this.togglePlay}
+                  />
               </div>
               <img className='small-button' src={window.staticAssets.nextButton} />
               <img className='small-button' src={window.staticAssets.repeatButton} />
