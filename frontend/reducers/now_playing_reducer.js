@@ -18,6 +18,8 @@ const initialState = {
   inProgress: false
 };
 
+
+// Pressing play on the song on a Playlist or Album both fetches the song and store the context
 const NowPlayingReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState;

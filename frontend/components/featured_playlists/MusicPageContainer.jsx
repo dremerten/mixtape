@@ -8,6 +8,8 @@ class MusicPageContainer extends React.Component {
   constructor(props) {
     super(props);
 
+    this.state = { fetched : false };
+
     this.handleScroll = this.handleScroll.bind(this);
   }
 
@@ -15,15 +17,21 @@ class MusicPageContainer extends React.Component {
     this.props.setScrollPosition(0);
 
     if (this.props.shouldFetchItems) {
-      this.props.fetchItems();
+      this.props.fetchItems().then(() => this.setState({ fetched: true }));
+      return;
     }
+
+    this.setState({ fetched: true });
   }
+
 
   handleScroll() {
     this.props.setScrollPosition(this.container.scrollTop);
   }
 
   render() {
+    if (!this.state.fetched) return null;
+
     const {
       indexItems,
       itemType,

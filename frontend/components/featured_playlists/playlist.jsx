@@ -30,7 +30,7 @@ class Playlist extends React.Component {
 
   render() {
     const { loading } = this.state;
-    // debugger
+
     return(
       loading ?
         <div className="playlist-show-wrapper">

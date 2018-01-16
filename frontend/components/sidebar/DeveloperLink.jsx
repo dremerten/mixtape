@@ -1,4 +1,5 @@
 import React from 'react';
+import DeveloperTab from './DeveloperTab';
 
 class DeveloperLink extends React.Component {
   constructor() {
@@ -6,11 +7,11 @@ class DeveloperLink extends React.Component {
 
     this.state = { isOpen: false };
 
-    this.openLinks = this.openLink.bind(this);
+    this.toggleInfo = this.toggleInfo.bind(this);
   }
 
-  openLink() {
-
+  toggleInfo() {
+    this.setState({ isOpen: !this.state.isOpen });
   }
 
   render() {
@@ -18,8 +19,8 @@ class DeveloperLink extends React.Component {
 
     return(
       <ul>
-        <a href='https://github.com/dwebster17' target="_blank">Developer Info</a>
-        
+        <div onClick={this.toggleInfo} className='dev-button'>Developer Info</div>
+        <DeveloperTab toggleInfo={this.toggleInfo} isOpen={this.state.isOpen}/>
       </ul>
     );
   }

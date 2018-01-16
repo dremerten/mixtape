@@ -6,6 +6,8 @@ import { isEmpty } from 'lodash';
 const TrackInfo = function({ currentTrack }) {
   if (isEmpty(currentTrack)) return <div className='current-song'/>;
 
+  let trackName = currentTrack.title.length > 32 && (currentTrack.title.slice(0, 32) + '...');
+
   return (
     <div className="current-song">
       <div className="song-album-info">
@@ -16,9 +18,9 @@ const TrackInfo = function({ currentTrack }) {
              />
         </Link>
         <div className="title-and-artist">
-          <span className="nav-bar-song">
-            {currentTrack.title}
-          </span>
+          <Link to={`/browse/albums/${currentTrack.albumId}`} className="nav-bar-song">
+            {trackName || currentTrack.title}
+          </Link>
           <Link to={`/artists/${currentTrack.artistId}/overview`} className="nav-bar-artist">
             {currentTrack.artist}
           </Link>

@@ -16,7 +16,8 @@ class NowPlayingBar extends React.Component {
       volume: 1,
       duration: "0:00",
       currentTime: "0:00",
-      progress: 0
+      progress: 0,
+      muted: false
     };
 
     this.setVolume = this.setVolume.bind(this);
@@ -56,7 +57,7 @@ class NowPlayingBar extends React.Component {
   }
 
   setVolume(e) {
-    if (!this.props.currentTrack || !this.state.rendered) return;
+    if (isEmpty(this.props.currentTrack) || !this.state.rendered) return;
 
     const volume = e.target.value;
     this.audio.volume = volume;
@@ -75,7 +76,7 @@ class NowPlayingBar extends React.Component {
   }
 
   setCurrentTime(e) {
-    if (!this.props.currentTrack || !this.state.rendered) return;
+    if ((isEmpty(this.props.currentTrack)) || !this.state.rendered) return;
 
     const currentTime = e.target.value;
 
@@ -110,18 +111,15 @@ class NowPlayingBar extends React.Component {
   toggleMute(e) {
     e.stopPropagation();
 
-    if (this.volume.state.muted) {
+    if (this.state.muted) {
       this.audio.volume = this.prevValue;
       this.prevValue = null;
-      this.setState({ volume: this.audio.volume });
-      this.volume.setState({ muted: false });
+      this.setState({ volume: this.audio.volume, muted: false });
     } else {
       this.prevValue = this.audio.volume;
       this.audio.volume = 0;
-      this.setState({ volume: this.audio.volume });
-      this.volume.setState({ muted: true });
+      this.setState({ volume: this.audio.volume, muted: true });
     }
-    // debugger
   }
   // FUNCTION TO AVOID CHOPPED AUDIO WHILE SEEKING THROUGH TRACK:
 
@@ -155,7 +153,6 @@ class NowPlayingBar extends React.Component {
                />
           </section>
           <VolumeBar
-            ref={(v) => { this.volume = v; }}
             volume={this.state.volume}
             setVolume={this.setVolume}
             toggleMute={this.toggleMute}

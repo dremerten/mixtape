@@ -51,7 +51,6 @@ class NewPlaylistForm extends React.Component {
   render() {
     return(
       <div className="new-playlist-wrapper">
-        <NewPlaylistButton />
         <div
           className="new-playlist-container"
           >
