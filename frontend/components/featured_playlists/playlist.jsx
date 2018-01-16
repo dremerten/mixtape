@@ -3,11 +3,12 @@ import Track from '../tracks/track';
 import TrackList from '../tracks/TrackList';
 import Spinner from '../Spinner';
 import LoadingImage from '../LoadingImage';
+import { Link } from 'react-router-dom';
 
 class Playlist extends React.Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       loading: true,
     };
@@ -29,7 +30,7 @@ class Playlist extends React.Component {
 
   render() {
     const { loading } = this.state;
-
+    // debugger
     return(
       loading ?
         <div className="playlist-show-wrapper">
@@ -50,7 +51,10 @@ class Playlist extends React.Component {
                   {this.props.item.name}
                 </div>
                 <div className='sub-header'>
-                  by <span>{this.props.item.author}</span>
+                  by <Link
+                        to={`/artists/${this.props.item.authorId}/overview`}>
+                        {this.props.item.author}
+                      </Link>
                 </div>
                 <div className='sub-header'>
                   {this.props.item.trackIds.length} SONGS

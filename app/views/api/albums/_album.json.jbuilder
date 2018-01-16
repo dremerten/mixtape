@@ -4,6 +4,7 @@ json.album do
   json.author album.artist.name
   json.background album.background
   json.trackIds album.track_ids
+  json.authorId album.artist.id
 end
 
 json.tracks do

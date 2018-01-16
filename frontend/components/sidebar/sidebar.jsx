@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import DeveloperLink from './DeveloperLink';
 
 const SideBar = ({ currentUser }) => {
   let { email } = currentUser;
@@ -28,9 +29,7 @@ const SideBar = ({ currentUser }) => {
             </div>
           </ul>
         </div>
-        <ul>
-          <a href='https://github.com/dwebster17' target="_blank">Developer Info</a>
-        </ul>
+        <DeveloperLink />
         <div className="session-info">
           <div className="user-widget">
             <Link to="/account/profile">
