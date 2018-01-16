@@ -93,6 +93,7 @@ class NowPlayingBar extends React.Component {
 
   getProgress() {
     if (this.scaleTime()) {
+
       // Add fraction of padding to prevent mis-rendering of progress bar
       return ((this.scaleTime() + 0.000001) * 100 + "%");
     }
@@ -140,7 +141,7 @@ class NowPlayingBar extends React.Component {
           <VolumeBar volume={this.state.volume} setVolume={this.setVolume} />
         </div>
         <audio
-          onLoadStart={this.handleAudioLoad}
+          onCanPlay={this.handleAudioLoad}
           ref={(a) => { this.audio = a; }}
           src={this.props.currentTrack.trackUrl}
           onCanPlayThrough={this.setDuration}

@@ -1,4 +1,3 @@
-
 .now-playing-container {
   display: flex;
   flex-direction: row;
@@ -158,10 +157,6 @@
     height: 11px;
     width: 11px;
   }
-
-  // &:nth-of-type(4) {
-  //   opacity: 1;
-  // }
 }
 
 .play-button-container {
@@ -214,6 +209,21 @@
   width: 136px;
   align-items: center;
   display: flex;
+
+  .volume-icon {
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: .7;
+    width: 20px;
+    height: 16px;
+    margin-right: 10px;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+      transition: opacity .2s;
+    }
+  }
 }
 
 .slidecontainer {
@@ -278,9 +288,4 @@
   // height: 12px;
   transform: scale(1);
   transition: .2s ease-in;
-}
-
-i[class*="fa-volume-"] {
-  color: white;
-  opacity: .5;
 }
