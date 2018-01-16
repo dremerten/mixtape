@@ -44,7 +44,7 @@ class VolumeBar extends React.Component {
               <div
                 style={ { backgroundImage: 'url(' + volumeIcon + ')' } }
                 className='volume-icon'
-                onClick={this.handleMute}
+                onClick={this.props.toggleMute}
                 />
               <div className="slidecontainer">
                 <input

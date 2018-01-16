@@ -68,10 +68,3 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(ArtistPage));
-
-// ArtistHeader
-  // Buttons
-  // ArtistNav
-// ArtistPopularTracks
-// ArtistAlbums
-// ArtistSingles

@@ -27,6 +27,7 @@ class NowPlayingBar extends React.Component {
     this.scaleTime = this.scaleTime.bind(this);
     this.handleAudioLoad = this.handleAudioLoad.bind(this);
     this.handleSeek = this.handleSeek.bind(this);
+    this.toggleMute = this.toggleMute.bind(this);
   }
 
   componentDidMount() {
@@ -45,7 +46,7 @@ class NowPlayingBar extends React.Component {
   }
 
   handleAudioLoad() {
-    this.audio.play();
+    if (this.props.inProgress) this.audio.play();
   }
 
 
@@ -95,18 +96,33 @@ class NowPlayingBar extends React.Component {
     if (this.scaleTime()) {
 
       // Add fraction of padding to prevent mis-rendering of progress bar
-      return ((this.scaleTime() + 0.000001) * 100 + "%");
+      return ((this.scaleTime() + 0.00001) * 100 + "%");
     }
 
     return 0;
   }
 
   scaleTime() {
-    if (isEmpty(this.props.currentTrack) || !this.state.rendered) return 0;
+    if (isEmpty(this.props.currentTrack) || !this.state.rendered || !this.audio.duration) return 0;
     return (this.audio.currentTime / this.audio.duration);
   }
 
+  toggleMute(e) {
+    e.stopPropagation();
 
+    if (this.volume.state.muted) {
+      this.audio.volume = this.prevValue;
+      this.prevValue = null;
+      this.setState({ volume: this.audio.volume });
+      this.volume.setState({ muted: false });
+    } else {
+      this.prevValue = this.audio.volume;
+      this.audio.volume = 0;
+      this.setState({ volume: this.audio.volume });
+      this.volume.setState({ muted: true });
+    }
+    // debugger
+  }
   // FUNCTION TO AVOID CHOPPED AUDIO WHILE SEEKING THROUGH TRACK:
 
   handleSeek() {
@@ -138,7 +154,12 @@ class NowPlayingBar extends React.Component {
               handleSeek={this.handleSeek}
                />
           </section>
-          <VolumeBar volume={this.state.volume} setVolume={this.setVolume} />
+          <VolumeBar
+            ref={(v) => { this.volume = v; }}
+            volume={this.state.volume}
+            setVolume={this.setVolume}
+            toggleMute={this.toggleMute}
+            />
         </div>
         <audio
           onCanPlay={this.handleAudioLoad}
