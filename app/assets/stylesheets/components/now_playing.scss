@@ -90,11 +90,11 @@
   height: 100%;
   border-radius: 2px;
   background-color: #a0a0a0;
-  transition: .2s ease-out;
+  transition: background-color .2s ease-out;
 }
 
 .progress-bar-container:hover .current-progress {
-  transition: .2s ease-in;
+  transition: background-color .2s ease-in;
   background-color: $spotify-green;
 }
 
@@ -170,8 +170,12 @@
   border: 1px solid white;
   opacity: .7;
   cursor: pointer;
+  transform: scale(1);
+  transition: .2s;
 
   &:hover {
+    transform: scale(1.05);
+    transition: .2s;
     opacity: 1;
   }
 

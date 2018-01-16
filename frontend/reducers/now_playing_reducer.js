@@ -48,7 +48,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       let currentTrack = action.tracks[0];
       let nextTrack = action.tracks[1];
       let inProgress = true;
-      return { queue, currentTracl, nextTrack, inProgress };
+      return { queue, currentTrack, nextTrack, inProgress };
     case LOGOUT:
       return initialState;
     default:

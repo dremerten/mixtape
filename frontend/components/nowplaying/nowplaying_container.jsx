@@ -11,12 +11,12 @@ import {
 
 import NowPlayingBar from './nowplaying';
 
-const mapStateToProps = state => ({
-  currentTrack: state.nowPlaying.currentTrack,
-  nextTrack: state.nowPlaying.nextTrack,
-  inProgress: state.nowPlaying.inProgress,
-  queue: state.nowPlaying.queue
-})
+const mapStateToProps = ({ nowPlaying }) => ({
+  currentTrack: nowPlaying.currentTrack || {},
+  nextTrack: nowPlaying.nextTrack,
+  inProgress: nowPlaying.inProgress,
+  queue: nowPlaying.queue
+});
 
 const mapDispatchToProps = dispatch => ({
   play: () => dispatch(play()),
@@ -26,9 +26,9 @@ const mapDispatchToProps = dispatch => ({
   addTrackToQueue: track => dispatch(addTrackToQueue(queue)),
   clearQueue: () => dispatch(clearQueue()),
   setNextTrack: track => dispatch(setNextTrack),
-})
+});
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(NowPlayingBar)
+)(NowPlayingBar);

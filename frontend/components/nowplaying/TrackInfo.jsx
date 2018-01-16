@@ -1,14 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { isEmpty } from 'lodash';
 
 const TrackInfo = function({ currentTrack }) {
-  if (!currentTrack) return <div className='current-song'/>;
+  if (isEmpty(currentTrack)) return <div className='current-song'/>;
 
   return (
     <div className="current-song">
       <div className="song-album-info">
-        <Link to={`/browse/albums/${currentTrack.album_id}`}>
+        <Link to={`/browse/albums/${currentTrack.albumId}`}>
           <img
             src={currentTrack.imageUrl}
             className="song-now-playing-image"
@@ -18,9 +19,9 @@ const TrackInfo = function({ currentTrack }) {
           <span className="nav-bar-song">
             {currentTrack.title}
           </span>
-          <span className="nav-bar-artist">
+          <Link to={`/artists/${currentTrack.artistId}/overview`} className="nav-bar-artist">
             {currentTrack.artist}
-          </span>
+          </Link>
         </div>
       </div>
     </div>
