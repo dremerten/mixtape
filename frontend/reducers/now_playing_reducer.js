@@ -9,13 +9,14 @@ import {
   RECEIVE_QUEUE,
   ADD_TRACK_TO_QUEUE,
   CLEAR_QUEUE,
-  PLAY_NEXT_TRACK
+  PLAY_NEXT_TRACK,
+  PLAY_PREVIOUS_TRACK
 } from '../actions/audio_actions';
 
 const initialState = {
   queue: [],
   currentTrack: null,
-  // nextTrack: null,
+  history: [],
   inProgress: false,
   nextTracks: []
 };
@@ -26,6 +27,7 @@ const initialState = {
 const NowPlayingReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
+  let upNext;
 
   switch(action.type) {
     case PLAY:
@@ -44,7 +46,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       newState.queue = [];
       return newState;
     case PLAY_NEXT_TRACK:
-      const upNext = newState.queue.concat(newState.nextTracks);
+      upNext = newState.queue.concat(newState.nextTracks);
 
       newState.currentTrack = upNext.shift() || null;
 
@@ -69,6 +71,14 @@ const NowPlayingReducer = (state = initialState, action) => {
       return { queue, currentTrack, nextTrack, inProgress };
     case LOGOUT:
       return initialState;
+    case PLAY_PREVIOUS_TRACK:
+      if (isEmpty(newState.history)) return initialState;
+
+      newState.nextTracks.unshift(newState.currentTrack);
+      newState.currentTrack = newState.history.reverse()[0];
+      newState.history.pop();
+
+      return newState;
     default:
       return state;
     }

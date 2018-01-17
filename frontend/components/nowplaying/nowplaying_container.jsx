@@ -12,6 +12,8 @@ import {
 
 import NowPlayingBar from './nowplaying';
 
+// TODO: Add Previous track function
+
 const mapStateToProps = state => ({
   currentTrack: state.nowPlaying.currentTrack || {},
   nextTrack: state.nowPlaying.nextTrack,
