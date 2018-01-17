@@ -38,7 +38,8 @@ class NowPlayingBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentTrack.id !== this.props.currentTrack.id) {
-      // USE SHORT CIRCUITING TO RESET STATE IF QUEUE IS EMPTY. OTHERWISE, DO NOTHING.
+      // IF CURRENT TRACK HAS CHANGED, IT WILL AUTOMATICALLY PLAY.
+      // IF QUEUE HAS EMPTIED, STATE WILL RESET.
       if (isEmpty(newProps.currentTrack)) this.setInitialState();
     } else if (newProps.inProgress && !this.props.inProgress) {
       this.audio.play();
