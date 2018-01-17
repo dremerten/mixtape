@@ -29,6 +29,7 @@ class NowPlayingBar extends React.Component {
     this.handleAudioLoad = this.handleAudioLoad.bind(this);
     this.handleSeek = this.handleSeek.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
+    this.setInitialState = this.setInitialState.bind(this);
   }
 
   componentDidMount() {
@@ -37,13 +38,24 @@ class NowPlayingBar extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.currentTrack.id !== this.props.currentTrack.id) {
-      return;
-      // The play() method will be triggered automatically
+      // USE SHORT CIRCUITING TO RESET STATE IF QUEUE IS EMPTY. OTHERWISE, DO NOTHING.
+      if (isEmpty(newProps.currentTrack)) this.setInitialState();
     } else if (newProps.inProgress && !this.props.inProgress) {
       this.audio.play();
     } else if (newProps.inProgress !== this.props.inProgress) {
       this.audio.pause();
     }
+  }
+
+  setInitialState() {
+    this.setState({
+      trackProgress: null,
+      volume: 1,
+      duration: "0:00",
+      currentTime: "0:00",
+      progress: 0,
+      muted: false
+    });
   }
 
   handleAudioLoad() {
@@ -121,20 +133,21 @@ class NowPlayingBar extends React.Component {
       this.setState({ volume: this.audio.volume, muted: true });
     }
   }
-  // FUNCTION TO AVOID CHOPPED AUDIO WHILE SEEKING THROUGH TRACK:
 
+  // FUNCTION TO AVOID CHOPPED AUDIO WHILE SEEKING THROUGH TRACK:
   handleSeek() {
     this.audio.muted = true;
 
-    const unmuteAudio = () => this.audio.muted = false;
-
-    document.addEventListener('mouseup', () => {
+    const unmuteAudio = () => {
       this.audio.muted = false;
       document.removeEventListener('mouseup', unmuteAudio);
-    });
+    };
+
+    document.addEventListener('mouseup', unmuteAudio);
   }
 
   render() {
+    // debugger
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
@@ -164,6 +177,7 @@ class NowPlayingBar extends React.Component {
           src={this.props.currentTrack.trackUrl}
           onCanPlayThrough={this.setDuration}
           onTimeUpdate={this.getCurrentTime}
+          onEnded={this.props.playNextTrack}
            />
       </footer>
     );

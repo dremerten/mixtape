@@ -1,4 +1,5 @@
 import merge from 'lodash/merge';
+import { isEmpty } from 'lodash';
 import { LOGOUT } from '../actions/session_actions';
 import {
   PLAY,
@@ -31,24 +32,35 @@ const NowPlayingReducer = (state = initialState, action) => {
       newState.inProgress = true;
       return newState;
     case PAUSE:
-      return merge({}, state, { inProgress: false });
+      newState.inProgress = false;
+      return newState;
     case RECEIVE_QUEUE:
-      return merge({}, state, { queue: action.queue });
+      newState.queue = action.queue;
+      return newState;
     case ADD_TRACK_TO_QUEUE:
-      newState = merge({}, state);
       newState.queue.push(action.track);
       return newState;
     case CLEAR_QUEUE:
-      newState = merge({}, state);
       newState.queue = [];
       return newState;
     case PLAY_NEXT_TRACK:
-      newState = merge({}, state);
-      newState.currentTrack = newState.queue.shift;
-      newState.nextTrack = newState.queue[0];
+      const upNext = newState.queue.concat(newState.nextTracks);
+
+      newState.currentTrack = upNext.shift() || null;
+
+      if (isEmpty(newState.queue)) {
+        newState.nextTracks.shift();
+      } else {
+        newState.queue.shift();
+      }
+
       return newState;
     case PLAY_SINGLE_TRACK:
-      return merge({}, state, { currentTrack: action.track, inProgress: true });
+      newState.currentTrack = action.data.track;
+      newState.nextTracks = action.data.context;
+      newState.inProgress = true;
+
+      return newState;
     case PLAY_ALL_TRACKS:
       let queue = action.tracks.slice(1);
       let currentTrack = action.tracks[0];

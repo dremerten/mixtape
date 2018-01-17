@@ -3,6 +3,7 @@ import {
   play,
   pause,
   playSingleTrack,
+  playNextTrack,
   receiveQueue,
   addTrackToQueue,
   clearQueue,
@@ -11,21 +12,20 @@ import {
 
 import NowPlayingBar from './nowplaying';
 
-const mapStateToProps = ({ nowPlaying }) => ({
-  currentTrack: nowPlaying.currentTrack || {},
-  nextTrack: nowPlaying.nextTrack,
-  inProgress: nowPlaying.inProgress,
-  queue: nowPlaying.queue
+const mapStateToProps = state => ({
+  currentTrack: state.nowPlaying.currentTrack || {},
+  nextTrack: state.nowPlaying.nextTrack,
+  inProgress: state.nowPlaying.inProgress
 });
 
 const mapDispatchToProps = dispatch => ({
   play: () => dispatch(play()),
   pause: () => dispatch(pause()),
   playSingleTrack: track => dispatch(playSingleTrack(track)),
-  receiveQueue: queue => dispatch(receiveQueue(queue)),
+  playNextTrack: () => dispatch(playNextTrack()),
   addTrackToQueue: track => dispatch(addTrackToQueue(queue)),
   clearQueue: () => dispatch(clearQueue()),
-  setNextTrack: track => dispatch(setNextTrack),
+  // setNextTrack: track => dispatch(setNextTrack),
 });
 
 export default connect(

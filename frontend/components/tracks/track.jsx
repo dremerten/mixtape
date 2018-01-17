@@ -22,9 +22,11 @@ class Track extends React.Component {
     } else if (this.props.isCurrentTrack) {
       this.props.play();
     } else {
+      const sliceIndex = this.props.indexItems.indexOf(this.props.track);
+
       this.props.playSingleTrack({
         track: this.props.track,
-        context: this.props.indexItems.slice(this.props.indexItems.indexOf(this.props.track))
+        context: this.props.indexItems.slice(sliceIndex + 1)
       });
     }
   }
@@ -32,7 +34,6 @@ class Track extends React.Component {
   render() {
     const { track, buttonText, artistIsVisible } = this.props;
 
-    debugger
     return(
       <div className='track-row-wrapper'>
         <li className='track-row'>
