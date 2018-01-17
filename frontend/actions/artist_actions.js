@@ -34,7 +34,7 @@ export const fetchArtist = id => dispatch => {
 
 export const fetchUserArtists = () => dispatch => {
   dispatch(startLoadingArtists());
-  ArtistAPIUtil.fetchUserArtists().then(artists => (
+  return ArtistAPIUtil.fetchUserArtists().then(artists => (
     dispatch(receiveArtists(artists))
   ));
 };
