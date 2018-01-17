@@ -14,18 +14,22 @@ import {
 const initialState = {
   queue: [],
   currentTrack: null,
-  nextTrack: null,
-  inProgress: false
+  // nextTrack: null,
+  inProgress: false,
+  nextTracks: []
 };
 
 
-// Pressing play on the song on a Playlist or Album both fetches the song and store the context
+// Pressing play on the song on a Playlist or Album both fetches the song and stores the context
+// What should the context look like?
 const NowPlayingReducer = (state = initialState, action) => {
   Object.freeze(state);
-  let newState;
+  let newState = merge({}, state);
+
   switch(action.type) {
     case PLAY:
-      return merge({}, state, { inProgress: true });
+      newState.inProgress = true;
+      return newState;
     case PAUSE:
       return merge({}, state, { inProgress: false });
     case RECEIVE_QUEUE:

@@ -13,8 +13,8 @@ export const play = () => ({
   type: PLAY
 });
 
-export const playSingleTrack = track => ({
-  type: PLAY_SINGLE_TRACK, track
+export const playSingleTrack = data => ({
+  type: PLAY_SINGLE_TRACK, data
 });
 
 export const playAllTracks = tracks => ({
