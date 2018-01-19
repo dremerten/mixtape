@@ -59,7 +59,7 @@
     font-family: $open;
     font-weight: bolder;
 
-    .playlist-title, .sub-header {
+    .playlist-title {
       width: 80%;
       margin: 0 auto;
       text-align: center;
@@ -74,10 +74,14 @@
     }
 
     .sub-header {
+      width: 80%;
+      margin: 0 auto;
+      text-align: center;
+      // padding-top: 10px;
       margin-top: 10px;
       color: $transluscent-white;
       letter-spacing: 1px;
-      font-size: 14px;
+      font-size: 11px;
       font-weight: 300;
       font-family: $open;
     }

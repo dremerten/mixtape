@@ -57,7 +57,8 @@ const NowPlayingReducer = (state = initialState, action) => {
       }
 
       if (!newState.currentTrack) newState.inProgress = false;
-  
+
+      debugger
       return newState;
     case PLAY_SINGLE_TRACK:
       [

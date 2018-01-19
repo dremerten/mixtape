@@ -147,6 +147,7 @@ class NowPlayingBar extends React.Component {
     document.addEventListener('mouseup', unmuteAudio);
   }
 
+
   render() {
     return(
       <footer className="now-playing-footer">
@@ -174,11 +175,11 @@ class NowPlayingBar extends React.Component {
         <audio
           onCanPlay={this.handleAudioLoad}
           ref={(a) => { this.audio = a; }}
-          src={this.props.currentTrack.trackUrl}
           onCanPlayThrough={this.setDuration}
           onTimeUpdate={this.getCurrentTime}
+          src={this.props.currentTrack.trackUrl || "/"}
           onEnded={this.props.playNextTrack}
-           />
+          />
       </footer>
     );
   }
