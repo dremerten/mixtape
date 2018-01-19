@@ -56,9 +56,10 @@ class NewPlaylistForm extends React.Component {
           >
           <div className="form-wrapper">
             <div className="form-header">
-              <button className='close-button'
+              <img className='close-button'
                 onClick={this.props.closeModal}
-                >X</button>
+                src={staticAssets.closeButton}
+                ></img>
               <h1>Create new playlist</h1>
             </div>
             <div className="search-input-container">

@@ -21,13 +21,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  play: () => dispatch(play()),
-  pause: () => dispatch(pause()),
-  playSingleTrack: track => dispatch(playSingleTrack(track)),
-  playNextTrack: () => dispatch(playNextTrack()),
-  addTrackToQueue: track => dispatch(addTrackToQueue(queue)),
-  clearQueue: () => dispatch(clearQueue()),
-  // setNextTrack: track => dispatch(setNextTrack),
+  playNextTrack: track => dispatch(playNextTrack()),
 });
 
 export default connect(

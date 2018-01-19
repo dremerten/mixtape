@@ -5,23 +5,23 @@ import { fetchAlbum, removeAlbums } from '../../actions/album_actions';
 import {
   play,
   pause,
-  playSingleTrack,
-  receiveQueue,
-  addTrackToQueue,
-  clearQueue,
-  setNextTrack
+  playSingleTrack
 } from '../../actions/audio_actions';
 import { showDropdown } from '../../actions/ui_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  item: state.entities.albums[ownProps.match.params.albumId],
-  itemId: ownProps.match.params.albumId,
-  tracks: Object.keys(state.entities.tracks)
-                .map(id => state.entities.tracks[id]),
-  inProgress: state.nowPlaying.inProgress,
-  // currentTrack: state.nowPlaying.currentTrack,
-  loading: state.ui.loading
-});
+const mapStateToProps = (state, ownProps) => {
+  const album = state.entities.albums[ownProps.match.params.albumId];
+
+  return {
+    authorLink: album && `/artists/${album.authorId}/overview`,
+    item: album,
+    itemId: ownProps.match.params.albumId,
+    tracks: Object.keys(state.entities.tracks)
+                  .map(id => state.entities.tracks[id]),
+    inProgress: state.nowPlaying.inProgress,
+    loading: state.ui.loading
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchTracks: filter => dispatch(fetchTracks(filter)),
@@ -32,8 +32,6 @@ const mapDispatchToProps = dispatch => ({
   play: () => dispatch(play()),
   pause: () => dispatch(pause()),
   playSingleTrack: track => dispatch(playSingleTrack(track)),
-  receiveQueue: queue => dispatch(receiveQueue(queue)),
-  addTrackToQueue: track => dispatch(addTrackToQueue(track)),
   fetchEntity: id => dispatch(fetchAlbum(id)),
   showDropdown: name => dispatch(showDropdown(name))
 });

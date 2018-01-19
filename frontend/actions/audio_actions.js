@@ -14,7 +14,10 @@ export const play = () => ({
 });
 
 export const playSingleTrack = data => ({
-  type: PLAY_SINGLE_TRACK, data
+  type: PLAY_SINGLE_TRACK,
+  track: data.track,
+  nextTracks: data.nextTracks,
+  history: data.history
 });
 
 export const playPreviousTrack = () => ({

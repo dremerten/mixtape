@@ -26,7 +26,8 @@ class Track extends React.Component {
 
       this.props.playSingleTrack({
         track: this.props.track,
-        context: this.props.indexItems.slice(sliceIndex + 1)
+        nextTracks: this.props.indexItems.slice(sliceIndex + 1),
+        history: this.props.indexItems.slice(0, sliceIndex)
       });
     }
   }

@@ -18,16 +18,16 @@ const initialState = {
   currentTrack: null,
   history: [],
   inProgress: false,
+  shuffle: false,
+  repeat: 0,
+  shuffledTracks: [],
   nextTracks: []
 };
 
-
-// Pressing play on the song on a Playlist or Album both fetches the song and stores the context
-// What should the context look like?
 const NowPlayingReducer = (state = initialState, action) => {
   Object.freeze(state);
   let newState = merge({}, state);
-  let upNext;
+  let upNext = newState.queue.concat(newState.nextTracks);
 
   switch(action.type) {
     case PLAY:
@@ -46,7 +46,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       newState.queue = [];
       return newState;
     case PLAY_NEXT_TRACK:
-      upNext = newState.queue.concat(newState.nextTracks);
+      newState.history.push(newState.currentTrack);
 
       newState.currentTrack = upNext.shift() || null;
 
@@ -56,10 +56,20 @@ const NowPlayingReducer = (state = initialState, action) => {
         newState.queue.shift();
       }
 
+      if (!newState.currentTrack) newState.inProgress = false;
+  
       return newState;
     case PLAY_SINGLE_TRACK:
-      newState.currentTrack = action.data.track;
-      newState.nextTracks = action.data.context;
+      [
+        newState.currentTrack,
+        newState.nextTracks,
+        newState.history
+      ] = [
+        action.track,
+        action.nextTracks,
+        action.history
+      ];
+
       newState.inProgress = true;
 
       return newState;
@@ -75,7 +85,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       if (isEmpty(newState.history)) return initialState;
 
       newState.nextTracks.unshift(newState.currentTrack);
-      newState.currentTrack = newState.history.reverse()[0];
+      newState.currentTrack = newState.history[newState.history.length - 1];
       newState.history.pop();
 
       return newState;

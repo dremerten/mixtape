@@ -51,8 +51,7 @@ class Playlist extends React.Component {
                   {this.props.item.name}
                 </div>
                 <div className='sub-header'>
-                  by <Link
-                        to={`/artists/${this.props.item.authorId}/overview`}>
+                  by <Link to={this.props.authorLink}>
                         {this.props.item.author}
                       </Link>
                 </div>

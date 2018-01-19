@@ -65,7 +65,7 @@ class NowPlayingBar extends React.Component {
 
 
   setDuration() {
-    let duration = this.parseTime(this.audio.duration);
+    const duration = this.parseTime(this.audio.duration);
     this.setState({ duration });
   }
 
@@ -77,14 +77,13 @@ class NowPlayingBar extends React.Component {
     this.setState({ volume });
   }
 
-
   // FUNCTIONS TO HANDLE TIME BAR INFORMATION:
 
   parseTime(time) {
-    let minutes = String(Math.floor(time / 60));
+    const minutes = String(Math.floor(time / 60));
     let seconds = Math.floor(time % 60);
 
-    seconds = (seconds < 10) ? `0${seconds}` : `${seconds}`;
+    seconds = (seconds < 10 ? `0${seconds}` : `${seconds}`);
     return `${minutes}:${seconds}`;
   }
 
@@ -101,7 +100,7 @@ class NowPlayingBar extends React.Component {
   }
 
   getCurrentTime() {
-    let currentTime = this.parseTime(this.audio.currentTime);
+    const currentTime = this.parseTime(this.audio.currentTime);
 
     this.setState({ currentTime });
   }
@@ -110,6 +109,7 @@ class NowPlayingBar extends React.Component {
     if (this.scaleTime()) {
 
       // Add fraction of padding to prevent mis-rendering of progress bar
+      // Convert to percentage so that it can be used to determine width of progress element
       return ((this.scaleTime() + 0.00001) * 100 + "%");
     }
 
@@ -125,11 +125,11 @@ class NowPlayingBar extends React.Component {
     e.stopPropagation();
 
     if (this.state.muted) {
-      this.audio.volume = this.prevValue;
-      this.prevValue = null;
+      this.audio.volume = this.prevVolume;
+      this.prevVolume = null;
       this.setState({ volume: this.audio.volume, muted: false });
     } else {
-      this.prevValue = this.audio.volume;
+      this.prevVolume = this.audio.volume;
       this.audio.volume = 0;
       this.setState({ volume: this.audio.volume, muted: true });
     }
@@ -148,7 +148,6 @@ class NowPlayingBar extends React.Component {
   }
 
   render() {
-    // debugger
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">

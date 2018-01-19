@@ -13,14 +13,17 @@ import { fetchTracks, removeTracks } from '../../actions/track_actions';
 import { fetchPlaylist, removePlaylists } from '../../actions/playlist_actions';
 import { showDropdown } from '../../actions/ui_actions';
 
-const mapStateToProps = (state, ownProps) => ({
-  item: state.entities.playlists.byId[ownProps.match.params.playlistId],
-  itemId: ownProps.match.params.playlistId,
-  tracks: Object.keys(state.entities.tracks)
-                .map(id => state.entities.tracks[id]),
-  inProgress: state.nowPlaying.inProgress,
-  loading: state.ui.loading
-});
+const mapStateToProps = (state, ownProps) => {
+  return {
+    authorLink: '/',
+    item: state.entities.playlists.byId[ownProps.match.params.playlistId],
+    itemId: ownProps.match.params.playlistId,
+    tracks: Object.keys(state.entities.tracks)
+                  .map(id => state.entities.tracks[id]),
+    inProgress: state.nowPlaying.inProgress,
+    loading: state.ui.loading
+  };
+};
 
 const mapDispatchToProps = dispatch => ({
   fetchTracks: filter => dispatch(fetchTracks(filter)),
