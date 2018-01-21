@@ -1,17 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { play, pause, playNextTrack, playPreviousTrack } from '../../actions/audio_actions';
+import { toggleShuffle, toggleRepeat,play, pause, playNextTrack } from '../../actions/audio_actions';
+
 
 const AudioButtons = props => {
   const playButton = props.inProgress ? 'pauseButton' : 'playButton';
+  const shuffleButton = props.shuffleState ? 'shuffleButtonEnabled' : 'shuffleButton';
+  const shuffleClass = props.shuffleState ? 'enabled' : '';
+  const repeatButton = props.repeatEnabled ? 'repeatButtonEnabled' : 'repeatButton';
+  const repeatClass = (() => {
+    if (props.singleRepeat) {
+      return 'enabled single-repeat';
+    } else if (props.repeatEnabled) {
+      return 'enabled';
+    }
+  })();
 
   return(
     <div className="audio-buttons">
-      <img className='small-button' src={staticAssets.shuffleButton} />
+      <div
+        className={`small-button-container ${shuffleClass}`}
+        onClick={props.toggleShuffle}
+        >
+        <img className="small-button" src={staticAssets[shuffleButton]} />
+      </div>
       <img className='small-button'
         src={staticAssets.backButton}
-        onClick={props.playPreviousTrack}
-         />
+        onClick={props.handleBackClick}
+        />
       <div className='play-button-container'>
         <img
           className='play-button'
@@ -19,15 +35,31 @@ const AudioButtons = props => {
           onClick={props.handlePlay}
           />
       </div>
-      <img className='small-button'
-        src={staticAssets.nextButton}
-        onClick={props.playNextTrack}
-        />
-      <img className='small-button' src={staticAssets.repeatButton} />
+      <div className={"small-button-container"}>
+        <img className='small-button'
+          src={staticAssets.nextButton}
+          onClick={props.playNextTrack}
+          />
+      </div>
+      <div
+        className={`small-button-container ${repeatClass}`}
+        onClick={props.toggleRepeat}
+        >
+        <img className='small-button' src={staticAssets[repeatButton]} />
+      </div>
     </div>
   );
 };
 
+
+
+const mapStateToProps = state => {
+  return {
+    shuffleState: state.nowPlaying.shuffleState,
+    repeatEnabled: Boolean(state.nowPlaying.repeat),
+    singleRepeat: state.nowPlaying.repeat > 1
+  };
+};
 
 const mapDispatchToProps = (dispatch, { inProgress, nullTrack, progress }) => {
   const action = inProgress ? pause : play;
@@ -38,11 +70,12 @@ const mapDispatchToProps = (dispatch, { inProgress, nullTrack, progress }) => {
       dispatch(action());
     },
     playNextTrack: () => dispatch(playNextTrack()),
-    playPreviousTrack: () => dispatch(playPreviousTrack())
+    toggleShuffle: () => dispatch(toggleShuffle()),
+    toggleRepeat: () => dispatch(toggleRepeat())
   };
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(AudioButtons);

@@ -22,12 +22,12 @@ class Track extends React.Component {
     } else if (this.props.isCurrentTrack) {
       this.props.play();
     } else {
-      const sliceIndex = this.props.indexItems.indexOf(this.props.track);
+      const trackIndex = this.props.indexItems.indexOf(this.props.track);
 
       this.props.playSingleTrack({
-        track: this.props.track,
-        nextTracks: this.props.indexItems.slice(sliceIndex + 1),
-        history: this.props.indexItems.slice(0, sliceIndex)
+        currentTrack: this.props.track,
+        nextTracks: this.props.indexItems.slice(trackIndex + 1),
+        history: this.props.indexItems.slice(0, trackIndex)
       });
     }
   }
@@ -67,6 +67,7 @@ class Track extends React.Component {
             ref={(el) => { this.dropDown = el; }}
             trackId={this.props.track.id}
             collectionId={this.props.collectionId}
+            item={this.props.track}
             />
         </li>
       </div>

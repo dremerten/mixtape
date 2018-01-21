@@ -28,6 +28,17 @@
   padding-left: 20px;
 }
 
+.nav-toggle-save {
+  width: 12px;
+  height: 12px;
+  margin-left: 5px;
+}
+
+.nav-bar-song-container {
+  display: flex;
+  align-items: center;
+}
+
 .nav-bar-song {
   font-family: $open;
   color: white;
@@ -148,6 +159,11 @@
   opacity: .4;
 }
 
+.small-button-container {
+  position: relative;
+  cursor: pointer;
+}
+
 .small-button {
   height: auto;
   width: 13px;
@@ -168,6 +184,45 @@
   &:nth-of-type(3) {
     height: 11px;
     width: 11px;
+  }
+}
+
+.enabled {
+  &:before {
+    content: ".";
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    color: $spotify-green;
+    font-size: 25px;
+  }
+
+  .small-button {
+    opacity: 1;
+  }
+}
+
+.single-repeat {
+  &:after {
+    content: '1';
+    font-family: $open;
+    position: absolute;
+    top: -50%;
+    left: 40%;
+    border: 2px solid #181818;
+    color: #181818;
+    font-size: 7px;
+    font-weight: 900;
+    line-height: 1;
+    text-align: center;
+    height: 6px;
+    width: 6px;
+    padding: 2px;
+    border-radius: 50%;
+    background-color: #1DB954;
   }
 }
 

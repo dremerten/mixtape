@@ -1,27 +1,22 @@
 import { connect } from 'react-redux';
 import {
-  play,
-  pause,
-  playSingleTrack,
   playNextTrack,
-  receiveQueue,
-  addTrackToQueue,
-  clearQueue,
-  setNextTrack
+  playPreviousTrack
 } from '../../actions/audio_actions';
 
 import NowPlayingBar from './nowplaying';
 
-// TODO: Add Previous track function
-
 const mapStateToProps = state => ({
   currentTrack: state.nowPlaying.currentTrack || {},
   nextTrack: state.nowPlaying.nextTrack,
-  inProgress: state.nowPlaying.inProgress
+  inProgress: state.nowPlaying.inProgress,
+  repeat: state.nowPlaying.repeat,
+  loadQueue: state.nowPlaying.queue.concat(state.nowPlaying.nextTracks)[0]
 });
 
 const mapDispatchToProps = dispatch => ({
-  playNextTrack: track => dispatch(playNextTrack()),
+  playNextTrack: () => dispatch(playNextTrack()),
+  playPreviousTrack: () => dispatch(playPreviousTrack())
 });
 
 export default connect(

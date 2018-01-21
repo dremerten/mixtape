@@ -30,6 +30,9 @@ class NowPlayingBar extends React.Component {
     this.handleSeek = this.handleSeek.bind(this);
     this.toggleMute = this.toggleMute.bind(this);
     this.setInitialState = this.setInitialState.bind(this);
+    this.handleSongEnd = this.handleSongEnd.bind(this);
+    this.handleBackClick = this.handleBackClick.bind(this);
+    this.preloadQueue = this.preloadQueue.bind(this);
   }
 
   componentDidMount() {
@@ -61,8 +64,33 @@ class NowPlayingBar extends React.Component {
 
   handleAudioLoad() {
     if (this.props.inProgress) this.audio.play();
+
+    if (this.props.loadQueue) new Audio(this.props.loadQueue.trackUrl).load();
   }
 
+  preloadQueue() {
+    if (this.props.loadQueue) {
+      const audio = document.createElement('audio');
+      audio.src = this.props.loadQueue.trackUrl;
+      audio.load();
+    }
+  }
+
+  handleSongEnd() {
+    if (this.props.repeat === 2) {
+      this.audio.currentTime = 0;
+    } else {
+      this.props.playNextTrack();
+    }
+  }
+
+  handleBackClick() {
+    if ((this.audio.currentTime / this.audio.duration) < 0.05) {
+      this.props.playPreviousTrack();
+    } else {
+      this.audio.currentTime = 0;
+    }
+  }
 
   setDuration() {
     const duration = this.parseTime(this.audio.duration);
@@ -155,6 +183,7 @@ class NowPlayingBar extends React.Component {
           <TrackInfo currentTrack={this.props.currentTrack} />
           <section className="audio-controls">
             <AudioButtons
+              handleBackClick={this.handleBackClick}
               inProgress={this.props.inProgress}
               nullTrack={isEmpty(this.props.currentTrack)}/>
             <ProgressBar
@@ -164,7 +193,7 @@ class NowPlayingBar extends React.Component {
               width={this.getProgress()}
               currentTime={this.state.currentTime}
               handleSeek={this.handleSeek}
-               />
+              />
           </section>
           <VolumeBar
             volume={this.state.volume}
@@ -178,7 +207,7 @@ class NowPlayingBar extends React.Component {
           onCanPlayThrough={this.setDuration}
           onTimeUpdate={this.getCurrentTime}
           src={this.props.currentTrack.trackUrl || "/"}
-          onEnded={this.props.playNextTrack}
+          onEnded={this.handleSongEnd}
           />
       </footer>
     );
