@@ -23,12 +23,12 @@ const TrackInfo = function({ currentTrack }) {
             <Link to={`/browse/albums/${currentTrack.albumId}`} className="nav-bar-song">
               {trackName || currentTrack.title}
             </Link>
-            <SaveTrackButton currentTrack={currentTrack} />
           </div>
           <Link to={`/artists/${currentTrack.artistId}/overview`} className="nav-bar-artist">
             {currentTrack.artist}
           </Link>
         </div>
+        <SaveTrackButton currentTrack={currentTrack} />
       </div>
     </div>
   );
