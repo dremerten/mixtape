@@ -1,13 +1,10 @@
-puts "Please remove all Debuggers and Console.logs from this directory. When finished, press 'c'"
-input = gets.chomp
-
-if input == "c"
-  puts "Run bundle install. If you have already, press 'c'"
-  input = gets.chomp
-  if input == "c"
-    puts "Have you made any changes to your schema? If so, update your Heroku migrations. When ready, press 'c'"
-    if input == "c"
-      system("rails c")
-    end
-  end
-end
+puts "Please remove all Debuggers and Console.logs from this directory. When finished, press any key to continue."
+gets.chomp
+puts "Run bundle install. Press any key to continue."
+gets.chomp
+puts "Make sure you are on the master branch. Make any necessary merges. Press any key to continue."
+gets.chomp
+puts "Heroku push properly staged. Press any key to execute push."
+gets.chomp
+puts "Pushing branch master to Heroku...\n\n\n\n"
+system("git push heroku master")

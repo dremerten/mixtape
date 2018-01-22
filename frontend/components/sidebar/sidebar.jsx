@@ -25,7 +25,7 @@ const SideBar = ({ currentUser }) => {
             </NavLink>
             <div className="sidebar-group">
               <NavLink to="/browse/featured" className="sidebar-item" activeClassName="sidebar-item-selected">Home</NavLink>
-              <NavLink to="/collection/playlists" className="sidebar-item" activeClassName="sidebar-item-selected"><li>Your Music</li></NavLink>
+              <NavLink to="/collection/playlists" className="sidebar-item" activeClassName="sidebar-item-selected">Your Music</NavLink>
             </div>
           </ul>
         </div>

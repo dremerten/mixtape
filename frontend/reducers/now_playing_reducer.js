@@ -55,9 +55,10 @@ const NowPlayingReducer = (state = initialState, action) => {
       newState.shuffledTracks = shuffle([...newState.nextTracks]);
       newState.history.push(newState.currentTrack);
 
-      newState.repeat === 1 &&
-      isEmpty(newState.nextTracks) &&
-      (newState.nextTracks = newState.history);
+      if (newState.repeat === 1 && isEmpty(newState.nextTracks)) {
+        newState.nextTracks = newState.history;
+        newState.history = [];
+      }
 
       if (newState.shuffleState) {
         newState.currentTrack = newState.queue.shift() || newState.shuffledTracks.shift();
@@ -70,7 +71,8 @@ const NowPlayingReducer = (state = initialState, action) => {
 
       return newState;
     case PLAY_SINGLE_TRACK:
-      merge(newState, action.data);
+      Object.assign(newState, action.data);
+      newState.shuffledTracks = [];
       newState.inProgress = true;
 
       return newState;
