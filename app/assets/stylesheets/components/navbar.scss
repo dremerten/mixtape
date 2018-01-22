@@ -32,7 +32,7 @@
   flex-direction: column;
 
   @include small {
-    padding-top: 50px;
+    padding-top: 30px;
     flex-direction: row;
     justify-content: space-between;
   }
@@ -43,12 +43,18 @@
   font-family: $sans-serif;
   letter-spacing: 2.5px;
   font-weight: bolder;
-  font-size: 12px;
-  color: #e2e2e2;
+  font-size: 11px;
+  color: rgba(257, 257, 257, 0.5);
   padding: 4px 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: .2s color;
+
+  &:hover {
+    color: white;
+    transition: .2s color;
+  }
 }
 
 .nav-selected {
@@ -67,8 +73,7 @@
 .new-playlist {
   animation: fadeInLoad .2s ease-in;
   position: absolute;
-  // top: calc(100% - 25px);
-  top: 45px;
+  top: 27px;
   right: 75px;
   background-color: $spotify-green;
   font-family: $open;
