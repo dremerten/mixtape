@@ -4,7 +4,7 @@ import { addTrackToQueue } from '../../actions/audio_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    buttonText: "Add To Queue",
+    buttonText: "Add to Queue",
   };
 };
 

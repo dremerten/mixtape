@@ -19,14 +19,15 @@ const mapDispatchToProps = (dispatch, { currentTrack }) => {
 
 const SaveTrackButton = (props) => {
   const buttonText = props.isSaved ? 'tick' : 'plus';
-  const toggleSave = props.isSaved ? props.saveTrack : props.removeTrack;
+  const toggleSave = props.isSaved ? props.removeTrack : props.saveTrack;
+
   return(
     <img
       src={staticAssets[buttonText]}
-      onClick={props.toggleSave}
+      onClick={toggleSave}
       className='nav-toggle-save'
       />
   );
 };
 
-export default connect(mapStateToProps)(SaveTrackButton);
+export default connect(mapStateToProps, mapDispatchToProps)(SaveTrackButton);

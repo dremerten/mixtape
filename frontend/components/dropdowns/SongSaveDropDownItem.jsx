@@ -4,8 +4,8 @@ import { saveTrack, removeTrack } from '../../actions/track_actions';
 import { clearAllAlerts } from '../../actions/alert_actions';
 
 const mapStateToProps = (state, { trackId, isSaved }) => {
-  const buttonText = (isSaved ? 'Remove Song' : 'Save Song');
-  
+  const buttonText = (isSaved ? 'Remove from Your Music' : 'Save to Your Music');
+
   return {
     buttonText,
   };

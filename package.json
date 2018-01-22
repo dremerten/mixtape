@@ -7,6 +7,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-2": "^6.24.1",
+    "clipboard-polyfill": "^2.4.1",
     "howler": "^2.0.5",
     "jquery": "^3.2.1",
     "lodash": "^4.17.4",

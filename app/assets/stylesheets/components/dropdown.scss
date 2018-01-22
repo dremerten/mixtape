@@ -1,11 +1,11 @@
 .dropdown-container-visible {
-  padding: 5px 0px;
+  padding: 8px 5px;
   position: absolute;
   z-index: 2;
   top: 40px;
   right: 90px;
   background-color: $black;
-  width: 150px;
+  width: auto;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0,0,0,.3);
 }
@@ -17,7 +17,7 @@
 .dropdown-list {
   color: rgba(255,255,255,.5);
   font-family: $open;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .drop-down-item {

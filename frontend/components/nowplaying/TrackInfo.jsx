@@ -9,7 +9,6 @@ const TrackInfo = function({ currentTrack }) {
 
   let trackName = currentTrack.title.length > 32 && (currentTrack.title.slice(0, 32) + '...');
 
-  debugger
   return (
     <div className="current-song">
       <div className="song-album-info">

@@ -1,13 +1,15 @@
 import SaveSong from './SongSaveDropDownItem';
 import AddToPlaylist from './AddTrackToPlaylist';
 import AddToQueue from './AddTrackToQueue';
+import CopySongLink from './CopySongLink';
 import GenericDropdown from './GenericDropdown';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 const listItems = [
-  SaveSong,
+  CopySongLink,
   AddToQueue,
+  SaveSong,
   AddToPlaylist
 ];
 

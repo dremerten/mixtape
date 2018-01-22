@@ -39,7 +39,6 @@ const NowPlayingReducer = (state = initialState, action) => {
       return newState;
     case ADD_TRACK_TO_QUEUE:
       newState.queue.push(action.track);
-      debugger
       return newState;
     case CLEAR_QUEUE:
       newState.queue = [];
