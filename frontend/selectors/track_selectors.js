@@ -27,5 +27,5 @@ export const shouldFetchTracks = (trackIds, state) => {
 export const isCurrentTrack = (state, track) => {
   if (!state.nowPlaying.currentTrack) return false;
 
-  return state.nowPlaying.currentTrack.id === track.id;
+  return state.nowPlaying.currentTrack === track.id;
 };

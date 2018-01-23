@@ -2,6 +2,8 @@ import merge from 'lodash/merge';
 import { isEmpty } from 'lodash';
 import { LOGOUT } from '../actions/session_actions';
 import { shuffle } from '../util/helper_methods';
+import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
+
 import {
   PLAY,
   PAUSE,
@@ -37,6 +39,9 @@ const NowPlayingReducer = (state = initialState, action) => {
     case PAUSE:
       newState.inProgress = false;
       return newState;
+    // case RECEIVE_PLAYLIST:
+    //   newState.context = action.data.tracks;
+    //   return newState;
     case ADD_TRACK_TO_QUEUE:
       newState.queue.push(action.track);
       return newState;

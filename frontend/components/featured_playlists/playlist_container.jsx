@@ -12,14 +12,16 @@ import {
 import { fetchTracks, removeTracks } from '../../actions/track_actions';
 import { fetchPlaylist, removePlaylists } from '../../actions/playlist_actions';
 import { showDropdown } from '../../actions/ui_actions';
+import { playlistTracks } from '../../selectors/playlist_selector';
 
 const mapStateToProps = (state, ownProps) => {
+  const playlist = state.entities.playlists.byId[ownProps.match.params.playlistId];
+
   return {
     authorLink: '/',
-    item: state.entities.playlists.byId[ownProps.match.params.playlistId],
+    item: playlist,
     itemId: ownProps.match.params.playlistId,
-    tracks: Object.keys(state.entities.tracks)
-                  .map(id => state.entities.tracks[id]),
+    tracks: playlistTracks(playlist, state),
     inProgress: state.nowPlaying.inProgress,
     loading: state.ui.loading
   };

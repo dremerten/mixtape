@@ -25,9 +25,9 @@ class Track extends React.Component {
       const trackIndex = this.props.indexItems.indexOf(this.props.track);
 
       this.props.playSingleTrack({
-        currentTrack: this.props.track,
-        nextTracks: this.props.indexItems.slice(trackIndex + 1),
-        history: this.props.indexItems.slice(0, trackIndex)
+        currentTrack: this.props.track.id,
+        nextTracks: this.props.indexItems.slice(trackIndex + 1).map(t => t.id),
+        history: this.props.indexItems.slice(0, trackIndex).map(t => t.id)
       });
     }
   }

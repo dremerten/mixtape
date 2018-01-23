@@ -7,8 +7,7 @@ import {
 import NowPlayingBar from './nowplaying';
 
 const mapStateToProps = state => ({
-  currentTrack: state.nowPlaying.currentTrack || {},
-  nextTrack: state.nowPlaying.nextTrack,
+  currentTrack: state.entities.tracks[state.nowPlaying.currentTrack] || {},
   inProgress: state.nowPlaying.inProgress,
   repeat: state.nowPlaying.repeat,
   loadQueue: state.nowPlaying.queue.concat(state.nowPlaying.nextTracks)[0]

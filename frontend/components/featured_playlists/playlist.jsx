@@ -2,7 +2,7 @@ import React from 'react';
 import Track from '../tracks/track';
 import TrackList from '../tracks/TrackList';
 import Spinner from '../Spinner';
-import LoadingImage from '../LoadingImage';
+import PlaylistInfo from './PlaylistInfo';
 import { Link } from 'react-router-dom';
 
 class Playlist extends React.Component {
@@ -39,27 +39,7 @@ class Playlist extends React.Component {
         :
         <div className="playlist-show-wrapper" style={ { background: this.props.item.background } }>
           <div className="playlist-show-container">
-            <div className="playlist-info">
-              <LoadingImage
-                loadingClass={'playlist-loading'}
-                handleClick={() => {}}
-                imageClass={'playlist-image'}
-                imageSource={this.props.item.imageUrl}
-                />
-              <div className='headers'>
-                <div className='playlist-title'>
-                  {this.props.item.name}
-                </div>
-                <div className='sub-header'>
-                  by <Link to={this.props.authorLink}>
-                        {this.props.item.author}
-                      </Link>
-                </div>
-                <div className='sub-header'>
-                  {this.props.item.trackIds.length} SONGS
-                </div>
-              </div>
-            </div>
+            <PlaylistInfo authorLink={this.props.authorLink} item={this.props.item} />
             <div className='tracklist-container'>
               <TrackList
                 indexItems={this.props.tracks}

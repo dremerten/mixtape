@@ -9,16 +9,20 @@ import { RECEIVE_PLAYLIST } from '../actions/playlist_actions';
 import { RECEIVE_ALBUM } from '../actions/album_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
 import { LOGOUT } from '../actions/session_actions';
+import { ADD_TRACK_TO_QUEUE } from '../actions/audio_actions';
 
 const _nullTracks = {};
 
 const TrackReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = merge({}, state);
+
   switch(action.type) {
     case RECEIVE_TRACKS:
       return action.tracks;
+    case ADD_TRACK_TO_QUEUE:
     case RECEIVE_TRACK:
-      let newState = ({}, state, { [actions.track.id]: action.track});
+      newState[action.track.id] = action.track;
       return newState;
     case REMOVE_TRACKS:
     case LOGOUT:
@@ -27,7 +31,8 @@ const TrackReducer = (state = {}, action) => {
     case RECEIVE_ARTIST:
     case RECEIVE_ALBUM:
     case RECEIVE_SEARCH_RESULTS:
-      return action.data.tracks || _nullTracks;
+      const results = action.data.tracks || _nullTracks;
+      return merge(newState, results);
     default:
       return state;
   }

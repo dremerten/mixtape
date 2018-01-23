@@ -15,10 +15,17 @@ export const play = () => ({
   type: PLAY
 });
 
-export const playSingleTrack = data => ({
-  type: PLAY_SINGLE_TRACK,
-  data
-});
+export const playSingleTrack = data => (dispatch, getState) => {
+  const state = getState();
+
+  if (state.nowPlaying.currentTrack !== data.currentTrack) {
+    dispatch({ type: PLAY_SINGLE_TRACK, data });
+  } else if (state.nowPlaying.inProgress) {
+    dispatch(pause());
+  } else {
+    dispatch(play());
+  }
+};
 
 export const toggleShuffle = () => ({
   type: TOGGLE_SHUFFLE

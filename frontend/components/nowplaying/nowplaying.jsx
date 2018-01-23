@@ -69,11 +69,11 @@ class NowPlayingBar extends React.Component {
   }
 
   preloadQueue() {
-    if (this.props.loadQueue) {
-      const audio = document.createElement('audio');
-      audio.src = this.props.loadQueue.trackUrl;
-      audio.load();
-    }
+    // if (this.props.loadQueue) {
+    //   const audio = document.createElement('audio');
+    //   audio.src = this.props.loadQueue.trackUrl;
+    //   audio.load();
+    // }
   }
 
   handleSongEnd() {
