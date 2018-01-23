@@ -10,7 +10,7 @@
   <% end %>
 
     window.siteGeneratedPlaylistIds =
-      <%= Playlist.featured.pluck(:id) %>
+      <%= Playlist.featured.pluck('playlists.id') %>
     window.staticAssets = {
       backButton: "<%= asset_url "back.png" %>",
       nextButton: "<%= asset_url "next.png" %>",

@@ -2,6 +2,7 @@ class Playlist < ApplicationRecord
   include Followable
   include Helpers::ImageScanner
 
+  validates_inclusion_of :featured, in: [true, false]
   belongs_to :author, optional: true, foreign_key: :author_id, class_name: 'User'
   has_many :playlist_tracks
   has_many :tracks, through: :playlist_tracks, source: :track
@@ -10,19 +11,28 @@ class Playlist < ApplicationRecord
   has_attached_file :image,
     styles: { large: '1000x1000#', small: '300x300#' },
     default_url: 'album_default.jpg'
+
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_save :inherit_artwork
+
+  scope :featured, -> { where(featured: true) }
 
   def self.site_generated
     Playlist.includes(:author).where(author_id: 0)
   end
 
-  def self.featured
-    site_generated.limit(12)
+  def self.user_playlists(user)
+    Playlist.includes(:author, :tracks).where(author_id: user.id).order(id: 'desc').limit(40)
   end
 
-  def self.user_playlists(user)
-    Playlist.includes(:author).where(author_id: user.id).order(id: 'desc').limit(40)
+  def self.set_featured_playlists
+    reset_featured_to_false
+
+    Playlist.where(author_id: 0).sample(12).each { |p| p.update featured: true }
+  end
+
+  def self.reset_featured_to_false
+    Playlist.all.each { |p| p.update featured: false }
   end
 
   def add_track(track_id)

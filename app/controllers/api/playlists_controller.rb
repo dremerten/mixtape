@@ -1,9 +1,9 @@
 class Api::PlaylistsController < ApplicationController
 
   def index
-    playlists = (is_featured ? Playlist.includes(:author).featured : Playlist.includes(:author).user_playlists(current_user))
+    playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
 
-    @playlists = playlists.includes(:author)
+    @playlists = playlists
   end
 
   def create

@@ -74,7 +74,7 @@
       }
 
       .developer-tab {
-        animation: fadeInLoad 1s, rise .5s linear;
+        animation: fadeInLoad 1s, rise .75s cubic-bezier(.1,.5,.1,.98);
         position: absolute;
         bottom: 130%;
         padding: 15px;
@@ -181,17 +181,7 @@
 
 
         .sidebar-item-selected {
-          // font-size: 14px;
-          // font-weight: bolder;
-          // font-family: $sans-serif;
           color: $spotify-green;
-          // padding: 8px 0;
-          // margin-bottom: 8px;
-          // transition: 0.25s ease-in-out;
-          //
-          // &:hover {
-          //   color: $spotify-green;
-          // }
         }
       }
 
