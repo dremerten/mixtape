@@ -20,6 +20,7 @@ import {
 
 const initialState = {
   queue: [],
+  context: null,
   currentTrack: null,
   inProgress: false,
   shuffleState: false,

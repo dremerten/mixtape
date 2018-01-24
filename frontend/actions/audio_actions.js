@@ -27,6 +27,18 @@ export const playSingleTrack = data => (dispatch, getState) => {
   }
 };
 
+export const playFullCollection = () => (dispatch, getState) => {
+  const state = getState();
+
+  if (state.nowPlaying.context !== data.context) {
+    dispatch({ type: PLAY_SINGLE_TRACK, data});
+  } else if (state.nowPlaying.inProgress) {
+    dispatch(pause());
+  } else {
+    dispatch(play());
+  }
+};
+
 export const toggleShuffle = () => ({
   type: TOGGLE_SHUFFLE
 });

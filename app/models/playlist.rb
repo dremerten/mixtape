@@ -16,12 +16,9 @@ class Playlist < ApplicationRecord
   before_save :inherit_artwork
 
   scope :featured, -> { where(featured: true) }
+  scope :site_generated, -> { includes(:author).where(author_id: 0) }
 
-  def self.site_generated
-    Playlist.includes(:author).where(author_id: 0)
-  end
-
-  def self.user_playlists(user)
+  def self.for(user)
     Playlist.includes(:author, :tracks).where(author_id: user.id).order(id: 'desc').limit(40)
   end
 

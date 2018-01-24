@@ -1,7 +1,9 @@
 class Api::PlaylistsController < ApplicationController
 
+  # TODO: Make featured playlists and user playlists different routes
+  
   def index
-    playlists = (is_featured ? Playlist.featured : Playlist.user_playlists(current_user))
+    playlists = (is_featured ? Playlist.featured : Playlist.for current_user)
 
     @playlists = playlists
   end
