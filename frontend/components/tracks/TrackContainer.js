@@ -10,13 +10,17 @@ import {
 } from '../../actions/audio_actions';
 import Track from './track';
 
-const mapStateToProps = (state, { track }) => {
-  const inProgress = state.nowPlaying.inProgress && isCurrentTrack(state, track);
+const mapStateToProps = (state, ownProps) => {
+  const inProgress = state.nowPlaying.inProgress &&
+                      isCurrentTrack(state, ownProps.track);
+
+  const context = ownProps.location.pathname.split('/').slice(2).join('-');
 
   return {
-    isCurrentTrack: isCurrentTrack(state, track),
+    isCurrentTrack: isCurrentTrack(state, ownProps.track),
     inProgress,
     buttonText: (inProgress ? 'pause' : 'play'),
+    context
   };
 };
 

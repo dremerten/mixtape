@@ -27,7 +27,7 @@ export const playSingleTrack = data => (dispatch, getState) => {
   }
 };
 
-export const playFullCollection = () => (dispatch, getState) => {
+export const playFullCollection = data => (dispatch, getState) => {
   const state = getState();
 
   if (state.nowPlaying.context !== data.context) {

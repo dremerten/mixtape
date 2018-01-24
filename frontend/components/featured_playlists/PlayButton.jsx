@@ -1,22 +1,27 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { playSingleTrack } from '../../actions/audio_actions';
+import { playFullCollection } from '../../actions/audio_actions';
 import { playlistTracks } from '../../selectors/playlist_selector';
 
 const mapStateToProps = (state, ownProps) => {
+  const context = ownProps.location.pathname.split('/').slice(2).join('-');
   const playlist = state.entities.playlists
                         .byId[ownProps.match.params.playlistId] || {};
 
   return {
     tracks: playlist.trackIds || [],
-    inProgress: state.nowPlaying.inProgress
+    inProgress: state.nowPlaying.inProgress &&
+                state.nowPlaying.context === context
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
+  const context = ownProps.location.pathname.split('/').slice(2).join('-');
+
   return {
-    playSingleTrack: tracks => dispatch(playSingleTrack({
+    playFullCollection: tracks => dispatch(playFullCollection({
+      context,
       currentTrack: tracks[0],
       nextTracks: tracks.slice(1),
       history: []
@@ -30,7 +35,7 @@ const Play = props => {
   return (
     <div
       className={'play-button'}
-      onClick={() => props.playSingleTrack(props.tracks)}
+      onClick={() => props.playFullCollection(props.tracks)}
       >
       {buttonText}
     </div>
@@ -44,7 +49,7 @@ const OverlayPlay = props => {
     <div className='playlist-image-overlay'>
       <div
         className='overlay-play-button-container'
-        onClick={() => props.playSingleTrack(props.tracks)}
+        onClick={() => props.playFullCollection(props.tracks)}
         >
         <img src={staticAssets[buttonType]} className='overlay-play-button' />
       </div>

@@ -6,7 +6,7 @@
     window.currentUser =
       <%= render("api/users/user.json.jbuilder", user: current_user, track_ids: track_ids ).html_safe %>
     window.userPlaylists =
-      <%= render("api/playlists/playlists.json.jbuilder", playlists: Playlist.for current_user ).html_safe %>
+      <%= render("api/playlists/playlists.json.jbuilder", playlists: Playlist.for(current_user)).html_safe %>
   <% end %>
 
     window.siteGeneratedPlaylistIds =

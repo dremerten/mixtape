@@ -15,7 +15,7 @@ class Playlist < ApplicationRecord
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_save :inherit_artwork
 
-  scope :featured, -> { where(featured: true) }
+  scope :featured, -> { includes(:author, :tracks).where(featured: true).distinct }
   scope :site_generated, -> { includes(:author).where(author_id: 0) }
 
   def self.for(user)
