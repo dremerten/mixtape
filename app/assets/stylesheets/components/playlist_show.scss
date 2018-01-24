@@ -93,32 +93,6 @@
       top: 0;
       background: rgba(0, 0, 0, .7);
       display: none;
-
-      // .overlay-play-button-container {
-      //   display: flex;
-      //   margin: calc(50% - 30px) auto;
-      //   width: 40px;
-      //   height: 40px;
-      //   padding: 10px;
-      //   border: 1px solid white;
-      //   border-radius: 50%;
-      //   transform: scale(1);
-      //   transition: transform .2s;
-      //
-      //   &:hover {
-      //     cursor: pointer;
-      //     transition: transform .2s;
-      //     transform: scale(1.1);
-      //   }
-      //
-      //   .overlay-play-button {
-      //     height: 30px;
-      //     width: 30px;
-      //     position: relative;
-      //     left: 8px;
-      //     top: 5px;
-      //   }
-      // }
     }
   }
 
@@ -176,6 +150,29 @@
         transform: scale(1.02);
         transition-duration: .2s;
         cursor: pointer;
+      }
+    }
+
+    .playlist-buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .playlist-follow {
+        font-family: $open;
+        font-size: 10px;
+        font-weight: lighter;
+        letter-spacing: 2px;
+        padding: 0 5px;
+        color: $transluscent-white;
+        transform: scale(1);
+        transition: transform .25s;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.01);
+          // transition: color .25s;
+        }
       }
     }
   }

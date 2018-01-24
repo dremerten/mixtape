@@ -18,7 +18,6 @@ const mapStateToProps = (state, ownProps) => {
   const playlist = state.entities.playlists.byId[ownProps.match.params.playlistId];
 
   return {
-    authorLink: '/',
     item: playlist,
     itemId: ownProps.match.params.playlistId,
     tracks: playlistTracks(playlist, state),

@@ -33,3 +33,11 @@ export const playlistTracks = (playlist, state) => {
 
   return playlist.trackIds.map(id => state.entities.tracks[id]);
 };
+
+export const isUserPlaylist = (playlist, state) => {
+  return state.session.currentUser.id === playlist.id;
+};
+
+export const isFollowedPlaylist = (playlist, state) => {
+  return state.session.currentUser.followIds.playlists.includes(playlist.id);
+};

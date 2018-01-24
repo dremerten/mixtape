@@ -39,7 +39,7 @@ class Playlist extends React.Component {
         :
         <div className="playlist-show-wrapper" style={ { background: this.props.item.background } }>
           <div className="playlist-show-container">
-            <PlaylistInfo authorLink={this.props.authorLink} item={this.props.item} />
+            <PlaylistInfo />
             <div className='tracklist-container'>
               <TrackList
                 indexItems={this.props.tracks}

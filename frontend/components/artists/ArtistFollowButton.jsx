@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { follow, unfollow } from '../../actions/follow_actions';
 
 const mapStateToProps = (state, ownProps) => {
-  const buttonText = (ownProps.followed ? 'UNFOLLOW' : 'FOLLOW');
+  const buttonText = ownProps.followed ? 'UNFOLLOW' : 'FOLLOW';
 
   return {
     buttonText

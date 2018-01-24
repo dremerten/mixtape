@@ -31,3 +31,16 @@ export const unfollow = (type, id) => dispatch => {
     return dispatch(receiveFollowErrors(err.responseJSON));
   });
 };
+
+export const toggleFollow = (type, id) => (dispatch, getState) => {
+  const state = getState();
+  debugger
+  const followState = state.session.currentUser.followIds[`${type}s`].includes(id);
+
+  if (followState) {
+    debugger
+    dispatch(unfollow(type, id));
+  } else {
+    dispatch(follow(type, id));
+  }
+};
