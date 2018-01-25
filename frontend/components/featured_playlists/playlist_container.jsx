@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import Playlist from './playlist';
 import {
   play,
@@ -22,7 +23,8 @@ const mapStateToProps = (state, ownProps) => {
     itemId: ownProps.match.params.playlistId,
     tracks: playlistTracks(playlist, state),
     inProgress: state.nowPlaying.inProgress,
-    loading: state.ui.loading
+    loading: state.ui.loading,
+    // Dropdown: PlaylistDropDown
   };
 };
 
@@ -38,7 +40,7 @@ const mapDispatchToProps = dispatch => ({
   showDropdown: name => dispatch(showDropdown(name)),
 });
 
-export default connect(
+export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
-)(Playlist);
+)(Playlist));

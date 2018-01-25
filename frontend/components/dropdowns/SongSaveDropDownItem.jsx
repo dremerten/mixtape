@@ -11,11 +11,11 @@ const mapStateToProps = (state, { trackId, isSaved }) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, { trackId, isSaved }) => {
+const mapDispatchToProps = (dispatch, { item, isSaved }) => {
   const action = (isSaved ? removeTrack : saveTrack );
 
   return {
-    handleClick: () => dispatch(action(trackId))
+    handleClick: () => dispatch(action(item.id))
   };
 };
 

@@ -1,3 +1,5 @@
+import { fetchTrack } from './track_actions';
+
 export const PLAY                  = 'PLAY';
 export const PAUSE                 = 'PAUSE';
 export const PLAY_SINGLE_TRACK     = 'PLAY_SINGLE_TRACK';
@@ -62,6 +64,18 @@ export const pause = () => ({
 export const addTrackToQueue = track => ({
   type: ADD_TRACK_TO_QUEUE, track
 });
+
+export const fetchTrackThenAddToQueue = trackId => (dispatch, getState) => {
+  const state = getState();
+
+  if (Object.keys(state.entities.tracks).includes(track.id)) {
+    dispatch(addTrackToQueue(trackId));
+  } else {
+    dispatch(fetchTrack(trackId)).then((track) => (
+      dispatch(addTrackToQueue(trackId))
+    ));
+  }
+};
 
 export const clearQueue = () => ({
   type: CLEAR_QUEUE

@@ -35,7 +35,7 @@ export const playlistTracks = (playlist, state) => {
 };
 
 export const isUserPlaylist = (playlist, state) => {
-  return state.session.currentUser.id === playlist.id;
+  return state.session.currentUser.id === playlist.author_id;
 };
 
 export const isFollowedPlaylist = (playlist, state) => {

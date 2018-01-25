@@ -16,7 +16,6 @@ class User < ApplicationRecord
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
   has_many :followings, class_name: 'Follow'
-  # has_many :followed_artists, through: :followings, source: :followable, source_type: 'Artist'
 
   def followable_ids_for(type)
     followings.where(followable_type: type).pluck(:followable_id)
@@ -33,10 +32,6 @@ class User < ApplicationRecord
       super
     end
   end
-  # def followed_artists
-  #   Artist.where(id: followed_items.pluck(:followable_id))
-  # end
-
 
   def save_track(track_id)
     update(track_ids: track_ids + [track_id])

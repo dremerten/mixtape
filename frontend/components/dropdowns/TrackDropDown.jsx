@@ -13,14 +13,13 @@ const listItems = [
   AddToPlaylist
 ];
 
-const mapStateToProps = (state, { trackId, collectionId }) => {
+const mapStateToProps = (state, { item, collectionId }) => {
   return {
-    isSaved: state.session.currentUser.trackIds.includes(trackId),
+    isSaved: state.session.currentUser.trackIds.includes(item.id),
     listItems,
-    trackId,
-    collectionId,
-    name: `track-dropdown-${trackId}`,
-    clicked: Boolean(state.ui.dropdowns[`track-dropdown-${trackId}`])
+    positionClass: 'offset-right',
+    name: `track-dropdown-${item.id}`,
+    clicked: Boolean(state.ui.dropdowns[`track-dropdown-${item.id}`])
   };
 };
 

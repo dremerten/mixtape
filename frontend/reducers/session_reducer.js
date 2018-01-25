@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER, LOGOUT } from '../actions/session_actions';
-import { RECEIVE_CREATED_PLAYLIST } from '../actions/playlist_actions';
+import { RECEIVE_CREATED_PLAYLIST, REMOVE_PLAYLIST } from '../actions/playlist_actions';
 import { RECEIVE_FOLLOW, REMOVE_FOLLOW } from '../actions/follow_actions';
 import { RECEIVE_TRACK_SAVE, REMOVE_TRACK_SAVE } from '../actions/track_actions';
 import _ from 'lodash';
@@ -19,6 +19,11 @@ const SessionReducer = (state = _nullUser, action) => {
       return { currentUser: action.currentUser };
     case RECEIVE_CREATED_PLAYLIST:
       newState.currentUser.playlistIds.unshift(action.data.playlist.id);
+      return newState;
+    case REMOVE_PLAYLIST:
+      rmIndex = newState.currentUser.playlistIds.indexOf(action.id);
+      newState.currentUser.playlistIds.splice(rmIndex, 1);
+
       return newState;
     case RECEIVE_FOLLOW:
       newState.currentUser.followIds[action.data.followableType]

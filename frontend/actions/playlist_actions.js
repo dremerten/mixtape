@@ -12,6 +12,7 @@ export const RECEIVE_MODAL_PLAYLISTS = 'RECEIVE_MODAL_PLAYLISTS';
 export const START_LOADING_SINGLE_PLAYLIST = 'START_LOADING_SINGLE_PLAYLIST';
 export const RECEIVE_PLAYLIST_STATUS = 'RECEIVE_PLAYLIST_STATUS';
 export const RECEIVE_CREATED_PLAYLIST = 'RECEIVE_CREATED_PLAYLIST';
+export const REMOVE_PLAYLIST = 'REMOVE_PLAYLIST';
 
 export const receivePlaylists = playlists => ({
   type: RECEIVE_PLAYLISTS, playlists
@@ -27,6 +28,10 @@ export const receiveCreatedPlaylist = data => ({
 
 export const startLoadingAllPlaylists = () => ({
   type: START_LOADING_ALL_PLAYLISTS
+});
+
+export const removePlaylist = id => ({
+  type: REMOVE_PLAYLIST, id
 });
 
 export const startLoadingModalPlaylists = () => ({
@@ -81,7 +86,12 @@ export const createPlaylist = playlist => dispatch => (
 );
 
 export const deletePlaylist = playlistId => dispatch => (
-  PlaylistApiUtil.deletePlaylist(playlistId).then(playlist => (
-    dispatch(removePlaylist(playlist.id))
+  PlaylistApiUtil.deletePlaylist(playlistId).then(response => {
+    dispatch(removePlaylist(response.data));
+    dispatch(receivePlaylistStatus(response.message));
+  }, errors => (
+    dispatch(receivePlaylistStatus(errors.responseJSON))
+  )).then(() => (
+    setTimeout(() => dispatch(clearAllAlerts()), 2500)
   ))
 );

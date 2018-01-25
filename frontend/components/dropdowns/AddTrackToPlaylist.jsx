@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleClick: () => dispatch(showModal('userPlaylistModal', { trackId: ownProps.trackId }))
+    handleClick: () => dispatch(showModal('userPlaylistModal', { trackId: ownProps.item.id }))
   };
 };
 

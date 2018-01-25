@@ -1,11 +1,12 @@
 import React from 'react';
-import LoadingImage from '../LoadingImage';
-import { PlayButton, OverlayPlayButton } from './PlayButton';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { PlayButton, OverlayPlayButton } from './PlayButton';
 import { isUserPlaylist } from '../../selectors/playlist_selector';
-import { connect } from 'react-redux';
+import LoadingImage from '../LoadingImage';
 import PlaylistFollowButton from './PlaylistFollowButton';
+import PlaylistDropdownButton from '../dropdowns/PlaylistDropDownButton';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -18,9 +19,8 @@ const PlaylistInfo = ({ item, authorLink }) => (
   <div className="playlist-info">
     <div className='playlist-image-container'>
       <LoadingImage
-        loadingClass={'playlist-loading'}
-        handleClick={() => {}}
-        imageClass={'playlist-image'}
+        loadingClass='playlist-loading'
+        imageClass='playlist-image'
         imageSource={item.imageUrl}
         />
       <OverlayPlayButton />
@@ -38,7 +38,7 @@ const PlaylistInfo = ({ item, authorLink }) => (
       <PlayButton />
       <div className="playlist-buttons">
         <PlaylistFollowButton />
-        {/* PlaylistDropDown */}
+        <PlaylistDropdownButton />
       </div>
     </div>
   </div>

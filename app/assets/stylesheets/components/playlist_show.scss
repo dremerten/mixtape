@@ -121,7 +121,6 @@
       width: 80%;
       margin: 0 auto;
       text-align: center;
-      // padding-top: 10px;
       margin-top: 10px;
       color: $transluscent-white;
       letter-spacing: 1px;
@@ -154,9 +153,12 @@
     }
 
     .playlist-buttons {
+      margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-around;
+      position: relative;
+      width: 45%;
 
       .playlist-follow {
         font-family: $open;
@@ -170,8 +172,7 @@
 
         &:hover {
           cursor: pointer;
-          transform: scale(1.01);
-          // transition: color .25s;
+          transform: scale(1.05);
         }
       }
     }

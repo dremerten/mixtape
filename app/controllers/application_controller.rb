@@ -36,7 +36,6 @@ class ApplicationController < ActionController::Base
     )
 
     if @follow.save
-      # render json: { followableId: follow.followable_id, followableType: follow.followable_type }
       render partial: 'api/follows/follow'
     else
       render json: @follow.errors.full_messages, status: 422

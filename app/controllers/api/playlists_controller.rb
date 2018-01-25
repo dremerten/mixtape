@@ -43,7 +43,7 @@ class Api::PlaylistsController < ApplicationController
 
     if playlist
       playlist.destroy
-      render json: {}
+      render json: { message: ['Playlist successfully removed'], data: playlist.id }
     else
       render json: ['Playlist does not exist'], status: 404
     end
@@ -55,14 +55,6 @@ class Api::PlaylistsController < ApplicationController
 
     if @playlist.add_track(@track_id)
       render :add_track
-      # render json: {
-      #   message: ['Song successfully added!'],
-      #   data: {
-      #     playlistId: @playlist.id,
-      #     trackId: params[:trackId],
-      #     imageUrl: @playlist.image(:small)
-      #    }
-      # }
     else
       render json: ['An error occured with your request'], status: 422
     end

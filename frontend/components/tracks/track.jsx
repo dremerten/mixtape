@@ -1,6 +1,7 @@
 import React from 'react';
 import TrackDropDown from '../dropdowns/TrackDropDown';
 import { Link } from 'react-router-dom';
+import TrackDropDownButton from '../dropdowns/TrackDropDownButton';
 
 class Track extends React.Component {
   constructor(props) {
@@ -55,21 +56,10 @@ class Track extends React.Component {
               </span>
             </div>
             <div className='track-detail-duration'>
-              <button
-                className='track-dropdown-button'
-                onClick={this.handleClick}
-                >
-                &middot;&middot;&middot;
-              </button>
+              <TrackDropDownButton item={this.props.track} />
               <span>{track.duration}</span>
             </div>
           </div>
-          <TrackDropDown
-            ref={(el) => { this.dropDown = el; }}
-            trackId={this.props.track.id}
-            collectionId={this.props.collectionId}
-            item={this.props.track}
-            />
         </li>
       </div>
     );

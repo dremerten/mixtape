@@ -9,6 +9,7 @@ class LoadingImage extends React.Component {
     };
 
     this.handleLoad = this.handleLoad.bind(this);
+    this.handleClick = this.props.handleClick || (() => {});
   }
 
   handleLoad() {
@@ -21,7 +22,7 @@ class LoadingImage extends React.Component {
     return(
       <figure
         className={this.props.loadingClass}
-        onClick={this.props.handleClick}
+        onClick={this.handleClick}
         >
         <img src={this.props.imageSource}
           onLoad={this.handleLoad}
