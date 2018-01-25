@@ -13,9 +13,11 @@ import {
   ADD_TRACK_TO_QUEUE,
   CLEAR_QUEUE,
   PLAY_NEXT_TRACK,
+  PLAY_NEXT_FROM_QUEUE,
   PLAY_PREVIOUS_TRACK,
   TOGGLE_SHUFFLE,
-  TOGGLE_REPEAT
+  TOGGLE_REPEAT,
+  STOP_PLAYBACK
 } from '../actions/audio_actions';
 
 const initialState = {
@@ -27,6 +29,7 @@ const initialState = {
   repeat: 0,
   nextTracks: [],
   shuffledTracks: [],
+  playedFromQueue: false
 };
 
 const NowPlayingReducer = (state = initialState, action) => {
@@ -40,9 +43,6 @@ const NowPlayingReducer = (state = initialState, action) => {
     case PAUSE:
       newState.inProgress = false;
       return newState;
-    // case RECEIVE_PLAYLIST:
-    //   newState.context = action.data.tracks;
-    //   return newState;
     case ADD_TRACK_TO_QUEUE:
       newState.queue.push(action.track);
       return newState;
@@ -52,28 +52,43 @@ const NowPlayingReducer = (state = initialState, action) => {
     case TOGGLE_REPEAT:
       newState.repeat = (newState.repeat + 1) % 3;
       return newState;
+    case STOP_PLAYBACK:
+      newState.nextTracks = newState.history.concat(newState.nextTracks);
+      newState.history = [];
+      newState.currentTrack = newState.nextTracks.shift();
+      if (!newState.repeat) newState.inProgress = false;
+      return newState;
     case TOGGLE_SHUFFLE:
       newState.shuffleState = !newState.shuffleState;
-      return newState;
-    case PLAY_NEXT_TRACK:
-      if (!newState.currentTrack) return newState;
-
-      newState.shuffledTracks = shuffle([...newState.nextTracks]);
-      newState.history.push(newState.currentTrack);
-
-      if (newState.repeat === 1 && isEmpty(newState.nextTracks)) {
-        newState.nextTracks = newState.history;
-        newState.history = [];
-      }
+      const sliceIndex = newState.nextTracks.indexOf(newState.currentTrack);
 
       if (newState.shuffleState) {
-        newState.currentTrack = newState.queue.shift() || newState.shuffledTracks.shift();
+        const allTracks = newState.history.concat(newState.nextTracks);
+        newState.shuffledTracks = shuffle([...allTracks]);
       } else {
-        newState.currentTrack = newState.queue.shift() || newState.nextTracks.shift();
+        newState.shuffledTracks = [];
+        newState.history = newState.nextTracks.slice(0, sliceIndex);
+        newState.nextTracks.splice(0, sliceIndex + 1);
       }
 
-      !newState.currentTrack && newState.repeat === 0 && (newState.inProgress = false);
+      return newState;
+    case PLAY_NEXT_FROM_QUEUE:
+      if (!newState.playedFromQueue) newState.history.push(newState.currentTrack);
+      newState.currentTrack = newState.queue.shift();
+      newState.playedFromQueue = true;
+      return newState;
+    case PLAY_NEXT_TRACK:
+      if (newState.repeat === 2) newState.repeat -= 1;
 
+      if (!newState.playedFromQueue) newState.history.push(newState.currentTrack);
+
+      if (newState.shuffleState) {
+        newState.currentTrack = newState.shuffledTracks.shift();
+      } else {
+        newState.currentTrack = newState.nextTracks.shift();
+      }
+
+      newState.playedFromQueue = false;
 
       return newState;
     case PLAY_SINGLE_TRACK:
@@ -86,8 +101,8 @@ const NowPlayingReducer = (state = initialState, action) => {
       return initialState;
     case PLAY_PREVIOUS_TRACK:
       if (isEmpty(newState.history) || !newState.currentTrack) return initialState;
+      if (!newState.playedFromQueue) newState.nextTracks.unshift(newState.currentTrack);
 
-      newState.nextTracks.unshift(newState.currentTrack);
       newState.currentTrack = newState.history.pop();
 
       return newState;

@@ -1,6 +1,6 @@
 import GenericDropDownItem from './GenericDropDownItem';
 import { connect } from 'react-redux';
-import { addTrackToQueue } from '../../actions/audio_actions';
+import { fetchTrackThenAddToQueue } from '../../actions/audio_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    handleClick: () => dispatch(addTrackToQueue(ownProps.item))
+    handleClick: () => dispatch(fetchTrackThenAddToQueue(ownProps.item.id))
   };
 };
 
