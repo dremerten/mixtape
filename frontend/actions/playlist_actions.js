@@ -79,7 +79,6 @@ export const fetchPlaylist = playlistId => dispatch => {
 
 export const fetchPlaylistThenPlay = playlistId => dispatch => {
   dispatch(fetchPlaylist(playlistId)).then((data) => {
-    debugger
     dispatch(playFullCollection({
       context: `playlists-${data.playlist.id}`,
       currentTrack: data.playlist.trackIds[0],

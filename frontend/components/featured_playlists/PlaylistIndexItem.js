@@ -1,6 +1,7 @@
 import GenericIndexItem from './GenericIndexItem';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import PlayButton from './PlaylistItemOverlay';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -11,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
     id: ownProps.item.id,
     loadingClass: 'playlist-loading',
     imageClass: 'playlist-image',
-    handleClick: () => ownProps.history.push(`/browse/playlists/${ownProps.item.id}`)
+    handleClick: () => ownProps.history.push(`/browse/playlists/${ownProps.item.id}`),
+    PlayButton
   };
 };
 
