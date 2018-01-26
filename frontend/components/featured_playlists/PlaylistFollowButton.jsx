@@ -7,10 +7,12 @@ import { toggleFollow } from '../../actions/follow_actions';
 const mapStateToProps = (state, ownProps) => {
   const playlist = state.entities.playlists.byId[ownProps.match.params.playlistId];
   const buttonText = isFollowedPlaylist(playlist, state) ? 'UNFOLLOW' : 'FOLLOW';
-  const displayClass = isUserPlaylist(playlist, state) ? "hidden" : "";
+  const displayClass = isFollowedPlaylist(playlist, state) ? 'green' : '';
+  const hidden = isUserPlaylist(playlist, state) ? "hidden" : "";
 
   return {
     displayClass,
+    hidden,
     playlist,
     buttonText
   };
@@ -28,7 +30,7 @@ const PlaylistFollowButton = props => {
   return(
     <div
       onClick={props.toggleFollow}
-      className={`playlist-follow ${props.displayClass}`}
+      className={`playlist-follow ${props.hidden} ${props.displayClass}`}
       >{props.buttonText}</div>
   );
 };

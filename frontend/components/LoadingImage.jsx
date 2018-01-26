@@ -26,7 +26,7 @@ class LoadingImage extends React.Component {
         >
         <img src={this.props.imageSource}
           onLoad={this.handleLoad}
-          style={ loaded ? { display: ''} : {display: 'none'} }
+          style={ loaded ? { display: '' } : {display: 'none' } }
           className={this.props.imageClass}
           />
       </figure>

@@ -43,7 +43,7 @@ export const fetchTracks = filters => dispatch => (
 );
 
 export const fetchTracksForUser = () => dispatch => {
-  dispatch({ type: START_LOADING_ALL_TRACKS});
+  dispatch({ type: START_LOADING_ALL_TRACKS });
   return TrackApiUtil.fetchTracksForUser().then(tracks => (
     dispatch(receiveTracks(tracks))
   ));

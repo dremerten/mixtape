@@ -8,6 +8,7 @@ import {
   playSingleTrack
 } from '../../actions/audio_actions';
 import { showDropdown } from '../../actions/ui_actions';
+import { playlistTracks } from '../../selectors/playlist_selector';
 
 const mapStateToProps = (state, ownProps) => {
   const album = state.entities.albums[ownProps.match.params.albumId];
@@ -16,8 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     authorLink: album && `/artists/${album.authorId}/overview`,
     item: album,
     itemId: ownProps.match.params.albumId,
-    tracks: Object.keys(state.entities.tracks)
-                  .map(id => state.entities.tracks[id]),
+    tracks: playlistTracks(album, state),
     inProgress: state.nowPlaying.inProgress,
     loading: state.ui.loading
   };

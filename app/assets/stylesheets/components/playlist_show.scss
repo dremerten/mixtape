@@ -21,40 +21,6 @@
   padding-right: 30px;
   margin-top: 40px;
 
-  .playlist-image-container {
-    position: relative;
-
-    &:hover .playlist-image-overlay {
-      display: flex;
-
-      .overlay-play-button-container {
-        display: flex;
-        margin: calc(50% - 30px) auto;
-        width: 40px;
-        height: 40px;
-        padding: 10px;
-        border: 1px solid white;
-        border-radius: 50%;
-        transform: scale(1);
-        transition: transform .2s;
-        z-index: 2;
-
-        &:hover {
-          cursor: pointer;
-          transition: transform .2s;
-          transform: scale(1.1);
-        }
-
-        .overlay-play-button {
-          height: 30px;
-          width: 30px;
-          position: relative;
-          left: 8px;
-          top: 5px;
-        }
-      }
-    }
-
     .playlist-loading {
       background-size: cover;
       width: 100%;
@@ -177,7 +143,7 @@
       }
     }
   }
-}
+
 
 .show {
   width: 100%;
@@ -202,10 +168,46 @@
 .tracklist {
   width: 100%;
   list-style: decimal inside;
+  margin-bottom: 200px;
 }
 
 .artist {
   font-size: 12px;
   margin-top: 5px;
   text-align: center;
+}
+
+.playlist-image-container {
+  position: relative;
+
+  &:hover .playlist-image-overlay {
+    display: flex;
+
+    .overlay-play-button-container {
+      display: flex;
+      margin: calc(50% - 30px) auto;
+      width: 40px;
+      height: 40px;
+      padding: 10px;
+      border: 1px solid white;
+      border-radius: 50%;
+      transform: scale(1);
+      transition: transform .2s;
+      z-index: 2;
+
+      &:hover {
+        cursor: pointer;
+        transition: transform .2s;
+        transform: scale(1.1);
+      }
+
+      .overlay-play-button {
+        height: 30px;
+        width: 30px;
+        position: relative;
+        left: 8px;
+        top: 5px;
+      }
+    }
+  }
 }

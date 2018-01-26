@@ -54,6 +54,7 @@ const NowPlayingReducer = (state = initialState, action) => {
       return newState;
     case STOP_PLAYBACK:
       newState.nextTracks = newState.history.concat(newState.nextTracks);
+      debugger
       newState.history = [];
       newState.currentTrack = newState.nextTracks.shift();
       if (!newState.repeat) newState.inProgress = false;

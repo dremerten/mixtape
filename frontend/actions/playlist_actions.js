@@ -1,6 +1,7 @@
 import * as PlaylistApiUtil from '../util/playlist_api_util';
 import { reloadCurrentUser } from './session_actions';
 import { clearAllAlerts } from './alert_actions';
+import { playFullCollection } from './audio_actions';
 
 export const RECEIVE_PLAYLISTS = 'RECEIVE_PLAYLISTS';
 export const RECEIVE_PLAYLIST = 'RECEIVE_PLAYLIST';
@@ -73,6 +74,17 @@ export const fetchPlaylist = playlistId => dispatch => {
   PlaylistApiUtil.fetchPlaylist(playlistId).then(playlist => (
     dispatch(receivePlaylist(playlist))
   ));
+};
+
+export const fetchPlaylistThenPlay = playlistId => (dispatch, getState) => {
+  dispatch(fetchPlaylist(playlistId)).then((data) => {
+    dispatch(playFullCollection({
+      context: `playlist-${data.playlist.id}`,
+      currentTrack: data.playlist.trackIds[0],
+      nextTracks: data.playlist.trackIds.slice(1),
+      history: []
+    }));
+  });
 };
 
 export const createPlaylist = playlist => dispatch => (

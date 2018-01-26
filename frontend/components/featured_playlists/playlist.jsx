@@ -30,6 +30,7 @@ class Playlist extends React.Component {
 
   render() {
     const { loading } = this.state;
+    const { item, authorLink, tracks } = this.props;
 
     return(
       loading ?
@@ -37,12 +38,15 @@ class Playlist extends React.Component {
           <Spinner />
         </div>
         :
-        <div className="playlist-show-wrapper" style={ { background: this.props.item.background } }>
+        <div
+          className="playlist-show-wrapper"
+          style={ { background: this.props.item.background } }
+          >
           <div className="playlist-show-container">
-            <PlaylistInfo />
+            <PlaylistInfo item={item} authorLink={authorLink} />
             <div className='tracklist-container'>
               <TrackList
-                indexItems={this.props.tracks}
+                indexItems={tracks}
                 { ...this.props }
                 artistIsVisible
                 />
@@ -55,10 +59,3 @@ class Playlist extends React.Component {
 }
 
 export default Playlist;
-
-// <div
-//   className='playlist-image show'
-//   style={ { backgroundImage: 'url(' + this.props.item.imageUrl + ')'} }>
-//   <div className="shadow-light show-light"></div>
-// </div>
-//

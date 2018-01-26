@@ -2,18 +2,12 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 import { PlayButton, OverlayPlayButton } from './PlayButton';
 import { isUserPlaylist } from '../../selectors/playlist_selector';
 import LoadingImage from '../LoadingImage';
-import PlaylistFollowButton from './PlaylistFollowButton';
-import PlaylistDropdownButton from '../dropdowns/PlaylistDropDownButton';
-
-const mapStateToProps = (state, ownProps) => {
-  return {
-    item: state.entities.playlists.byId[ownProps.match.params.playlistId],
-    authorLink: '/',
-  }
-}
+import PlaylistButtons from './PlaylistButtons';
+import AlbumButtons from '../albums/AlbumButtons';
 
 const PlaylistInfo = ({ item, authorLink }) => (
   <div className="playlist-info">
@@ -36,12 +30,10 @@ const PlaylistInfo = ({ item, authorLink }) => (
         {item.trackIds.length} SONGS
       </div>
       <PlayButton />
-      <div className="playlist-buttons">
-        <PlaylistFollowButton />
-        <PlaylistDropdownButton />
-      </div>
+      <Route path='/browse/albums/:albumId' component={AlbumButtons} />
+      <Route path='/:path/playlists/:playlistId' component={PlaylistButtons} />
     </div>
   </div>
 );
 
-export default withRouter(connect(mapStateToProps)(PlaylistInfo));
+export default PlaylistInfo;

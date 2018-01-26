@@ -31,6 +31,7 @@ export const shouldFetchPlaylists = (playlistIds, state) => {
 export const playlistTracks = (playlist, state) => {
   if (!playlist) return [];
 
+  debugger
   return playlist.trackIds.map(id => state.entities.tracks[id]);
 };
 

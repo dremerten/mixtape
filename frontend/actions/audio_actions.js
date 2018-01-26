@@ -1,5 +1,6 @@
 import { fetchTrack } from './track_actions';
 import { isEmpty } from 'lodash';
+import { fetchPlaylistThenPlay } from './playlist_actions';
 
 export const PLAY                  = 'PLAY';
 export const PAUSE                 = 'PAUSE';
@@ -32,6 +33,9 @@ export const playSingleTrack = data => (dispatch, getState) => {
 };
 
 export const playFullCollection = data => (dispatch, getState) => {
+  if (data !== null && typeof data === 'object') {
+    return dispatch(fetchPlaylistThenPlay(data));
+  }
   const state = getState();
 
   if (state.nowPlaying.context !== data.context) {
@@ -93,12 +97,13 @@ export const playNextTrack = track => (dispatch, getState ) => {
 
   if (!nowPlaying.currentTrack) {
     return;
-  } else if (nowPlaying.shuffleState && isEmpty(nowPlaying.shuffledTracks)) {
+  } else if ((nowPlaying.shuffleState &&
+              isEmpty(nowPlaying.shuffledTracks)) ||
+              isEmpty(nextTracks)) {
+
     dispatch(stopPlayback());
   } else if (isEmpty(nowPlaying.queue)) {
     dispatch({ type: PLAY_NEXT_TRACK, track });
-  } else if (isEmpty(nextTracks) && !nowPlaying.shuffleState) {
-    dispatch(stopPlayback());
   } else {
     dispatch(playNextFromQueue(track));
   }

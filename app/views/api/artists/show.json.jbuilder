@@ -14,6 +14,7 @@ json.albums do
     json.set! album.id do
       json.extract! album, :id, :title, :year
       json.imageUrl album.artwork(:large)
+      json.trackIds album.track_ids
     end
   end
 end

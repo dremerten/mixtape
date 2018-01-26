@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LoadingImage from '../LoadingImage';
+import { OverlayPlayButton } from './PlayButton';
 
 class GenericIndexItem extends React.Component {
   constructor(props) {
@@ -20,12 +21,14 @@ class GenericIndexItem extends React.Component {
 
     return(
       <li key={id} className="playlist-item">
-        <LoadingImage
-          loadingClass={loadingClass}
-          handleClick={this.handleClick}
-          imageClass={imageClass}
-          imageSource={imageUrl}
-          />
+        <div className='playlist-image-container'>
+          <LoadingImage
+            loadingClass={loadingClass}
+            handleClick={this.handleClick}
+            imageClass={imageClass}
+            imageSource={imageUrl}
+            />
+        </div>
         <div className="playlist-name">
           {itemName}
         </div>

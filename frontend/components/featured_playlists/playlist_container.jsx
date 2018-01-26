@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     tracks: playlistTracks(playlist, state),
     inProgress: state.nowPlaying.inProgress,
     loading: state.ui.loading,
-    // Dropdown: PlaylistDropDown
+    authorLink: '/'
   };
 };
 

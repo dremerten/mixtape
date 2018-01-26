@@ -27,7 +27,7 @@ class User < ApplicationRecord
 
       super unless FOLLOWABLE_TYPES.include? model_name
 
-      Object.const_get(model_name).where(id: followings.pluck(:followable_id))
+      Object.const_get(model_name).where(id: followable_ids_for(model_name))
     else
       super
     end
