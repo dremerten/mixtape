@@ -71,15 +71,17 @@ export const fetchModalPlaylists = () => dispatch => {
 
 export const fetchPlaylist = playlistId => dispatch => {
   dispatch(startLoadingSinglePlaylist());
-  PlaylistApiUtil.fetchPlaylist(playlistId).then(playlist => (
-    dispatch(receivePlaylist(playlist))
-  ));
+  return PlaylistApiUtil.fetchPlaylist(playlistId).then(playlist => {
+    dispatch(receivePlaylist(playlist));
+    return playlist;
+  });
 };
 
-export const fetchPlaylistThenPlay = playlistId => (dispatch, getState) => {
+export const fetchPlaylistThenPlay = playlistId => dispatch => {
   dispatch(fetchPlaylist(playlistId)).then((data) => {
+    debugger
     dispatch(playFullCollection({
-      context: `playlist-${data.playlist.id}`,
+      context: `playlists-${data.playlist.id}`,
       currentTrack: data.playlist.trackIds[0],
       nextTracks: data.playlist.trackIds.slice(1),
       history: []

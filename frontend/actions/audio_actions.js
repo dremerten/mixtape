@@ -33,9 +33,10 @@ export const playSingleTrack = data => (dispatch, getState) => {
 };
 
 export const playFullCollection = data => (dispatch, getState) => {
-  if (data !== null && typeof data === 'object') {
+  if (data !== null && typeof data === 'number') {
     return dispatch(fetchPlaylistThenPlay(data));
   }
+  
   const state = getState();
 
   if (state.nowPlaying.context !== data.context) {
