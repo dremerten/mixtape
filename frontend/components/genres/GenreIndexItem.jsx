@@ -7,7 +7,7 @@ import { fetchGenre, removeGenres } from '../../actions/genre_actions';
 const mapStateToProps = (state, ownProps) => {
   return {
     itemName: ownProps.item.name,
-    loading: state.ui.loading,
+    loading: state.ui.loading.global,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,
     loadingClass: 'playlist-loading',

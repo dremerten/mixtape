@@ -45,11 +45,13 @@ class Playlist extends React.Component {
           <div className="playlist-show-container">
             <PlaylistInfo item={item} authorLink={authorLink} />
             <div className='tracklist-container'>
-              <TrackList
-                indexItems={tracks}
-                { ...this.props }
-                artistIsVisible
-                />
+              <div className='padding-bottom'>
+                <TrackList
+                  indexItems={tracks}
+                  { ...this.props }
+                  artistIsVisible
+                  />
+              </div>
             </div>
           </div>
         </div>

@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 
 const mapStateToProps = (state, ownProps) => {
   const artistId = ownProps.match.params.artistId;
-  const pathNames = [`/artists/${artistId}/overview`, `/artists/${artistId}/about`];
+  const pathNames = [`/view/artists/${artistId}/overview`, `/view/artists/${artistId}/about`];
   const linkNames = ["OVERVIEW", "ABOUT"];
 
   return {

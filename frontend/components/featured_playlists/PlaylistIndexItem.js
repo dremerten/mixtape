@@ -6,8 +6,7 @@ import PlayButton from './PlaylistItemOverlay';
 const mapStateToProps = (state, ownProps) => {
   return {
     itemName: ownProps.item.name,
-    // author: ownProps.item.author,
-    loading: state.ui.loading,
+    loading: state.ui.loading.global,
     imageUrl: ownProps.item.imageUrl,
     id: ownProps.item.id,
     loadingClass: 'playlist-loading',

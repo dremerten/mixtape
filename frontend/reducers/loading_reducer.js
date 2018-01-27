@@ -1,5 +1,5 @@
+import { merge } from 'lodash';
 import { LOGOUT } from '../actions/session_actions';
-
 import {
   START_LOADING_ALL_ALBUMS,
   START_LOADING_SINGLE_ALBUM,
@@ -22,22 +22,34 @@ import {
 
 import { START_LOADING_ALL_TRACKS } from '../actions/track_actions';
 
-const defaultState = false;
+const defaultState = {
+  global: false,
+  albums: false,
+};
 
 const LoadingReducer = (state = defaultState, action) => {
   Object.freeze(state);
+  const newState = merge({}, state);
+
   switch(action.type) {
     case START_LOADING_ALL_ALBUMS:
     case START_LOADING_SINGLE_ALBUM:
+      newState.albums = true;
+      return newState;
     case START_LOADING_ALL_PLAYLISTS:
     case START_LOADING_SINGLE_PLAYLIST:
     case START_LOADING_ALL_TRACKS:
     case START_LOADING_ARTIST:
-      return true;
+      newState.global = true;
+      return newState;
     case RECEIVE_PLAYLISTS:
     case RECEIVE_PLAYLIST:
+      newState.global = false;
+      return newState;
     case RECEIVE_ALBUM:
     case RECEIVE_ALBUMS:
+      newState.albums = false;
+      return newState;
     case RECEIVE_ARTIST:
     case LOGOUT:
       return defaultState;

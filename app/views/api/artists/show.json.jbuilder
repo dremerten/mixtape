@@ -3,7 +3,8 @@ json.artist do
   json.extract! @artist, :id, :name
   json.imageUrl asset_path(@artist.image(:thumb))
   json.hero asset_path(@artist.image.url)
-  json.albumIds @artist.album_ids
+  json.albumIds @artist.albums.where(album_type: 'album').pluck('albums.id')
+  json.singleIds @artist.albums.where(album_type: 'single').pluck('albums.id')
   json.topTrackIds @artist.tracks.order(popularity: :desc).pluck(:id)
   json.followCount @artist.followers.count
   json.about @artist.about

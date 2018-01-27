@@ -40,8 +40,8 @@ class ArtistPage extends React.Component {
           <div className='artist-page'>
             <ArtistHeader />
             <Switch>
-              <Route path='/artists/:artistId/about' component={ArtistDescription} />
-              <Route path='/artists/:artistId/overview' component={ArtistItems} />
+              <Route path='/view/artists/:artistId/about' component={ArtistDescription} />
+              <Route path='/view/artists/:artistId/overview' component={ArtistItems} />
             </Switch>
           </div>
         }
@@ -53,7 +53,7 @@ class ArtistPage extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    loading: state.ui.loading,
+    loading: state.ui.loading.global,
     itemId: ownProps.match.params.artistId
   };
 };

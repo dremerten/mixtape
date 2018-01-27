@@ -6,18 +6,14 @@ import { fetchTracksForUser, removeTracks } from '../../actions/track_actions';
 import { setScrollPosition } from '../../actions/ui_actions';
 import { allTracks, userTracks, shouldFetchTracks } from '../../selectors/track_selectors';
 
-const mapStateToProps = state => {
-  const obj = {
-    indexItems: userTracks(state),
-    background: { background: 'linear-gradient(rgb(31, 121, 100), rgb(3, 12, 10) 85%) fixed' },
-    loading: state.ui.loading,
-    MusicIndex: GenericTrackList,
-    artistIsVisible: true,
-    shouldFetchItems: shouldFetchTracks(state.session.currentUser.trackIds, state),
-  };
-
-  return obj;
-};
+const mapStateToProps = state => ({
+  indexItems: userTracks(state),
+  background: { background: 'linear-gradient(rgb(31, 121, 100), rgb(3, 12, 10) 85%) fixed' },
+  loading: state.ui.loading.global,
+  MusicIndex: GenericTrackList,
+  artistIsVisible: true,
+  shouldFetchItems: shouldFetchTracks(state.session.currentUser.trackIds, state)
+});
 
 const mapDispatchToProps = dispatch => ({
   fetchItems: () => dispatch(fetchTracksForUser()),

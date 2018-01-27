@@ -50,7 +50,7 @@ class Track extends React.Component {
                 className='track-album-artist'
                 style={{display: artistIsVisible ? "" : "none"}}
                 >
-                <Link to={`/artists/${track.artistId}/overview`}>{`${track.artist}`}</Link>
+                <Link to={`/view/artists/${track.artistId}/overview`}>{`${track.artist}`}</Link>
                  &nbsp;&middot;&nbsp;
                 <Link to={`/browse/albums/${track.albumId}`}>{`${track.album}`}</Link>
               </span>

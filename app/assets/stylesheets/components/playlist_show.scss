@@ -157,7 +157,6 @@
 .tracklist {
   width: 100%;
   list-style: decimal inside;
-  margin-bottom: 200px;
 }
 
 .artist {
@@ -209,4 +208,8 @@
       }
     }
   }
+}
+
+.padding-bottom {
+  padding-bottom: 150px;
 }

@@ -14,12 +14,12 @@ const mapStateToProps = (state, ownProps) => {
   const album = state.entities.albums[ownProps.match.params.albumId];
 
   return {
-    authorLink: album && `/artists/${album.authorId}/overview`,
+    authorLink: album && `/view/artists/${album.authorId}/overview`,
     item: album,
     itemId: ownProps.match.params.albumId,
     tracks: playlistTracks(album, state),
     inProgress: state.nowPlaying.inProgress,
-    loading: state.ui.loading
+    loading: state.ui.loading.albums
   };
 };
 

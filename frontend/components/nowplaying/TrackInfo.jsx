@@ -24,7 +24,7 @@ const TrackInfo = function({ currentTrack }) {
               {trackName || currentTrack.title}
             </Link>
           </div>
-          <Link to={`/artists/${currentTrack.artistId}/overview`} className="nav-bar-artist">
+          <Link to={`/view/artists/${currentTrack.artistId}/overview`} className="nav-bar-artist">
             {currentTrack.artist}
           </Link>
         </div>

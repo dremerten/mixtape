@@ -2,7 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GenericMusicIndex from '../featured_playlists/GenericMusicIndex';
-import ArtistAlbumIndexItem from './ArtistAlbumIndexItem';
+import AlbumIndexItem from '../featured_playlists/AlbumIndexItem';
+import PlayButton from '../featured_playlists/AlbumItemOverlay';
 import _ from 'lodash';
 
 class ArtistAlbums extends React.Component {
@@ -34,7 +35,7 @@ class ArtistAlbums extends React.Component {
 
   handleIndexCount() {
     if (this.state.expanded) return this.props.indexItems;
-    
+
     return this.props.indexItems.slice(0, 12);
   }
 
@@ -49,6 +50,7 @@ class ArtistAlbums extends React.Component {
         <GenericMusicIndex
           IndexItem={this.props.IndexItem}
           indexItems={this.handleIndexCount()}
+          PlayButton={PlayButton}
           />
         <div
           className='expand-button'
@@ -65,8 +67,9 @@ const mapStateToProps = (state, ownProps) => {
   const albumIds = state.entities.artists[artistId].albumIds;
 
   return {
-    IndexItem: ArtistAlbumIndexItem,
+    IndexItem: AlbumIndexItem,
     indexItems: albumIds.map(id => state.entities.albums[id]),
+    PlayButton,
     isHidden: _.isEmpty(albumIds)
   };
 };
