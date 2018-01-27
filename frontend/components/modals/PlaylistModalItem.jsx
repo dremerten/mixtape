@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { saveTrackToPlaylist } from '../../actions/track_actions';
 import { clearAllAlerts } from '../../actions/alert_actions';
 import MusicIndexItem from '../featured_playlists/GenericIndexItem';
+import PlayButton from './ModalItemOverlay';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     author: ownProps.item.author,
     itemName: ownProps.item.name,
     loadingClass: 'playlist-loading',
-    imageClass: 'playlist-image'
+    imageClass: 'playlist-image',
+    PlayButton
   };
 };
 

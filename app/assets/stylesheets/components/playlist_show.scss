@@ -84,29 +84,6 @@
       font-family: $open;
     }
 
-    .play-button {
-      margin: 20px auto;
-      width: 50px;
-      text-align: center;
-      background-color: $spotify-green;
-      font-family: $open;
-      color: white;
-      box-shadow: 0 0 10px rgba(0,0,0,.3);
-      padding: 10px 40px;
-      border-radius: 25px;
-      font-size: 10px;
-      font-weight: lighter;
-      letter-spacing: 2px;
-      transform: scale(1);
-      transition-duration: .2s;
-
-      &:hover {
-        transform: scale(1.02);
-        transition-duration: .2s;
-        cursor: pointer;
-      }
-    }
-
     .playlist-buttons {
       margin: 0 auto;
       display: flex;
@@ -171,7 +148,7 @@
   right: 0;
   bottom: 0;
   top: 0;
-  background: rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, .85);
   display: none;
 }
 
@@ -212,4 +189,39 @@
 
 .padding-bottom {
   padding-bottom: 150px;
+}
+
+.play-collection-button {
+  margin: 20px auto;
+  width: 50px;
+  text-align: center;
+  background-color: $spotify-green;
+  font-family: $open;
+  color: white;
+  box-shadow: 0 0 10px rgba(0,0,0,.3);
+  padding: 10px 40px;
+  border-radius: 25px;
+  font-size: 10px;
+  font-weight: lighter;
+  letter-spacing: 2px;
+  transform: scale(1);
+  transition-duration: .2s;
+
+  &:hover {
+    transform: scale(1.02);
+    transition-duration: .2s;
+    cursor: pointer;
+  }
+}
+
+.overlay-add-button-container {
+  display: flex;
+  margin: calc(50% - 30px) auto;
+  padding: 10px;
+  z-index: 2;
+}
+
+.overlay-add-button {
+  height: 50px;
+  width: 50px;
 }

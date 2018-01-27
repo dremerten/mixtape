@@ -3,6 +3,7 @@ import ArtistNav from '../ArtistNav';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ArtistFollowButton from './ArtistFollowButton';
+import ArtistPlayButton from './ArtistPlayButton';
 
 const ArtistHeader = (props) => {
   const style = {
@@ -14,6 +15,7 @@ const ArtistHeader = (props) => {
         <span>{props.artist.followCount} FOLLOWERS</span>
         <h1>{props.artist.name}</h1>
         <div className='artist-buttons'>
+          <ArtistPlayButton />
           <ArtistFollowButton followed={props.followed} />
         </div>
         <ArtistNav />

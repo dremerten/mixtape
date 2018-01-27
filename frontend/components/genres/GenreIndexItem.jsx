@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GenericIndexItem from '../featured_playlists/GenericIndexItem';
 import { fetchGenre, removeGenres } from '../../actions/genre_actions';
+import PlayButton from './GenreOverlayItem';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -12,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     id: ownProps.item.id,
     loadingClass: 'playlist-loading',
     imageClass: 'playlist-image',
-    handleClick: () => ownProps.history.push(`/genres/${ownProps.item.id}`)
+    handleClick: () => ownProps.history.push(`/genres/${ownProps.item.id}`),
+    PlayButton
   };
 };
 

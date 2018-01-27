@@ -34,7 +34,7 @@ const Play = props => {
 
   return (
     <div
-      className={'play-button'}
+      className='play-collection-button'
       onClick={() => props.playFullCollection(props.tracks)}
       >
       {buttonText}
