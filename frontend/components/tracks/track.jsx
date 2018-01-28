@@ -35,7 +35,8 @@ class Track extends React.Component {
   }
 
   render() {
-    const { track, buttonText, artistIsVisible } = this.props;
+    const { track, buttonText, artistIsVisible, inProgress } = this.props;
+    const inProgressClass = inProgress ? "green" : "";
 
     return(
       <div className='track-row-wrapper'>
@@ -45,7 +46,7 @@ class Track extends React.Component {
           </div>
           <div className="track-info">
             <div className='track-details'>
-              <span className='track-title'>{this.props.track.title}</span>
+              <span className={`track-title ${inProgressClass}`}>{this.props.track.title}</span>
               <span
                 className='track-album-artist'
                 style={{display: artistIsVisible ? "" : "none"}}
@@ -55,7 +56,7 @@ class Track extends React.Component {
                 <Link to={`/browse/albums/${track.albumId}`}>{`${track.album}`}</Link>
               </span>
             </div>
-            <div className='track-detail-duration'>
+            <div className={`track-detail-duration ${inProgressClass}`}>
               <TrackDropDownButton item={this.props.track} />
               <span>{track.duration}</span>
             </div>
