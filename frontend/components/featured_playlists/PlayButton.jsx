@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return {
     tracks: entity.trackIds || [],
-    inProgress: state.nowPlaying.inProgress &&
-                state.nowPlaying.context === context
+    inProgress: state.player.inProgress &&
+                state.player.context === context
   };
 };
 

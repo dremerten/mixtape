@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   root 'static_pages#root'
 
+  # Handle repetitive routes for polymorphic actions
+  
   [:users, :playlists, :albums, :artists].each do |m|
     post "#{m}/:followable_id/follow", to: "api/#{m}#follow", defaults: { format: :json }
     delete "#{m}/:followable_id/follow", to: "api/#{m}#unfollow", defaults: { format: :json }

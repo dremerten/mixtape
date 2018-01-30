@@ -1,3 +1,5 @@
+import { SCROLL_BREAKPOINT } from '../util/constants';
+
 export const SET_SCROLL_POSITION = 'SET_SCROLL_POSITION';
 export const DISPLAY_PLAYLIST_FORM = 'DISPLAY_PLAYLIST_FORM';
 export const HIDE_PLAYLIST_FORM = 'HIDE_PLAYLIST_FORM';
@@ -7,9 +9,15 @@ export const SHOW_MODAL = 'SHOW_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
 export const CLOSE_ALL_MODALS = 'CLOSE_ALL_MODALS';
 
-export const setScrollPosition = pos => ({
-  type: SET_SCROLL_POSITION, pos
-});
+export const setScrollPosition = pos => (dispatch, getState) => {
+  const { ui } = getState();
+
+  if (ui.scroll > SCROLL_BREAKPOINT && pos < SCROLL_BREAKPOINT) {
+    dispatch({ type: SET_SCROLL_POSITION, pos });
+  } else if (ui.scroll < SCROLL_BREAKPOINT && pos > SCROLL_BREAKPOINT) {
+    dispatch({ type: SET_SCROLL_POSITION, pos });
+  }
+};
 
 export const displayPlaylistForm = () => ({
   type: DISPLAY_PLAYLIST_FORM

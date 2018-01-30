@@ -4,10 +4,10 @@ import { fetchResults, removeSearchErrors } from '../../actions/search_actions';
 import Search from './search';
 
 const mapStateToProps = state => ({
-  tracks: Object.keys(state.entities.tracks).map(id => state.entities.tracks[id]),
-  albums: Object.keys(state.entities.albums).map(id => state.entities.albums[id]),
-  playlists: Object.keys(state.entities.playlists.byId).map(id => state.entities.playlists.byId[id]),
-  topResults: state.entities.search.topResults.map(id => state.entities.tracks[id]),
+  tracks: state.search.tracks.map(id => state.entities.tracks[id]),
+  albums: state.search.albums.map(id => state.entities.albums[id]),
+  playlists: state.search.albums.map(id => state.entities.playlists[id]),
+  artists: state.search.artists.map(id => state.entities.artists[id]),
   errors: state.errors.search
 });
 

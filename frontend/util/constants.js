@@ -1,1 +1,1 @@
-export const SCROLL_BREAKPOINT = 50;
+export const SCROLL_BREAKPOINT = 46;

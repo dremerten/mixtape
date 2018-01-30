@@ -55,9 +55,9 @@ const AudioButtons = props => {
 
 const mapStateToProps = state => {
   return {
-    shuffleState: state.nowPlaying.shuffleState,
-    repeatEnabled: Boolean(state.nowPlaying.repeat),
-    singleRepeat: state.nowPlaying.repeat > 1
+    shuffleState: state.player.shuffleState,
+    repeatEnabled: Boolean(state.player.repeat),
+    singleRepeat: state.player.repeat > 1
   };
 };
 

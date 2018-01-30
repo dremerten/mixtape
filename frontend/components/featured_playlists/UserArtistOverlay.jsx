@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import PlayButton from './OverlayPlayButton';
 import { playTracksForArtist } from '../../actions/artist_actions';
 
-const mapStateToProps = ({ nowPlaying }, { id }) => {
+const mapStateToProps = ({ player }, { id }) => {
   const context = `artists-${id}`;
 
   return {
-    inProgress: nowPlaying.inProgress && nowPlaying.context === context,
+    inProgress: player.inProgress && player.context === context,
     customClass: 'circular'
   };
 };

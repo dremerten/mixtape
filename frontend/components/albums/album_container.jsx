@@ -18,7 +18,7 @@ const mapStateToProps = (state, ownProps) => {
     item: album,
     itemId: ownProps.match.params.albumId,
     tracks: playlistTracks(album, state),
-    inProgress: state.nowPlaying.inProgress,
+    inProgress: state.player.inProgress,
     loading: state.ui.loading.albums
   };
 };

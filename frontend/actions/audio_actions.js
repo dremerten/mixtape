@@ -23,9 +23,9 @@ export const play = () => ({
 export const playSingleTrack = data => (dispatch, getState) => {
   const state = getState();
 
-  if (state.nowPlaying.currentTrack !== data.currentTrack) {
+  if (state.player.currentTrack !== data.currentTrack) {
     dispatch({ type: PLAY_SINGLE_TRACK, data });
-  } else if (state.nowPlaying.inProgress) {
+  } else if (state.player.inProgress) {
     dispatch(pause());
   } else {
     dispatch(play());
@@ -39,9 +39,9 @@ export const playFullCollection = data => (dispatch, getState) => {
 
   const state = getState();
 
-  if (state.nowPlaying.context !== data.context) {
+  if (state.player.context !== data.context) {
     dispatch({ type: PLAY_SINGLE_TRACK, data});
-  } else if (state.nowPlaying.inProgress) {
+  } else if (state.player.inProgress) {
     dispatch(pause());
   } else {
     dispatch(play());
@@ -93,17 +93,17 @@ export const stopPlayback = () => ({
 });
 
 export const playNextTrack = track => (dispatch, getState ) => {
-  const { nowPlaying } = getState();
-  const nextTracks = nowPlaying.queue.concat(nowPlaying.nextTracks);
+  const { player } = getState();
+  const nextTracks = player.queue.concat(player.nextTracks);
 
-  if (!nowPlaying.currentTrack) {
+  if (!player.currentTrack) {
     return;
-  } else if ((nowPlaying.shuffleState &&
-              isEmpty(nowPlaying.shuffledTracks)) ||
+  } else if ((player.shuffleState &&
+              isEmpty(player.shuffledTracks)) ||
               isEmpty(nextTracks)) {
 
     dispatch(stopPlayback());
-  } else if (isEmpty(nowPlaying.queue)) {
+  } else if (isEmpty(player.queue)) {
     dispatch({ type: PLAY_NEXT_TRACK, track });
   } else {
     dispatch(playNextFromQueue(track));

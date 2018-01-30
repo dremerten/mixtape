@@ -18,8 +18,8 @@ const PlayButton = props => {
 
 const mapStateToProps = (state, ownProps) => {
   const context = `artists-${ownProps.match.params.artistId}`;
-  const inProgress = state.nowPlaying.inProgress &&
-                      state.nowPlaying.context === context;
+  const inProgress = state.player.inProgress &&
+                      state.player.context === context;
 
 
   return {

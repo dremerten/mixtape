@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
     item: playlist,
     itemId: ownProps.match.params.playlistId,
     tracks: playlistTracks(playlist, state),
-    inProgress: state.nowPlaying.inProgress,
+    inProgress: state.player.inProgress,
     loading: state.ui.loading.global,
     authorLink: '/'
   };

@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :saved_tracks
   has_many :tracks, through: :saved_tracks, source: :track
   has_many :followings, class_name: 'Follow'
+  has_many :searches
 
   def followable_ids_for(type)
     followings.where(followable_type: type).pluck(:followable_id)

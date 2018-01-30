@@ -11,7 +11,7 @@ import {
 import Track from './track';
 
 const mapStateToProps = (state, ownProps) => {
-  const inProgress = state.nowPlaying.inProgress &&
+  const inProgress = state.player.inProgress &&
                       isCurrentTrack(state, ownProps.track);
 
   const context = ownProps.location.pathname.split('/').slice(2).join('-');

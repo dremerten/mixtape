@@ -8,7 +8,7 @@ export default function({ isVisible, pathNames, linkNames, isButtonVisible, scro
       <div className="browse-nav">
         {
           pathNames.map((path, index) => (
-            <NavLink to={ path }
+            <NavLink to={path}
               className='nav-link-item'
               activeClassName='nav-link-item nav-selected'
               key={index}
@@ -22,5 +22,3 @@ export default function({ isVisible, pathNames, linkNames, isButtonVisible, scro
     </nav>
   );
 }
-
-// <NewPlaylistButton isButtonVisible={isButtonVisible} />

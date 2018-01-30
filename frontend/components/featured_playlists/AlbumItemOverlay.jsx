@@ -4,11 +4,11 @@ import { fetchAlbumThenPlay } from '../../actions/album_actions';
 import { playFullCollection } from '../../actions/audio_actions';
 import PlayButton from './OverlayPlayButton';
 
-const mapStateToProps = ({ nowPlaying }, { id }) => {
+const mapStateToProps = ({ player }, { id }) => {
   const context = `albums-${id}`;
 
   return {
-    inProgress: nowPlaying.inProgress && nowPlaying.context === context
+    inProgress: player.inProgress && player.context === context
   };
 };
 
