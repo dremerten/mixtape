@@ -4,7 +4,8 @@ import TrackList from '../tracks/TrackList';
 
 const mapStateToProps = state => {
   return {
-    indexItems: state.search.tracks.slice(0, 5).map(id => state.entities.tracks[id]),
+    indexItems: state.search.tracks.slice(0, 5)
+                     .map(id => state.entities.tracks[id]),
   };
 };
 

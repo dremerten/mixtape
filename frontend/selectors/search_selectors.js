@@ -16,7 +16,7 @@ export const selectLinkPaths = state => {
 
   links.unshift('results');
 
-  return links
+  return links.map(link => '/search/' + link);
 };
 
 export const selectLinkHeaders = state => {
@@ -37,12 +37,12 @@ export const selectLinkHeaders = state => {
   return headers.map(header => header.toUpperCase());
 };
 
-export const foundResults = ({ search }) => {
+export const foundResults = (state) => {
   let foundResults = false;
 
-  for (let key in search) {
-    if (!isEmpty(search[key])) foundResults = true;
+  for (let key in state.search) {
+    if (!isEmpty(state.search[key])) foundResults = true;
   }
 
   return foundResults;
-}
+};

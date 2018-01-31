@@ -14,7 +14,7 @@ const Search = function({ foundResults }) {
         { foundResults ?
           <Redirect to='/search/results'/>
           :
-          <h2>No results found</h2>
+          <Redirect to='/search' />
         }
         <SearchResults />
       </div>

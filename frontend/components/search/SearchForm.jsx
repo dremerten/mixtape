@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchResults } from '../../actions/search_actions';
+import { fetchResults, clearSearchResults } from '../../actions/search_actions';
 
 
 class SearchForm extends React.Component {
@@ -23,6 +23,7 @@ class SearchForm extends React.Component {
 
   debounceFetch() {
     clearTimeout(this.fetch);
+    // this.props.clearSearchResults();
 
     const { query } = this.state;
 
@@ -54,7 +55,8 @@ class SearchForm extends React.Component {
 
 
 const mapDispatchToProps = dispatch => ({
-  fetchResults: query => dispatch(fetchResults(query))
+  fetchResults: query => dispatch(fetchResults(query)),
+  clearSearchResults: () => dispatch(clearSearchResults())
 });
 
 export default connect(null, mapDispatchToProps)(SearchForm);

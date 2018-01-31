@@ -1,4 +1,4 @@
-import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
+import { RECEIVE_SEARCH_RESULTS, CLEAR_SEARCH_RESULTS } from '../actions/search_actions';
 import { LOGOUT } from '../actions/session_actions';
 import { merge } from 'lodash';
 
@@ -21,6 +21,7 @@ const SearchReducer = ( state = initialState, action) => {
       newState.playlists = Object.keys(action.data.playlists || {});
 
       return newState;
+    case CLEAR_SEARCH_RESULTS:
     case LOGOUT:
       return initialState;
     default:

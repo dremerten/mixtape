@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchNav from './SearchNav';
 import { Route } from 'react-router-dom';
-import { connect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import TopSearchResults from './TopSearchResults';
 
 const SearchResults = props => {
