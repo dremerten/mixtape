@@ -19,7 +19,7 @@ const MainPage = ({ currentUser }) => (
         <SideBar currentUser={currentUser}/>
         <AlertBar />
         <Switch>
-          <Route path="/browse/search" component={Search}/>
+          <Route path="/search" component={Search}/>
           <Route exact path="/browse/playlists/:playlistId" component={PlaylistContainer} />
           <Route exact path="/collection/playlists/:playlistId" component={PlaylistContainer} />
           <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />

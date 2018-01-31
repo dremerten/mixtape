@@ -29,6 +29,7 @@ const App = (props) => (
       <ProtectedRoute path="/collection" component={MainPageContainer} />
       <ProtectedRoute path="/account" component={MainPageContainer} />
       <ProtectedRoute path="/view" component={MainPageContainer} />
+      <ProtectedRoute path="/search" component={MainPageContainer} />
       <AuthRoute path="/" component={NewSessionContainer} />
     </Switch>
   </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import Track from './TrackContainer';
 
 const TrackList = (props) => {
+  debugger
   return(
   <ol className='tracklist'>
     {

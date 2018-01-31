@@ -22,7 +22,7 @@ const AlbumReducer = (state = {}, action) => {
       return {};
     case RECEIVE_SEARCH_RESULTS:
     case RECEIVE_ARTIST:
-      return action.data.albums || {};
+      return merge({}, state, action.data.albums || {});
     default:
       return state;
   }

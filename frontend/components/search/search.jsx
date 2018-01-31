@@ -1,22 +1,33 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { foundResults } from '../../selectors/search_selectors';
+import { Link, Redirect } from 'react-router-dom';
 import SearchForm from './SearchForm';
 import SearchNav from './SearchNav';
+import SearchResults from './SearchResults';
 
-class Search extends React.Component {
-  render() {
-    return (
-      <div className="search-wrapper">
-        <div className="search-container">
-          <SearchForm />
-          <SearchNav isVisible />
-        </div>
+const Search = function({ foundResults }) {
+  return (
+    <div className="search-wrapper">
+      <div className="search-container">
+        <SearchForm />
+        { foundResults ?
+          <Redirect to='/search/results'/>
+          :
+          <h2>No results found</h2>
+        }
+        <SearchResults />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default Search;
+const mapStateToProps = state => ({
+  foundResults: foundResults(state)
+});
+
+export default connect(mapStateToProps)(Search);
+
 
 // <div
 //   className="results-container"

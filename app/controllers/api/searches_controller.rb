@@ -11,9 +11,9 @@ class Api::SearchesController < ApplicationController
 
     @artists = Artist.where('lower(name) ~* ?', make_query).limit(20)
 
-    @albums = Album.includes(:artist)
+    @albums = Album.joins(:artist)
                    .where('lower(title) ~* :query or
-                           lower(artist.name) ~* :query',
+                           lower(artists.name) ~* :query',
                            query: make_query)
                    .limit(20)
 
@@ -22,13 +22,6 @@ class Api::SearchesController < ApplicationController
                                  lower(tracks.title) ~* :query or
                                  lower(artists.name) ~* :query',
                                  query: make_query).limit(20)
-
-
-    if [*@tracks, *@artists, *@albums, *@playlists].empty?
-      render json: ['Your search returned no results'], status: 422
-    else
-      render :index
-    end
   end
 
 

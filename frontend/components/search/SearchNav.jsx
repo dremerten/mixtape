@@ -3,14 +3,13 @@ import { selectLinkPaths, selectLinkHeaders } from '../../selectors/search_selec
 import GenericNavBar from '../GenericNavBar';
 
 const mapStateToProps = (state, ownProps) => {
-  const pathNames = ['/search/results'].concat(selectLinkPaths(state));
-  const linkNames = ['TOP RESULTS'].concat(selectLinkHeaders(state));
+  const pathNames = selectLinkPaths(state);
+  const linkNames = selectLinkHeaders(state);
 
-  debugger
   return {
     pathNames,
     linkNames,
-    className: 'browse-nav-container__no-margin__relative'
+    className: 'search__nav--narrow'
   };
 };
 
