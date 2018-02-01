@@ -17,7 +17,7 @@ const SideBar = ({ currentUser }) => {
             <div className="sidebar-header">
               <Link to='/browse/featured' className='sidebar-logo'></Link>
             </div>
-            <NavLink to="/search" activeClassName='search-selected'>
+            <NavLink to="/search" className='sidebar-item' activeClassName='search-selected'>
               <div className="sidebar-group with-icon">
                 <li className="sidebar-item">Search</li>
                 <i className="sidebar-item fa fa-search" aria-hidden="true"></i>

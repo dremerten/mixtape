@@ -21,6 +21,10 @@ class SearchForm extends React.Component {
   }
 
 
+  componentWillUnmount() {
+    this.props.clearSearchResults();
+  }
+
   debounceFetch() {
     clearTimeout(this.fetch);
     this.props.clearSearchResults();

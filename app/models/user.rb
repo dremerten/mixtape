@@ -9,7 +9,10 @@ class User < ApplicationRecord
   validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
   after_initialize :ensure_session_token
 
-  has_attached_file :avatar, default_url: 'avatar.png'
+  has_attached_file :avatar,
+    default_url: 'avatar.png',
+    styles: { thumb: "300x300#", large: "600x600#" }
+
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   has_many :playlists, foreign_key: :author_id
@@ -42,18 +45,21 @@ class User < ApplicationRecord
     update(track_ids: track_ids - [track_id.to_i])
   end
 
+  def self.track_ids_for_current_user
+    SavedTrack.joins(:user, :track)
+    .where('users.id': current_user.id)
+    .order(created_at: :desc)
+    .pluck(:track_id)
+  end
+
+  ### AUTH METHODS ------------------------------------
+  
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
 
     user && user.is_password?(pw) ? user : nil
   end
 
-  def self.track_ids_for_current_user
-    SavedTrack.joins(:user, :track)
-              .where('users.id': current_user.id)
-              .order(created_at: :desc)
-              .pluck(:track_id)
-  end
 
   def self.generate_session_token
     SecureRandom::urlsafe_base64(16)

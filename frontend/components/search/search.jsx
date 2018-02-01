@@ -14,7 +14,7 @@ const Search = function({ foundResults }) {
         { foundResults ?
           <Redirect to='/search/results'/>
           :
-          <h1>No Results Found.</h1>
+          null
         }
         <SearchResults foundResults={foundResults} />
       </div>
@@ -27,19 +27,3 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps)(Search);
-
-
-// <div
-//   className="results-container"
-//   style={{display: (this.state.query && this.state.rendered) ? "" : "none"}}
-//   >
-//   <div className="top-results">
-//     <div
-//       className="top-result-image"
-//       style={imageUrl}
-//       ></div>
-//     <div className="top-result-tracks">
-//       {tracks}
-//     </div>
-//   </div>
-// </div>
