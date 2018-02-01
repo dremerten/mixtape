@@ -17,6 +17,14 @@ class Album < ApplicationRecord
     Album.all.limit(12).order('created_at')
   end
 
+  def self.search(query)
+    joins(:artist)
+      .where('lower(title) ~* :query or
+              lower(artists.name) ~* :query',
+              query: query)
+      .limit(20)
+  end
+
   def popularity
     tracks.pluck(:popularity).reduce(:+) / tracks.count
   end

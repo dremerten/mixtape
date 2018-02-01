@@ -1,27 +1,17 @@
 class Api::SearchesController < ApplicationController
 
   def index
-    @tracks = Track.joins(:artist, :album)
-                   .where('lower(tracks.title) ~* :query or
-                           lower(artists.name) ~* :query or
-                           lower(albums.title) ~* :query',
-                           query: make_query)
-                   .limit(20)
-                   .order(popularity: 'desc')
+    if params[:query].empty?
+      render json: ['An error occured with your search'], status: 422
+    end
 
-    @artists = Artist.where('lower(name) ~* ?', make_query).limit(20)
+    @tracks = Track.search(make_query)
 
-    @albums = Album.joins(:artist)
-                   .where('lower(title) ~* :query or
-                           lower(artists.name) ~* :query',
-                           query: make_query)
-                   .limit(20)
+    @artists = Artist.search(make_query)
 
-    @playlists = Playlist.joins(tracks: [:artist])
-                         .where('lower(playlists.name) ~* :query or
-                                 lower(tracks.title) ~* :query or
-                                 lower(artists.name) ~* :query',
-                                 query: make_query).limit(20)
+    @albums = Album.search(make_query)
+
+    @playlists = Playlist.search(make_query)
   end
 
 
@@ -41,5 +31,3 @@ class Api::SearchesController < ApplicationController
     "^#{params[:query].downcase}|\\s#{params[:query].downcase}"
   end
 end
-
-#

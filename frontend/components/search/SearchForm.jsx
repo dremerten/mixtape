@@ -23,7 +23,7 @@ class SearchForm extends React.Component {
 
   debounceFetch() {
     clearTimeout(this.fetch);
-    // this.props.clearSearchResults();
+    this.props.clearSearchResults();
 
     const { query } = this.state;
 

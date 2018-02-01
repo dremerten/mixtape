@@ -1,5 +1,5 @@
 json.tracks do
-  @tracks.each do |track|
+  @tracks.includes(:artist, :album).each do |track|
     json.set! track.id do
       json.partial! 'api/tracks/track', track: track
     end
@@ -27,5 +27,12 @@ json.albums do
 end
 
 json.playlists do
-  json.partial! 'api/playlists/playlists', playlists: @playlists
+  @playlists.includes(:author, :tracks).each do |playlist|
+    json.set! playlist.id do
+      json.extract! playlist, :id, :name, :author_id
+      json.imageUrl asset_path(playlist.image.url)
+      json.author playlist.author.email
+      json.trackIds playlist.track_ids
+    end
+  end
 end

@@ -15,8 +15,19 @@ class Track < ApplicationRecord
   has_many :playlists, through: :playlist_tracks, source: :playlist
   has_many :saved_tracks
   has_many :user_adds, through: :saved_tracks, source: :user
-  
+
   before_validation :extract_audio_duration
+
+
+  def self.search(query)
+    joins(:artist, :album)
+      .where('lower(tracks.title) ~* :query or
+              lower(artists.name) ~* :query or
+              lower(albums.title) ~* :query',
+              query: query)
+      .limit(20)
+      .order(popularity: 'desc')
+  end
 
 
   def extract_audio_duration
@@ -27,7 +38,6 @@ class Track < ApplicationRecord
       .object("#{audio.path[1..-1]}")
       .metadata["duration"]
   end
-
   # private
 
   def read_audio

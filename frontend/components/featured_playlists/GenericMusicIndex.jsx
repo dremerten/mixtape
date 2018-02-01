@@ -2,11 +2,11 @@ import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 const GenericMusicIndex = (props) => {
-  const { IndexItem } = props;
+  const { IndexItem, indexItems } = props;
 
   return(
     <ul className='playlist-items'>
-      { props.indexItems.map(item => (
+      { indexItems.map(item => (
         <IndexItem
           { ...props }
           key={item.id}

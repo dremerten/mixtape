@@ -18,6 +18,16 @@ class Playlist < ApplicationRecord
   scope :featured, -> { includes(:author, :tracks).where(featured: true).distinct }
   scope :site_generated, -> { includes(:author).where(author_id: 0) }
 
+  def self.search(query)
+    joins(tracks: [:artist])
+      .where('lower(playlists.name) ~* :query or
+              lower(tracks.title) ~* :query or
+              lower(artists.name) ~* :query',
+              query: query)
+      .references(:tracks, :users)
+      .limit(20)
+  end
+
   def self.for(user)
     Playlist.includes(:author, :tracks).where(author_id: user.id).order(id: 'desc').limit(40)
   end

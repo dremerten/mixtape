@@ -1,5 +1,5 @@
 import MusicPageContainer from './MusicPageContainer';
-import UserArtistIndexItem from './UserArtistIndexItem';
+import ArtistIndexItem from './UserArtistIndexItem';
 import GenericMusicIndex from './GenericMusicIndex';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
     background: { background: 'linear-gradient(rgb(18, 18, 18), rgb(7, 7, 7) 85%) fixed' },
     shouldFetchItems: shouldFetchArtists(state.session.currentUser.followIds.artists, state),
     MusicIndex: GenericMusicIndex,
-    IndexItem: UserArtistIndexItem
+    IndexItem: ArtistIndexItem
   };
 };
 

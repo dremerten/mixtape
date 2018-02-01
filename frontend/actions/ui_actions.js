@@ -1,4 +1,5 @@
 import { SCROLL_BREAKPOINT } from '../util/constants';
+import { isEmpty } from 'lodash';
 
 export const SET_SCROLL_POSITION = 'SET_SCROLL_POSITION';
 export const DISPLAY_PLAYLIST_FORM = 'DISPLAY_PLAYLIST_FORM';
@@ -27,9 +28,13 @@ export const hidePlaylistForm = () => ({
   type: HIDE_PLAYLIST_FORM
 });
 
-export const hideAllDropdowns = () => ({
-  type: HIDE_ALL_DROPDOWNS
-});
+export const hideAllDropdowns = () => (dispatch, getState) => {
+  const state = getState();
+
+  if (isEmpty(state.ui.dropdowns)) return;
+
+  dispatch({ type: HIDE_ALL_DROPDOWNS });
+};
 
 export const showDropdown = name => ({
   type: SHOW_DROPDOWN, name

@@ -3,6 +3,7 @@ import ArtistIndexItem from '../featured_playlists/UserArtistIndexItem';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
+  debugger
   return {
     topArtist: state.entities.artists[state.entities.tracks[state.search.tracks[0]].artistId]
   };
