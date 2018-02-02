@@ -16,7 +16,7 @@ const Search = function({ foundResults }) {
           :
           null
         }
-        <SearchResults foundResults={foundResults} />
+        <Route path='/search/:page' component={SearchResults} />
       </div>
     </div>
   );

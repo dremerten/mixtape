@@ -4,7 +4,6 @@ import GenericIndexItem from './GenericIndexItem';
 import PlayButton from './UserArtistOverlay';
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
   return {
     itemName: ownProps.item.name,
     author: ownProps.item.author,

@@ -5,6 +5,7 @@ export const selectLinkPaths = state => {
   const links = [];
 
   Object.keys(state.search).forEach(key => {
+    if (key === 'top') return;
     if (!isEmpty(state.search[key])) {
       links.push(key);
     }
@@ -23,6 +24,7 @@ export const selectLinkHeaders = state => {
   const headers = [];
 
   Object.keys(state.search).forEach(key => {
+    if (key === 'top') return;
     if (!isEmpty(state.search[key])) {
       headers.push(key);
     }

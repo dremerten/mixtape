@@ -17,11 +17,7 @@ end
 json.albums do
   @albums.each do |album|
     json.set! album.id do
-      json.extract! album, :id, :title
-      json.imageUrl asset_path(album.artwork(:small))
-      json.trackIds album.track_ids
-      json.author album.artist.name
-      json.background album.background
+      json.partial! 'api/albums/album', album: album
     end
   end
 end
@@ -35,4 +31,22 @@ json.playlists do
       json.trackIds playlist.track_ids
     end
   end
+end
+
+json.top do
+  json.type @top_result && @top_result.class.to_s
+
+  if @top_result.is_a? Album
+    json.partial! 'api/albums/album', album: @top_result
+  elsif @top_result.is_a? Artist
+    json.partial! 'api/artists/artist', artist: @top_result
+  elsif @top_result.is_a? Track
+    json.partial! 'api/searches/top_track', track: @top_result
+  elsif @top_result.is_a? Playlist
+    json.extract! @top_result, :id, :name, :author_id
+    json.imageUrl asset_path(@top_result.image.url)
+    json.author @top_result.author.email
+    json.trackIds @top_result.track_ids
+  end
+
 end

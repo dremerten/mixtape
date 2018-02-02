@@ -18,6 +18,8 @@ class Playlist < ApplicationRecord
   scope :featured, -> { includes(:author, :tracks).where(featured: true).distinct }
   scope :site_generated, -> { includes(:author).where(author_id: 0) }
 
+  # SEARCH_FUNCTIONS
+
   def self.search(query)
     joins(tracks: [:artist])
       .where('lower(playlists.name) ~* :query or
@@ -26,6 +28,10 @@ class Playlist < ApplicationRecord
               query: query)
       .references(:tracks, :users)
       .limit(20)
+  end
+
+  def match_weight(query)
+    name.downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
   end
 
   def self.for(user)

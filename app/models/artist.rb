@@ -16,13 +16,20 @@ class Artist < ApplicationRecord
     tracks.map(&:popularity).reduce(:+) / tracks.count
   end
 
+  # def self.search_with_associations(query)
+  #   joins(:albums, :tracks)
+  #     .where('lower(albums.title) ~* :query or
+  #             lower(tracks.title) ~* :query
+  #             ', query: query)
+  #     .references(:albums, :tracks)
+  #     .limit(20)
+  # end
+
   def self.search(query)
-    joins(:albums, :tracks)
-      .where('lower(name) ~* :query or
-              lower(albums.title) ~* :query or
-              lower(tracks.title) ~* :query
-              ', query: query)
-      .references(:albums, :tracks)
-      .limit(20)
+    where('lower(name) ~* ?', query)
+  end
+
+  def match_weight(query)
+    name.downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
   end
 end

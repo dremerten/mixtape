@@ -29,6 +29,11 @@ class Track < ApplicationRecord
       .order(popularity: 'desc')
   end
 
+  def match_weight(query)
+    title.downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
+  end
+
+  # AUDIO METADATA --------------------------------------------------------------
 
   def extract_audio_duration
     bucket_name = (ENV["RAILS_ENV"] == "development" ? "spinnmusicfiles" : "spinnmusicfiles-pro")
@@ -38,7 +43,6 @@ class Track < ApplicationRecord
       .object("#{audio.path[1..-1]}")
       .metadata["duration"]
   end
-  # private
 
   def read_audio
     puts "Fetching audio information...\n\n\n"

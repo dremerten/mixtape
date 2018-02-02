@@ -17,7 +17,10 @@ class SearchForm extends React.Component {
 
 
   handleChange(e) {
-    this.setState({ query: e.currentTarget.value }, () => this.debounceFetch());
+    clearTimeout(this.fetch);
+    this.props.clearSearchResults();
+
+    this.setState({ query: e.currentTarget.value }, this.debounceFetch);
   }
 
 
@@ -26,15 +29,12 @@ class SearchForm extends React.Component {
   }
 
   debounceFetch() {
-    clearTimeout(this.fetch);
-    this.props.clearSearchResults();
-
     const { query } = this.state;
 
     if (query) {
       this.fetch = setTimeout(() => {
         this.props.fetchResults(this.state);
-      }, 200);
+      }, 350);
     }
   }
 

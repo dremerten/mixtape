@@ -1,9 +1,7 @@
 import React from 'react';
 import Track from './TrackContainer';
 
-const TrackList = (props) => {
-  debugger
-  return(
+const TrackList = (props) => (
   <ol className='tracklist'>
     {
       props.indexItems.map(track => (
@@ -18,6 +16,5 @@ const TrackList = (props) => {
     }
   </ol>
 );
-};
 
 export default TrackList;

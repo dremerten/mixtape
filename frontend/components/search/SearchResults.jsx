@@ -6,6 +6,8 @@ import { foundResults } from '../../selectors/search_selectors';
 import TopSearchResults from './TopSearchResults';
 import SearchTracks from './SearchTracks';
 import SearchArtists from './SearchArtists';
+import SearchAlbums from './SearchAlbums';
+import SearchPlaylists from './SearchPlaylists';
 
 const SearchResults = ({ foundResults }) => {
   return (
@@ -16,14 +18,18 @@ const SearchResults = ({ foundResults }) => {
           <Route path='/search/results' component={TopSearchResults} />
           <Route path='/search/tracks' component={SearchTracks} />
           <Route path='/search/artists' component={SearchArtists} />
+          <Route path='/search/albums' component={SearchAlbums} />
+          <Route path='/search/playlists' component={SearchPlaylists} />
         </div>
       :
         <Redirect to='/search' />
       }
-      {/*<Route path='/search/albums' component={SearchAlbums} />
-      <Route path='/search/playlists' component={SearchPlaylists} />*/}
     </div>
   );
 };
 
-export default SearchResults;
+const mapStateToProps = state => ({
+  foundResults: foundResults(state)
+});
+
+export default connect(mapStateToProps)(SearchResults);

@@ -25,6 +25,10 @@ class Album < ApplicationRecord
       .limit(20)
   end
 
+  def match_weight(query)
+    title.downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
+  end
+
   def popularity
     tracks.pluck(:popularity).reduce(:+) / tracks.count
   end
