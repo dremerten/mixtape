@@ -18,7 +18,7 @@ const mapDispatchToProps = (dispatch, { currentTrack }) => {
 };
 
 const SaveTrackButton = (props) => {
-  const buttonText = props.isSaved ? 'tick' : 'plus';
+  const buttonText = props.isSaved ? 'tickGreen' : 'plus';
   const toggleSave = props.isSaved ? props.removeTrack : props.saveTrack;
 
   return(

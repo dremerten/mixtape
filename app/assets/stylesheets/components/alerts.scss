@@ -1,8 +1,8 @@
 
 .alert-bar {
   background-color: #5FBB55;
-  transition: .2s;
-  padding: 8px 0;
+  transition: transform .1s ease-out;
+  // padding: 8px 0;
   color: white;
   font-size: 16px;
   font-family: $open;
@@ -19,32 +19,25 @@
   > div {
     display: flex;
     align-items: center;
+    margin: 10px;
     color: white;
     padding-left: 20px;
 
-    i {
-      color: white;
+    img {
+      width: 13px;
+      height: auto;
       padding: 0 10px;
-      transform: scale(1);
-      transition: .2s;
     }
   }
 
-  i {
-    color: white;
+  img {
     padding-right: 20px;
-    transform: scale(1);
-    transition: .2s;
+    width: 13px;
+    height: auto;
   }
 }
 
 .cleared {
-  transform: translateY(-20px);
-  transition: .5s;
-  padding: 0;
-
-  i {
-    transform: scale(0);
-    transition: .2s;
-  }
+  transform: translateY(-40px);
+  transition: transform .1s ease-in;
 }

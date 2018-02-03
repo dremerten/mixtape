@@ -30,7 +30,9 @@ const App = (props) => (
       <ProtectedRoute path="/account" component={MainPageContainer} />
       <ProtectedRoute path="/view" component={MainPageContainer} />
       <ProtectedRoute path="/search" component={MainPageContainer} />
-      <AuthRoute path="/" component={NewSessionContainer} />
+      <ProtectedRoute path="/users" component={MainPageContainer} />
+      <AuthRoute exact path="/" component={NewSessionContainer} />
+      <Redirect to='/'/>
     </Switch>
   </div>
 );
