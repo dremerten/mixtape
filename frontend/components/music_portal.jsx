@@ -24,7 +24,7 @@ const MusicPortal = (props) => {
         <Route path='/collection/artists' component={UserArtistIndex} />
         <Route path='/view/artists/:artistId' component={ArtistPage}/>
         <Route path='/account/profile' component={UserProfile} />
-        {/*<Route path='/users/:userId' component={UserPage} />}*/}
+        {/*<Route path='/users/:userId' component={UserPage} />*/}
       </div>
     );
 };

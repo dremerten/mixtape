@@ -3,7 +3,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      render "api/users/show"
+      render "api/users/current_user"
     else
       render json: @user.errors.full_messages, status: 422
     end
@@ -11,11 +11,6 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @track_ids = SavedTrack.joins(:user, :track)
-                          .where('users.id': @user.id)
-                          .order(created_at: :desc)
-                          .pluck(:track_id)
-                          
   end
 
   def destroy

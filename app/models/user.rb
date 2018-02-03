@@ -6,7 +6,7 @@ class User < ApplicationRecord
   validates :email, presence: true, uniqueness: true
   validates :name, :session_token, :birthday, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match"}
+  validates :password, confirmation: { case_sensitive: true, message: "\nPasswords do not match" }
   after_initialize :ensure_session_token
 
   has_attached_file :avatar,
@@ -20,6 +20,13 @@ class User < ApplicationRecord
   has_many :tracks, through: :saved_tracks, source: :track
   has_many :followings, class_name: 'Follow'
   has_many :searches
+
+  def track_ids_by_date
+    SavedTrack.joins(:user, :track)
+      .where('users.id': @user.id)
+      .order(created_at: :desc)
+      .pluck(:track_id)
+  end
 
   def followable_ids_for(type)
     followings.where(followable_type: type).pluck(:followable_id)
@@ -45,15 +52,15 @@ class User < ApplicationRecord
     update(track_ids: track_ids - [track_id.to_i])
   end
 
-  def self.track_ids_for_current_user
-    SavedTrack.joins(:user, :track)
-    .where('users.id': current_user.id)
-    .order(created_at: :desc)
-    .pluck(:track_id)
-  end
+  # def self.track_ids_for_current_user
+  #   SavedTrack.joins(:user, :track)
+  #   .where('users.id': current_user.id)
+  #   .order(created_at: :desc)
+  #   .pluck(:track_id)
+  # end
 
   ### AUTH METHODS ------------------------------------
-  
+
   def self.find_by_credentials(email, pw)
     user = User.find_by(email: email)
 

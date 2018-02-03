@@ -22,10 +22,3 @@ export const logout = () => (
     url: '/api/session',
   })
 );
-
-export const fetchCurrentUser = id => (
-  $.ajax({
-    method: 'GET',
-    url: `/api/users/${id}`
-  })
-);

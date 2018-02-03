@@ -24,17 +24,12 @@ class AlertBar extends React.Component {
     return(
       <div className={ isVisible ? 'alert-bar' : 'alert-bar cleared' }>
         <div>
-          {/*<i className="fa fa-check" aria-hidden="true"></i>*/}
           <img src={staticAssets.tickWhite} />
           <ul>
             {this.props.alerts}
           </ul>
         </div>
         <img src={staticAssets.closeButton} />
-        {/*<i
-          className="fa fa-times"
-          aria-hidden="true"
-          onClick={this.props.clearAllAlerts}></i>*/}
       </div>
     );
   }
