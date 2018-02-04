@@ -23,7 +23,7 @@ class User < ApplicationRecord
 
   def track_ids_by_date
     SavedTrack.joins(:user, :track)
-      .where('users.id': @user.id)
+      .where('users.id': id)
       .order(created_at: :desc)
       .pluck(:track_id)
   end
