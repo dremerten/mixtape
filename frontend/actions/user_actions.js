@@ -24,6 +24,10 @@ export const fetchUser = userId => dispatch => (
   ))
 );
 
-export const fetchUserByFollower = userId => dispatch => (
-
+export const fetchUsers = userId => dispatch => (
+  UserAPIUtil.fetchUsers(userId).then(users => (
+    dispatch(receiveUsers(users))
+  ), (err) => (
+    dispatch(receiveUserErrors(err.responseJSON))
+  ))
 );

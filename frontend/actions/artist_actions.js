@@ -30,9 +30,9 @@ export const fetchArtist = id => dispatch => {
   });
 };
 
-export const fetchUserArtists = () => dispatch => {
+export const fetchUserArtists = userId => dispatch => {
   dispatch(startLoadingArtists());
-  return ArtistAPIUtil.fetchUserArtists().then(artists => (
+  return ArtistAPIUtil.fetchUserArtists(userId).then(artists => (
     dispatch(receiveArtists(artists))
   ));
 };

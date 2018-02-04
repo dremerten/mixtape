@@ -12,9 +12,9 @@ export const fetchArtists = () => (
   })
 );
 
-export const fetchUserArtists = () => (
+export const fetchUserArtists = id => (
   $.ajax({
     method: 'GET',
-    url: '/user/follows/artists'
+    url: `/users/${id}/follows/artists`
   })
 );

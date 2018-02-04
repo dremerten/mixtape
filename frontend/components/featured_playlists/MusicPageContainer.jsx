@@ -17,7 +17,7 @@ class MusicPageContainer extends React.Component {
     this.props.setScrollPosition(0);
 
     if (this.props.shouldFetchItems) {
-      this.props.fetchItems().then(() => this.setState({ fetched: true }));
+      this.props.fetchItems(this.props.optData).then(() => this.setState({ fetched: true }));
       return;
     }
 

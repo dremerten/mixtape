@@ -12,6 +12,7 @@ const mapStateToProps = (state, ownProps) => {
     indexItems: userArtists(state),
     itemType: 'album',
     header: "Your Artists",
+    optData: state.session.currentUser.id,
     background: { background: 'linear-gradient(rgb(18, 18, 18), rgb(7, 7, 7) 85%) fixed' },
     shouldFetchItems: shouldFetchArtists(state.session.currentUser.followIds.artists, state),
     MusicIndex: GenericMusicIndex,
@@ -20,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-  fetchItems: () => dispatch(fetchUserArtists()),
+  fetchItems: userId => dispatch(fetchUserArtists(userId)),
   setScrollPosition: pos => dispatch(setScrollPosition(pos))
 });
 

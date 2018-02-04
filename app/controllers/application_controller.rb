@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   end
 
   def followed_items
-    @followed_items = current_user.send("followed_#{get_controller_name}")
+    @followed_items = User.find(params[:id]).send("followed_#{get_controller_name}")
   end
 
   def follow

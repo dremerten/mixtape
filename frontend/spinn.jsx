@@ -8,6 +8,7 @@ import { fetchGenres } from './actions/genre_actions';
 import { follow, unfollow } from './actions/follow_actions';
 import { fetchTracks, fetchTrack, saveTrack, saveTrackToPlaylist, removeTrack } from './actions/track_actions';
 import { fetchResults } from './actions/search_actions';
+import { fetchUsers } from './actions/user_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -44,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // TEST FUNCTIONS
   window.getState = store.getState;
-  window.removeTrack = removeTrack;
+  window.fetchUers = fetchUsers;
   window.dispatch = store.dispatch;
   // TEST FUNCTIONS
 

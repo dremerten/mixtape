@@ -4,3 +4,9 @@ export const fetchUser = userId => {
     method: 'GET'
   });
 };
+
+export const fetchUsers = userId => {
+  return $.ajax({
+    url: `users/${userId}/follows/users`
+  });
+};

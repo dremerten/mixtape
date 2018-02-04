@@ -18,14 +18,33 @@ class Playlist < ApplicationRecord
   scope :featured, -> { includes(:author, :tracks).where(featured: true).distinct }
   scope :site_generated, -> { includes(:author).where(author_id: 0) }
 
-  # SEARCH_FUNCTIONS
+
+  def self.for(user)
+    Playlist.includes(:author, :tracks).where(author_id: user.id).order(id: 'desc').limit(40)
+  end
+
+
+  ########################################################
+  # RAKE TASK FOR GENERATING "FEATURED" PLAYLISTS
+  ########################################################
+
+  def self.set_featured_playlists
+    reset_featured_to_false
+
+    Playlist.where(author_id: 0).sample(12).each { |p| p.update featured: true }
+  end
+
+  private_class_method def self.reset_featured_to_false
+    Playlist.all.each { |p| p.update featured: false }
+  end
+
+  ########################################################
+  # SEARCH FUNCTIONS
+  ########################################################
 
   def self.search(query)
     joins(tracks: [:artist])
-      .where('lower(playlists.name) ~* :query or
-              lower(tracks.title) ~* :query or
-              lower(artists.name) ~* :query',
-              query: query)
+      .where('lower(playlists.name) ~* ?', query)
       .references(:tracks, :users)
       .limit(20)
   end
@@ -34,19 +53,9 @@ class Playlist < ApplicationRecord
     name.downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
   end
 
-  def self.for(user)
-    Playlist.includes(:author, :tracks).where(author_id: user.id).order(id: 'desc').limit(40)
-  end
-
-  def self.set_featured_playlists
-    reset_featured_to_false
-
-    Playlist.where(author_id: 0).sample(12).each { |p| p.update featured: true }
-  end
-
-  def self.reset_featured_to_false
-    Playlist.all.each { |p| p.update featured: false }
-  end
+  ########################################################
+  # TRACK ADDING/REMOVING
+  ########################################################
 
   def add_track(track_id)
     update(track_ids: track_ids + [track_id])
@@ -55,6 +64,10 @@ class Playlist < ApplicationRecord
   def remove_track(track_id)
     update(track_ids: track_ids - [track_id.to_i])
   end
+
+  ########################################################
+  # DYNAMICALLY UPDATE PLAYLIST ARTWORK BASED ON CONTENT
+  ########################################################
 
   # Make playlist take the artwork of the first track that was added
   def inherit_artwork
