@@ -7,6 +7,10 @@ class Follow < ApplicationRecord
   belongs_to :followable, polymorphic: true
   belongs_to :user
 
+  scope :user, -> { where(followable_type: 'User') }
+  scope :artist, -> { where(followable_type: 'Artist') }
+  scope :album, -> { where(followable_type: 'Album') }
+  scope :playlist, -> { where(followable_type: 'Playlist') }
 
   private
 

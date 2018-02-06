@@ -1,4 +1,6 @@
 class Api::ArtistsController < ApplicationController
+  include FollowActions
+  
   def index
     @artists = current_user.followed_artists
   end

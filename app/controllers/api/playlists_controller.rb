@@ -1,5 +1,6 @@
 class Api::PlaylistsController < ApplicationController
-
+  include FollowActions
+  
   # TODO: Make featured playlists and user playlists different routes
 
   def index

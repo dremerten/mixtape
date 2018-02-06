@@ -20,6 +20,7 @@ class User < ApplicationRecord
   has_many :tracks, through: :saved_tracks, source: :track
   has_many :followings, class_name: 'Follow'
   has_many :searches
+  has_many :followed_users, through: :followings, source: :followable, source_type: 'User'
 
   def track_ids_by_date
     SavedTrack.joins(:user, :track)
@@ -29,7 +30,9 @@ class User < ApplicationRecord
   end
 
   def followable_ids_for(type)
-    followings.where(followable_type: type).pluck(:followable_id)
+    followings
+      .where(followable_type: type)
+      .pluck(:followable_id)
   end
 
   def method_missing(name, *args, &blck)

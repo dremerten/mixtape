@@ -1,6 +1,10 @@
-# json.partial! 'api/users/user', user: @user, track_ids: @track_ids
+
 json.user do
-  json.partial! 'api/users/user', user: @user
+  json.extract! @user, :id, :name, :email, :created_at
+  json.imageUrl @user.avatar(:thumb)
+  json.followers @user.follower_ids
+  json.followees @user.followings.user.pluck(:followable_id)
+  json.followees @user.followed_users.pluck(:id)
 end
 
 json.users do
@@ -8,4 +12,17 @@ json.users do
     json.set! user.id do
       json.partial! 'api/users/user', user: user
     end
+  end
+end
+
+json.playlists do
+  @user.playlists.each do |playlist|
+    json.set! playlist.id do
+      json.extract! playlist, :id, :name, :author_id
+      json.imageUrl asset_path(playlist.image.url)
+      json.author playlist.author.email
+      json.background playlist.background
+      json.trackIds playlist.track_ids
+    end
+  end
 end

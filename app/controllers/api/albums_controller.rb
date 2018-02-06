@@ -1,4 +1,6 @@
 class Api::AlbumsController < ApplicationController
+  include FollowActions
+  
   def index
 
     if params[:order] == 'recent'
