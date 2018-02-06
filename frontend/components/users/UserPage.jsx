@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
-import Spinner from '../Spinner';
-import TopArtistTracks from './TopArtistTracks';
-import ArtistItems from './ArtistItems';
+import UserHeader from './UserHeader';
 
 class UserPage extends React.Component {
   constructor(props) {
@@ -14,15 +12,15 @@ class UserPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchArtist(this.props.itemId);
+    this.props.fetchUser(this.props.itemId);
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loading != this.state.loading) {
+    if (newProps.loading !== this.state.loading) {
       this.setState({ loading: !this.state.loading });
     } else if (this.props.itemId !== newProps.itemId) {
       this.setState({ loading: true }, () =>
-        this.props.fetchArtist(newProps.itemId)
+        this.props.fetchUser(newProps.itemId)
       );
     }
   }
@@ -35,27 +33,28 @@ class UserPage extends React.Component {
     return(
       <div className='artist-page-container'>
         <div className='artist-page'>
-          //UserHeader
-            //UserFollowButton
-            //UserDropdown
-          //UserNav
-          //Route 'users/:id/playlists'
-            //PublicPlaylists
-          //Route users/:id/followers
-            //UserFollowers
-          //Route users/:id/following
-            //UserFollowing
+          <UserHeader />
         </div>
       </div>
     );
   }
 }
 
+//UserHeader
+//UserFollowButton
+//UserDropdown
+//UserNav
+//Route 'users/:id/playlists'
+//PublicPlaylists
+//Route users/:id/followers
+//UserFollowers
+//Route users/:id/following
+//UserFollowing
 
 const mapStateToProps = (state, ownProps) => {
   return {
     loading: state.ui.loading.global,
-    itemId: ownProps.match.params.artistId
+    itemId: ownProps.match.params.userId
   };
 };
 

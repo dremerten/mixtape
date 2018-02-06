@@ -1,7 +1,7 @@
 
 json.user do
   json.extract! @user, :id, :name, :email, :created_at
-  json.imageUrl @user.avatar(:thumb)
+  json.imageUrl asset_path(@user.avatar(:thumb))
   json.followers @user.follower_ids
   json.followees @user.followings.user.pluck(:followable_id)
   json.followees @user.followed_users.pluck(:id)

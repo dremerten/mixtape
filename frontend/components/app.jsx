@@ -20,6 +20,8 @@ const mapDispatchToProps = dispatch => ({
   hideAllDropdowns: () => dispatch(hideAllDropdowns())
 });
 
+// TODO: SIMPLIFY ALL PROTECTED ROUTES
+
 const App = (props) => (
   <div className="application-wrapper" onClick={ props.hideAllDropdowns }>
     <Switch>

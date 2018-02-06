@@ -1,5 +1,13 @@
 import { merge } from 'lodash';
-import { LOGOUT } from '../actions/session_actions';
+import {
+  LOGOUT
+} from '../actions/session_actions';
+
+import {
+  RECEIVE_USER,
+  START_LOADING_SINGLE_USER
+} from '../actions/user_actions';
+
 import {
   START_LOADING_ALL_ALBUMS,
   START_LOADING_SINGLE_ALBUM,
@@ -20,7 +28,9 @@ import {
   RECEIVE_ARTIST
 } from '../actions/artist_actions';
 
-import { START_LOADING_ALL_TRACKS } from '../actions/track_actions';
+import {
+  START_LOADING_ALL_TRACKS
+} from '../actions/track_actions';
 
 const defaultState = {
   global: false,
@@ -38,12 +48,14 @@ const LoadingReducer = (state = defaultState, action) => {
       return newState;
     case START_LOADING_ALL_PLAYLISTS:
     case START_LOADING_SINGLE_PLAYLIST:
+    case START_LOADING_SINGLE_USER:
     case START_LOADING_ALL_TRACKS:
     case START_LOADING_ARTIST:
       newState.global = true;
       return newState;
     case RECEIVE_PLAYLISTS:
     case RECEIVE_PLAYLIST:
+    case RECEIVE_USER:
       newState.global = false;
       return newState;
     case RECEIVE_ALBUM:

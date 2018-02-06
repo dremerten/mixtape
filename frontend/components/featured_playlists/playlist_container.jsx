@@ -24,7 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     tracks: playlistTracks(playlist, state),
     inProgress: state.player.inProgress,
     loading: state.ui.loading.global,
-    authorLink: '/'
+    authorLink: playlist.author_id ? `/users/${playlist.author_id}` : '/'
   };
 };
 

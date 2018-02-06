@@ -20,7 +20,7 @@ class ArtistPage extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if (newProps.loading != this.state.loading) {
+    if (newProps.loading !== this.state.loading) {
       this.setState({ loading: !this.state.loading });
     } else if (this.props.itemId !== newProps.itemId) {
       this.setState({ loading: true }, () =>

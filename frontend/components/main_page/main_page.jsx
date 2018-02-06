@@ -7,6 +7,7 @@ import PlaylistContainer from '../featured_playlists/playlist_container';
 import AlbumContainer from '../albums/album_container';
 import AlertBar from '../AlertBar';
 import DialogueContainer from '../DialogueContainer';
+import UserPage from '../users/UserPage';
 
 import {
   Route,
@@ -23,6 +24,8 @@ const MainPage = ({ currentUser }) => (
           <Route exact path="/browse/playlists/:playlistId" component={PlaylistContainer} />
           <Route exact path="/collection/playlists/:playlistId" component={PlaylistContainer} />
           <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
+          <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
+          <Route exact path="/users/:userId" component={UserPage} />
           <Route path="/" component={MusicPortal}/>
         </Switch>
         <DialogueContainer />
