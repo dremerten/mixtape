@@ -11,6 +11,7 @@ import {
 } from '../actions/playlist_actions';
 import { RECEIVE_PLAYLIST_TRACK_SAVE } from '../actions/track_actions';
 import { RECEIVE_SEARCH_RESULTS } from '../actions/search_actions';
+import { RECEIVE_USER } from '../actions/user_actions';
 
 const initialState = {
   currentUser: {},
@@ -22,6 +23,7 @@ const PlaylistsReducer = (state = initialState, action) => {
   let newState;
   switch(action.type) {
     case RECEIVE_PLAYLISTS:
+    case RECEIVE_USER:
       newState = merge({}, state, { byId: action.playlists });
       return newState;
     case RECEIVE_PLAYLIST:

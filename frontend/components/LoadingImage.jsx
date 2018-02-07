@@ -18,7 +18,7 @@ class LoadingImage extends React.Component {
 
   render() {
     const { loaded } = this.state;
-
+    
     return(
       <figure
         className={this.props.loadingClass}

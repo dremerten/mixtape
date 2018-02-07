@@ -4,7 +4,7 @@ import GenericMusicIndex from '../featured_playlists/GenericMusicIndex';
 import ArtistIndexItem from '../featured_playlists/UserArtistIndexItem';
 
 const SearchArtists = props => (
-  <GenericMusicIndex IndexItem={ArtistIndexItem} indexItems={props.indexItems} />
+  <GenericMusicIndex IndexItem={ArtistIndexItem} indexItems={props.indexItems}/>
 );
 
 const mapStateToProps = state => {

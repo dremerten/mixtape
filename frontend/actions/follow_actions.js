@@ -34,9 +34,12 @@ export const unfollow = (type, id) => dispatch => {
 
 export const toggleFollow = (type, id) => (dispatch, getState) => {
   const state = getState();
-  const followState = state.session.currentUser.followIds[`${type}s`]
-                                              .includes(parseInt(id));
-                                         
+  const followState = state
+                        .session
+                        .currentUser
+                        .followIds[`${type}s`]
+                        .includes(parseInt(id));
+
   if (followState) {
     dispatch(unfollow(type, id));
   } else {

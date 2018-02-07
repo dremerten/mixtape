@@ -1,12 +1,13 @@
 .user-page-header {
-  background: #2c3a36;
+  // background: #2c3a36;
+  background: #3e3e3e;
 
   .user-header-items {
     display: flex;
     flex-direction: column;
     margin: 0 auto;
     position: relative;
-    height: 75%;
+    align-items: center;
 
     .user-header__image--container {
       position: relative;
@@ -49,6 +50,37 @@
       color: $transluscent-white;
       font-weight: lighter;
       letter-spacing: 2px;
+      // margin-bottom: 20px;
     }
+
+    .user-page__follow-button {
+      margin-top: 20px;
+      border: 2px solid $transluscent-white;
+      padding: 10px 30px;
+      background-color: rgba(0, 0, 0, .5);
+      font-family: $open;
+      letter-spacing: 4px;
+      text-align: center;
+      width: 120px;
+      font-size: 10px;
+      color: white;
+      border-radius: 25px;
+      position: relative;
+      transition-duration: .2s;
+      transform: scale(1);
+
+      &:hover {
+        transition-duration: .2s;
+        transform: scale(1.05);
+        border: 2px solid white;
+      }
+    }
+
   }
+
+}
+
+.user-content {
+  padding: 20px 50px;
+  margin: 0 0 100px 220px;
 }

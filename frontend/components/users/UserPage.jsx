@@ -3,6 +3,7 @@ import { withRouter, Switch, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { fetchUser } from '../../actions/user_actions';
 import UserHeader from './UserHeader';
+import UserItems from './UserItems';
 
 class UserPage extends React.Component {
   constructor(props) {
@@ -12,15 +13,15 @@ class UserPage extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUser(this.props.itemId);
+    this.props.fetchUser(this.props.userId);
   }
 
   componentWillReceiveProps(newProps) {
     if (newProps.loading !== this.state.loading) {
       this.setState({ loading: !this.state.loading });
-    } else if (this.props.itemId !== newProps.itemId) {
+    } else if (this.props.userId !== newProps.userId) {
       this.setState({ loading: true }, () =>
-        this.props.fetchUser(newProps.itemId)
+        this.props.fetchUser(newProps.userId)
       );
     }
   }
@@ -34,27 +35,18 @@ class UserPage extends React.Component {
       <div className='artist-page-container'>
         <div className='artist-page'>
           <UserHeader />
+          <UserItems userId={this.props.userId} />
         </div>
       </div>
     );
   }
 }
 
-//UserHeader
-//UserFollowButton
-//UserDropdown
-//UserNav
-//Route 'users/:id/playlists'
-//PublicPlaylists
-//Route users/:id/followers
-//UserFollowers
-//Route users/:id/following
-//UserFollowing
 
 const mapStateToProps = (state, ownProps) => {
   return {
     loading: state.ui.loading.global,
-    itemId: ownProps.match.params.userId
+    userId: ownProps.match.params.userId
   };
 };
 
@@ -68,3 +60,17 @@ export default withRouter(connect(
   mapStateToProps,
   mapDispatchToProps
 )(UserPage));
+
+
+
+
+//UserHeader
+//UserFollowButton
+//UserDropdown
+//UserNav
+//Route 'users/:id/playlists'
+//PublicPlaylists
+//Route users/:id/followers
+//UserFollowers
+//Route users/:id/following
+//UserFollowing

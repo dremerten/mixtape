@@ -25,7 +25,7 @@ const MainPage = ({ currentUser }) => (
           <Route exact path="/collection/playlists/:playlistId" component={PlaylistContainer} />
           <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
           <Route exact path="/browse/albums/:albumId" component={AlbumContainer} />
-          <Route exact path="/users/:userId" component={UserPage} />
+          <Route path="/users/:userId" component={UserPage} />
           <Route path="/" component={MusicPortal}/>
         </Switch>
         <DialogueContainer />
