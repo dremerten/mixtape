@@ -13,7 +13,9 @@ class Api::SearchesController < ApplicationController
 
     @playlists = Playlist.search(build_query)
 
-    @top_result = sort_by_match_weight([*@albums, *@artists, *@tracks, *@playlists], build_query).first
+    @users = User.search(build_query)
+
+    @top_result = sort_by_match_weight([*@albums, *@artists, *@tracks, *@playlists, *@users], build_query).first
   end
 
 

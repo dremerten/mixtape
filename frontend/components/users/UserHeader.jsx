@@ -17,7 +17,7 @@ const UserHeader = props => {
   })();
 
   return (
-    <div className='artist-header user-page-header'>
+    <div className='user-page-header'>
       <div className='user-header-items'>
         <div className='user-header__image--container'>
           <img src={props.user.imageUrl} className='user-header__image' />

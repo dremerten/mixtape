@@ -46,5 +46,6 @@ export const foundResults = (state) => {
     if (!isEmpty(state.search[key])) foundResults = true;
   }
 
+  debugger
   return foundResults;
 };

@@ -32,7 +32,7 @@ class UserPage extends React.Component {
     if (loading) return null;
 
     return(
-      <div className='artist-page-container'>
+      <div className='artist-page-container black-background'>
         <div className='artist-page'>
           <UserHeader />
           <UserItems userId={this.props.userId} />

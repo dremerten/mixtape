@@ -1,6 +1,21 @@
+.black-background {
+  background: #090909;
+}
+
 .user-page-header {
-  // background: #2c3a36;
-  background: #3e3e3e;
+  background: #252525;
+  position: relative;
+
+  &:before {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    top: 0;
+    height: 100%;
+    background: linear-gradient(to top, #090909, #090909 -20%, transparent);
+  }
 
   .user-header-items {
     display: flex;
@@ -8,6 +23,7 @@
     margin: 0 auto;
     position: relative;
     align-items: center;
+    margin-left: 220px;
 
     .user-header__image--container {
       position: relative;

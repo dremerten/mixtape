@@ -96,7 +96,7 @@ div.shadow-light:hover {
     padding-bottom: 100%; //creates 1:1 aspect ratio
     box-shadow: 0 0 10px rgba(0,0,0,.3);
     position: relative;
-    background-image: image-url('album_loading.png');
+    background-image: image-url('album-default.png');
 
     .playlist-image {
       animation: fadeInLoad .5s ease-in;
@@ -124,6 +124,18 @@ div.shadow-light:hover {
 
     &::before {
       border-radius: 50%
+    }
+  }
+
+  .hover-grow {
+    transition: transform .2s ease-in;
+    transform: scale(1);
+
+    &:hover {
+      transform: scale(1.05);
+      position: relative;
+      z-index: 4;
+      transition: transform .2s ease-out;
     }
   }
 

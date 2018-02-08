@@ -2,6 +2,7 @@ import React from 'react';
 import ArtistIndexItem from '../featured_playlists/UserArtistIndexItem';
 import AlbumIndexItem from '../featured_playlists/AlbumIndexItem';
 import PlaylistIndexItem from '../featured_playlists/UserPlaylistIndexItem';
+import UserIndexItem from '../users/UserIndexItem';
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
@@ -14,6 +15,9 @@ const mapStateToProps = state => {
     case 'Album':
     case 'Track':
       topResult = AlbumIndexItem;
+      break;
+    case 'User':
+      topResult = UserIndexItem;
       break;
     case 'Playlist':
       topResult = PlaylistIndexItem;

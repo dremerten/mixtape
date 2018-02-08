@@ -10,7 +10,7 @@ class Playlist < ApplicationRecord
 
   has_attached_file :image,
     styles: { large: '1000x1000#', small: '300x300#' },
-    default_url: 'album_default.jpg'
+    default_url: 'album-default.png'
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   before_save :inherit_artwork

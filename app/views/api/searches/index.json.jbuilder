@@ -33,6 +33,14 @@ json.playlists do
   end
 end
 
+json.users do
+  @users.each do |user|
+    json.set! user.id do
+      json.partial! 'api/users/user', user: user
+    end
+  end
+end
+
 json.top do
   json.type @top_result && @top_result.class.to_s
 
@@ -42,6 +50,8 @@ json.top do
     json.partial! 'api/artists/artist', artist: @top_result
   elsif @top_result.is_a? Track
     json.partial! 'api/searches/top_track', track: @top_result
+  elsif @top_result.is_a? User
+    json.partial! 'api/users/user', user: @top_result
   elsif @top_result.is_a? Playlist
     json.extract! @top_result, :id, :name, :author_id
     json.imageUrl asset_path(@top_result.image.url)

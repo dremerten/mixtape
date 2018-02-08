@@ -22,6 +22,16 @@ class User < ApplicationRecord
   has_many :searches
   has_many :followed_users, through: :followings, source: :followable, source_type: 'User'
 
+  def self.search(query)
+    where('lower(name) ~* :query or
+           lower(email) ~* :query
+          ', query: query)
+  end
+
+  def match_weight(query)
+    "#{name}#{email}".downcase.scan(Regexp.new(query)).map(&:length).inject(:+)
+  end
+
   def track_ids_by_date
     SavedTrack.joins(:user, :track)
       .where('users.id': id)
