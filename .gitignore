@@ -28,6 +28,7 @@ npm-debug.log
 aws_keys.yml
 frontend/components/featured_playlists/music_index_container.jsx
 artists/*
+
 # Ignore application configuration
 /config/application.yml
 /frontend/components/featured_playlists/playlists_index_item.jsx

@@ -32,7 +32,6 @@ class NowPlayingBar extends React.Component {
     this.setInitialState = this.setInitialState.bind(this);
     this.handleSongEnd = this.handleSongEnd.bind(this);
     this.handleBackClick = this.handleBackClick.bind(this);
-    this.preloadQueue = this.preloadQueue.bind(this);
   }
 
   componentDidMount() {
@@ -68,14 +67,6 @@ class NowPlayingBar extends React.Component {
     if (this.props.loadQueue) new Audio(this.props.loadQueue.trackUrl).load();
   }
 
-  preloadQueue() {
-    // if (this.props.loadQueue) {
-    //   const audio = document.createElement('audio');
-    //   audio.src = this.props.loadQueue.trackUrl;
-    //   audio.load();
-    // }
-  }
-
   handleSongEnd() {
     if (this.props.repeat === 2) {
       this.audio.currentTime = 0;
@@ -85,7 +76,7 @@ class NowPlayingBar extends React.Component {
   }
 
   handleBackClick() {
-    if ((this.audio.currentTime / this.audio.duration) < 0.05) {
+    if ((this.audio.currentTime / this.audio.duration) < 0.1) {
       this.props.playPreviousTrack();
     } else {
       this.audio.currentTime = 0;
@@ -180,12 +171,15 @@ class NowPlayingBar extends React.Component {
     return(
       <footer className="now-playing-footer">
         <div className="now-playing-container">
-          <TrackInfo currentTrack={this.props.currentTrack} />
+          <TrackInfo
+            currentTrack={this.props.currentTrack}
+            />
           <section className="audio-controls">
             <AudioButtons
               handleBackClick={this.handleBackClick}
               inProgress={this.props.inProgress}
-              nullTrack={isEmpty(this.props.currentTrack)}/>
+              nullTrack={isEmpty(this.props.currentTrack)}
+              />
             <ProgressBar
               duration={this.state.duration}
               scaleTime={this.scaleTime}
