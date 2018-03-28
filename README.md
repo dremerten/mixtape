@@ -29,3 +29,6 @@ Spinn was initially planned, designed, and built in the span of 10 days. Over ti
 ---
 
 ## Reactive Media Playback
+
+![alt text](https://github.com/dwebster17/Spinn/blob/master/docs/PlayerGif.gif)
+
