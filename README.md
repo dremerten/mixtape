@@ -1,4 +1,4 @@
-# README
+# Spinn ![Spinn Logo](https://github.com/dwebster17/Spinn/blob/master/app/assets/images/Logo-black.png)
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
