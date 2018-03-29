@@ -114,6 +114,43 @@ module Helpers::ImageScanner
 end
 ```
 
+## Handling Search
+
+One challenge that I faced was handling search rendering. The search page was a single-page app itself, and one issue was that the top search result could be one of several different components: playlist, album, artist, user, or track.
+
+![Search](https://github.com/dwebster17/Spinn/blob/master/docs/Search.gif)
+
+My solution to this was to send back the `topResultType` with the API response, and keep it in my redux store. In the search container, I created a POJO that mapped this type to its corresponding component, and passed it down in props. If there was no top result, I would return `null`.
+
+```js
+const resultComponents = {
+  Artist: ArtistIndexItem,
+  Album: AlbumIndexItem,
+  Track: AlbumIndexItem,
+  User: UserIndexItem,
+  Playlist: PlaylistIndexItem,
+};
+
+const mapStateToProps = ({ search: { top } }) => ({
+  topResult: resultComponents[top.type]
+  item: top
+});
+
+const TopResult = function({ topResult: Top, item }) {
+  if (!Top) return null;
+
+  return (
+    <Top
+      item={item}
+      />
+  );
+};
+
+export default connect(
+  mapStateToProps
+)(TopResult);
+```
+
 ## Reusable Components
 
 In designing the project, it became apparent that many different components were very similar. Index item components for artists, albums, genres, playlists, and users all followed a very similar design pattern, with only minor differences. In order to keep my code as DRY as possible, I created one modular presentational component, `GenericIndexItem`, that could be reused. By doing this, the process of adding a new component to the website became a lot faster and more manageable.
@@ -184,41 +221,4 @@ const mapStateToProps = (state, ownProps) => ({
 export default withRouter(connect(
   mapStateToProps
 )(GenericIndexItem));
-```
-
-## Handling Search
-
-One challenge that I faced was handling search rendering. The search page was a single-page app itself, and one issue was that the top search result could be one of several different components: playlist, album, artist, user, or track.
-
-![Search](https://github.com/dwebster17/Spinn/blob/master/docs/Search.gif)
-
-My solution to this was to send back the `topResultType` with the API response, and keep it in my redux store. In the search container, I created a POJO that mapped this type to its corresponding component, and passed it down in props. If there was no top result, I would return `null`.
-
-```js
-const resultComponents = {
-  Artist: ArtistIndexItem,
-  Album: AlbumIndexItem,
-  Track: AlbumIndexItem,
-  User: UserIndexItem,
-  Playlist: PlaylistIndexItem,
-};
-
-const mapStateToProps = ({ search: { top } }) => ({
-  topResult: resultComponents[top.type]
-  item: top
-});
-
-const TopResult = function({ topResult: Top, item }) {
-  if (!Top) return null;
-
-  return (
-    <Top
-      item={item}
-      />
-  );
-};
-
-export default connect(
-  mapStateToProps
-)(TopResult);
 ```
