@@ -32,7 +32,7 @@ Spinn was initially planned, designed, and built in the span of 10 days. Over ti
 
 A feature that I was especially excited about implementing was the dynamic image creation that Spotify uses. With this feature, a playlist image continuously represents the contents of that playlist.
 
-![Playlist Image](https://github.com/dwebster17/Spinn/blob/master/docs/PlayerGif.gif)
+![Playlist Image](https://github.com/dwebster17/Spinn/blob/master/docs/Playlist.png)
 
 The playlist image was updated in two scenarios:
 
@@ -112,4 +112,113 @@ module Helpers::ImageScanner
     File.delete(image_path)
   end
 end
+```
+
+## Reusable Components
+
+In designing the project, it became apparent that many different components were very similar. Index item components for artists, albums, genres, playlists, and users all followed a very similar design pattern, with only minor differences. In order to keep my code as DRY as possible, I created one modular presentational component, `GenericIndexItem`, that could be reused. By doing this, the process of adding a new component to the website became a lot faster and more manageable.
+
+```js
+class GenericIndexItem extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+
+    this.props.handleClick();
+  }
+
+  render() {
+    const {
+      id,
+      itemName,
+      author,
+      imageUrl,
+      loadingClass,
+      imageClass,
+      PlayButton
+     } = this.props;
+
+    return(
+      <li key={id} className="playlist-item">
+        <div className='playlist-image-container'>
+          <LoadingImage
+            loadingClass={loadingClass}
+            imageClass={imageClass}
+            imageSource={imageUrl}
+            handleClick={this.handleClick}
+            />
+          <PlayButton id={id}/>
+        </div>
+        <div className="playlist-name">
+          {itemName}
+        </div>
+        <div className='author artist'>
+          {author}
+        </div>
+      </li>
+    );
+  }
+}
+```
+
+Anything that changed between these components was passed down as props in a container, including the hover component that was different for each resource. Here is an example of a container for Albums.
+
+```js
+const mapStateToProps = (state, ownProps) => ({
+  itemName: ownProps.item.title,
+  author: ownProps.item.author,
+  loading: state.ui.loading.albums,
+  imageUrl: ownProps.item.imageUrl,
+  id: ownProps.item.id,
+  loadingClass: 'playlist-loading',
+  imageClass: 'playlist-image',
+  handleClick: () => ownProps.history.push(`/browse/albums/${ownProps.item.id}`),
+  PlayButton
+});
+
+export default withRouter(connect(
+  mapStateToProps
+)(GenericIndexItem));
+```
+
+## Handling Search
+
+One challenge that I faced was handling search rendering. The search page was a single-page app itself, and one issue was that the top search result could be one of several different components: playlist, album, artist, user, or track.
+
+![Search](https://github.com/dwebster17/Spinn/blob/master/docs/Search.gif)
+
+My solution to this was to send back the `topResultType` with the API response, and keep it in my redux store. In the search container, I created a POJO that mapped this type to its corresponding component, and passed it down in props. If there was no top result, I would return `null`.
+
+```js
+const resultComponents = {
+  Artist: ArtistIndexItem,
+  Album: AlbumIndexItem,
+  Track: AlbumIndexItem,
+  User: UserIndexItem,
+  Playlist: PlaylistIndexItem,
+};
+
+const mapStateToProps = ({ search: { top } }) => ({
+  topResult: resultComponents[top.type]
+  item: top
+});
+
+const TopResult = function({ topResult: Top, item }) {
+  if (!Top) return null;
+
+  return (
+    <Top
+      item={item}
+      />
+  );
+};
+
+export default connect(
+  mapStateToProps
+)(TopResult);
 ```

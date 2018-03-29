@@ -32,9 +32,9 @@ class GenericIndexItem extends React.Component {
         <div className='playlist-image-container'>
           <LoadingImage
             loadingClass={loadingClass}
-            handleClick={this.handleClick}
             imageClass={imageClass}
             imageSource={imageUrl}
+            handleClick={this.handleClick}
             />
           <PlayButton id={id}/>
         </div>
