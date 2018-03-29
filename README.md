@@ -153,16 +153,22 @@ export default connect(
 
 ## Reusable Components
 
-In designing the project, it became apparent that many different components were very similar. Index item components for artists, albums, genres, playlists, and users all followed a very similar design pattern, with only minor differences. In order to keep my code as DRY as possible, I created one modular presentational component, `GenericIndexItem`, that could be reused. By doing this, the process of adding a new component to the website became a lot faster and more manageable.
+In designing the project, it became apparent that many different components were very similar. Index item components for artists, albums, genres, playlists, and users all followed a very similar design pattern, with only minor differences.
+
+![Artist](https://github.com/dwebster17/Spinn/blob/master/docs/ArtistComponent.png)
+>Artist
+
+![Playlist](https://github.com/dwebster17/Spinn/blob/master/docs/PlaylistComponent.png)
+>Playlist
+
+![Genre](https://github.com/dwebster17/Spinn/blob/master/docs/Genre.png)
+>Genre
+
+In order to keep my code as DRY as possible, I created one modular presentational component, `GenericIndexItem`, that could be reused. By doing this, the process of adding a new component to the website became a lot faster and more manageable.
 
 ```js
 class GenericIndexItem extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.handleClick = this.handleClick.bind(this);
-  }
-
+  // ...
   handleClick(e) {
     e.preventDefault();
 
