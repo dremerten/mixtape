@@ -3,19 +3,17 @@ import { displayPlaylistForm } from '../actions/ui_actions';
 import { connect } from 'react-redux';
 import { SCROLL_BREAKPOINT } from '../util/constants';
 
-
-const mapStateToProps = state => {
-  let pathNames = ["/collection/playlists", "/collection/tracks", "/collection/artists"];
-  let linkNames = ["PLAYLISTS", "SONGS", "ARTISTS"];
-
-  return {
-    isVisible: state.ui.scroll < SCROLL_BREAKPOINT,
-    pathNames,
-    linkNames,
-    isButtonVisible: true,
-    className: 'browse-nav-container'
-  };
+const pathNames = {
+  "PLAYLISTS": "/collection/playlists",
+  "SONGS": "/collection/tracks",
+  "ARTISTS": "/collection/artists",
 };
+
+const mapStateToProps = ({ ui: { scroll } }) => ({
+  isVisible: scroll < SCROLL_BREAKPOINT,
+  className: 'browse-nav-container'
+  pathNames,
+});
 
 export default connect(
   mapStateToProps

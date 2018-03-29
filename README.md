@@ -228,3 +228,59 @@ export default withRouter(connect(
   mapStateToProps
 )(GenericIndexItem));
 ```
+
+A similar DRY approach was taken for implementing the various nav bars, which could appear in four different places:
+
+![CollectionNav](https://github.com/dwebster17/Spinn/blob/master/docs/CollectionNav.png)
+![Browse](https://github.com/dwebster17/Spinn/blob/master/docs/BrowseNav.png)
+![SearchNav](https://github.com/dwebster17/Spinn/blob/master/docs/SearchNav.png)
+![ArtistNav](https://github.com/dwebster17/Spinn/blob/master/docs/ArtistNav.png)
+
+Every container for these components contained a POJO that mapped link names to link paths, allowing me to create add as many links as I needed with ease.
+
+```js
+// BrowseNavContainer.js
+const pathNames = {
+  "FEATURED": "/browse/featured",
+  "GENRES & MOODS": "/browse/genres",
+  "NEW RELEASES": "/browse/newreleases"
+};
+
+const mapStateToProps = ({ ui: { scroll } }) => ({
+  isVisible: scroll < SCROLL_BREAKPOINT,
+  className: 'browse-nav-container'
+  pathNames,
+});
+
+export default connect(
+  mapStateToProps
+)(GenericNavBar);
+```
+
+```js
+// GenericNavBar.jsx
+export default function({
+  isVisible,
+  pathNames,
+  className }) {
+
+  return (
+    <nav className={className} style={ isVisible ? { display: "" } : { display: 'none' }}>
+      <div className="browse-nav">
+        {
+          Object.keys(pathNames).map((name, index) => (
+            <NavLink to={pathNames[name]}
+              className='nav-link-item'
+              activeClassName='nav-link-item nav-selected'
+              key={index}
+              >
+              <span>{name}</span>
+            </NavLink>
+          ))
+        }
+      </div>
+      <Route path='/collection' component={NewPlaylistButton}/>
+    </nav>
+  );
+}
+```
