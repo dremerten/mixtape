@@ -34,11 +34,11 @@ A feature that I was especially excited about implementing was the dynamic image
 
 ![Playlist Image](https://github.com/dwebster17/Spinn/blob/master/docs/Playlist.png)
 
-The playlist image was updated in two scenarios:
+The playlist image is updated in two scenarios:
 
 + When the first song is added to a playlist, the playlist inherits _just_ that album's artwork
 
-+ Once a playlist has songs from **4 unique albums**, the module creates a new collage of the four images.
++ Once a playlist has songs from **4 unique albums**, the playlist gets an image that is a collage of 4 albums.
 
 I did this by a) creating an `ImageScanner` module that handles the logic of generating an image collage, and b) write a `Playlist#inherit_artwork` method that was invoked in a `before_save` model callback.
 
@@ -56,9 +56,7 @@ class Playlist < ApplicationRecord
   # Make playlist take the artwork of the first track that was added
   def inherit_artwork
     # Only update artwork if it hasn't been updated yet
-    return if image.url.include?('compiled-image') ||
-              tracks.empty? ||
-              author_id.zero?
+    return if image.url.include?('compiled-image') || tracks.empty? 
 
     num_albums = tracks.pluck(:album_id).uniq.count
 
