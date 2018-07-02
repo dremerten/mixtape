@@ -1,3 +1,4 @@
+import zipObject from 'lodash/zipObject';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { selectLinkPaths, selectLinkHeaders } from '../../selectors/search_selectors';
@@ -6,12 +7,12 @@ import GenericNavBar from '../GenericNavBar';
 
 const mapStateToProps = (state, ownProps) => {
   
-  const pathNames = selectLinkPaths(state);
-  const linkNames = selectLinkHeaders(state);
+  const pathNameArray = selectLinkPaths(state);
+  const linkNameArray = selectLinkHeaders(state);
+  const pathNames = zipObject(linkNameArray, pathNameArray);
 
   return {
     pathNames,
-    linkNames,
     className: 'search__nav--narrow'
   };
 };

@@ -22,6 +22,7 @@ export const selectLinkPaths = state => {
 
 export const selectLinkHeaders = state => {
   const headers = [];
+ 
 
   Object.keys(state.search).forEach(key => {
     if (key === 'top') return;

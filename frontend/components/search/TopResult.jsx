@@ -34,7 +34,7 @@ const mapStateToProps = state => {
   // }
 
   return {
-    topResult: resultComponents[state.search.top.type]
+    topResult: resultComponents[state.search.top.type],
     item: state.search.top
   };
 };

@@ -11,7 +11,7 @@ const pathNames = {
 
 const mapStateToProps = ({ ui: { scroll } }) => ({
   isVisible: scroll < SCROLL_BREAKPOINT,
-  className: 'browse-nav-container'
+  className: 'browse-nav-container',
   pathNames,
 });
 
