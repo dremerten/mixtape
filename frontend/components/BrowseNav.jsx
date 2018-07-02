@@ -2,9 +2,13 @@ import GenericNavBar from './GenericNavBar';
 import { connect } from 'react-redux';
 import { SCROLL_BREAKPOINT } from '../util/constants';
 
+// const pathNames = {
+//   "FEATURED": "/browse/featured",
+//   "GENRES & MOODS": "/browse/genres",
+//   "NEW RELEASES": "/browse/newreleases"
+// };
 const pathNames = {
   "FEATURED": "/browse/featured",
-  "GENRES & MOODS": "/browse/genres",
   "NEW RELEASES": "/browse/newreleases"
 };
 
