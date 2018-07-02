@@ -122,24 +122,24 @@ My solution to this was to send back the `topResultType` with the API response, 
 
 ```js
 const resultComponents = {
-  Artist: ArtistIndexItem,
-  Album: AlbumIndexItem,
-  Track: AlbumIndexItem,
-  User: UserIndexItem,
-  Playlist: PlaylistIndexItem,
+  Artist,
+  Album,
+  Track,
+  User,
+  Playlist,
 };
 
 const mapStateToProps = ({ search: { top } }) => ({
-  topResult: resultComponents[top.type]
-  item: top
+  component: resultComponents[top.type],
+  data: top
 });
 
-const TopResult = function({ topResult: Top, item }) {
-  if (!Top) return null;
+const TopResult = function({ component: Component, data }) {
+  if (!Component) return null;
 
   return (
-    <Top
-      item={item}
+    <Component
+      item={data}
       />
   );
 };
