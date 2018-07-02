@@ -7,7 +7,6 @@ import UserPlaylistIndex from './featured_playlists/UserPlaylistIndex';
 import UserTrackIndex from './tracks/UserTrackIndex';
 import { Route, Switch } from 'react-router-dom';
 import UserProfile from './UserProfile';
-import GenreIndex from './genres/GenreIndex';
 import ArtistPage from './artists/ArtistPage';
 import UserArtistIndex from './featured_playlists/UserArtistIndex';
 
