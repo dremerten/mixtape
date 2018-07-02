@@ -5,8 +5,7 @@ import { showDropdown } from '../../actions/ui_actions';
 import {
   play,
   pause,
-  playSingleTrack,
-  playNextTrack
+  playSingleTrack
 } from '../../actions/audio_actions';
 import Track from './track';
 

@@ -19,13 +19,13 @@ const NewPlaylistModal = props => (
   </Modal>
 );
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     isOpen: Boolean(state.ui.modals.newPlaylistModal.isOpen),
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
   return {
     closeModal: () => dispatch(closeModal('newPlaylistModal'))
   };

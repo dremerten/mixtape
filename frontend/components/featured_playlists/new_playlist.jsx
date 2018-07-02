@@ -2,10 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createPlaylist } from '../../actions/playlist_actions';
 import { withRouter } from 'react-router-dom';
-import { addTrackToPlaylist } from 'react-router-dom';
 import { closeModal, closeAllModals } from '../../actions/ui_actions';
 import { saveTrackToPlaylist } from '../../actions/track_actions';
-import NewPlaylistButton from '../buttons/NewPlaylistButton';
 
 
 class NewPlaylistForm extends React.Component {

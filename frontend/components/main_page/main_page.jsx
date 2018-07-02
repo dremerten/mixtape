@@ -3,10 +3,10 @@ import SideBar from '../sidebar/sidebar';
 import Search from '../search/search';
 import NowPlayingBarContainer from '../nowplaying/nowplaying_container';
 import MusicPortal from '../music_portal';
-import PlaylistContainer from '../featured_playlists/playlist_container';
+import PlaylistContainer from '../featured_playlists/PlaylistContainer';
 import AlbumContainer from '../albums/album_container';
-import AlertBar from '../AlertBar';
-import DialogueContainer from '../DialogueContainer';
+import AlertBar from '../shared/AlertBar';
+import DialogueContainer from '../shared/DialogueContainer';
 import UserPage from '../users/UserPage';
 
 import {

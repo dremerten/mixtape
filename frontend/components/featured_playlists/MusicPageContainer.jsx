@@ -1,8 +1,4 @@
 import React from 'react';
-import Spinner from '../Spinner';
-import UserPlaylistModal from '../modals/UserPlaylistModal';
-import NewPlaylistButton from '../buttons/NewPlaylistButton';
-import { Route } from 'react-router-dom';
 
 class MusicPageContainer extends React.Component {
   constructor(props) {

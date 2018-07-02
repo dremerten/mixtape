@@ -1,13 +1,14 @@
-import MusicPageContainer from './MusicPageContainer';
-import GenericMusicIndex from './GenericMusicIndex';
-import PlaylistIndexItem from './PlaylistIndexItem';
-import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
 import { fetchPlaylists, removePlaylists } from '../../actions/playlist_actions';
 import { setScrollPosition } from '../../actions/ui_actions';
 import { setHeader } from '../../selectors/DynamicHeaderSelector';
 import { shouldFetchPlaylists, staticPlaylists } from '../../selectors/playlist_selector';
+
+import MusicPageContainer from './MusicPageContainer';
+import GenericMusicIndex from './GenericMusicIndex';
+import PlaylistIndexItem from './PlaylistIndexItem';
 
 const mapStateToProps = (state, ownProps) => {
   return {

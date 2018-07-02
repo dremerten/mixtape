@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import clipboard from 'clipboard-polyfill';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
   return {
     buttonText: "Copy Playlist Link",
     handleClick: (e) => {

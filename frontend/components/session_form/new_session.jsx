@@ -1,6 +1,5 @@
 import React from 'react';
-import SessionFormContainer from './session_form_container';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../../actions/session_actions';
 

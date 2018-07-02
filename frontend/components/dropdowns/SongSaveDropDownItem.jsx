@@ -1,9 +1,8 @@
 import GenericDropDownItem from './GenericDropDownItem';
 import { connect } from 'react-redux';
 import { saveTrack, removeTrack } from '../../actions/track_actions';
-import { clearAllAlerts } from '../../actions/alert_actions';
 
-const mapStateToProps = (state, { trackId, isSaved }) => {
+const mapStateToProps = (_, { isSaved }) => {
   const buttonText = (isSaved ? 'Remove from Your Music' : 'Save to Your Music');
 
   return {

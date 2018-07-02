@@ -1,9 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { foundResults } from '../../selectors/search_selectors';
-import { Route, Link, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import SearchForm from './SearchForm';
-import SearchNav from './SearchNav';
 import SearchResults from './SearchResults';
 
 const Search = function({ foundResults }) {

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { clearAllAlerts } from '../actions/alert_actions';
+import { clearAllAlerts } from '../../actions/alert_actions';
 
 
 

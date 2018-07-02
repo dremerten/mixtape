@@ -4,7 +4,6 @@ import AddToQueue from './AddTrackToQueue';
 import CopySongLink from './CopySongLink';
 import GenericDropdown from './GenericDropdown';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
 
 const listItems = [
   CopySongLink,
@@ -13,7 +12,7 @@ const listItems = [
   AddToPlaylist
 ];
 
-const mapStateToProps = (state, { item, collectionId }) => {
+const mapStateToProps = (state, { item }) => {
   return {
     isSaved: state.session.currentUser.trackIds.includes(item.id),
     listItems,

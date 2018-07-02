@@ -1,6 +1,7 @@
-import GenericIndexItem from './GenericIndexItem';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+
+import GenericIndexItem from './GenericIndexItem';
 import PlayButton from './PlaylistItemOverlay';
 
 const mapStateToProps = (state, ownProps) => {

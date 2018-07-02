@@ -1,5 +1,4 @@
 import React from 'react';
-import ReactDOM from 'react';
 
 class SignupForm extends React.Component {
   constructor(props) {

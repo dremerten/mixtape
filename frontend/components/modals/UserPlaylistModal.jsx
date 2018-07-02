@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchModalPlaylists, removePlaylists } from '../../actions/playlist_actions';
 import { shouldFetchPlaylists } from '../../selectors/playlist_selector';
 import { closeModal } from '../../actions/ui_actions';
-// export default function(props) {
+
 class UserPlaylistModal extends React.Component {
   componentWillReceiveProps(newProps) {
     if (newProps.isOpen && newProps.shouldFetchItems) {

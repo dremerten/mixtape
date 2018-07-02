@@ -1,9 +1,7 @@
 import React from 'react';
-import Track from '../tracks/track';
 import TrackList from '../tracks/TrackList';
-import Spinner from '../Spinner';
+import Spinner from '../shared/Spinner';
 import PlaylistInfo from './PlaylistInfo';
-import { Link } from 'react-router-dom';
 
 class Playlist extends React.Component {
   constructor(props) {

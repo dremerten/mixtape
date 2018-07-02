@@ -1,4 +1,4 @@
-import GenericNavBar from './GenericNavBar';
+import GenericNavBar from '../shared/GenericNavBar';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 

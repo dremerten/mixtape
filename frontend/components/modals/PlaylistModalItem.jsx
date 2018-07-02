@@ -1,7 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { saveTrackToPlaylist } from '../../actions/track_actions';
-import { clearAllAlerts } from '../../actions/alert_actions';
 import MusicIndexItem from '../featured_playlists/GenericIndexItem';
 import PlayButton from './ModalItemOverlay';
 

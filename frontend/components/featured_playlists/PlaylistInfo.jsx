@@ -1,11 +1,8 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import { PlayButton, OverlayPlayButton } from './PlayButton';
-import { isUserPlaylist } from '../../selectors/playlist_selector';
-import LoadingImage from '../LoadingImage';
+import LoadingImage from '../shared/LoadingImage';
 import PlaylistButtons from './PlaylistButtons';
 import AlbumButtons from '../albums/AlbumButtons';
 

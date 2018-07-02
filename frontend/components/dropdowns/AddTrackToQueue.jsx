@@ -2,7 +2,7 @@ import GenericDropDownItem from './GenericDropDownItem';
 import { connect } from 'react-redux';
 import { fetchTrackThenAddToQueue } from '../../actions/audio_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = () => {
   return {
     buttonText: "Add to Queue",
   };

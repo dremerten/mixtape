@@ -1,7 +1,6 @@
-import GenericNavBar from './GenericNavBar';
-import { displayPlaylistForm } from '../actions/ui_actions';
+import GenericNavBar from '../shared/GenericNavBar';
 import { connect } from 'react-redux';
-import { SCROLL_BREAKPOINT } from '../util/constants';
+import { SCROLL_BREAKPOINT } from '../../util/constants';
 
 const pathNames = {
   "PLAYLISTS": "/collection/playlists",

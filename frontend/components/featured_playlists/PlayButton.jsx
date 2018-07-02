@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { playFullCollection } from '../../actions/audio_actions';
-import { playlistTracks } from '../../selectors/playlist_selector';
 import { selectEntity } from '../../selectors/entity_selectors';
 
 const mapStateToProps = (state, ownProps) => {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import TrackInfo from './TrackInfo';
 import AudioButtons from './AudioButtons';
 import VolumeBar from './VolumeBar';

@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { followsCurrentUser } from '../../selectors/user_selectors';
 import UserFollowButton from './UserFollowButton';
 import UserNav from './UserNav';

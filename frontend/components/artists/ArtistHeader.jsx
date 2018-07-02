@@ -1,5 +1,5 @@
 import React from 'react';
-import ArtistNav from '../ArtistNav';
+import ArtistNav from '../nav_bar/ArtistNav';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import ArtistFollowButton from './ArtistFollowButton';

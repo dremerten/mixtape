@@ -1,5 +1,4 @@
 import MusicPageContainer from './MusicPageContainer';
-import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { setScrollPosition } from '../../actions/ui_actions';

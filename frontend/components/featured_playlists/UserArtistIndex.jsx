@@ -7,7 +7,7 @@ import { userArtists, shouldFetchArtists } from '../../selectors/artist_selector
 import { fetchUserArtists } from '../../actions/artist_actions';
 import { setScrollPosition } from '../../actions/ui_actions';
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
   return {
     indexItems: userArtists(state),
     itemType: 'album',
@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchItems: userId => dispatch(fetchUserArtists(userId)),
   setScrollPosition: pos => dispatch(setScrollPosition(pos))
 });

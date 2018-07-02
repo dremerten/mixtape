@@ -1,8 +1,6 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import GenericIndexItem from '../featured_playlists/GenericIndexItem';
-import { fetchGenre, removeGenres } from '../../actions/genre_actions';
 import PlayButton from './GenreOverlayItem';
 
 const mapStateToProps = (state, ownProps) => {

@@ -1,10 +1,8 @@
 import React from 'react';
-import NewPlaylistModal from '../modals/NewPlaylistModal';
 import { connect } from 'react-redux';
-import { showModal, closeModal } from '../../actions/ui_actions';
-import { SCROLL_BREAKPOINT } from '../../util/constants';
+import { showModal } from '../../actions/ui_actions';
 
-const NewPlaylistButton = function({ isVisible, showModal }) {
+const NewPlaylistButton = function({ showModal }) {
 
   return(
     <div>
@@ -18,13 +16,7 @@ const NewPlaylistButton = function({ isVisible, showModal }) {
   );
 };
 
-// const mapStateToProps = (state, ownProps) => {
-//   return {
-//     isVisible: state.ui.scroll < SCROLL_BREAKPOINT
-//   };
-// };
-
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   showModal: () => dispatch(showModal('newPlaylistModal'))
 });
 

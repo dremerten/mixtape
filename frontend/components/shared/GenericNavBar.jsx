@@ -1,6 +1,6 @@
 import React from 'react';
 import { Route, NavLink } from 'react-router-dom';
-import NewPlaylistButton from './buttons/NewPlaylistButton';
+import NewPlaylistButton from '../buttons/NewPlaylistButton';
 
 export default function({
   isVisible,

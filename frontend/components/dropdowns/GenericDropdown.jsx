@@ -1,5 +1,4 @@
 import React from 'react';
-import UserPlaylistModal from '../modals/UserPlaylistModal';
 
 // This has to be a class component because it is used as a ref.
 

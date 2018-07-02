@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { fetchTracksForUser, removeTracks } from '../../actions/track_actions';
 import { setScrollPosition } from '../../actions/ui_actions';
-import { allTracks, userTracks, shouldFetchTracks } from '../../selectors/track_selectors';
+import { userTracks, shouldFetchTracks } from '../../selectors/track_selectors';
 
 const mapStateToProps = state => ({
   indexItems: userTracks(state),

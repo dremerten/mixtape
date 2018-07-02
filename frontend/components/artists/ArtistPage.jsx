@@ -1,11 +1,10 @@
 import React from 'react';
-import { withRouter, Switch, Route } from 'react-router-dom';
+import { withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ArtistHeader from './ArtistHeader';
 import ArtistDescription from './ArtistDescription';
 import { fetchArtist } from '../../actions/artist_actions';
-import Spinner from '../Spinner';
-import TopArtistTracks from './TopArtistTracks';
+import Spinner from '../shared/Spinner';
 import ArtistItems from './ArtistItems';
 
 class ArtistPage extends React.Component {

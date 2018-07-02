@@ -2,13 +2,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Playlist from './playlist';
 import {
-  play,
-  pause,
-  playSingleTrack,
   receiveQueue,
   addTrackToQueue,
-  clearQueue,
-  setNextTrack
 } from '../../actions/audio_actions';
 import { fetchTracks, removeTracks } from '../../actions/track_actions';
 import { fetchPlaylist, removePlaylists } from '../../actions/playlist_actions';

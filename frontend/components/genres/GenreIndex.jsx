@@ -1,4 +1,3 @@
-import React from 'react';
 import MusicPageContainer from '../featured_playlists/MusicPageContainer';
 import GenericMusicIndex from '../featured_playlists/GenericMusicIndex';
 import { connect } from 'react-redux';
@@ -7,7 +6,7 @@ import { setScrollPosition } from '../../actions/ui_actions';
 import { fetchGenres, removeGenres } from '../../actions/genre_actions';
 import GenreIndexItem from './GenreIndexItem';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state) => ({
   indexItems: Object.keys(state.entities.genres)
                     .map(id => state.entities.genres[id]),
   itemType: 'genre',
@@ -18,7 +17,7 @@ const mapStateToProps = (state, ownProps) => ({
   IndexItem: GenreIndexItem
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   fetchItems: () => dispatch(fetchGenres()),
   removeItems: () => dispatch(removeGenres()),
   setScrollPosition: pos => dispatch(setScrollPosition(pos))

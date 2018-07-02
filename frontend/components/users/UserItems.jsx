@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter, Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import UserPagePlaylists from './UserPagePlaylists';
 import UserFollowers from './UserFollowers';
 import UserFollowings from './UserFollowings';

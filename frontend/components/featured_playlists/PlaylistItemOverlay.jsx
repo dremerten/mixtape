@@ -1,6 +1,5 @@
-import React from 'react';
 import { connect } from 'react-redux';
-import { fetchPlaylistThenPlay } from '../../actions/playlist_actions';
+
 import { playFullCollection } from '../../actions/audio_actions';
 import PlayButton from './OverlayPlayButton';
 

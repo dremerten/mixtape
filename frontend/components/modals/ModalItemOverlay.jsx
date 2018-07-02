@@ -1,7 +1,6 @@
 import React from 'react';
 
-const OverlayPlay = props => {
-  const customClass = props.customClass || "";
+const OverlayPlay = () => {
 
   return(
     <div className="playlist-image-overlay">
