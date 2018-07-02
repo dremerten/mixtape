@@ -34,3 +34,4 @@ artists/*
 /frontend/components/featured_playlists/playlists_index_item.jsx
 /frontend/components/albums/album.jsx
 app/assets/images/music/
+docs/
