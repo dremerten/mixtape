@@ -18,7 +18,6 @@ const MusicPortal = (props) => {
         <Route path='/collection' component={CollectionsNav} { ...props } />
         <Route path='/browse/newreleases' component={AlbumIndex} />
         <Route path='/browse/featured' component={PlaylistIndex} />
-        {/*<Route path='/browse/genres' component={GenreIndex} />*/}
         <Route path='/collection/playlists' component={UserPlaylistIndex} />
         <Route path='/collection/tracks' component={UserTrackIndex} />
         <Route path='/collection/artists' component={UserArtistIndex} />
