@@ -18,15 +18,13 @@ bundle*
 /yarn-error.log
 
 .byebug_history
-app/assets/artists/*
 node_modules/
+docs/
 bundle.js
 bundle.js.map
 .DS_Store
-frontend/components/NavBar.jsx
 npm-debug.log
 aws_keys.yml
-frontend/components/featured_playlists/music_index_container.jsx
 artists/*
 
 # Ignore application configuration
@@ -34,4 +32,3 @@ artists/*
 /frontend/components/featured_playlists/playlists_index_item.jsx
 /frontend/components/albums/album.jsx
 app/assets/images/music/
-docs/
